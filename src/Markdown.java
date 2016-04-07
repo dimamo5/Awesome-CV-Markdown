@@ -24,6 +24,8 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import grammar.MarkdownGrammar;
+import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -253,7 +255,7 @@ class Markdown {
         try {
             if ( !quiet ) System.err.println(f);
             // Create a scanner that reads from the input stream passed to us
-            Lexer lexer = new JavaLexer(new ANTLRFileStream(f));
+            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(f));
 
             CommonTokenStream tokens = new CommonTokenStream(lexer);
 //			long start = System.currentTimeMillis();
@@ -262,12 +264,14 @@ class Markdown {
 //			lexerTime += stop-start;
 
             // Create a parser that reads from the scanner
-            JavaParser parser = new Markdown(tokens);
+            MarkdownGrammar parser = new MarkdownGrammar(tokens);
+            if ( diag ) parser.addErrorListener(new DiagnosticErrorListener());
+            if ( bail ) parser.setErrorHandler(new BailErrorStrategy());
+            if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.compilationUnit();
+            ParserRuleContext t = parser.header();
             if ( notree ) parser.setBuildParseTree(false);
-            if ( gui ) t.inspect(parser);
             if ( printTree ) System.out.println(t.toStringTree(parser));
         }
         catch (Exception e) {
