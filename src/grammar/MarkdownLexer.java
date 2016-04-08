@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownLexer.g4 by ANTLR 4.5.1
+// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownLexer.g4 by ANTLR 4.5.1
 package grammar;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
