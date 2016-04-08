@@ -38,7 +38,6 @@ PLUS: '+';
 OPEN_CURLY: '{';
 CLOSE_CURLY: '}';
 
-
 NORMAL_CHAR: [a-zA-Z];
 STRING_LITERAL:NORMAL_CHAR([a-zA-Z0-9])*;
 DIGIT: [0-9];
