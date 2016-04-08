@@ -24,9 +24,9 @@ public class MarkdownGrammar extends Parser {
 		PLUS=25, OPEN_CURLY=26, CLOSE_CURLY=27, NORMAL_CHAR=28, STRING_LITERAL=29, 
 		DIGIT=30, NUMBER=31;
 	public static final int
-		RULE_header = 0;
+		RULE_header = 0, RULE_subHeader = 1;
 	public static final String[] ruleNames = {
-		"header"
+		"header", "subHeader"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -96,6 +96,10 @@ public class MarkdownGrammar extends Parser {
 		public TerminalNode SHARP(int i) {
 			return getToken(MarkdownGrammar.SHARP, i);
 		}
+		public TerminalNode NEWLINE() { return getToken(MarkdownGrammar.NEWLINE, 0); }
+		public SubHeaderContext subHeader() {
+			return getRuleContext(SubHeaderContext.class,0);
+		}
 		public List<TerminalNode> STRING_LITERAL() { return getTokens(MarkdownGrammar.STRING_LITERAL); }
 		public TerminalNode STRING_LITERAL(int i) {
 			return getToken(MarkdownGrammar.STRING_LITERAL, i);
@@ -112,6 +116,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitHeader(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitHeader(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final HeaderContext header() throws RecognitionException {
@@ -121,24 +130,116 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(2);
+			setState(4);
 			match(SHARP);
-			setState(4); 
+			setState(6); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(3);
+				setState(5);
 				match(STRING_LITERAL);
 				}
 				}
-				setState(6); 
+				setState(8); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==STRING_LITERAL );
-			setState(8);
+			setState(10);
 			match(SHARP);
+			setState(11);
+			match(NEWLINE);
+			setState(12);
+			subHeader();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class SubHeaderContext extends ParserRuleContext {
+		public List<TerminalNode> SHARP() { return getTokens(MarkdownGrammar.SHARP); }
+		public TerminalNode SHARP(int i) {
+			return getToken(MarkdownGrammar.SHARP, i);
+		}
+		public List<TerminalNode> NEWLINE() { return getTokens(MarkdownGrammar.NEWLINE); }
+		public TerminalNode NEWLINE(int i) {
+			return getToken(MarkdownGrammar.NEWLINE, i);
+		}
+		public List<TerminalNode> STRING_LITERAL() { return getTokens(MarkdownGrammar.STRING_LITERAL); }
+		public TerminalNode STRING_LITERAL(int i) {
+			return getToken(MarkdownGrammar.STRING_LITERAL, i);
+		}
+		public SubHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_subHeader; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).enterSubHeader(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitSubHeader(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitSubHeader(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final SubHeaderContext subHeader() throws RecognitionException {
+		SubHeaderContext _localctx = new SubHeaderContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_subHeader);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(24); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(14);
+				match(SHARP);
+				setState(15);
+				match(SHARP);
+				setState(17); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				do {
+					{
+					{
+					setState(16);
+					match(STRING_LITERAL);
+					}
+					}
+					setState(19); 
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while ( _la==STRING_LITERAL );
+				setState(21);
+				match(SHARP);
+				setState(22);
+				match(SHARP);
+				setState(23);
+				match(NEWLINE);
+				}
+				}
+				setState(26); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( _la==SHARP );
 			}
 		}
 		catch (RecognitionException re) {
@@ -153,10 +254,15 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\r\4\2\t\2\3\2\3"+
-		"\2\6\2\7\n\2\r\2\16\2\b\3\2\3\2\3\2\2\2\3\2\2\2\f\2\4\3\2\2\2\4\6\7\13"+
-		"\2\2\5\7\7\37\2\2\6\5\3\2\2\2\7\b\3\2\2\2\b\6\3\2\2\2\b\t\3\2\2\2\t\n"+
-		"\3\2\2\2\n\13\7\13\2\2\13\3\3\2\2\2\3\b";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\37\4\2\t\2\4\3\t"+
+		"\3\3\2\3\2\6\2\t\n\2\r\2\16\2\n\3\2\3\2\3\2\3\2\3\3\3\3\3\3\6\3\24\n\3"+
+		"\r\3\16\3\25\3\3\3\3\3\3\6\3\33\n\3\r\3\16\3\34\3\3\2\2\4\2\4\2\2\37\2"+
+		"\6\3\2\2\2\4\32\3\2\2\2\6\b\7\13\2\2\7\t\7\37\2\2\b\7\3\2\2\2\t\n\3\2"+
+		"\2\2\n\b\3\2\2\2\n\13\3\2\2\2\13\f\3\2\2\2\f\r\7\13\2\2\r\16\7\5\2\2\16"+
+		"\17\5\4\3\2\17\3\3\2\2\2\20\21\7\13\2\2\21\23\7\13\2\2\22\24\7\37\2\2"+
+		"\23\22\3\2\2\2\24\25\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\27\3\2\2\2"+
+		"\27\30\7\13\2\2\30\31\7\13\2\2\31\33\7\5\2\2\32\20\3\2\2\2\33\34\3\2\2"+
+		"\2\34\32\3\2\2\2\34\35\3\2\2\2\35\5\3\2\2\2\5\n\25\34";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

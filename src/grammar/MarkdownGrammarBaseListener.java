@@ -23,6 +23,18 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitHeader(MarkdownGrammar.HeaderContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSubHeader(MarkdownGrammar.SubHeaderContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSubHeader(MarkdownGrammar.SubHeaderContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

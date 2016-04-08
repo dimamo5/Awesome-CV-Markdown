@@ -17,4 +17,14 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitHeader(MarkdownGrammar.HeaderContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#subHeader}.
+	 * @param ctx the parse tree
+	 */
+	void enterSubHeader(MarkdownGrammar.SubHeaderContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#subHeader}.
+	 * @param ctx the parse tree
+	 */
+	void exitSubHeader(MarkdownGrammar.SubHeaderContext ctx);
 }
