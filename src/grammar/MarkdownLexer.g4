@@ -4,37 +4,31 @@ lexer grammar MarkdownLexer;
 SPACE: ' '->skip;
 TAB: '\t';
 NEWLINE: ('\n' | '\r')+;
-// Lists and horizontal rules.
 STAR: '*';
 MINUS: '-';
-UNDERSCORE: '_';
-// Blockquotes.
+COLON:':';
 CLOSE_ANGLE_BRACKET: '>';
 OPEN_ANGLE_BRACKET:'<';
-//Headers
 SHARP: '#';
-// Links.
-OPEN_PAREN: '(';
-CLOSE_PAREN: ')';
 OPEN_SB: '[';
 CLOSE_SB: ']';
-// References.
-COLON: ':';
-// Entities.
-SEMI_COLON: ';';
-// Others.
 SLASH: '/';
 OPEN_CURLY: '{';
 CLOSE_CURLY: '}';
 BLOCKSPLITTER:'------';
+TILT:'~';
+HAT:'^';
+SPLIT:'|';
+//fragment PERIOD:[\.];
 
-PERIOD: [\.];
-fragment NORMAL_CHAR: [a-zA-Z@];
+fragment CHAR: [a-zA-Z];
 fragment DIGIT: [0-9];
+SYMBOL: [\.@_'?&$+-«»&%$"!;,];
 
-WORD: (NORMAL_CHAR)+;
-FLOAT:INT PERIOD INT;
+WORD: CHAR+;
 INT: DIGIT+;
+STAR_CLASS: INT( [\.] [05])? '/' INT;
+
 
 
 

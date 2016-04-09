@@ -5,16 +5,15 @@ options {tokenVocab=MarkdownLexer;}
 cv:info BLOCKSPLITTER (block BLOCKSPLITTER)*;
 
 info: name subHeader address contacts+;
-subHeader:(SHARP SHARP (string)+ NEWLINE)+;
+subHeader:(SHARP SHARP WORD+ NEWLINE)+;
 
-name:SHARP string NEWLINE;
+name:SHARP WORD+ NEWLINE;
 
-address: STAR string NEWLINE;
-contacts: CLOSE_ANGLE_BRACKET icon string NEWLINE+;
+address: STAR any NEWLINE;
+contacts: CLOSE_ANGLE_BRACKET icon any NEWLINE+;
 
-block: SHARP SHARP string NEWLINE;
+block: SHARP SHARP WORD+ NEWLINE;
 
-icon: OPEN_CURLY string (real SLASH INT)? CLOSE_CURLY;
+icon: OPEN_CURLY WORD STAR_CLASS? CLOSE_CURLY;
 
-string: (WORD | real| PERIOD)+;
-real:INT|FLOAT;
+any: (WORD | INT | SYMBOL)+;
