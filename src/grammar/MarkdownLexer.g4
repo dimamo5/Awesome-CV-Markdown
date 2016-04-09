@@ -5,7 +5,7 @@ SPACE: ' '->skip;
 TAB: '\t';
 NEWLINE: ('\r'? '\n' )| '\n';
 // Lists and horizontal rules.
-EMPH: '*';
+STAR: '*';
 MINUS: '-';
 UNDERSCORE: '_';
 // Blockquotes.
@@ -38,7 +38,11 @@ PLUS: '+';
 OPEN_CURLY: '{';
 CLOSE_CURLY: '}';
 
+BLOCKSPLITTER:'------';
+
 NORMAL_CHAR: [a-zA-Z];
-STRING_LITERAL:NORMAL_CHAR([a-zA-Z0-9])*;
+STRING_LITERAL:[a-zA-Z0-9]+;
 DIGIT: [0-9];
+REAL: DIGIT.DIGIT*;
 NUMBER:DIGIT+;
+

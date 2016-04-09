@@ -270,7 +270,7 @@ class Markdown {
             if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.header();
+            ParserRuleContext t = parser.cv();
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
         }
