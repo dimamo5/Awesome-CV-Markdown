@@ -4,11 +4,17 @@ options {tokenVocab=MarkdownLexer;}
 
 cv:info BLOCKSPLITTER (block BLOCKSPLITTER)*;
 
-info: SHARP (STRING_LITERAL)+ NEWLINE subHeader;
-subHeader:(SHARP SHARP (STRING_LITERAL)+ NEWLINE)+ address;
-address: STAR STRING_LITERAL NEWLINE contacts+;
-contacts: CLOSE_ANGLE_BRACKET icon STRING_LITERAL NEWLINE;
+info: name subHeader address contacts+;
+subHeader:(SHARP SHARP (string)+ NEWLINE)+;
 
-block: SHARP SHARP STRING_LITERAL;
+name:SHARP string NEWLINE;
 
-icon: OPEN_CURLY STRING_LITERAL (REAL SLASH NUMBER)? CLOSE_CURLY;
+address: STAR string NEWLINE;
+contacts: CLOSE_ANGLE_BRACKET icon string NEWLINE+;
+
+block: SHARP SHARP string NEWLINE;
+
+icon: OPEN_CURLY string (real SLASH INT)? CLOSE_CURLY;
+
+string: (WORD | real| PERIOD)+;
+real:INT|FLOAT;

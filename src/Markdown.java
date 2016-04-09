@@ -38,6 +38,7 @@ import org.antlr.v4.runtime.atn.PredictionMode;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -101,7 +102,9 @@ class Markdown {
     }
 
     public static void main(String[] args) {
-        doAll(args);
+        Scanner c= new Scanner(System.in);
+        System.out.println( System.getProperty("user.dir"));
+        parseFile( "./src/" + c.nextLine());
     }
 
     public static void doAll(String[] args) {
@@ -253,7 +256,6 @@ class Markdown {
 
     public static void parseFile(String f) {
         try {
-            if ( !quiet ) System.err.println(f);
             // Create a scanner that reads from the input stream passed to us
             Lexer lexer = new MarkdownLexer(new ANTLRFileStream(f));
 
@@ -270,7 +272,7 @@ class Markdown {
             if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.cv();
+            ParserRuleContext t = parser.testreal();
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
         }
