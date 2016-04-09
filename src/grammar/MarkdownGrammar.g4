@@ -13,7 +13,7 @@ contacts: CLOSE_ANGLE_BRACKET icon any NEWLINE+;
 
 blockName: SHARP SHARP SHARP WORD+ NEWLINE+;
 blockSubName: SHARP SHARP SHARP SHARP WORD+ NEWLINE+;
-blockInfoHeader: STAR any+ NEWLINE+;
+blockInfoHeader: STAR  addendum  NEWLINE+;
 blockInfoBody: COLON icon? any? ratio? NEWLINE+;
 tableBlockHeader: tableHeader NEWLINE+;
 tableBlockBody: tableBody+ NEWLINE+;
@@ -23,12 +23,13 @@ icon: OPEN_CURLY WORD STAR_CLASS? CLOSE_CURLY;
 
 ratio: OPEN_PARENTHESES STAR_CLASS CLOSE_PARENTHESES;
 
-boldText: TILT any+;
+//RULES
 
+boldText: TILT addendum+ NEWLINE+;
 tableHeader: WORD+(HAT WORD+)+;
 tableBody: (tablecontent) SPLIT (tablecontent)*;
+addendum: (any+)?(OPEN_PARENTHESES? any+ SLASH any+ CLOSE_PARENTHESES?);
 
-//RULES
 any: (WORD | INT | SYMBOL)+;
 tablecontent: (icon| ratio| any)+;
 
