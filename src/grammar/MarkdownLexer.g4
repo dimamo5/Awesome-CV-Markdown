@@ -15,6 +15,8 @@ CLOSE_SB: ']';
 SLASH: '/';
 OPEN_CURLY: '{';
 CLOSE_CURLY: '}';
+OPEN_PARENTHESES: '(';
+CLOSE_PARENTHESES: ')';
 BLOCKSPLITTER:'------';
 TILT:'~';
 HAT:'^';
