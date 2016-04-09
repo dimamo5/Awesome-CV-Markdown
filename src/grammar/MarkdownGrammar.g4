@@ -11,10 +11,10 @@ name:SHARP WORD+ NEWLINE;
 address: STAR any NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any NEWLINE+;
 
-blockName: SHARP SHARP SHARP WORD+ NEWLINE;
-blockSubName: SHARP SHARP SHARP SHARP WORD+ NEWLINE;
-blockInfoHeader: STAR WORD+ NEWLINE;
-blockInfoBody: COLON icon? any  ratio? NEWLINE;
+blockName: SHARP SHARP SHARP WORD+ NEWLINE+;
+blockSubName: SHARP SHARP SHARP SHARP WORD+ NEWLINE+;
+blockInfoHeader: STAR WORD+ NEWLINE+;
+blockInfoBody: COLON icon? any? ratio? NEWLINE+;
 
 icon: OPEN_CURLY WORD STAR_CLASS? CLOSE_CURLY;
 

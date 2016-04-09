@@ -29,7 +29,7 @@ SYMBOL: [\.@_'?&$+-«»&%$"!;,];
 
 WORD: CHAR+;
 INT: DIGIT+;
-STAR_CLASS: INT( [\.] [05])? '/' INT;
+STAR_CLASS: INT( [\.] [05])? '/' INT; //isto tem de ser visto pois pode ser 98.8/100 (ver exemplo)
 
 
 
