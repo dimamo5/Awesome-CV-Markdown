@@ -30,7 +30,7 @@ tableHeader: WORD+(HAT WORD+)+;
 tableBody: (tablecontent) SPLIT (tablecontent)*;
 addendum: (any+)?(OPEN_PARENTHESES? any+ SLASH any+ CLOSE_PARENTHESES?);
 
-any: (WORD | INT | SYMBOL)+;
+any: (WORD | INT| SYMBOL )+;
 tablecontent: (icon| ratio| any)+;
 blockcontent: (addendum| any)+;
 
