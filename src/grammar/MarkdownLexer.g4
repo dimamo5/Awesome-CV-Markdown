@@ -15,8 +15,6 @@ CLOSE_SB: ']';
 SLASH: '/';
 OPEN_CURLY: '{';
 CLOSE_CURLY: '}';
-OPEN_PARENTHESES: '(';
-CLOSE_PARENTHESES: ')';
 BLOCKSPLITTER:'------';
 TILT:'~';
 HAT:'^';
@@ -25,8 +23,8 @@ SPLIT:'|';
 
 fragment CHAR: [a-zA-Z];
 fragment DIGIT: [0-9];
-ESCAPE: '\\'MINUS|'\\' COLON;
-SYMBOL: ([.@_'?&$+-«»&%$"!;,]);
+ESCAPE: '\\'MINUS|'\\' COLON|'\\' TILT|'\\' HAT|'\\' SLASH|'\\' OPEN_CURLY|'\\' CLOSE_CURLY|'\\' SPLIT|'\\' SHARP;
+SYMBOL: ([\.@_'?&$+-«»&%$"!;,()]);
 
 WORD: CHAR+;
 INT: DIGIT+;
