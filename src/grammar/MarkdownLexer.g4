@@ -25,7 +25,8 @@ SPLIT:'|';
 
 fragment CHAR: [a-zA-Z];
 fragment DIGIT: [0-9];
-SYMBOL: ([.@_'?&$+-«»&%$"!;,]|['\-']);
+ESCAPE: '\\'MINUS|'\\' COLON;
+SYMBOL: ([.@_'?&$+-«»&%$"!;,]);
 
 WORD: CHAR+;
 INT: DIGIT+;

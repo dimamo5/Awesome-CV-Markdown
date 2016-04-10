@@ -1,7 +1,7 @@
 parser grammar MarkdownGrammar;
 
 options {tokenVocab=MarkdownLexer;}
-cv:info BLOCKSPLITTER  ((blockName? blockSubName? (tableBlockHeader (tableBlockBody)+)? boldText? blockInfoHeader? (blockInfoBody)+)+ BLOCKSPLITTER)*;
+cv:info BLOCKSPLITTER NEWLINE+ ((blockName? blockSubName? table? boldText? blockInfoHeader? (blockInfoBody)+)+ BLOCKSPLITTER NEWLINE+)*;
 
 info: name subHeader address contacts+;
 subHeader:(SHARP SHARP WORD+ NEWLINE)+;
@@ -15,6 +15,7 @@ blockName: SHARP SHARP SHARP WORD+ NEWLINE+;
 blockSubName: SHARP SHARP SHARP SHARP WORD+ NEWLINE+;
 blockInfoHeader: STAR  blockcontent NEWLINE+;
 blockInfoBody: COLON icon? any? ratio? NEWLINE+;
+table: tableBlockHeader (tableBlockBody)+;
 tableBlockHeader: tableHeader NEWLINE+;
 tableBlockBody: tableBody+ NEWLINE+;
 
@@ -30,7 +31,7 @@ tableHeader: WORD+(HAT WORD+)+;
 tableBody: (tablecontent) SPLIT (tablecontent)*;
 addendum: (any+)?(OPEN_PARENTHESES? any+ SLASH any+ CLOSE_PARENTHESES?);
 
-any: (WORD | INT| SYMBOL )+;
+any: (WORD | INT| SYMBOL|ESCAPE )+;
 tablecontent: (icon| ratio| any)+;
 blockcontent: (addendum| any)+;
 
