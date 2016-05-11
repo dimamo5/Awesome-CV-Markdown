@@ -19,7 +19,6 @@ BLOCKSPLITTER:'------';
 TILT:'~';
 HAT:'^';
 SPLIT:'|';
-//fragment PERIOD:[\.];
 
 fragment CHAR: [a-zA-Z];
 fragment DIGIT: [0-9];
@@ -28,20 +27,6 @@ SYMBOL: ([\.@_'?&$+-«»&%$"!;,()]);
 
 WORD: CHAR+;
 INT: DIGIT+;
-STAR_CLASS: INT( [\.] [05])? '/' INT; //isto tem de ser visto pois pode ser 98.8/100 (ver exemplo)
 
-/*
-STRING:   '"'
-            (ESCAPE|~('"'|'\n'|'\r')
-        )*
-        '"' {
-                setText(
-                    org.antlr.v4.misc.CharSupport.getStringFromGrammarStringLiteral(
-                        getText()
-                    )
-                );
-            }
-            ;
-
-*/
+STAR_CLASS: INT( [\.] [05])? '/' INT;
 

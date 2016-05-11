@@ -104,7 +104,7 @@ class Markdown {
     public static void main(String[] args) {
         Scanner c= new Scanner(System.in);
         System.out.println( System.getProperty("user.dir"));
-        parseFile( "./src/" + c.nextLine());
+        parseFile( "./resources/" + c.nextLine());
     }
 
     public static void doAll(String[] args) {
@@ -272,9 +272,11 @@ class Markdown {
             if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.testreal();
+            ParserRuleContext t = parser.info();
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
+
+            System.out.println(parser.info);
         }
         catch (Exception e) {
             System.err.println("parser exception: "+e);
