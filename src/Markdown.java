@@ -25,6 +25,7 @@
  */
 
 import grammar.MarkdownGrammar;
+import grammar.MarkdownGrammarBaseVisitor;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
@@ -102,9 +103,11 @@ class Markdown {
     }
 
     public static void main(String[] args) {
-        Scanner c= new Scanner(System.in);
-        System.out.println( System.getProperty("user.dir"));
-        parseFile( "./resources/" + c.nextLine());
+        //Scanner c= new Scanner(System.in);
+        //System.out.println( System.getProperty("user.dir"));
+        //parseFile( "./resources/" + c.nextLine());
+        System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
+        parseFile("resources/info.md");
     }
 
     public static void doAll(String[] args) {
@@ -275,6 +278,9 @@ class Markdown {
             ParserRuleContext t = parser.info();
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
+
+            //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
+            //x.visitInfo(parser.info());
 
             System.out.println(parser.info);
         }

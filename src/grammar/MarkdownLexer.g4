@@ -1,7 +1,7 @@
 lexer grammar MarkdownLexer;
 
 /* Single chars used by the parser.   */
-SPACE: ' '->skip;
+SPACE: ' ';
 TAB: '\t';
 NEWLINE: ('\n' | '\r')+;
 STAR: '*';
