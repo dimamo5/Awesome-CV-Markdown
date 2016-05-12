@@ -10,7 +10,7 @@ cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 info:name subHeader+ address contacts+;
 subHeader:{info.newSub();} SHARP SHARP SPACE* (WORD{info.addSub($WORD.text);} SPACE*)+  NEWLINE;
 
-name:SHARP (WORD SPACE+{info.addName($WORD.text);})+ NEWLINE;
+name:SHARP (WORD SPACE*{info.addName($WORD.text);})+ NEWLINE;
 
 address: STAR any{info.analyze($any.ctx);} NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any{info.analyze($any.ctx);} NEWLINE+;
@@ -28,11 +28,11 @@ tableBody: (tableLine NEWLINE)+;
 icon locals[boolean allow=true]: OPEN_CURLY WORD SPACE* STAR_CLASS?{String s=$STAR_CLASS.text; if(s!=null){String[] ints= s.split("/");float esquerda=Float.valueOf(ints[0].trim()); float direita=Float.valueOf(ints[1].trim()); if(esquerda>direita){System.err.println("Nr of stars cannot be bigger than total stars");$allow=false;}else $allow=true;}} {$allow}? CLOSE_CURLY;
 
 boldText: TILT any+ NEWLINE+;
-tableHeader: WORD+(HAT WORD+)+;
+tableHeader: (WORD SPACE*)+ (HAT SPACE*(WORD SPACE*)+)+;
 tableCell: tablecontent SPLIT ;
 tableLine: tableCell+;
-blockName: SHARP SHARP SHARP WORD+ NEWLINE+;
-blockSubName: SHARP SHARP SHARP SHARP WORD+ NEWLINE+;
+blockName: SHARP SHARP SHARP (WORD SPACE*)+ NEWLINE+;
+blockSubName: SHARP SHARP SHARP SHARP (WORD SPACE*)+ NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
 tablecontent: (icon| any)+;
