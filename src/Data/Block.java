@@ -28,6 +28,7 @@ public class Block {
 
     public void setType(BlockType type){
         this.type=type;
+
         switch(type){
             case TABLE:this.content=new Table();
                 break;
@@ -45,5 +46,14 @@ public class Block {
         return type;
     }
 
-
+    @Override
+    public String toString() {
+        return "Block{" +
+                "blockName='" + blockName + '\'' +
+                ", subBlockName='" + subBlockName + '\'' +
+                ", boldText='" + boldText + '\'' +
+                ", type=" + type +
+                ", content=" + content +
+                '}';
+    }
 }

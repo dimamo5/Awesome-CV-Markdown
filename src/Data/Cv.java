@@ -29,4 +29,12 @@ public class Cv {
         this.blocks.add(new Block());
     }
 
+    @Override
+    public String toString() {
+        return "Cv{" +
+                "info=" + info +
+                ", blocks=" + blocks +
+                '}';
+    }
+
 }
