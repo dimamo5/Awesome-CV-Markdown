@@ -2,17 +2,16 @@ parser grammar MarkdownGrammar;
 
 options {tokenVocab=MarkdownLexer;}
 @members{
-    public Data.Table table = new Data.Table();
-    public Data.Info info = new Data.Info();
+    public Data.Cv cv = new Data.Cv();
 }
 cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 
 info:name subHeader+ address contacts+;
-subHeader:{info.newSub();} SHARP SHARP SPACE* word_space{info.addSub($word_space.text);} NEWLINE;
+subHeader:{cv.info.newSub();} SHARP SHARP SPACE* word_space{cv.info.addSub($word_space.text);} NEWLINE;
 
-name:SHARP word_space {info.addName($word_space.text);} NEWLINE;
+name:SHARP word_space {cv.info.addName($word_space.text);} NEWLINE;
 
-address: STAR any{info.addAddress($any.text);} NEWLINE;
+address: STAR any{cv.info.addAddress($any.text);} NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any{info.addContacts($any.text);} NEWLINE+;
 
 block: blockName subBlock+;

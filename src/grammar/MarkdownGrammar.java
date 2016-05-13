@@ -91,8 +91,7 @@ public class MarkdownGrammar extends Parser {
 	public ATN getATN() { return _ATN; }
 
 
-	    public Data.Table table = new Data.Table();
-	    public Data.Info info = new Data.Info();
+	    public Data.Cv cv = new Data.Cv();
 
 	public MarkdownGrammar(TokenStream input) {
 		super(input);
@@ -333,7 +332,7 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			info.newSub();
+			cv.info.newSub();
 			setState(75);
 			match(SHARP);
 			setState(76);
@@ -354,7 +353,7 @@ public class MarkdownGrammar extends Parser {
 			}
 			setState(83);
 			((SubHeaderContext)_localctx).word_space = word_space();
-			info.addSub((((SubHeaderContext)_localctx).word_space!=null?_input.getText(((SubHeaderContext)_localctx).word_space.start,((SubHeaderContext)_localctx).word_space.stop):null));
+			cv.info.addSub((((SubHeaderContext)_localctx).word_space!=null?_input.getText(((SubHeaderContext)_localctx).word_space.start,((SubHeaderContext)_localctx).word_space.stop):null));
 			setState(85);
 			match(NEWLINE);
 			}
@@ -406,7 +405,7 @@ public class MarkdownGrammar extends Parser {
 			match(SHARP);
 			setState(88);
 			((NameContext)_localctx).word_space = word_space();
-			info.addName((((NameContext)_localctx).word_space!=null?_input.getText(((NameContext)_localctx).word_space.start,((NameContext)_localctx).word_space.stop):null));
+			cv.info.addName((((NameContext)_localctx).word_space!=null?_input.getText(((NameContext)_localctx).word_space.start,((NameContext)_localctx).word_space.stop):null));
 			setState(90);
 			match(NEWLINE);
 			}
@@ -458,7 +457,7 @@ public class MarkdownGrammar extends Parser {
 			match(STAR);
 			setState(93);
 			((AddressContext)_localctx).any = any();
-			info.addAddress((((AddressContext)_localctx).any!=null?_input.getText(((AddressContext)_localctx).any.start,((AddressContext)_localctx).any.stop):null));
+			cv.info.addAddress((((AddressContext)_localctx).any!=null?_input.getText(((AddressContext)_localctx).any.start,((AddressContext)_localctx).any.stop):null));
 			setState(95);
 			match(NEWLINE);
 			}
