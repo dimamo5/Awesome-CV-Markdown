@@ -14,7 +14,7 @@ name:SHARP word_space {cv.info.addName($word_space.text);} NEWLINE;
 address: STAR any{cv.info.addAddress($any.text);} NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any{cv.info.addContacts($any.text);} NEWLINE+;
 
-block: {cv.newBlock();} blockName{cv.getBlock().addBlockName($blockName.text);} subBlock+;
+block: {cv.newBlock();} blockName subBlock+;
 subBlock: (blockSubName{cv.getBlock().addSubBlockName($blockSubName.text);} boldText?{cv.getBlock().addBoldText($boldText.text);})? (blockList+|table|any);
 
 blockList: STAR  any+ NEWLINE blockListCell*;
@@ -30,8 +30,8 @@ boldText: TILT any+ NEWLINE+;
 tableHeader: word_space{cv.getTable().addHeaderCell($word_space.text);} (HAT SPACE* word_space {cv.getTable().addHeaderCell($word_space.text);})+;
 tableCell: tablecontent SPLIT ;
 tableLine:{cv.getTable().addBodyLine();} tableCell+;
-blockName: SHARP SHARP SHARP word_space{} NEWLINE+;
-blockSubName: SHARP SHARP SHARP SHARP word_space NEWLINE+;
+blockName: SHARP SHARP SHARP word_space{cv.getBlock().addBlockName($word_space.text);} NEWLINE+;
+blockSubName: SHARP SHARP SHARP SHARP word_space{cv.getBlock().addSubBlockName($word_space.text);} NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
 tablecontent: (icon| any{cv.getTable().addBodyCell($any.text);})+;

@@ -279,10 +279,10 @@ class Markdown {
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
+            System.out.println(parser.cv);
+
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());
-
-            System.out.println(parser.block());
         }
         catch (Exception e) {
             System.err.println("parser exception: "+e);
