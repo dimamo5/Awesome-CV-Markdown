@@ -19,6 +19,7 @@ public class Block {
     }
 
     public void addSubBlockName(String s){
+        //System.out.println(s);
         this.subBlockName=s;
     }
 

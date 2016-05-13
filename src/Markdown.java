@@ -107,7 +107,7 @@ class Markdown {
         //System.out.println( System.getProperty("user.dir"));
         //parseFile( "./resources/" + c.nextLine());
         System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
-        parseFile("resources/table.md");
+        parseFile("resources/list.md");
     }
 
     public static void doAll(String[] args) {
@@ -279,7 +279,7 @@ class Markdown {
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
-            System.out.println(parser.cv);
+            System.out.println(parser.cv.getBlock());
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());
