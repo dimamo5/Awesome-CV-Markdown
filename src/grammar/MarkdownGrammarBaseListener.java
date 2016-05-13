@@ -263,6 +263,18 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTablecontent(MarkdownGrammar.TablecontentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWord_space(MarkdownGrammar.Word_spaceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWord_space(MarkdownGrammar.Word_spaceContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

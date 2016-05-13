@@ -26,12 +26,13 @@ public class MarkdownGrammar extends Parser {
 		RULE_contacts = 5, RULE_block = 6, RULE_subBlock = 7, RULE_blockList = 8, 
 		RULE_blockListCell = 9, RULE_table = 10, RULE_tableBody = 11, RULE_icon = 12, 
 		RULE_boldText = 13, RULE_tableHeader = 14, RULE_tableCell = 15, RULE_tableLine = 16, 
-		RULE_blockName = 17, RULE_blockSubName = 18, RULE_any = 19, RULE_tablecontent = 20;
+		RULE_blockName = 17, RULE_blockSubName = 18, RULE_any = 19, RULE_tablecontent = 20, 
+		RULE_word_space = 21;
 	public static final String[] ruleNames = {
 		"cv", "info", "subHeader", "name", "address", "contacts", "block", "subBlock", 
 		"blockList", "blockListCell", "table", "tableBody", "icon", "boldText", 
 		"tableHeader", "tableCell", "tableLine", "blockName", "blockSubName", 
-		"any", "tablecontent"
+		"any", "tablecontent", "word_space"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
@@ -141,51 +142,51 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
+			setState(44);
 			info();
-			setState(43);
+			setState(45);
 			match(BLOCKSPLITTER);
-			setState(45); 
+			setState(47); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(44);
+				setState(46);
 				match(NEWLINE);
 				}
 				}
-				setState(47); 
+				setState(49); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NEWLINE );
-			setState(56); 
+			setState(58); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(49);
+				setState(51);
 				block();
-				setState(50);
+				setState(52);
 				match(BLOCKSPLITTER);
-				setState(52); 
+				setState(54); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
 					{
-					setState(51);
+					setState(53);
 					match(NEWLINE);
 					}
 					}
-					setState(54); 
+					setState(56); 
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				} while ( _la==NEWLINE );
 				}
 				}
-				setState(58); 
+				setState(60); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==SHARP );
@@ -247,35 +248,35 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(62);
 			name();
-			setState(62); 
+			setState(64); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(61);
+				setState(63);
 				subHeader();
 				}
 				}
-				setState(64); 
+				setState(66); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==SHARP );
-			setState(66);
+			setState(68);
 			address();
-			setState(68); 
+			setState(70); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(67);
+				setState(69);
 				contacts();
 				}
 				}
-				setState(70); 
+				setState(72); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==CLOSE_ANGLE_BRACKET );
@@ -293,19 +294,18 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static class SubHeaderContext extends ParserRuleContext {
-		public Token WORD;
+		public Word_spaceContext word_space;
 		public List<TerminalNode> SHARP() { return getTokens(MarkdownGrammar.SHARP); }
 		public TerminalNode SHARP(int i) {
 			return getToken(MarkdownGrammar.SHARP, i);
+		}
+		public Word_spaceContext word_space() {
+			return getRuleContext(Word_spaceContext.class,0);
 		}
 		public TerminalNode NEWLINE() { return getToken(MarkdownGrammar.NEWLINE, 0); }
 		public List<TerminalNode> SPACE() { return getTokens(MarkdownGrammar.SPACE); }
 		public TerminalNode SPACE(int i) {
 			return getToken(MarkdownGrammar.SPACE, i);
-		}
-		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
-		public TerminalNode WORD(int i) {
-			return getToken(MarkdownGrammar.WORD, i);
 		}
 		public SubHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -334,54 +334,28 @@ public class MarkdownGrammar extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			info.newSub();
-			setState(73);
+			setState(75);
 			match(SHARP);
-			setState(74);
+			setState(76);
 			match(SHARP);
-			setState(78);
+			setState(80);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==SPACE) {
 				{
 				{
-				setState(75);
+				setState(77);
 				match(SPACE);
 				}
 				}
-				setState(80);
+				setState(82);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(89); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(81);
-				((SubHeaderContext)_localctx).WORD = match(WORD);
-				info.addSub((((SubHeaderContext)_localctx).WORD!=null?((SubHeaderContext)_localctx).WORD.getText():null));
-				setState(86);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==SPACE) {
-					{
-					{
-					setState(83);
-					match(SPACE);
-					}
-					}
-					setState(88);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				}
-				setState(91); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==WORD );
-			setState(93);
+			setState(83);
+			((SubHeaderContext)_localctx).word_space = word_space();
+			info.addSub((((SubHeaderContext)_localctx).word_space!=null?_input.getText(((SubHeaderContext)_localctx).word_space.start,((SubHeaderContext)_localctx).word_space.stop):null));
+			setState(85);
 			match(NEWLINE);
 			}
 		}
@@ -397,17 +371,12 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static class NameContext extends ParserRuleContext {
-		public Token WORD;
+		public Word_spaceContext word_space;
 		public TerminalNode SHARP() { return getToken(MarkdownGrammar.SHARP, 0); }
+		public Word_spaceContext word_space() {
+			return getRuleContext(Word_spaceContext.class,0);
+		}
 		public TerminalNode NEWLINE() { return getToken(MarkdownGrammar.NEWLINE, 0); }
-		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
-		public TerminalNode WORD(int i) {
-			return getToken(MarkdownGrammar.WORD, i);
-		}
-		public List<TerminalNode> SPACE() { return getTokens(MarkdownGrammar.SPACE); }
-		public TerminalNode SPACE(int i) {
-			return getToken(MarkdownGrammar.SPACE, i);
-		}
 		public NameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -430,42 +399,15 @@ public class MarkdownGrammar extends Parser {
 	public final NameContext name() throws RecognitionException {
 		NameContext _localctx = new NameContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_name);
-		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(95);
+			setState(87);
 			match(SHARP);
-			setState(104); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(96);
-				((NameContext)_localctx).WORD = match(WORD);
-				setState(100);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==SPACE) {
-					{
-					{
-					setState(97);
-					match(SPACE);
-					}
-					}
-					setState(102);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				info.addName((((NameContext)_localctx).WORD!=null?((NameContext)_localctx).WORD.getText():null));
-				}
-				}
-				setState(106); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==WORD );
-			setState(108);
+			setState(88);
+			((NameContext)_localctx).word_space = word_space();
+			info.addName((((NameContext)_localctx).word_space!=null?_input.getText(((NameContext)_localctx).word_space.start,((NameContext)_localctx).word_space.stop):null));
+			setState(90);
 			match(NEWLINE);
 			}
 		}
@@ -512,12 +454,12 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(110);
+			setState(92);
 			match(STAR);
-			setState(111);
+			setState(93);
 			((AddressContext)_localctx).any = any();
-			info.analyze(((AddressContext)_localctx).any);
-			setState(113);
+			info.addAddress((((AddressContext)_localctx).any!=null?_input.getText(((AddressContext)_localctx).any.start,((AddressContext)_localctx).any.stop):null));
+			setState(95);
 			match(NEWLINE);
 			}
 		}
@@ -571,24 +513,24 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(115);
+			setState(97);
 			match(CLOSE_ANGLE_BRACKET);
-			setState(116);
+			setState(98);
 			icon();
-			setState(117);
+			setState(99);
 			((ContactsContext)_localctx).any = any();
-			info.analyze(((ContactsContext)_localctx).any);
-			setState(120); 
+			info.addContacts((((ContactsContext)_localctx).any!=null?_input.getText(((ContactsContext)_localctx).any.start,((ContactsContext)_localctx).any.stop):null));
+			setState(102); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(119);
+				setState(101);
 				match(NEWLINE);
 				}
 				}
-				setState(122); 
+				setState(104); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NEWLINE );
@@ -641,19 +583,19 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(124);
+			setState(106);
 			blockName();
-			setState(126); 
+			setState(108); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(125);
+				setState(107);
 				subBlock();
 				}
 				}
-				setState(128); 
+				setState(110); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << STAR) | (1L << SHARP) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
@@ -716,17 +658,17 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(116);
 			_la = _input.LA(1);
 			if (_la==SHARP) {
 				{
-				setState(130);
+				setState(112);
 				blockSubName();
-				setState(132);
+				setState(114);
 				_la = _input.LA(1);
 				if (_la==TILT) {
 					{
-					setState(131);
+					setState(113);
 					boldText();
 					}
 				}
@@ -734,11 +676,11 @@ public class MarkdownGrammar extends Parser {
 				}
 			}
 
-			setState(143);
-			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
+			setState(125);
+			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
 				{
-				setState(137); 
+				setState(119); 
 				_errHandler.sync(this);
 				_alt = 1;
 				do {
@@ -746,7 +688,7 @@ public class MarkdownGrammar extends Parser {
 					case 1:
 						{
 						{
-						setState(136);
+						setState(118);
 						blockList();
 						}
 						}
@@ -754,21 +696,21 @@ public class MarkdownGrammar extends Parser {
 					default:
 						throw new NoViableAltException(this);
 					}
-					setState(139); 
+					setState(121); 
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
 				break;
 			case 2:
 				{
-				setState(141);
+				setState(123);
 				table();
 				}
 				break;
 			case 3:
 				{
-				setState(142);
+				setState(124);
 				any();
 				}
 				break;
@@ -827,35 +769,35 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(145);
+			setState(127);
 			match(STAR);
-			setState(147); 
+			setState(129); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(146);
+				setState(128);
 				any();
 				}
 				}
-				setState(149); 
+				setState(131); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
-			setState(151);
+			setState(133);
 			match(NEWLINE);
-			setState(155);
+			setState(137);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COLON) {
 				{
 				{
-				setState(152);
+				setState(134);
 				blockListCell();
 				}
 				}
-				setState(157);
+				setState(139);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -907,27 +849,27 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(158);
+			setState(140);
 			match(COLON);
-			setState(160);
+			setState(142);
 			_la = _input.LA(1);
 			if (_la==OPEN_CURLY) {
 				{
-				setState(159);
+				setState(141);
 				icon();
 				}
 			}
 
-			setState(163);
+			setState(145);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0)) {
 				{
-				setState(162);
+				setState(144);
 				any();
 				}
 			}
 
-			setState(165);
+			setState(147);
 			match(NEWLINE);
 			}
 		}
@@ -975,11 +917,11 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(167);
+			setState(149);
 			tableHeader();
-			setState(168);
+			setState(150);
 			match(NEWLINE);
-			setState(169);
+			setState(151);
 			tableBody();
 			}
 		}
@@ -1031,7 +973,7 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(174); 
+			setState(156); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
@@ -1039,9 +981,9 @@ public class MarkdownGrammar extends Parser {
 				case 1:
 					{
 					{
-					setState(171);
+					setState(153);
 					tableLine();
-					setState(172);
+					setState(154);
 					match(NEWLINE);
 					}
 					}
@@ -1049,9 +991,9 @@ public class MarkdownGrammar extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(176); 
+				setState(158); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,20,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,16,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -1103,39 +1045,39 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(178);
+			setState(160);
 			match(OPEN_CURLY);
-			setState(179);
+			setState(161);
 			match(WORD);
-			setState(183);
+			setState(165);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(180);
+					setState(162);
 					match(SPACE);
 					}
 					} 
 				}
-				setState(185);
+				setState(167);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			}
-			setState(187);
-			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
+			setState(169);
+			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
 			case 1:
 				{
-				setState(186);
+				setState(168);
 				((IconContext)_localctx).STAR_CLASS = match(STAR_CLASS);
 				}
 				break;
 			}
 			String s=(((IconContext)_localctx).STAR_CLASS!=null?((IconContext)_localctx).STAR_CLASS.getText():null); if(s!=null){String[] ints= s.split("/");float esquerda=Float.valueOf(ints[0].trim()); float direita=Float.valueOf(ints[1].trim()); if(esquerda>direita){System.err.println("Nr of stars cannot be bigger than total stars");((IconContext)_localctx).allow = false;}else ((IconContext)_localctx).allow = true;}
-			setState(190);
+			setState(172);
 			if (!(_localctx.allow)) throw new FailedPredicateException(this, "$allow");
-			setState(191);
+			setState(173);
 			match(CLOSE_CURLY);
 			}
 		}
@@ -1188,33 +1130,33 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(193);
+			setState(175);
 			match(TILT);
-			setState(195); 
+			setState(177); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(194);
+				setState(176);
 				any();
 				}
 				}
-				setState(197); 
+				setState(179); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
-			setState(200); 
+			setState(182); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(199);
+				setState(181);
 				match(NEWLINE);
 				}
 				}
-				setState(202); 
+				setState(184); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NEWLINE );
@@ -1232,9 +1174,11 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static class TableHeaderContext extends ParserRuleContext {
-		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
-		public TerminalNode WORD(int i) {
-			return getToken(MarkdownGrammar.WORD, i);
+		public List<Word_spaceContext> word_space() {
+			return getRuleContexts(Word_spaceContext.class);
+		}
+		public Word_spaceContext word_space(int i) {
+			return getRuleContext(Word_spaceContext.class,i);
 		}
 		public List<TerminalNode> HAT() { return getTokens(MarkdownGrammar.HAT); }
 		public TerminalNode HAT(int i) {
@@ -1270,87 +1214,35 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(211); 
+			setState(186);
+			word_space();
+			setState(195); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(204);
-				match(WORD);
-				setState(208);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==SPACE) {
-					{
-					{
-					setState(205);
-					match(SPACE);
-					}
-					}
-					setState(210);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				}
-				setState(213); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==WORD );
-			setState(233); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(215);
+				setState(187);
 				match(HAT);
-				setState(219);
+				setState(191);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==SPACE) {
 					{
 					{
-					setState(216);
+					setState(188);
 					match(SPACE);
 					}
 					}
-					setState(221);
+					setState(193);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(229); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				do {
-					{
-					{
-					setState(222);
-					match(WORD);
-					setState(226);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					while (_la==SPACE) {
-						{
-						{
-						setState(223);
-						match(SPACE);
-						}
-						}
-						setState(228);
-						_errHandler.sync(this);
-						_la = _input.LA(1);
-					}
-					}
-					}
-					setState(231); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				} while ( _la==WORD );
+				setState(194);
+				word_space();
 				}
 				}
-				setState(235); 
+				setState(197); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==HAT );
@@ -1397,9 +1289,9 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(237);
+			setState(199);
 			tablecontent();
-			setState(238);
+			setState(200);
 			match(SPLIT);
 			}
 		}
@@ -1447,17 +1339,17 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(241); 
+			setState(203); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(240);
+				setState(202);
 				tableCell();
 				}
 				}
-				setState(243); 
+				setState(205); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
@@ -1479,17 +1371,12 @@ public class MarkdownGrammar extends Parser {
 		public TerminalNode SHARP(int i) {
 			return getToken(MarkdownGrammar.SHARP, i);
 		}
-		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
-		public TerminalNode WORD(int i) {
-			return getToken(MarkdownGrammar.WORD, i);
+		public Word_spaceContext word_space() {
+			return getRuleContext(Word_spaceContext.class,0);
 		}
 		public List<TerminalNode> NEWLINE() { return getTokens(MarkdownGrammar.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
 			return getToken(MarkdownGrammar.NEWLINE, i);
-		}
-		public List<TerminalNode> SPACE() { return getTokens(MarkdownGrammar.SPACE); }
-		public TerminalNode SPACE(int i) {
-			return getToken(MarkdownGrammar.SPACE, i);
 		}
 		public BlockNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1517,51 +1404,25 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(245);
+			setState(207);
 			match(SHARP);
-			setState(246);
+			setState(208);
 			match(SHARP);
-			setState(247);
+			setState(209);
 			match(SHARP);
-			setState(255); 
+			setState(210);
+			word_space();
+			setState(212); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(248);
-				match(WORD);
-				setState(252);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==SPACE) {
-					{
-					{
-					setState(249);
-					match(SPACE);
-					}
-					}
-					setState(254);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				}
-				setState(257); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==WORD );
-			setState(260); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(259);
+				setState(211);
 				match(NEWLINE);
 				}
 				}
-				setState(262); 
+				setState(214); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NEWLINE );
@@ -1583,17 +1444,12 @@ public class MarkdownGrammar extends Parser {
 		public TerminalNode SHARP(int i) {
 			return getToken(MarkdownGrammar.SHARP, i);
 		}
-		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
-		public TerminalNode WORD(int i) {
-			return getToken(MarkdownGrammar.WORD, i);
+		public Word_spaceContext word_space() {
+			return getRuleContext(Word_spaceContext.class,0);
 		}
 		public List<TerminalNode> NEWLINE() { return getTokens(MarkdownGrammar.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
 			return getToken(MarkdownGrammar.NEWLINE, i);
-		}
-		public List<TerminalNode> SPACE() { return getTokens(MarkdownGrammar.SPACE); }
-		public TerminalNode SPACE(int i) {
-			return getToken(MarkdownGrammar.SPACE, i);
 		}
 		public BlockSubNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1621,53 +1477,27 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(264);
+			setState(216);
 			match(SHARP);
-			setState(265);
+			setState(217);
 			match(SHARP);
-			setState(266);
+			setState(218);
 			match(SHARP);
-			setState(267);
+			setState(219);
 			match(SHARP);
-			setState(275); 
+			setState(220);
+			word_space();
+			setState(222); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(268);
-				match(WORD);
-				setState(272);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==SPACE) {
-					{
-					{
-					setState(269);
-					match(SPACE);
-					}
-					}
-					setState(274);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				}
-				}
-				setState(277); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==WORD );
-			setState(280); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(279);
+				setState(221);
 				match(NEWLINE);
 				}
 				}
-				setState(282); 
+				setState(224); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==NEWLINE );
@@ -1731,42 +1561,42 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(293); 
+			setState(235); 
 			_errHandler.sync(this);
 			_alt = 1;
 			do {
 				switch (_alt) {
 				case 1:
 					{
-					setState(293);
+					setState(235);
 					switch (_input.LA(1)) {
 					case WORD:
 						{
-						setState(284);
+						setState(226);
 						match(WORD);
 						}
 						break;
 					case INT:
 						{
-						setState(285);
+						setState(227);
 						match(INT);
 						}
 						break;
 					case SYMBOL:
 						{
-						setState(286);
+						setState(228);
 						match(SYMBOL);
 						}
 						break;
 					case ESCAPE:
 						{
-						setState(287);
+						setState(229);
 						match(ESCAPE);
 						}
 						break;
 					case SPACE:
 						{
-						setState(289); 
+						setState(231); 
 						_errHandler.sync(this);
 						_alt = 1;
 						do {
@@ -1774,7 +1604,7 @@ public class MarkdownGrammar extends Parser {
 							case 1:
 								{
 								{
-								setState(288);
+								setState(230);
 								match(SPACE);
 								}
 								}
@@ -1782,9 +1612,9 @@ public class MarkdownGrammar extends Parser {
 							default:
 								throw new NoViableAltException(this);
 							}
-							setState(291); 
+							setState(233); 
 							_errHandler.sync(this);
-							_alt = getInterpreter().adaptivePredict(_input,38,_ctx);
+							_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
 						} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 						}
 						break;
@@ -1796,9 +1626,9 @@ public class MarkdownGrammar extends Parser {
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(295); 
+				setState(237); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,40,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,28,_ctx);
 			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
@@ -1852,16 +1682,16 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(299); 
+			setState(241); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				setState(299);
+				setState(241);
 				switch (_input.LA(1)) {
 				case OPEN_CURLY:
 					{
-					setState(297);
+					setState(239);
 					icon();
 					}
 					break;
@@ -1871,7 +1701,7 @@ public class MarkdownGrammar extends Parser {
 				case WORD:
 				case INT:
 					{
-					setState(298);
+					setState(240);
 					any();
 					}
 					break;
@@ -1879,10 +1709,86 @@ public class MarkdownGrammar extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(301); 
+				setState(243); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Word_spaceContext extends ParserRuleContext {
+		public List<TerminalNode> WORD() { return getTokens(MarkdownGrammar.WORD); }
+		public TerminalNode WORD(int i) {
+			return getToken(MarkdownGrammar.WORD, i);
+		}
+		public List<TerminalNode> SPACE() { return getTokens(MarkdownGrammar.SPACE); }
+		public TerminalNode SPACE(int i) {
+			return getToken(MarkdownGrammar.SPACE, i);
+		}
+		public Word_spaceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_word_space; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).enterWord_space(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitWord_space(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitWord_space(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Word_spaceContext word_space() throws RecognitionException {
+		Word_spaceContext _localctx = new Word_spaceContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_word_space);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(252); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(245);
+				match(WORD);
+				setState(249);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==SPACE) {
+					{
+					{
+					setState(246);
+					match(SPACE);
+					}
+					}
+					setState(251);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+				}
+				setState(254); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( _la==WORD );
 			}
 		}
 		catch (RecognitionException re) {
@@ -1912,115 +1818,93 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31\u0132\4\2\t\2"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\31\u0103\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\3\2\3\2\6\2\60\n\2\r\2\16"+
-		"\2\61\3\2\3\2\3\2\6\2\67\n\2\r\2\16\28\6\2;\n\2\r\2\16\2<\3\3\3\3\6\3"+
-		"A\n\3\r\3\16\3B\3\3\3\3\6\3G\n\3\r\3\16\3H\3\4\3\4\3\4\3\4\7\4O\n\4\f"+
-		"\4\16\4R\13\4\3\4\3\4\3\4\7\4W\n\4\f\4\16\4Z\13\4\6\4\\\n\4\r\4\16\4]"+
-		"\3\4\3\4\3\5\3\5\3\5\7\5e\n\5\f\5\16\5h\13\5\3\5\6\5k\n\5\r\5\16\5l\3"+
-		"\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\6\7{\n\7\r\7\16\7|\3\b"+
-		"\3\b\6\b\u0081\n\b\r\b\16\b\u0082\3\t\3\t\5\t\u0087\n\t\5\t\u0089\n\t"+
-		"\3\t\6\t\u008c\n\t\r\t\16\t\u008d\3\t\3\t\5\t\u0092\n\t\3\n\3\n\6\n\u0096"+
-		"\n\n\r\n\16\n\u0097\3\n\3\n\7\n\u009c\n\n\f\n\16\n\u009f\13\n\3\13\3\13"+
-		"\5\13\u00a3\n\13\3\13\5\13\u00a6\n\13\3\13\3\13\3\f\3\f\3\f\3\f\3\r\3"+
-		"\r\3\r\6\r\u00b1\n\r\r\r\16\r\u00b2\3\16\3\16\3\16\7\16\u00b8\n\16\f\16"+
-		"\16\16\u00bb\13\16\3\16\5\16\u00be\n\16\3\16\3\16\3\16\3\16\3\17\3\17"+
-		"\6\17\u00c6\n\17\r\17\16\17\u00c7\3\17\6\17\u00cb\n\17\r\17\16\17\u00cc"+
-		"\3\20\3\20\7\20\u00d1\n\20\f\20\16\20\u00d4\13\20\6\20\u00d6\n\20\r\20"+
-		"\16\20\u00d7\3\20\3\20\7\20\u00dc\n\20\f\20\16\20\u00df\13\20\3\20\3\20"+
-		"\7\20\u00e3\n\20\f\20\16\20\u00e6\13\20\6\20\u00e8\n\20\r\20\16\20\u00e9"+
-		"\6\20\u00ec\n\20\r\20\16\20\u00ed\3\21\3\21\3\21\3\22\6\22\u00f4\n\22"+
-		"\r\22\16\22\u00f5\3\23\3\23\3\23\3\23\3\23\7\23\u00fd\n\23\f\23\16\23"+
-		"\u0100\13\23\6\23\u0102\n\23\r\23\16\23\u0103\3\23\6\23\u0107\n\23\r\23"+
-		"\16\23\u0108\3\24\3\24\3\24\3\24\3\24\3\24\7\24\u0111\n\24\f\24\16\24"+
-		"\u0114\13\24\6\24\u0116\n\24\r\24\16\24\u0117\3\24\6\24\u011b\n\24\r\24"+
-		"\16\24\u011c\3\25\3\25\3\25\3\25\3\25\6\25\u0124\n\25\r\25\16\25\u0125"+
-		"\6\25\u0128\n\25\r\25\16\25\u0129\3\26\3\26\6\26\u012e\n\26\r\26\16\26"+
-		"\u012f\3\26\2\2\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*\2\2\u014b"+
-		"\2,\3\2\2\2\4>\3\2\2\2\6J\3\2\2\2\ba\3\2\2\2\np\3\2\2\2\fu\3\2\2\2\16"+
-		"~\3\2\2\2\20\u0088\3\2\2\2\22\u0093\3\2\2\2\24\u00a0\3\2\2\2\26\u00a9"+
-		"\3\2\2\2\30\u00b0\3\2\2\2\32\u00b4\3\2\2\2\34\u00c3\3\2\2\2\36\u00d5\3"+
-		"\2\2\2 \u00ef\3\2\2\2\"\u00f3\3\2\2\2$\u00f7\3\2\2\2&\u010a\3\2\2\2(\u0127"+
-		"\3\2\2\2*\u012d\3\2\2\2,-\5\4\3\2-/\7\21\2\2.\60\7\5\2\2/.\3\2\2\2\60"+
-		"\61\3\2\2\2\61/\3\2\2\2\61\62\3\2\2\2\62:\3\2\2\2\63\64\5\16\b\2\64\66"+
-		"\7\21\2\2\65\67\7\5\2\2\66\65\3\2\2\2\678\3\2\2\28\66\3\2\2\289\3\2\2"+
-		"\29;\3\2\2\2:\63\3\2\2\2;<\3\2\2\2<:\3\2\2\2<=\3\2\2\2=\3\3\2\2\2>@\5"+
-		"\b\5\2?A\5\6\4\2@?\3\2\2\2AB\3\2\2\2B@\3\2\2\2BC\3\2\2\2CD\3\2\2\2DF\5"+
-		"\n\6\2EG\5\f\7\2FE\3\2\2\2GH\3\2\2\2HF\3\2\2\2HI\3\2\2\2I\5\3\2\2\2JK"+
-		"\b\4\1\2KL\7\13\2\2LP\7\13\2\2MO\7\3\2\2NM\3\2\2\2OR\3\2\2\2PN\3\2\2\2"+
-		"PQ\3\2\2\2Q[\3\2\2\2RP\3\2\2\2ST\7\27\2\2TX\b\4\1\2UW\7\3\2\2VU\3\2\2"+
-		"\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2[S\3\2\2\2\\]\3\2"+
-		"\2\2][\3\2\2\2]^\3\2\2\2^_\3\2\2\2_`\7\5\2\2`\7\3\2\2\2aj\7\13\2\2bf\7"+
-		"\27\2\2ce\7\3\2\2dc\3\2\2\2eh\3\2\2\2fd\3\2\2\2fg\3\2\2\2gi\3\2\2\2hf"+
-		"\3\2\2\2ik\b\5\1\2jb\3\2\2\2kl\3\2\2\2lj\3\2\2\2lm\3\2\2\2mn\3\2\2\2n"+
-		"o\7\5\2\2o\t\3\2\2\2pq\7\6\2\2qr\5(\25\2rs\b\6\1\2st\7\5\2\2t\13\3\2\2"+
-		"\2uv\7\t\2\2vw\5\32\16\2wx\5(\25\2xz\b\7\1\2y{\7\5\2\2zy\3\2\2\2{|\3\2"+
-		"\2\2|z\3\2\2\2|}\3\2\2\2}\r\3\2\2\2~\u0080\5$\23\2\177\u0081\5\20\t\2"+
-		"\u0080\177\3\2\2\2\u0081\u0082\3\2\2\2\u0082\u0080\3\2\2\2\u0082\u0083"+
-		"\3\2\2\2\u0083\17\3\2\2\2\u0084\u0086\5&\24\2\u0085\u0087\5\34\17\2\u0086"+
-		"\u0085\3\2\2\2\u0086\u0087\3\2\2\2\u0087\u0089\3\2\2\2\u0088\u0084\3\2"+
-		"\2\2\u0088\u0089\3\2\2\2\u0089\u0091\3\2\2\2\u008a\u008c\5\22\n\2\u008b"+
-		"\u008a\3\2\2\2\u008c\u008d\3\2\2\2\u008d\u008b\3\2\2\2\u008d\u008e\3\2"+
-		"\2\2\u008e\u0092\3\2\2\2\u008f\u0092\5\26\f\2\u0090\u0092\5(\25\2\u0091"+
-		"\u008b\3\2\2\2\u0091\u008f\3\2\2\2\u0091\u0090\3\2\2\2\u0092\21\3\2\2"+
-		"\2\u0093\u0095\7\6\2\2\u0094\u0096\5(\25\2\u0095\u0094\3\2\2\2\u0096\u0097"+
-		"\3\2\2\2\u0097\u0095\3\2\2\2\u0097\u0098\3\2\2\2\u0098\u0099\3\2\2\2\u0099"+
-		"\u009d\7\5\2\2\u009a\u009c\5\24\13\2\u009b\u009a\3\2\2\2\u009c\u009f\3"+
-		"\2\2\2\u009d\u009b\3\2\2\2\u009d\u009e\3\2\2\2\u009e\23\3\2\2\2\u009f"+
-		"\u009d\3\2\2\2\u00a0\u00a2\7\b\2\2\u00a1\u00a3\5\32\16\2\u00a2\u00a1\3"+
-		"\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\u00a5\3\2\2\2\u00a4\u00a6\5(\25\2\u00a5"+
-		"\u00a4\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6\u00a7\3\2\2\2\u00a7\u00a8\7\5"+
-		"\2\2\u00a8\25\3\2\2\2\u00a9\u00aa\5\36\20\2\u00aa\u00ab\7\5\2\2\u00ab"+
-		"\u00ac\5\30\r\2\u00ac\27\3\2\2\2\u00ad\u00ae\5\"\22\2\u00ae\u00af\7\5"+
-		"\2\2\u00af\u00b1\3\2\2\2\u00b0\u00ad\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2"+
-		"\u00b0\3\2\2\2\u00b2\u00b3\3\2\2\2\u00b3\31\3\2\2\2\u00b4\u00b5\7\17\2"+
-		"\2\u00b5\u00b9\7\27\2\2\u00b6\u00b8\7\3\2\2\u00b7\u00b6\3\2\2\2\u00b8"+
-		"\u00bb\3\2\2\2\u00b9\u00b7\3\2\2\2\u00b9\u00ba\3\2\2\2\u00ba\u00bd\3\2"+
-		"\2\2\u00bb\u00b9\3\2\2\2\u00bc\u00be\7\31\2\2\u00bd\u00bc\3\2\2\2\u00bd"+
-		"\u00be\3\2\2\2\u00be\u00bf\3\2\2\2\u00bf\u00c0\b\16\1\2\u00c0\u00c1\6"+
-		"\16\2\3\u00c1\u00c2\7\20\2\2\u00c2\33\3\2\2\2\u00c3\u00c5\7\22\2\2\u00c4"+
-		"\u00c6\5(\25\2\u00c5\u00c4\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c5\3\2"+
-		"\2\2\u00c7\u00c8\3\2\2\2\u00c8\u00ca\3\2\2\2\u00c9\u00cb\7\5\2\2\u00ca"+
-		"\u00c9\3\2\2\2\u00cb\u00cc\3\2\2\2\u00cc\u00ca\3\2\2\2\u00cc\u00cd\3\2"+
-		"\2\2\u00cd\35\3\2\2\2\u00ce\u00d2\7\27\2\2\u00cf\u00d1\7\3\2\2\u00d0\u00cf"+
-		"\3\2\2\2\u00d1\u00d4\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3"+
-		"\u00d6\3\2\2\2\u00d4\u00d2\3\2\2\2\u00d5\u00ce\3\2\2\2\u00d6\u00d7\3\2"+
-		"\2\2\u00d7\u00d5\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8\u00eb\3\2\2\2\u00d9"+
-		"\u00dd\7\23\2\2\u00da\u00dc\7\3\2\2\u00db\u00da\3\2\2\2\u00dc\u00df\3"+
-		"\2\2\2\u00dd\u00db\3\2\2\2\u00dd\u00de\3\2\2\2\u00de\u00e7\3\2\2\2\u00df"+
-		"\u00dd\3\2\2\2\u00e0\u00e4\7\27\2\2\u00e1\u00e3\7\3\2\2\u00e2\u00e1\3"+
-		"\2\2\2\u00e3\u00e6\3\2\2\2\u00e4\u00e2\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5"+
-		"\u00e8\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e7\u00e0\3\2\2\2\u00e8\u00e9\3\2"+
-		"\2\2\u00e9\u00e7\3\2\2\2\u00e9\u00ea\3\2\2\2\u00ea\u00ec\3\2\2\2\u00eb"+
-		"\u00d9\3\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ed\u00ee\3\2"+
-		"\2\2\u00ee\37\3\2\2\2\u00ef\u00f0\5*\26\2\u00f0\u00f1\7\24\2\2\u00f1!"+
-		"\3\2\2\2\u00f2\u00f4\5 \21\2\u00f3\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5"+
-		"\u00f3\3\2\2\2\u00f5\u00f6\3\2\2\2\u00f6#\3\2\2\2\u00f7\u00f8\7\13\2\2"+
-		"\u00f8\u00f9\7\13\2\2\u00f9\u0101\7\13\2\2\u00fa\u00fe\7\27\2\2\u00fb"+
-		"\u00fd\7\3\2\2\u00fc\u00fb\3\2\2\2\u00fd\u0100\3\2\2\2\u00fe\u00fc\3\2"+
-		"\2\2\u00fe\u00ff\3\2\2\2\u00ff\u0102\3\2\2\2\u0100\u00fe\3\2\2\2\u0101"+
-		"\u00fa\3\2\2\2\u0102\u0103\3\2\2\2\u0103\u0101\3\2\2\2\u0103\u0104\3\2"+
-		"\2\2\u0104\u0106\3\2\2\2\u0105\u0107\7\5\2\2\u0106\u0105\3\2\2\2\u0107"+
-		"\u0108\3\2\2\2\u0108\u0106\3\2\2\2\u0108\u0109\3\2\2\2\u0109%\3\2\2\2"+
-		"\u010a\u010b\7\13\2\2\u010b\u010c\7\13\2\2\u010c\u010d\7\13\2\2\u010d"+
-		"\u0115\7\13\2\2\u010e\u0112\7\27\2\2\u010f\u0111\7\3\2\2\u0110\u010f\3"+
-		"\2\2\2\u0111\u0114\3\2\2\2\u0112\u0110\3\2\2\2\u0112\u0113\3\2\2\2\u0113"+
-		"\u0116\3\2\2\2\u0114\u0112\3\2\2\2\u0115\u010e\3\2\2\2\u0116\u0117\3\2"+
-		"\2\2\u0117\u0115\3\2\2\2\u0117\u0118\3\2\2\2\u0118\u011a\3\2\2\2\u0119"+
-		"\u011b\7\5\2\2\u011a\u0119\3\2\2\2\u011b\u011c\3\2\2\2\u011c\u011a\3\2"+
-		"\2\2\u011c\u011d\3\2\2\2\u011d\'\3\2\2\2\u011e\u0128\7\27\2\2\u011f\u0128"+
-		"\7\30\2\2\u0120\u0128\7\26\2\2\u0121\u0128\7\25\2\2\u0122\u0124\7\3\2"+
-		"\2\u0123\u0122\3\2\2\2\u0124\u0125\3\2\2\2\u0125\u0123\3\2\2\2\u0125\u0126"+
-		"\3\2\2\2\u0126\u0128\3\2\2\2\u0127\u011e\3\2\2\2\u0127\u011f\3\2\2\2\u0127"+
-		"\u0120\3\2\2\2\u0127\u0121\3\2\2\2\u0127\u0123\3\2\2\2\u0128\u0129\3\2"+
-		"\2\2\u0129\u0127\3\2\2\2\u0129\u012a\3\2\2\2\u012a)\3\2\2\2\u012b\u012e"+
-		"\5\32\16\2\u012c\u012e\5(\25\2\u012d\u012b\3\2\2\2\u012d\u012c\3\2\2\2"+
-		"\u012e\u012f\3\2\2\2\u012f\u012d\3\2\2\2\u012f\u0130\3\2\2\2\u0130+\3"+
-		"\2\2\2-\618<BHPX]fl|\u0082\u0086\u0088\u008d\u0091\u0097\u009d\u00a2\u00a5"+
-		"\u00b2\u00b9\u00bd\u00c7\u00cc\u00d2\u00d7\u00dd\u00e4\u00e9\u00ed\u00f5"+
-		"\u00fe\u0103\u0108\u0112\u0117\u011c\u0125\u0127\u0129\u012d\u012f";
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\2\6\2\62"+
+		"\n\2\r\2\16\2\63\3\2\3\2\3\2\6\29\n\2\r\2\16\2:\6\2=\n\2\r\2\16\2>\3\3"+
+		"\3\3\6\3C\n\3\r\3\16\3D\3\3\3\3\6\3I\n\3\r\3\16\3J\3\4\3\4\3\4\3\4\7\4"+
+		"Q\n\4\f\4\16\4T\13\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3"+
+		"\6\3\6\3\7\3\7\3\7\3\7\3\7\6\7i\n\7\r\7\16\7j\3\b\3\b\6\bo\n\b\r\b\16"+
+		"\bp\3\t\3\t\5\tu\n\t\5\tw\n\t\3\t\6\tz\n\t\r\t\16\t{\3\t\3\t\5\t\u0080"+
+		"\n\t\3\n\3\n\6\n\u0084\n\n\r\n\16\n\u0085\3\n\3\n\7\n\u008a\n\n\f\n\16"+
+		"\n\u008d\13\n\3\13\3\13\5\13\u0091\n\13\3\13\5\13\u0094\n\13\3\13\3\13"+
+		"\3\f\3\f\3\f\3\f\3\r\3\r\3\r\6\r\u009f\n\r\r\r\16\r\u00a0\3\16\3\16\3"+
+		"\16\7\16\u00a6\n\16\f\16\16\16\u00a9\13\16\3\16\5\16\u00ac\n\16\3\16\3"+
+		"\16\3\16\3\16\3\17\3\17\6\17\u00b4\n\17\r\17\16\17\u00b5\3\17\6\17\u00b9"+
+		"\n\17\r\17\16\17\u00ba\3\20\3\20\3\20\7\20\u00c0\n\20\f\20\16\20\u00c3"+
+		"\13\20\3\20\6\20\u00c6\n\20\r\20\16\20\u00c7\3\21\3\21\3\21\3\22\6\22"+
+		"\u00ce\n\22\r\22\16\22\u00cf\3\23\3\23\3\23\3\23\3\23\6\23\u00d7\n\23"+
+		"\r\23\16\23\u00d8\3\24\3\24\3\24\3\24\3\24\3\24\6\24\u00e1\n\24\r\24\16"+
+		"\24\u00e2\3\25\3\25\3\25\3\25\3\25\6\25\u00ea\n\25\r\25\16\25\u00eb\6"+
+		"\25\u00ee\n\25\r\25\16\25\u00ef\3\26\3\26\6\26\u00f4\n\26\r\26\16\26\u00f5"+
+		"\3\27\3\27\7\27\u00fa\n\27\f\27\16\27\u00fd\13\27\6\27\u00ff\n\27\r\27"+
+		"\16\27\u0100\3\27\2\2\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&("+
+		"*,\2\2\u0111\2.\3\2\2\2\4@\3\2\2\2\6L\3\2\2\2\bY\3\2\2\2\n^\3\2\2\2\f"+
+		"c\3\2\2\2\16l\3\2\2\2\20v\3\2\2\2\22\u0081\3\2\2\2\24\u008e\3\2\2\2\26"+
+		"\u0097\3\2\2\2\30\u009e\3\2\2\2\32\u00a2\3\2\2\2\34\u00b1\3\2\2\2\36\u00bc"+
+		"\3\2\2\2 \u00c9\3\2\2\2\"\u00cd\3\2\2\2$\u00d1\3\2\2\2&\u00da\3\2\2\2"+
+		"(\u00ed\3\2\2\2*\u00f3\3\2\2\2,\u00fe\3\2\2\2./\5\4\3\2/\61\7\21\2\2\60"+
+		"\62\7\5\2\2\61\60\3\2\2\2\62\63\3\2\2\2\63\61\3\2\2\2\63\64\3\2\2\2\64"+
+		"<\3\2\2\2\65\66\5\16\b\2\668\7\21\2\2\679\7\5\2\28\67\3\2\2\29:\3\2\2"+
+		"\2:8\3\2\2\2:;\3\2\2\2;=\3\2\2\2<\65\3\2\2\2=>\3\2\2\2><\3\2\2\2>?\3\2"+
+		"\2\2?\3\3\2\2\2@B\5\b\5\2AC\5\6\4\2BA\3\2\2\2CD\3\2\2\2DB\3\2\2\2DE\3"+
+		"\2\2\2EF\3\2\2\2FH\5\n\6\2GI\5\f\7\2HG\3\2\2\2IJ\3\2\2\2JH\3\2\2\2JK\3"+
+		"\2\2\2K\5\3\2\2\2LM\b\4\1\2MN\7\13\2\2NR\7\13\2\2OQ\7\3\2\2PO\3\2\2\2"+
+		"QT\3\2\2\2RP\3\2\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\5,\27\2VW\b\4\1\2"+
+		"WX\7\5\2\2X\7\3\2\2\2YZ\7\13\2\2Z[\5,\27\2[\\\b\5\1\2\\]\7\5\2\2]\t\3"+
+		"\2\2\2^_\7\6\2\2_`\5(\25\2`a\b\6\1\2ab\7\5\2\2b\13\3\2\2\2cd\7\t\2\2d"+
+		"e\5\32\16\2ef\5(\25\2fh\b\7\1\2gi\7\5\2\2hg\3\2\2\2ij\3\2\2\2jh\3\2\2"+
+		"\2jk\3\2\2\2k\r\3\2\2\2ln\5$\23\2mo\5\20\t\2nm\3\2\2\2op\3\2\2\2pn\3\2"+
+		"\2\2pq\3\2\2\2q\17\3\2\2\2rt\5&\24\2su\5\34\17\2ts\3\2\2\2tu\3\2\2\2u"+
+		"w\3\2\2\2vr\3\2\2\2vw\3\2\2\2w\177\3\2\2\2xz\5\22\n\2yx\3\2\2\2z{\3\2"+
+		"\2\2{y\3\2\2\2{|\3\2\2\2|\u0080\3\2\2\2}\u0080\5\26\f\2~\u0080\5(\25\2"+
+		"\177y\3\2\2\2\177}\3\2\2\2\177~\3\2\2\2\u0080\21\3\2\2\2\u0081\u0083\7"+
+		"\6\2\2\u0082\u0084\5(\25\2\u0083\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085"+
+		"\u0083\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0087\3\2\2\2\u0087\u008b\7\5"+
+		"\2\2\u0088\u008a\5\24\13\2\u0089\u0088\3\2\2\2\u008a\u008d\3\2\2\2\u008b"+
+		"\u0089\3\2\2\2\u008b\u008c\3\2\2\2\u008c\23\3\2\2\2\u008d\u008b\3\2\2"+
+		"\2\u008e\u0090\7\b\2\2\u008f\u0091\5\32\16\2\u0090\u008f\3\2\2\2\u0090"+
+		"\u0091\3\2\2\2\u0091\u0093\3\2\2\2\u0092\u0094\5(\25\2\u0093\u0092\3\2"+
+		"\2\2\u0093\u0094\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u0096\7\5\2\2\u0096"+
+		"\25\3\2\2\2\u0097\u0098\5\36\20\2\u0098\u0099\7\5\2\2\u0099\u009a\5\30"+
+		"\r\2\u009a\27\3\2\2\2\u009b\u009c\5\"\22\2\u009c\u009d\7\5\2\2\u009d\u009f"+
+		"\3\2\2\2\u009e\u009b\3\2\2\2\u009f\u00a0\3\2\2\2\u00a0\u009e\3\2\2\2\u00a0"+
+		"\u00a1\3\2\2\2\u00a1\31\3\2\2\2\u00a2\u00a3\7\17\2\2\u00a3\u00a7\7\27"+
+		"\2\2\u00a4\u00a6\7\3\2\2\u00a5\u00a4\3\2\2\2\u00a6\u00a9\3\2\2\2\u00a7"+
+		"\u00a5\3\2\2\2\u00a7\u00a8\3\2\2\2\u00a8\u00ab\3\2\2\2\u00a9\u00a7\3\2"+
+		"\2\2\u00aa\u00ac\7\31\2\2\u00ab\u00aa\3\2\2\2\u00ab\u00ac\3\2\2\2\u00ac"+
+		"\u00ad\3\2\2\2\u00ad\u00ae\b\16\1\2\u00ae\u00af\6\16\2\3\u00af\u00b0\7"+
+		"\20\2\2\u00b0\33\3\2\2\2\u00b1\u00b3\7\22\2\2\u00b2\u00b4\5(\25\2\u00b3"+
+		"\u00b2\3\2\2\2\u00b4\u00b5\3\2\2\2\u00b5\u00b3\3\2\2\2\u00b5\u00b6\3\2"+
+		"\2\2\u00b6\u00b8\3\2\2\2\u00b7\u00b9\7\5\2\2\u00b8\u00b7\3\2\2\2\u00b9"+
+		"\u00ba\3\2\2\2\u00ba\u00b8\3\2\2\2\u00ba\u00bb\3\2\2\2\u00bb\35\3\2\2"+
+		"\2\u00bc\u00c5\5,\27\2\u00bd\u00c1\7\23\2\2\u00be\u00c0\7\3\2\2\u00bf"+
+		"\u00be\3\2\2\2\u00c0\u00c3\3\2\2\2\u00c1\u00bf\3\2\2\2\u00c1\u00c2\3\2"+
+		"\2\2\u00c2\u00c4\3\2\2\2\u00c3\u00c1\3\2\2\2\u00c4\u00c6\5,\27\2\u00c5"+
+		"\u00bd\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c5\3\2\2\2\u00c7\u00c8\3\2"+
+		"\2\2\u00c8\37\3\2\2\2\u00c9\u00ca\5*\26\2\u00ca\u00cb\7\24\2\2\u00cb!"+
+		"\3\2\2\2\u00cc\u00ce\5 \21\2\u00cd\u00cc\3\2\2\2\u00ce\u00cf\3\2\2\2\u00cf"+
+		"\u00cd\3\2\2\2\u00cf\u00d0\3\2\2\2\u00d0#\3\2\2\2\u00d1\u00d2\7\13\2\2"+
+		"\u00d2\u00d3\7\13\2\2\u00d3\u00d4\7\13\2\2\u00d4\u00d6\5,\27\2\u00d5\u00d7"+
+		"\7\5\2\2\u00d6\u00d5\3\2\2\2\u00d7\u00d8\3\2\2\2\u00d8\u00d6\3\2\2\2\u00d8"+
+		"\u00d9\3\2\2\2\u00d9%\3\2\2\2\u00da\u00db\7\13\2\2\u00db\u00dc\7\13\2"+
+		"\2\u00dc\u00dd\7\13\2\2\u00dd\u00de\7\13\2\2\u00de\u00e0\5,\27\2\u00df"+
+		"\u00e1\7\5\2\2\u00e0\u00df\3\2\2\2\u00e1\u00e2\3\2\2\2\u00e2\u00e0\3\2"+
+		"\2\2\u00e2\u00e3\3\2\2\2\u00e3\'\3\2\2\2\u00e4\u00ee\7\27\2\2\u00e5\u00ee"+
+		"\7\30\2\2\u00e6\u00ee\7\26\2\2\u00e7\u00ee\7\25\2\2\u00e8\u00ea\7\3\2"+
+		"\2\u00e9\u00e8\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb\u00e9\3\2\2\2\u00eb\u00ec"+
+		"\3\2\2\2\u00ec\u00ee\3\2\2\2\u00ed\u00e4\3\2\2\2\u00ed\u00e5\3\2\2\2\u00ed"+
+		"\u00e6\3\2\2\2\u00ed\u00e7\3\2\2\2\u00ed\u00e9\3\2\2\2\u00ee\u00ef\3\2"+
+		"\2\2\u00ef\u00ed\3\2\2\2\u00ef\u00f0\3\2\2\2\u00f0)\3\2\2\2\u00f1\u00f4"+
+		"\5\32\16\2\u00f2\u00f4\5(\25\2\u00f3\u00f1\3\2\2\2\u00f3\u00f2\3\2\2\2"+
+		"\u00f4\u00f5\3\2\2\2\u00f5\u00f3\3\2\2\2\u00f5\u00f6\3\2\2\2\u00f6+\3"+
+		"\2\2\2\u00f7\u00fb\7\27\2\2\u00f8\u00fa\7\3\2\2\u00f9\u00f8\3\2\2\2\u00fa"+
+		"\u00fd\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fc\3\2\2\2\u00fc\u00ff\3\2"+
+		"\2\2\u00fd\u00fb\3\2\2\2\u00fe\u00f7\3\2\2\2\u00ff\u0100\3\2\2\2\u0100"+
+		"\u00fe\3\2\2\2\u0100\u0101\3\2\2\2\u0101-\3\2\2\2#\63:>DJRjptv{\177\u0085"+
+		"\u008b\u0090\u0093\u00a0\u00a7\u00ab\u00b5\u00ba\u00c1\u00c7\u00cf\u00d8"+
+		"\u00e2\u00eb\u00ed\u00ef\u00f3\u00f5\u00fb\u0100";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

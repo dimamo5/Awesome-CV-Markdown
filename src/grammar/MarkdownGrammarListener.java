@@ -217,4 +217,14 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTablecontent(MarkdownGrammar.TablecontentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#word_space}.
+	 * @param ctx the parse tree
+	 */
+	void enterWord_space(MarkdownGrammar.Word_spaceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#word_space}.
+	 * @param ctx the parse tree
+	 */
+	void exitWord_space(MarkdownGrammar.Word_spaceContext ctx);
 }

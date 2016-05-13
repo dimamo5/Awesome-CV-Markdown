@@ -136,4 +136,10 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTablecontent(MarkdownGrammar.TablecontentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MarkdownGrammar#word_space}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWord_space(MarkdownGrammar.Word_spaceContext ctx);
 }
