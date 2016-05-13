@@ -282,7 +282,7 @@ class Markdown {
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());
 
-            System.out.println(parser.table);
+            System.out.println(parser.block());
         }
         catch (Exception e) {
             System.err.println("parser exception: "+e);

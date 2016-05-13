@@ -12,6 +12,8 @@ public class Block {
     private BlockType type;
     private Object content;
 
+    public Block(){}
+
     public void addBlockName(String s){
         this.blockName=s;
     }
@@ -26,6 +28,22 @@ public class Block {
 
     public void setType(BlockType type){
         this.type=type;
+        switch(type){
+            case TABLE:this.content=new Table();
+                break;
+            case LIST:this.content=new List();
+                break;
+            //TODO texto ver como fazer e ver do icons
+        }
     }
+
+    public Object getContent(){
+        return content;
+    }
+
+    public BlockType getType(){
+        return type;
+    }
+
 
 }
