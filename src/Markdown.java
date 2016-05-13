@@ -107,7 +107,7 @@ class Markdown {
         //System.out.println( System.getProperty("user.dir"));
         //parseFile( "./resources/" + c.nextLine());
         System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
-        parseFile("resources/list.md");
+        parseFile("resources/table.md");
     }
 
     public static void doAll(String[] args) {
