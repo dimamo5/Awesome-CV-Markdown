@@ -23,4 +23,11 @@ public class Table {
         body.get(body.size()-1).add(cell);
     }
 
+    @Override
+    public String toString() {
+        return "Table{" +
+                "header=" + header +
+                ", body=" + body +
+                '}';
+    }
 }
