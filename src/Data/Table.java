@@ -20,7 +20,7 @@ public class Table {
     }
 
     public void addBodyCell(String cell){
-        body.get(body.size()-1).add(cell);
+        body.get(body.size()-1).add(Utils.analyzeEscape(cell));
     }
 
     @Override
