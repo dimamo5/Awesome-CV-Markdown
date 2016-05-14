@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
+// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
 package grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -107,18 +107,6 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSubBlock(MarkdownGrammar.SubBlockContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterList(MarkdownGrammar.ListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitList(MarkdownGrammar.ListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -263,6 +251,18 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAny(MarkdownGrammar.AnyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTeste(MarkdownGrammar.TesteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTeste(MarkdownGrammar.TesteContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

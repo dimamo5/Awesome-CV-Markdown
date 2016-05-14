@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
+// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -87,16 +87,6 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSubBlock(MarkdownGrammar.SubBlockContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link MarkdownGrammar#list}.
-	 * @param ctx the parse tree
-	 */
-	void enterList(MarkdownGrammar.ListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MarkdownGrammar#list}.
-	 * @param ctx the parse tree
-	 */
-	void exitList(MarkdownGrammar.ListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#blockList}.
 	 * @param ctx the parse tree
@@ -217,6 +207,16 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAny(MarkdownGrammar.AnyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 */
+	void enterTeste(MarkdownGrammar.TesteContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 */
+	void exitTeste(MarkdownGrammar.TesteContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#tablecontent}.
 	 * @param ctx the parse tree

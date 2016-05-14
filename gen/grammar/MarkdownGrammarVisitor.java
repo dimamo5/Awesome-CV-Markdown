@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
+// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -58,12 +58,6 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSubBlock(MarkdownGrammar.SubBlockContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link MarkdownGrammar#list}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitList(MarkdownGrammar.ListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MarkdownGrammar#blockList}.
 	 * @param ctx the parse tree
@@ -136,6 +130,12 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAny(MarkdownGrammar.AnyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTeste(MarkdownGrammar.TesteContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MarkdownGrammar#tablecontent}.
 	 * @param ctx the parse tree
