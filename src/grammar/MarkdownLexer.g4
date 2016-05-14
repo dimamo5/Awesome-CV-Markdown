@@ -20,7 +20,7 @@ TILT:'~';
 HAT:'^';
 SPLIT:'|';
 
-fragment CHAR: [a-zA-Z];
+fragment CHAR: [a-zA-Z\u00C0-\u00FF] ;
 fragment DIGIT: [0-9];
 ESCAPE: '\\'MINUS|'\\' COLON|'\\' TILT|'\\' HAT|'\\' SLASH|'\\' OPEN_CURLY|'\\' CLOSE_CURLY|'\\' SPLIT|'\\' SHARP;
 SYMBOL: ([\.@_'?&$+-«»&%$"!;,()]);

@@ -16,7 +16,7 @@ public class Cv {
     }
 
     public List getList() {
-        if (blocks.get(blocks.size() - 1).getType() == Block.BlockType.TABLE)
+        if (blocks.get(blocks.size() - 1).getType() == Block.BlockType.LIST)
             return (List) blocks.get(blocks.size() - 1).getContent();
         else return null;
     }

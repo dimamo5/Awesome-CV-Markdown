@@ -279,7 +279,7 @@ class Markdown {
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
-            System.out.println(parser.cv);
+            System.out.println(parser.cv.getBlock());
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());

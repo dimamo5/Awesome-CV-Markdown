@@ -112,6 +112,18 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterList(MarkdownGrammar.ListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitList(MarkdownGrammar.ListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBlockList(MarkdownGrammar.BlockListContext ctx) { }
 	/**
 	 * {@inheritDoc}
