@@ -2,7 +2,7 @@ parser grammar MarkdownGrammar;
 
 options {tokenVocab=MarkdownLexer;}
 @members{
-    public Data.Cv cv = new Data.Cv();
+    public data.Cv cv = new data.Cv();
 }
 cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 
@@ -14,15 +14,15 @@ name:SHARP word_space {cv.info.addName($word_space.text);} NEWLINE;
 address: STAR any{cv.info.addAddress($any.text);} NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any{cv.info.addContacts($any.text);} NEWLINE+;
 
-block: {cv.newBlock();} blockName subBlock+;
-subBlock: (blockSubName boldText?{cv.getBlock().addBoldText($boldText.text);})? (list|table|any);
+block: {cv.newBlock(); } blockName subBlock+;
+subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})? (list|table|any);
 
 
-list: {cv.getBlock().setType(Data.Block.BlockType.LIST);cv.getList().newListLine();} blockList+;
+list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();} blockList+;
 blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE blockListCell*;
 blockListCell: COLON icon? any?{cv.getList().addListCell($any.text);} NEWLINE;
 
-table:{cv.getBlock().setType(Data.Block.BlockType.TABLE);} tableHeader NEWLINE tableBody;
+table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;
 tableBody: (tableLine NEWLINE)+;
 
 
@@ -33,7 +33,7 @@ tableHeader: word_space{cv.getTable().addHeaderCell($word_space.text);} (HAT SPA
 tableCell: tablecontent SPLIT ;
 tableLine:{cv.getTable().addBodyLine();} tableCell+;
 blockName: SHARP SHARP SHARP word_space{cv.getBlock().addBlockName($word_space.text);} NEWLINE+;
-blockSubName: SHARP SHARP SHARP SHARP word_space{cv.getBlock().addSubBlockName($word_space.text);} NEWLINE+;
+blockSubName: SHARP SHARP SHARP SHARP word_space{cv.getSubBlock().addSubBlockName($word_space.text);} NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
 tablecontent: SPACE* (icon| any{cv.getTable().addBodyCell($any.text);})+;

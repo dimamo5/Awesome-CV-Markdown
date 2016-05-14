@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 

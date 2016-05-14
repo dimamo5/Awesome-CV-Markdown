@@ -25,7 +25,6 @@
  */
 
 import grammar.MarkdownGrammar;
-import grammar.MarkdownGrammarBaseVisitor;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
@@ -39,7 +38,6 @@ import org.antlr.v4.runtime.atn.PredictionMode;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -107,7 +105,7 @@ class Markdown {
         //System.out.println( System.getProperty("user.dir"));
         //parseFile( "./resources/" + c.nextLine());
         System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
-        parseFile("resources/table.md");
+        parseFile("resources/cv.md");
     }
 
     public static void doAll(String[] args) {
@@ -275,11 +273,11 @@ class Markdown {
             if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.block();
+            ParserRuleContext t = parser.cv();
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
-            System.out.println(parser.cv.getBlock());
+            System.out.println(parser.cv);
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());

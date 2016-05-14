@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import java.util.ArrayList;
 
@@ -10,14 +10,14 @@ public class Cv {
     public ArrayList<Block> blocks = new ArrayList<Block>();
 
     public Table getTable() {
-        if (blocks.get(blocks.size() - 1).getType() == Block.BlockType.TABLE)
-            return (Table) blocks.get(blocks.size() - 1).getContent();
+        if (getSubBlock().getType() == SubBlock.BlockType.TABLE)
+            return (Table) getSubBlock().getContent();
         else return null;
     }
 
     public List getList() {
-        if (blocks.get(blocks.size() - 1).getType() == Block.BlockType.LIST)
-            return (List) blocks.get(blocks.size() - 1).getContent();
+        if (getSubBlock().getType() == SubBlock.BlockType.LIST)
+            return (List) getSubBlock().getContent();
         else return null;
     }
 
@@ -29,11 +29,15 @@ public class Cv {
         this.blocks.add(new Block());
     }
 
+    public SubBlock getSubBlock(){
+        return this.getBlock().getSubBlock();
+    }
+
     @Override
     public String toString() {
         return "Cv{" +
                 "info=" + info +
-                ", blocks=" + blocks +
+                ", subBlocks=" + blocks +
                 '}';
     }
 
