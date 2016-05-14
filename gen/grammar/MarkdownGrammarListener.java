@@ -208,6 +208,16 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 */
 	void exitAny(MarkdownGrammar.AnyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 */
+	void enterTeste(MarkdownGrammar.TesteContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 */
+	void exitTeste(MarkdownGrammar.TesteContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#tablecontent}.
 	 * @param ctx the parse tree
 	 */

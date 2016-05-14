@@ -131,6 +131,12 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAny(MarkdownGrammar.AnyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MarkdownGrammar#teste}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTeste(MarkdownGrammar.TesteContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MarkdownGrammar#tablecontent}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

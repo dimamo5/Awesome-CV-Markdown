@@ -256,6 +256,18 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTeste(MarkdownGrammar.TesteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTeste(MarkdownGrammar.TesteContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTablecontent(MarkdownGrammar.TablecontentContext ctx) { }
 	/**
 	 * {@inheritDoc}

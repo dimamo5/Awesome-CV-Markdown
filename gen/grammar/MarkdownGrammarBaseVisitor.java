@@ -157,6 +157,13 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitTeste(MarkdownGrammar.TesteContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitTablecontent(MarkdownGrammar.TablecontentContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
