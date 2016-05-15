@@ -12,7 +12,7 @@ subHeader:{cv.info.newSub();} SHARP SHARP SPACE* word_space{cv.info.addSub($word
 name:SHARP word_space {cv.info.addName($word_space.text);} NEWLINE;
 
 address: STAR any{cv.info.addAddress($any.text);} NEWLINE;
-contacts: CLOSE_ANGLE_BRACKET icon any{cv.info.addContacts($any.text);} NEWLINE+;
+contacts: CLOSE_ANGLE_BRACKET icon any{cv.info.addContacts($any.text, $icon.text);} NEWLINE+;
 
 block: {cv.newBlock(); } blockName subBlock+;
 subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})? (list|table|any);
@@ -20,7 +20,7 @@ subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock(
 
 list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();} blockList+;
 blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE blockListCell*;
-blockListCell: COLON icon? any?{cv.getList().addListCell($any.text);} NEWLINE;
+blockListCell: COLON icon? any?{cv.getList().addListCell($any.text, $icon.text);} NEWLINE;
 
 table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;
 tableBody: (tableLine NEWLINE)+;
@@ -36,6 +36,6 @@ blockName: SHARP SHARP SHARP word_space{cv.getBlock().addBlockName($word_space.t
 blockSubName: SHARP SHARP SHARP SHARP word_space{cv.getSubBlock().addSubBlockName($word_space.text);} NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
-tablecontent: SPACE* (icon| any{cv.getTable().addBodyCell($any.text);})+;
+tablecontent: SPACE* (icon| any{cv.getTable().addBodyCell($any.text, $icon.text);})+;
 
 word_space:(WORD SPACE*)+;

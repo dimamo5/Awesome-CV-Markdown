@@ -30,7 +30,6 @@ public class SubBlock {
                 break;
             case LIST:this.content=new List();
                 break;
-            //TODO texto ver como fazer e ver do icons
         }
     }
 

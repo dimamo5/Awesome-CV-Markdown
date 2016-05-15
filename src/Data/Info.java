@@ -11,7 +11,7 @@ public class Info {
     private String name = null;
     private ArrayList<String> sub=new ArrayList<>();
     private String address =null;
-    private ArrayList<String> contacts=new ArrayList<>();
+    private ArrayList<IconText> contacts=new ArrayList<>();
 
     public void addName(String name){
         if(this.name != null) {
@@ -37,8 +37,17 @@ public class Info {
     public void addAddress(String address){
         this.address=address;
     }
-    public void addContacts(String contacts){
-        this.contacts.add(contacts);
+
+    public void addContacts(String contacts, String s1){
+        IconText i = new IconText();
+
+        if(contacts!=null)
+            i.setObject(Utils.analyzeEscape(contacts));
+        if(s1!=null) {
+            i.icon.setIconName(s1.substring(1, s1.length() - 1));
+            i.icon.divide();
+        }
+        this.contacts.add(i);
     }
 
     public String analyze(ParserRuleContext ctx){

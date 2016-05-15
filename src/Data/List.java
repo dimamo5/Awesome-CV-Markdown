@@ -1,13 +1,14 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by diogo on 13/05/2016.
  */
 public class List {
     public ArrayList<String> listHeader = new ArrayList<>();
-    public ArrayList<ArrayList<String>> list = new ArrayList<>();
+    public ArrayList<ArrayList<IconText>> list = new ArrayList<>();
 
     public List() {
     }
@@ -17,11 +18,19 @@ public class List {
     }
 
     public void newListLine() {
-        this.list.add(new ArrayList<String>());
+        this.list.add(new ArrayList<IconText>());
     }
 
-    public void addListCell(String s) {
-        this.list.get(this.list.size() - 1).add(Utils.analyzeEscape(s));
+    public void addListCell(String s, String s1) {
+        IconText i = new IconText();
+
+        if(s!=null)
+            i.setObject(Utils.analyzeEscape(s));
+        if(s1!=null) {
+            i.icon.setIconName(s1.substring(1, s1.length() - 1));
+            i.icon.divide();
+        }
+        this.list.get(this.list.size() - 1).add(i);
     }
 
     @Override
