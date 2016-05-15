@@ -1,7 +1,6 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by diogo on 13/05/2016.
@@ -25,7 +24,7 @@ public class List {
         IconText i = new IconText();
 
         if(s!=null)
-            i.setObject(Utils.analyzeEscape(s));
+            i.setText(Utils.analyzeEscape(s));
         if(s1!=null) {
             i.icon.setIconName(s1.substring(1, s1.length() - 1));
             i.icon.divide();

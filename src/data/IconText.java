@@ -5,22 +5,22 @@ package data;
  */
 public class IconText {
     public Icon icon;
-    public String object;
+    public String text;
 
     public IconText() {
-        this.object = "";
+        this.text = "";
         this.icon = new Icon();
     }
 
-    public void setObject(String object){
-        this.object = object;
+    public void setText(String text){
+        this.text = text;
     }
 
     @Override
     public String toString() {
         return "IconText{" +
                 "icon=" + icon +
-                ", object='" + object + '\'' +
+                ", text='" + text + '\'' +
                 '}';
     }
 }
