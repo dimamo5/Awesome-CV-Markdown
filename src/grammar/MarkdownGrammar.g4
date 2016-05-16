@@ -2,7 +2,7 @@ parser grammar MarkdownGrammar;
 
 options {tokenVocab=MarkdownLexer;}
 @members{
-    public data2.Cv cv = new data2.Cv();
+    public data.Cv cv = new data.Cv();
 }
 cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 
@@ -18,11 +18,11 @@ block: {cv.newBlock(); } blockName subBlock+;
 subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})? (list|table|any);
 
 
-list: {cv.getSubBlock().setType(data2.SubBlock.BlockType.LIST);cv.getList().newListLine();} blockList+;
+list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();} blockList+;
 blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE blockListCell*;
 blockListCell: COLON icon? any?{cv.getList().addListCell($any.text, $icon.text);} NEWLINE;
 
-table:{cv.getSubBlock().setType(data2.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;
+table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;
 tableBody: (tableLine NEWLINE)+;
 
 

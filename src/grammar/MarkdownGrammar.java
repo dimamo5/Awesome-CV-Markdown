@@ -91,7 +91,7 @@ public class MarkdownGrammar extends Parser {
 	public ATN getATN() { return _ATN; }
 
 
-	    public data2.Cv cv = new data2.Cv();
+	    public data.Cv cv = new data.Cv();
 
 	public MarkdownGrammar(TokenStream input) {
 		super(input);
@@ -743,7 +743,7 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data2.SubBlock.BlockType.LIST);cv.getList().newListLine();
+			cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();
 			setState(131); 
 			_errHandler.sync(this);
 			_alt = 1;
@@ -956,7 +956,7 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data2.SubBlock.BlockType.TABLE);
+			cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);
 			setState(156);
 			tableHeader();
 			setState(157);
