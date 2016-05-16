@@ -1,6 +1,4 @@
-package data;
-
-import java.util.Arrays;
+package data2;
 
 /**
  * Created by diogo on 13/05/2016.

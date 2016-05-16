@@ -1,8 +1,9 @@
-package data;
+package data2;
 
 /**
  * Created by inesa on 14/05/2016.
  */
+
 public class IconText {
     public Icon icon;
     public String text;

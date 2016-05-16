@@ -1,4 +1,4 @@
-// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Utilizador/Desktop/MIEIC/3º ano/2º semestre/COMP/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
 package grammar;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -91,7 +91,7 @@ public class MarkdownGrammar extends Parser {
 	public ATN getATN() { return _ATN; }
 
 
-	    public data.Cv cv = new data.Cv();
+	    public data2.Cv cv = new data2.Cv();
 
 	public MarkdownGrammar(TokenStream input) {
 		super(input);
@@ -126,6 +126,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitCv(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitCv(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -228,6 +233,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitInfo(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitInfo(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final InfoContext info() throws RecognitionException {
@@ -308,6 +318,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitSubHeader(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitSubHeader(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SubHeaderContext subHeader() throws RecognitionException {
@@ -373,6 +388,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitName(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitName(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final NameContext name() throws RecognitionException {
@@ -419,6 +439,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitAddress(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitAddress(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -473,6 +498,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitContacts(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitContacts(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -538,6 +568,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBlock(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBlock(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -606,6 +641,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitSubBlock(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitSubBlock(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -689,6 +729,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ListContext list() throws RecognitionException {
@@ -698,7 +743,7 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();
+			cv.getSubBlock().setType(data2.SubBlock.BlockType.LIST);cv.getList().newListLine();
 			setState(131); 
 			_errHandler.sync(this);
 			_alt = 1;
@@ -756,6 +801,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBlockList(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBlockList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -823,6 +873,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBlockListCell(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBlockListCell(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final BlockListCellContext blockListCell() throws RecognitionException {
@@ -888,6 +943,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTable(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTable(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TableContext table() throws RecognitionException {
@@ -896,7 +956,7 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);
+			cv.getSubBlock().setType(data2.SubBlock.BlockType.TABLE);
 			setState(156);
 			tableHeader();
 			setState(157);
@@ -938,6 +998,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTableBody(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTableBody(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1005,6 +1070,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitIcon(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitIcon(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1086,6 +1156,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBoldText(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBoldText(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final BoldTextContext boldText() throws RecognitionException {
@@ -1166,6 +1241,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTableHeader(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTableHeader(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TableHeaderContext tableHeader() throws RecognitionException {
@@ -1239,6 +1319,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTableCell(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTableCell(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TableCellContext tableCell() throws RecognitionException {
@@ -1283,6 +1368,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTableLine(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTableLine(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1344,6 +1434,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBlockName(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBlockName(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1414,6 +1509,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitBlockSubName(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitBlockSubName(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1494,6 +1594,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitAny(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitAny(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1617,6 +1722,11 @@ public class MarkdownGrammar extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitTablecontent(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitTablecontent(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TablecontentContext tablecontent() throws RecognitionException {
@@ -1708,6 +1818,11 @@ public class MarkdownGrammar extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MarkdownGrammarListener ) ((MarkdownGrammarListener)listener).exitWord_space(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MarkdownGrammarVisitor ) return ((MarkdownGrammarVisitor<? extends T>)visitor).visitWord_space(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

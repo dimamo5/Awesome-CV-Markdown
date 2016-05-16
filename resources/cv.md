@@ -49,7 +49,7 @@
 ###Awards
 ####REGIONAL PROGRAMMING CONTESTS
 *4th Place
-: Prémio Progarmacao data X
+: Prémio Progarmacao data2 X
 :{place} Porto
  ------
 ###Master Degree
