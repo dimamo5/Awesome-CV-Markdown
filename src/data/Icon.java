@@ -1,7 +1,5 @@
 package data;
 
-import java.util.Arrays;
-
 /**
  * Created by diogo on 13/05/2016.
  */
