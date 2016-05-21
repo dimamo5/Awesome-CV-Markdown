@@ -24,7 +24,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import code_generation.PersonalInfoFile;
+import code_generation.HeaderFile;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.ANTLRFileStream;
@@ -279,7 +279,7 @@ class Markdown {
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
             System.out.println(parser.cv.info.getSub());
-            new PersonalInfoFile(parser.cv);
+            new HeaderFile(parser.cv);
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());
