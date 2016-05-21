@@ -11,13 +11,13 @@ import java.nio.file.Paths;
 /**
  * Created by inesa on 21/05/2016.
  */
-public class PersonalInfoFile {
-    public PersonalInfoFile(Cv cv) throws IOException {
+public class HeaderFile {
+    public HeaderFile(Cv cv) throws IOException {
         FileInputStream in = null;
         FileOutputStream out = null;
 
         try {
-            out = new FileOutputStream(Paths.get("").toAbsolutePath().toString() + "/resources/personalInfo.tex");
+            out = new FileOutputStream(Paths.get("").toAbsolutePath().toString() + "/resources/headerFile.tex");
 
             //Personal info!
             String[] splited = cv.info.getName().split(" ");
