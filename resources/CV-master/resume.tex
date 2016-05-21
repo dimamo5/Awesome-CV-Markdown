@@ -1,0 +1,410 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Copyright 2015 Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Themes: Awesome-CV
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\usepackage{natbib}
+\usepackage{bibentry}
+\usepackage{relsize}
+\usepackage{amsmath}
+
+\usepackage{verbatim}
+\usepackage{nth}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{multicol}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{secs/}
+\newcommand*{\sectiondirII}{resume/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-concrete}
+\definecolor{awesome}{HTML}{6694A5}
+%% Colors for text
+\definecolor{darktext}{HTML}{111111}
+\definecolor{text}{HTML}{555555}
+\definecolor{graytext}{HTML}{999999}
+\definecolor{lighttext}{HTML}{BBBBBB}
+\definecolor{lightbackground}{HTML}{EEEEEE}
+\definecolor{darkbackground}{HTML}{CCCCCC}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     3rd party packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Needed to divide into several files
+\usepackage{import}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Personal Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Essentials
+\name{Nuno}{Cardoso}
+%%% Social
+\email{nunopcardosos@gmail.com}
+\github{npcardoso}
+
+%%% Optionals
+%\position{Software Engineer{\enskip\cdotp\enskip}Security Expert}
+
+\nobibliography*
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Make a footer for CV using personal data
+\makecvfooter
+
+\begin{document}
+%%% Make a header for CV using personal data
+\makecvheader
+
+\cvsection{Personal Information}
+\begin{multicols}{2}
+\begin{cvkeyval}
+  \cvkeyvalitem{Name}{José Nuno de Pinho Cardoso}
+  \cvkeyvalitem{Date of Birth}{\myyearmonthday{27}{05}{1988}}
+  \cvkeyvalitem{Place of Birth}{Porto -- Portugal}
+  \cvkeyvalitem{Nationality}{Portuguese}
+\end{cvkeyval}
+\end{multicols}
+\cvsection{Education}
+\begin{cvdegreecategory}{Basic Education}
+  \cvdegree{École Fran\c{c}aise de Porto}
+  {}
+  {\timeinterval{\myyearmonth{09}{1990}}{\myyearmonth{06}{2000}}}
+  {Porto}
+  \cvdegree {Escola Básica da Senhora da Hora}
+  {}
+  {\timeinterval{\myyearmonth{09}{2000}}{\myyearmonth{06}{2003}}}
+  {Matosinhos}
+\end{cvdegreecategory}
+\begin{cvdegreecategory}{Secondary Education}
+  \cvdegree {\specialcell{Curso Tecnológico de Informática \\ Escola Secundária da Senhora da Hora}}
+  {\grade{17.5}{20}}
+  {\timeinterval{\myyearmonth{09}{2003}}{\myyearmonth{06}{2006}}}
+  {Matosinhos}
+\end{cvdegreecategory}
+
+\begin{cvdegreecategory}{Higher Education}
+  \cvdegree {Mestrado Integrado em Engenharia Informática \\ Faculdade de Engenharia da Universidade do Porto}
+  {\grade{16}{20}}
+  {\timeinterval{\myyearmonth{09}{2006}}{\myyearmonth{06}{2011}}}
+  {Porto}
+
+  \cvdegree {Programa Doutoral em Engenharia Informática \\ Faculdade de Engenharia da Universidade do Porto}
+  {}
+  {\timeinterval{\myyearmonth{09}{2011}}{\myyear{2016}}}
+  {Porto}
+\end{cvdegreecategory}
+
+\begin{cvdegreecategory}{Online}
+  \cvdegree {Machine learning course -- Stanford University}
+  {\grade{98.8}{100}}
+  {\timeinterval{\myyearmonth{08}{2013}}{\myyear{2016}}}
+  {Coursera}
+\end{cvdegreecategory}
+
+\cvsection{Experience}
+\cvsubsection{Vocational}
+\begin{cventries}
+  \cventry
+  {Laboratório de Gestão de Projectos (FEUP/Banco BPI) \grade{17}{20}}
+  {Project/Implementation Manager}
+  {Porto -- Portugal}
+  {\timeinterval{\myyearmonth{02}{2010}}{\myyearmonth{07}{2010}}}
+  {}
+  %
+  \cventry
+  {Centro de Informática Prof. Correia de Araújo}
+  {Researcher}
+  {Porto -- Portugal}
+  {\timeinterval{\myyear{2010}}{\myyear{2011}}}
+  {}
+  %
+  \cventry
+  {Faculdade de Engenharia da Universidade do Porto}
+  {Teaching assistant (Projecto FEUP)}
+  {Porto -- Portugal}
+  {\timeinterval{\myyearmonth{09}{2010}}{\myyearmonth{12}{2010}}}
+  {}
+  %
+  \cventry
+  {Faculdade de Engenharia da Universidade do Porto}
+  {Lecturer (Programming I and II)}
+  {Porto -- Portugal}
+  {\timeinterval{\myyearmonth{09}{2013}}{\myyearmonth{01}{2015}}}
+  {}
+\end{cventries}
+\cvsubsection{Miscellaneous}
+
+\begin{cventries}
+  \cventry
+  {Unidade de Gestão de Eventos -- Faculdade de Engenharia da Universidade do Porto}
+  {Sound, light and video technician}
+  {Porto -- Portugal}
+  {\timeinterval{\myyear{2010}}{\myyear{2011}}}
+  {
+    feupville
+  }
+\end{cventries}
+\cvsection{Awards}
+\cvsubsection{Regional Programming Contests}
+\begin{cvhonors}
+  \cvhonor
+  {\nth{1} Place}
+  {Concurso de Programa\c{c}ão para Alunos do Secundário (CPAS'06)}
+  {Porto}
+  {\myyear{2006}}
+
+  \cvhonor
+  {\nth{1} Place}
+  {Concurso de Programa da Universidade do Porto (CPUP'07)}
+  {Porto}
+  {\myyear{2007}}
+  % 1ª Prova: 16 de Maio de 2007 (DCC/FCUP + FEUP)
+  % 2ª Prova: 30 de Maio de 2007 (DCC/FCUP + FEUP)
+  % 3ª Prova: 10 de Outubro de 2007 (DCC/FCUP + FEUP)
+
+  \cvhonor
+  {\nth{1} Place}
+  {Concurso de Programa da Universidade do Porto (CPUP'08)}
+  {Porto}
+  {\myyear{2008}}
+
+  \cvhonor
+  {\nth{4} Place}
+  {Prémio de Programa\c{c}ão Universidade Portucalense (PPUP'04)}
+  {Porto}
+  {\myyear{2004}}
+\end{cvhonors}
+
+
+\cvsubsection{National Programming Contests}
+\begin{cvhonors}
+  \cvhonor
+  {\nth{1} Place}
+  {Torneio de Programa\c{c}ão para Alunos do Secundário (ToPAS'06)}
+  {Porto}
+  {\myyearmonthday{13}{05}{2006}}
+
+  \cvhonor
+  {\nth{1} Place (unofficial)}
+  {Maratona Inter-Universitária de Programa\c{c}ão (MIUP'06)}
+  {Covilhã}
+  {\myyearmonth{10}{2006}}
+
+  \cvhonor
+  {\nth{1} Place}
+  {Torneio Inter-Universitário de Programa\c{c}ão (TIUP'07)}
+  {Porto}
+  {\myyear{2007}}
+
+
+
+  \cvhonor
+  {\nth{1} Place}
+  {Maratona Inter-Universitária de Programa\c{c}ão (MIUP'07)}
+  {Lisboa}
+  {\myyearmonthday{20}{10}{2008}}
+
+  \cvhonor
+  {\nth{2} Place}
+  {Torneio de Programa\c{c}ão para Alunos do Secundário (ToPAS'05)}
+  {Porto}
+  {\myyearmonthday{14}{05}{2005}}
+
+
+  \cvhonor
+  {\nth{2} Place}
+  {Torneio Inter-Universitário de Programa\c{c}ão (TIUP'08)}
+  {Porto}
+  {\myyear{2008}}
+
+  \cvhonor
+  {\nth{2} Place}
+  {Maratona Inter-Universitária de Programa\c{c}ão (MIUP'08)}
+  {Coimbra}
+  {\myyearmonthday{25}{10}{2008}}
+
+  \cvhonor
+  {\nth{3} Place}
+  {Torneio de Programa\c{c}ão para Alunos do Secundário (ToPAS'04)}
+  {Porto}
+  {\myyearmonthday{15}{05}{2004}}
+
+\end{cvhonors}
+
+\cvsubsection{International Programming Contests}
+\begin{cvhonors}
+  \cvhonor
+  {\nth{9} Place}
+  {South Western European Regional Contest (SWERC'08)}
+  {Nuremberg}
+  {\myyearmonthday{23}{11}{2006}}
+\end{cvhonors}
+
+\cvsubsection{International Conferences}
+\begin{cvhonors}
+  \cvhonor
+  {Best Paper Award}
+  {\specialcell{\nth{25} International Conference on Principles of Diagnosis (DX'14) \\ An Efficient Distributed Algorithm for Computing Minimal Hitting Sets}}
+  {Graz}
+  {\myyearmonth{09}{2014}}
+
+  \cvhonor
+  {Best Paper Award Nominee}
+  {\specialcell{\nth{25} International Conference on Principles of Diagnosis (DX'14) \\ Enhancing Reasoning Approaches to Diagnose Functional and Non-Functional Errors}}
+  {Graz}
+  {\myyearmonth{09}{2014}}
+\end{cvhonors}
+
+\cvsection{Publications}
+\begin{cvitems}[1cm]
+  \cvitem{\bibentry{Cardoso13a}}
+  \cvitem{\bibentry{Cardoso13b}}
+  \cvitem{\bibentry{Cardoso13c}}
+  \cvitem{\bibentry{Cardoso14a}}
+  \cvitem{\bibentry{Cardoso14b}}
+\end{cvitems}
+
+\cvsection{Committees}
+\begin{cventries}
+  \cventry
+  {\nth{7} Doctoral Symposium on Informatics Engineering}
+  {Organization Co-chair}
+  {Porto}
+  {\myyearmonth{01}{2012}}
+  {}
+\end{cventries}
+
+\cvsection{Grants}
+\begin{cventries}
+  \cventry
+  {Fundação para a Ciência e Tecnologia}
+  {\emph{PhD} Scholarship}
+  {}
+  {\timeinterval{\myyearmonth{01}{2012}}{\myyearmonth{12}{2015}}}
+  {}
+\end{cventries}
+
+
+
+\cvsection{Languages}
+\cvsubsection{Natural}
+\begin{multicols}{2}
+  \begin{cvitems}
+    \cvitem[Portuguese] {\stars[3]{3} (Native)}
+    \cvitem[English]    {\stars[3]{2.5} (Fluent)}
+    \cvitem[French]     {\stars[3]{2.5} (Fluent)}
+    \cvitem[Spanish]    {\stars[3]{1} (Basic)}
+  \end{cvitems}
+\end{multicols}
+
+\cvsubsection{Artificial}
+\begin{multicols}{2}
+  \begin{cvitems}
+    \cvitem[C]         {\stars[3]{3} (Proficient)}
+    \cvitem[C++]       {\stars[3]{3} (Proficient)}
+    \cvitem[Java]      {\stars[3]{3} (Proficient)}
+    \cvitem[Python]    {\stars[3]{3} (Proficient)}
+    \cvitem[Bash/ZSH]  {\stars[3]{3} (Proficient)}
+    \cvitem[PHP]       {\stars[3]{2} (Good Knowledge)}
+    \cvitem[SQL]       {\stars[3]{2} (Good Knowledge)}
+    \cvitem[Javascript]{\stars[3]{2} (Good Knowledge)}
+    \cvitem[eLisp]     {\stars[3]{1} (Basic Knowledge)}
+    \cvitem[Prolog]    {\stars[3]{1} (Basic Knowledge)}
+  \end{cvitems}
+\end{multicols}
+
+\cvsection{Computer Skills}
+\begin{multicols}{2}
+  \cvsubsection{Operating Systems}
+  \begin{cvitems}
+    \cvitem[Linux]   {\stars[3]{3}   (Proficient)}
+    \cvitem[Windows] {\stars[3]{0.5} (Very Basic Knowledge)}
+  \end{cvitems}
+
+  \cvsubsection{Frameworks}
+  \begin{cvitems}
+    \cvitem[Django] {\stars[3]{3} (Proficient)}
+    \cvitem[OpenCV] {\stars[3]{1} (Basic Knowledge)}
+  \end{cvitems}
+
+  \cvsubsection{Databases}
+  \begin{cvitems}
+    \cvitem[MySQL] {\stars[3]{2} (Good Knowledge)}
+    \cvitem[PostgresSQL] {\stars[3]{2} (Good Knowledge)}
+  \end{cvitems}
+
+  \columnbreak
+
+  \cvsubsection{Office}
+  \begin{cvitems}
+    \cvitem[Latex]      {\stars[3]{3} (Proficient)}
+    \cvitem[GIMP]       {\stars[3]{3} (Proficient)}
+    \cvitem[Org Mode]   {\stars[3]{2} (Good Knowledge)}
+  \end{cvitems}
+
+  \cvsubsection{Other}
+  \begin{cvitems}
+    \cvitem[Networking]         {\stars[3]{3} (Proficient)}
+    \cvitem[Parallel Computing] {\stars[3]{3} (Proficient)}
+    \cvitem[Machine Learning]   {\stars[3]{3} (Proficient)}
+  \end{cvitems}
+\end{multicols}
+
+\cvsection{Hobbies/Interests}
+\begin{multicols}{2}
+  \cvsubsection{Music}
+  \begin{cvitems}
+    \cvitem[Drums] {\stars[3]{2} (Good Knowledge)}
+    \cvitem[Guitar]{\stars[3]{2} (Good Knowledge)}
+  \end{cvitems}
+
+  \cvsubsection{DIY}
+  \begin{cvitems}
+    \cvitem[Electronics]{\stars[3]{2} (Good Knowledge)}
+    \cvitem[Woodworking]{\stars[3]{2} (Good Knowledge)}
+    \cvitem[Masonry]{\stars[3]{2} (Good Knowledge)}
+    \cvitem[Metalworking]{\stars[3]{1} (Good Knowledge)}
+  \end{cvitems}
+\columnbreak
+  \cvsubsection{Miscellaneous}
+  \begin{cvitems}
+    \cvitem[Chess]{\stars[3]{1} (Basic Knowledge)}
+    \cvitem[Physics]{\stars[3]{1} (Basic Knowledge)}
+  \end{cvitems}
+\end{multicols}
+
+\cvsubsection{Projects}
+\begin{cvitems}[1cm]
+  \cvitem{\url{http://www.instructables.com/id/Cheap-cyclone-based-vacuum-cleaner-made-from-scrat/}}
+\end{cvitems}
+
+\bibliographystyle{alpha}
+\nobibliography{references.bib}
+
+\end{document}

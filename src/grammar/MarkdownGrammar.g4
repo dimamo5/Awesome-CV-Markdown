@@ -26,7 +26,7 @@ table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEW
 tableBody: (tableLine NEWLINE)+;
 
 
-icon locals[boolean allow=true]: OPEN_CURLY WORD SPACE* STAR_CLASS?{String s=$STAR_CLASS.text; if(s!=null){String[] ints= s.split("/");float esquerda=Float.valueOf(ints[0].trim()); float direita=Float.valueOf(ints[1].trim()); if(esquerda>direita){System.err.println("Nr of stars cannot be bigger than total stars");$allow=false;}else $allow=true;}} {$allow}? CLOSE_CURLY;
+icon locals[boolean allow=true]: OPEN_CURLY WORD SPACE* STAR_CLASS?{String s=$STAR_CLASS.text; if(s!=null){String[] int= s.split("/");float esquerda=Float.valueOf(ints[0].trim()); float direita=Float.valueOf(ints[1].trim()); if(esquerda>direita){System.err.println("Nr of stars cannot be bigger than total stars");$allow=false;}else $allow=true;}} {$allow}? CLOSE_CURLY;
 
 boldText: TILT any+ NEWLINE+;
 tableHeader: word_space{cv.getTable().addHeaderCell($word_space.text);} (HAT SPACE* word_space {cv.getTable().addHeaderCell($word_space.text);})+;
