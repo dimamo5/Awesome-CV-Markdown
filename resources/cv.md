@@ -1,6 +1,6 @@
 #Nuno Cardoso
-##SOFTWARE ENGINEER
-## SECURITY EXPERT
+##Software Engineer
+##Security Expert
 *morada estrelinha significa estar o
 >{cellphone} 967639745
 >{linkedin} diogomoura13

@@ -59,6 +59,21 @@ public class Info {
         return null;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<String> getSub() {
+        return sub;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ArrayList<IconText> getContacts() {
+        return contacts;
+    }
 
     @Override
     public String toString() {
