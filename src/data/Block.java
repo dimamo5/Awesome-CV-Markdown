@@ -6,18 +6,19 @@ import java.util.ArrayList;
  * Created by diogo on 14/05/2016.
  */
 public class Block {
+    public ArrayList<SubBlock> subBlocks = new ArrayList<>();
     private String blockName;
-    public ArrayList<SubBlock> subBlocks=new ArrayList<>();
 
-    public void addBlockName(String s){
-        this.blockName=s;
+    public void addBlockName(String s) {
+        this.blockName = s;
     }
-    public void newSubBlock(){
+
+    public void newSubBlock() {
         this.subBlocks.add(new SubBlock());
     }
 
-    public SubBlock getSubBlock(){
-        return this.subBlocks.get(this.subBlocks.size()-1);
+    public SubBlock getSubBlock() {
+        return this.subBlocks.get(this.subBlocks.size() - 1);
     }
 
     @Override

@@ -29,13 +29,13 @@ public class Icon {
     public void divide() {
         String[] numbs = name.split("[a-z] *");
         String[] numSembarra;
-        if(numbs.length !=0) {
+        if (numbs.length != 0) {
             numSembarra = numbs[numbs.length - 1].split("/");
             this.attr1 = Double.parseDouble(numSembarra[0]);
             this.attr2 = Double.parseDouble(numSembarra[1]);
         }
         String[] n = name.split(" *[0-9](\\.[0-9]/)?");
-        if(n.length !=0)
+        if (n.length != 0)
             this.name = n[0];
 
     }

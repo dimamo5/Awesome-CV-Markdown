@@ -14,6 +14,6 @@ public class Utils {
                 }
             }
             return sb.toString();
-        }else return null;
+        } else return null;
     }
 }
