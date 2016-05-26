@@ -24,7 +24,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import code_generation.HeaderFile;
+import code_generation.HeaderBuilder;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.ANTLRFileStream;
@@ -106,7 +106,7 @@ class Markdown {
         //System.out.println( System.getProperty("user.dir"));
         //parseFile( "./resources/" + c.nextLine());
         System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
-        parseFile("resources/cv.md");
+        parseFile("resources/mdfiles/cv.md");
     }
 
     public static void doAll(String[] args) {
@@ -278,8 +278,7 @@ class Markdown {
             if ( notree ) parser.setBuildParseTree(false);
             if ( printTree ) System.out.println(t.toStringTree(parser));
 
-            System.out.println(parser.cv.info.getSub());
-            new HeaderFile(parser.cv);
+            new HeaderBuilder(parser.cv.info).buildTex();
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());
