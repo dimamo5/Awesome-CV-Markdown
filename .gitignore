@@ -1,3 +1,7 @@
 /out
 /.idea
 *.iml
+*.aux
+*.log
+*.out
+*.pdf

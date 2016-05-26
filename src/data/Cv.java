@@ -21,15 +21,15 @@ public class Cv {
         else return null;
     }
 
-    public Block getBlock(){
-        return blocks.get(blocks.size()-1);
+    public Block getBlock() {
+        return blocks.get(blocks.size() - 1);
     }
 
-    public void newBlock(){
+    public void newBlock() {
         this.blocks.add(new Block());
     }
 
-    public SubBlock getSubBlock(){
+    public SubBlock getSubBlock() {
         return this.getBlock().getSubBlock();
     }
 

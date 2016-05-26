@@ -24,19 +24,14 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import code_generation.HeaderFile;
+import code_generation.HeaderBuilder;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.BailErrorStrategy;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.DiagnosticErrorListener;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.LexerATNSimulator;
 import org.antlr.v4.runtime.atn.PredictionMode;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
@@ -69,63 +64,33 @@ class Markdown {
     //	public static long parserStart;
 //	public static long parserStop;
     public static Worker[] workers = new Worker[3];
+    public static CyclicBarrier barrier;
+    public static volatile boolean firstPassDone = false;
     static int windex = 0;
 
-    public static CyclicBarrier barrier;
-
-    public static volatile boolean firstPassDone = false;
-
-    public static class Worker implements Runnable {
-        public long parserStart;
-        public long parserStop;
-        List<String> files;
-        public Worker(List<String> files) {
-            this.files = files;
-        }
-        @Override
-        public void run() {
-            parserStart = System.currentTimeMillis();
-            for (String f : files) {
-                parseFile(f);
-            }
-            parserStop = System.currentTimeMillis();
-            try {
-                barrier.await();
-            }
-            catch (InterruptedException ex) {
-                return;
-            }
-            catch (BrokenBarrierException ex) {
-                return;
-            }
-        }
-    }
-
     public static void main(String[] args) {
-        //Scanner c= new Scanner(System.in);
-        //System.out.println( System.getProperty("user.dir"));
-        //parseFile( "./resources/" + c.nextLine());
-        System.out.println("Parsing file: " + System.getProperty("user.dir") + "/resources/info.md");
-        parseFile("resources/cv.md");
+        String file2Parse = "resources/mdfiles/cv.md";
+        System.out.println("Parsing file: " + System.getProperty("user.dir") + file2Parse);
+        parseFile(file2Parse);
     }
 
     public static void doAll(String[] args) {
         List<String> inputFiles = new ArrayList<String>();
         long start = System.currentTimeMillis();
         try {
-            if (args.length > 0 ) {
+            if (args.length > 0) {
                 // for each directory/file specified on the command line
-                for(int i=0; i< args.length;i++) {
-                    if ( args[i].equals("-notree") ) notree = true;
-                    else if ( args[i].equals("-gui") ) gui = true;
-                    else if ( args[i].equals("-ptree") ) printTree = true;
-                    else if ( args[i].equals("-SLL") ) SLL = true;
-                    else if ( args[i].equals("-bail") ) bail = true;
-                    else if ( args[i].equals("-diag") ) diag = true;
-                    else if ( args[i].equals("-2x") ) x2 = true;
-                    else if ( args[i].equals("-threaded") ) threaded = true;
-                    else if ( args[i].equals("-quiet") ) quiet = true;
-                    if ( args[i].charAt(0)!='-' ) { // input file name
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].equals("-notree")) notree = true;
+                    else if (args[i].equals("-gui")) gui = true;
+                    else if (args[i].equals("-ptree")) printTree = true;
+                    else if (args[i].equals("-SLL")) SLL = true;
+                    else if (args[i].equals("-bail")) bail = true;
+                    else if (args[i].equals("-diag")) diag = true;
+                    else if (args[i].equals("-2x")) x2 = true;
+                    else if (args[i].equals("-threaded")) threaded = true;
+                    else if (args[i].equals("-quiet")) quiet = true;
+                    if (args[i].charAt(0) != '-') { // input file name
                         inputFiles.add(args[i]);
                     }
                 }
@@ -142,20 +107,18 @@ class Markdown {
 //				dot = gen.getDOT(JavaParser._decisionToDFA[81], false);
 //				System.out.println(dot);
 
-                if ( x2 ) {
+                if (x2) {
                     System.gc();
                     System.out.println("waiting for 1st pass");
-                    if ( threaded ) while ( !firstPassDone ) { } // spin
+                    if (threaded) while (!firstPassDone) { } // spin
                     System.out.println("2nd pass");
                     doFiles(javaFiles);
                 }
-            }
-            else {
+            } else {
                 System.err.println("Usage: java Main <directory or file name>");
             }
-        }
-        catch(Exception e) {
-            System.err.println("exception: "+e);
+        } catch (Exception e) {
+            System.err.println("exception: " + e);
             e.printStackTrace(System.err);   // so we can get stack trace
         }
         long stop = System.currentTimeMillis();
@@ -166,23 +129,23 @@ class Markdown {
     public static void doFiles(List<String> files) throws Exception {
         long parserStart = System.currentTimeMillis();
 //		lexerTime = 0;
-        if ( threaded ) {
-            barrier = new CyclicBarrier(3,new Runnable() {
+        if (threaded) {
+            barrier = new CyclicBarrier(3, new Runnable() {
                 public void run() {
-                    report(); firstPassDone = true;
+                    report();
+                    firstPassDone = true;
                 }
             });
             int chunkSize = files.size() / 3;  // 10/3 = 3
             int p1 = chunkSize; // 0..3
             int p2 = 2 * chunkSize; // 4..6, then 7..10
-            workers[0] = new Worker(files.subList(0,p1+1));
-            workers[1] = new Worker(files.subList(p1+1,p2+1));
-            workers[2] = new Worker(files.subList(p2+1,files.size()));
-            new Thread(workers[0], "worker-"+windex++).start();
-            new Thread(workers[1], "worker-"+windex++).start();
-            new Thread(workers[2], "worker-"+windex++).start();
-        }
-        else {
+            workers[0] = new Worker(files.subList(0, p1 + 1));
+            workers[1] = new Worker(files.subList(p1 + 1, p2 + 1));
+            workers[2] = new Worker(files.subList(p2 + 1, files.size()));
+            new Thread(workers[0], "worker-" + windex++).start();
+            new Thread(workers[1], "worker-" + windex++).start();
+            new Thread(workers[2], "worker-" + windex++).start();
+        } else {
             for (String f : files) {
                 parseFile(f);
             }
@@ -195,18 +158,18 @@ class Markdown {
 //		parserStop = System.currentTimeMillis();
 //		System.out.println("Lexer total time " + lexerTime + "ms.");
         long time = 0;
-        if ( workers!=null ) {
+        if (workers != null) {
             // compute max as it's overlapped time
             for (Worker w : workers) {
                 long wtime = w.parserStop - w.parserStart;
-                time = Math.max(time,wtime);
+                time = Math.max(time, wtime);
                 System.out.println("worker time " + wtime + "ms.");
             }
         }
         System.out.println("Total lexer+parser time " + time + "ms.");
 
         System.out.println("finished parsing OK");
-        System.out.println(LexerATNSimulator.match_calls+" lexer match calls");
+        System.out.println(LexerATNSimulator.match_calls + " lexer match calls");
 //		System.out.println(ParserATNSimulator.predict_calls +" parser predict calls");
 //		System.out.println(ParserATNSimulator.retry_with_context +" retry_with_context after SLL conflict");
 //		System.out.println(ParserATNSimulator.retry_with_context_indicates_no_conflict +" retry sees no conflict");
@@ -223,16 +186,61 @@ class Markdown {
         // If this is a directory, walk each file/dir in that directory
         if (f.isDirectory()) {
             String flist[] = f.list();
-            for(int i=0; i < flist.length; i++) {
+            for (int i = 0; i < flist.length; i++) {
                 getFilenames_(new File(f, flist[i]), files);
             }
         }
 
         // otherwise, if this is a java file, parse it!
-        else if ( ((f.getName().length()>5) &&
-                f.getName().substring(f.getName().length()-5).equals(".java")) )
-        {
+        else if (((f.getName().length() > 5) &&
+                f.getName().substring(f.getName().length() - 5).equals(".java"))) {
             files.add(f.getAbsolutePath());
+        }
+    }
+
+    public static void parseFile(String f) {
+        try {
+            // Create a scanner that reads from the input stream passed to us
+            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(f));
+
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+//			long start = System.currentTimeMillis();
+//			tokens.fill(); // load all and check time
+//			long stop = System.currentTimeMillis();
+//			lexerTime += stop-start;
+
+            // Create a parser that reads from the scanner
+            MarkdownGrammar parser = new MarkdownGrammar(tokens);
+            if (diag) parser.addErrorListener(new DiagnosticErrorListener());
+            if (bail) parser.setErrorHandler(new BailErrorStrategy());
+            if (SLL) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
+
+            // start parsing at the compilationUnit rule
+            ParserRuleContext t = parser.cv();
+            if (notree) parser.setBuildParseTree(false);
+            if (printTree) System.out.println(t.toStringTree(parser));
+
+            new HeaderBuilder(parser.cv.info).buildTex();
+
+            String file=" resources/generated/resume.tex";
+            Process p = Runtime.getRuntime().exec("cmd");
+
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+            writer.write("xelatex\n");
+
+            String line = "";
+            while ((line = reader.readLine())!= null) {
+                System.out.println(line);
+            }
+
+            //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
+            //x.visitInfo(parser.info());
+        } catch (Exception e) {
+            System.err.println("parser exception: " + e);
+            e.printStackTrace();   // so we can get stack trace
         }
     }
 
@@ -256,37 +264,29 @@ class Markdown {
 //		}
 //	}
 
-    public static void parseFile(String f) {
-        try {
-            // Create a scanner that reads from the input stream passed to us
-            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(f));
+    public static class Worker implements Runnable {
+        public long parserStart;
+        public long parserStop;
+        List<String> files;
 
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-//			long start = System.currentTimeMillis();
-//			tokens.fill(); // load all and check time
-//			long stop = System.currentTimeMillis();
-//			lexerTime += stop-start;
-
-            // Create a parser that reads from the scanner
-            MarkdownGrammar parser = new MarkdownGrammar(tokens);
-            if ( diag ) parser.addErrorListener(new DiagnosticErrorListener());
-            if ( bail ) parser.setErrorHandler(new BailErrorStrategy());
-            if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
-
-            // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.cv();
-            if ( notree ) parser.setBuildParseTree(false);
-            if ( printTree ) System.out.println(t.toStringTree(parser));
-
-            System.out.println(parser.cv.info.getSub());
-            new HeaderFile(parser.cv);
-
-            //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
-            //x.visitInfo(parser.info());
+        public Worker(List<String> files) {
+            this.files = files;
         }
-        catch (Exception e) {
-            System.err.println("parser exception: "+e);
-            e.printStackTrace();   // so we can get stack trace
+
+        @Override
+        public void run() {
+            parserStart = System.currentTimeMillis();
+            for (String f : files) {
+                parseFile(f);
+            }
+            parserStop = System.currentTimeMillis();
+            try {
+                barrier.await();
+            } catch (InterruptedException ex) {
+                return;
+            } catch (BrokenBarrierException ex) {
+                return;
+            }
         }
     }
 }

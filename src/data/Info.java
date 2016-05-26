@@ -9,51 +9,51 @@ import java.util.ArrayList;
  */
 public class Info {
     private String name = null;
-    private ArrayList<String> sub=new ArrayList<>();
-    private String address =null;
-    private ArrayList<IconText> contacts=new ArrayList<>();
+    private ArrayList<String> sub = new ArrayList<>();
+    private String address = null;
+    private ArrayList<IconText> contacts = new ArrayList<>();
 
-    public void addName(String name){
-        if(this.name != null) {
+    public void addName(String name) {
+        if (this.name != null) {
             this.name = this.name + " " + name;
-        }
-        else{
-            this.name= name;
+        } else {
+            this.name = name;
         }
     }
 
-    public void addSub(String sub){
-        String s =this.sub.get(this.sub.size()-1);
-        if(s==null){
-            this.sub.set(this.sub.size()-1,sub);
-        }else {
-            this.sub.set(this.sub.size() - 1, this.sub.get(this.sub.size() - 1) +" " + sub);
+    public void addSub(String sub) {
+        String s = this.sub.get(this.sub.size() - 1);
+        if (s == null) {
+            this.sub.set(this.sub.size() - 1, sub.trim());
+        } else {
+            this.sub.set(this.sub.size() - 1, this.sub.get(this.sub.size() - 1) + " " + sub.trim());
         }
     }
-    public void newSub(){
+
+    public void newSub() {
         this.sub.add(null);
     }
 
-    public void addAddress(String address){
-        this.address=address;
+    public void addAddress(String address) {
+        this.address = Utils.analyzeEscape(address);;
     }
 
-    public void addContacts(String contacts, String s1){
+    public void addContacts(String contacts, String s1) {
         IconText i = new IconText();
 
-        if(contacts!=null)
+        if (contacts != null)
             i.setText(Utils.analyzeEscape(contacts));
-        if(s1!=null) {
+        if (s1 != null) {
             i.icon.setIconName(s1.substring(1, s1.length() - 1));
             i.icon.divide();
         }
         this.contacts.add(i);
     }
 
-    public String analyze(ParserRuleContext ctx){
-        String ret="";
-        for(int i =0; i<ctx.getChildCount();i++)
-        ret+=ctx.getChild(i);
+    public String analyze(ParserRuleContext ctx) {
+        String ret = "";
+        for (int i = 0; i < ctx.getChildCount(); i++)
+            ret += ctx.getChild(i);
 
         System.out.println(ret);
         return null;
