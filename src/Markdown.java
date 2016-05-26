@@ -24,12 +24,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-<<<<<<< HEAD
-import code_generation.CvFooter;
-import code_generation.HeaderFile;
-=======
 import code_generation.HeaderBuilder;
->>>>>>> 70103bd3d9173d5564da3a5a2523e4155415a8c2
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.*;
@@ -38,7 +33,6 @@ import org.antlr.v4.runtime.atn.PredictionMode;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -270,38 +264,10 @@ class Markdown {
 //		}
 //	}
 
-<<<<<<< HEAD
-    public static void parseFile(String f) {
-        try {
-            // Create a scanner that reads from the input stream passed to us
-            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(f));
-
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-//			long start = System.currentTimeMillis();
-//			tokens.fill(); // load all and check time
-//			long stop = System.currentTimeMillis();
-//			lexerTime += stop-start;
-
-            // Create a parser that reads from the scanner
-            MarkdownGrammar parser = new MarkdownGrammar(tokens);
-            if ( diag ) parser.addErrorListener(new DiagnosticErrorListener());
-            if ( bail ) parser.setErrorHandler(new BailErrorStrategy());
-            if ( SLL ) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
-
-            // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.cv();
-            if ( notree ) parser.setBuildParseTree(false);
-            if ( printTree ) System.out.println(t.toStringTree(parser));
-
-            System.out.println(parser.cv.info.getSub());
-            new HeaderFile(parser.cv);
-            new CvFooter(parser.cv);
-=======
     public static class Worker implements Runnable {
         public long parserStart;
         public long parserStop;
         List<String> files;
->>>>>>> 70103bd3d9173d5564da3a5a2523e4155415a8c2
 
         public Worker(List<String> files) {
             this.files = files;
