@@ -24,9 +24,9 @@ public class Info {
     public void addSub(String sub) {
         String s = this.sub.get(this.sub.size() - 1);
         if (s == null) {
-            this.sub.set(this.sub.size() - 1, sub);
+            this.sub.set(this.sub.size() - 1, sub.trim());
         } else {
-            this.sub.set(this.sub.size() - 1, this.sub.get(this.sub.size() - 1) + " " + sub);
+            this.sub.set(this.sub.size() - 1, this.sub.get(this.sub.size() - 1) + " " + sub.trim());
         }
     }
 
@@ -35,7 +35,7 @@ public class Info {
     }
 
     public void addAddress(String address) {
-        this.address = address;
+        this.address = Utils.analyzeEscape(address);;
     }
 
     public void addContacts(String contacts, String s1) {

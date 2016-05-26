@@ -13,7 +13,7 @@ public class Utils {
                     i++;
                 }
             }
-            return sb.toString();
+            return sb.toString().trim();
         } else return null;
     }
 }

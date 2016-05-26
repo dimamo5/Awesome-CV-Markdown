@@ -223,11 +223,14 @@ class Markdown {
 
             new HeaderBuilder(parser.cv.info).buildTex();
 
-            Process p = Runtime.getRuntime().exec("xelatex resources/generated/resume.tex");
-            p.waitFor();
+            String file=" resources/generated/resume.tex";
+            Process p = Runtime.getRuntime().exec("cmd");
 
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+            writer.write("xelatex\n");
 
             String line = "";
             while ((line = reader.readLine())!= null) {

@@ -13,7 +13,7 @@ public class List {
     }
 
     public void addHeader(String s) {
-        this.listHeader.add(s);
+        this.listHeader.add(Utils.analyzeEscape(s));
     }
 
     public void newListLine() {
