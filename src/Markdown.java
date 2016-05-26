@@ -24,6 +24,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import code_generation.CvFooter;
 import code_generation.HeaderFile;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
@@ -280,6 +281,7 @@ class Markdown {
 
             System.out.println(parser.cv.info.getSub());
             new HeaderFile(parser.cv);
+            new CvFooter(parser.cv);
 
             //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
             //x.visitInfo(parser.info());

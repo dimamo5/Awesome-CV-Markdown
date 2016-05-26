@@ -13,7 +13,6 @@ import java.nio.file.Paths;
  */
 public class HeaderFile {
     public HeaderFile(Cv cv) throws IOException {
-        FileInputStream in = null;
         FileOutputStream out = null;
 
         try {
@@ -37,7 +36,7 @@ public class HeaderFile {
             s += cv.info.getSub().get(cv.info.getSub().size() - 1)  + "}";
 
             for(int i=0; i < cv.info.getContacts().size() ; i++){
-                s += "\n" + "\\" + cv.info.getContacts().get(i).icon.name + "{" + cv.info.getContacts().get(i).text + "}";
+                s += "\n" + "\\" + cv.info.getContacts().get(i).icon.name.trim() + "{" + cv.info.getContacts().get(i).text.trim() + "}";
             }
 
             out.write(s.getBytes());
@@ -48,9 +47,6 @@ public class HeaderFile {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (in != null) {
-                in.close();
-            }
             if (out != null) {
                 out.close();
             }
