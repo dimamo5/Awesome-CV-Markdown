@@ -13,7 +13,7 @@ public class IconText {
         this.icon = new Icon();
     }
 
-    public void setText(String text){
+    public void setText(String text) {
         this.text = text;
     }
 
