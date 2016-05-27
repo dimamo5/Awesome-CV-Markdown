@@ -1,11 +1,11 @@
-#Nuno Cardoso
-##Software Engineer
-##Security Expert
-*morada estrelinha significa estar o
+#Diogo Moura
+##Deus de Comp
+##Deus das Webs
+*Quinta da Ramalhosa, bl. 53, 3ºesq
 >{mobile} 967639744
 >{linkedin} diogomoura13
->{email}nunopcardosos@gmail.com
->{github 3.5/5} nfhwef
+>{email}diogomoura13@gmail.com
+>{github 3.5/5} dimamo5
 
 ------
 

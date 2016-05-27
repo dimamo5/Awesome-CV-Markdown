@@ -28,23 +28,25 @@ public class HeaderBuilder implements TexBuilder {
 
     @Override
     public void buildTex() {
-        //Personal info!
+        //NAME
         String[] splited = info.getName().split(" ");
         String s = "\n" + "\\" + "name";
 
         for (int i = 0; i < splited.length; i++) {
             s += "{" + splited[i] + "}";
         }
-
-        // \position{Software Engineer{\enskip\cdotp\enskip}Security Expert}
+        //POSITION
 
         s += "\n" + "\\" + "position" + "{";
         for (int i = 0; i < info.getSub().size() - 1; i++) {
             s += info.getSub().get(i) + "{\\enskip\\cdotp\\enskip}";
         }
-
         s += info.getSub().get(info.getSub().size() - 1) + "}";
 
+        //ADDRESS
+        s+="\n \\address{"+info.getAddress()+"}";
+
+        //CONTACTS
         for (int i = 0; i < info.getContacts().size(); i++) {
             s += "\n" + "\\" + info.getContacts().get(i).icon.name + "{" + info.getContacts().get(i).text + "}";
         }
