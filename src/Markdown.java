@@ -24,6 +24,7 @@
   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import code_generation.FooterBuilder;
 import code_generation.HeaderBuilder;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
@@ -221,6 +222,7 @@ class Markdown {
             if (printTree) System.out.println(t.toStringTree(parser));
 
             new HeaderBuilder(parser.cv.info).buildTex();
+            new FooterBuilder(parser.cv.info.getName()).buildTex();
 
             String file=" resources\\generated";
             ProcessBuilder pb = new ProcessBuilder("cmd.exe","/c","cd "+file+ "&& xelatex resume.tex");
