@@ -222,14 +222,13 @@ class Markdown {
 
             new HeaderBuilder(parser.cv.info).buildTex();
 
-            String file=" resources/generated/resume.tex";
-            Process p = Runtime.getRuntime().exec("cmd");
+            String file=" resources\\generated";
+            ProcessBuilder pb = new ProcessBuilder("cmd.exe","/c","cd "+file+ "&& xelatex resume.tex");
+            pb.redirectOutput();
+            Process p = pb.start();
 
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
-            writer.write("xelatex\n");
 
             String line = "";
             while ((line = reader.readLine())!= null) {
