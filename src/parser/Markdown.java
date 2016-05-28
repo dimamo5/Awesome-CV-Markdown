@@ -1,18 +1,12 @@
 package parser;
 
-import code_generation.FooterBuilder;
 import code_generation.HeaderBuilder;
+import code_generation.MainBuilder;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionMode;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
 
 /* This more or less duplicates the functionality of grun (TestRig) but it
  * has a few specific options for benchmarking like -x2 and -threaded.
@@ -34,13 +28,15 @@ class Markdown {
     public static void main(String[] args) {
         String file2Parse = "resources/mdfiles/cv.md";
         String out="resources\\generated";
-        new Markdown(file2Parse,out).parseFile();
+        Markdown md=new Markdown(file2Parse,out);
+        md.parseFile();
+        md.generatePdf();
     }
 
     public Markdown(String s,String out){
-        settings=new Settings(Settings.Color.RED);
-        file2Parse= System.getProperty("user.dir")+"/resources/"+s;
-        outputFile=System.getProperty("user.dir")+out;
+        settings=new Settings(Settings.Color.RED,"resume");
+        file2Parse= System.getProperty("user.dir")+"/"+s;
+        outputFile=System.getProperty("user.dir")+"/"+out;
     }
 
 
@@ -67,13 +63,22 @@ class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            new HeaderBuilder(parser.cv.info).buildTex();
-            new FooterBuilder(parser.cv.info.getName()).buildTex();
+            //new HeaderBuilder(parser.cv.info).buildTex();
+            new MainBuilder(parser.cv,settings.getPdfName()).buildTex();
 
-            ProcessBuilder pb = new ProcessBuilder("cmd.exe","/c","cd "+this.outputFile+ "&& xelatex resume.tex");
-            pb.redirectOutput();
-            Process p = pb.start();
 
+        } catch (Exception e) {
+            System.err.println("parser exception: " + e);
+            e.printStackTrace();   // so we can get stack trace
+        }
+    }
+
+    private void generatePdf() {
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe","/c","cd "+this.outputFile+ "&& xelatex "+ settings.getPdfName()+".tex");
+        pb.redirectOutput();
+        Process p = null;
+        try {
+            p = pb.start();
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
 
@@ -81,12 +86,9 @@ class Markdown {
             while ((line = reader.readLine())!= null) {
                 System.out.println(line);
             }
-
-            //MarkdownGrammarBaseVisitor x = new MarkdownGrammarBaseVisitor();
-            //x.visitInfo(parser.info());
-        } catch (Exception e) {
-            System.err.println("parser exception: " + e);
-            e.printStackTrace();   // so we can get stack trace
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 }

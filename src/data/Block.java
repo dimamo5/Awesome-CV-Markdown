@@ -21,6 +21,10 @@ public class Block {
         return this.subBlocks.get(this.subBlocks.size() - 1);
     }
 
+    public String getBlockName() {
+        return blockName;
+    }
+
     @Override
     public String toString() {
         return "Block{" +
