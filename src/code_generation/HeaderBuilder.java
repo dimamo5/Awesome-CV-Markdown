@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 public class HeaderBuilder implements TexBuilder {
     private FileOutputStream out;
-    private Info info;
+    private final Info info;
 
     public HeaderBuilder(Info info) throws IOException {
         this.out = null;

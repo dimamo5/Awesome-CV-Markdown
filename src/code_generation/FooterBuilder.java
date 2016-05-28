@@ -23,7 +23,7 @@ public class FooterBuilder implements TexBuilder {
 
     @Override
     public void buildTex() {
-        String s =String.format("\t{today}\n\t{%s~~~·~~~Résumé}\n\t{\thepage}\n", this.name); ;
+        String s =String.format("\t{\\today}\n\t{%s~~~·~~~Résumé}\n\t{\\thepage}\n", this.name); ;
 
         try {
             out.write(s.getBytes());
