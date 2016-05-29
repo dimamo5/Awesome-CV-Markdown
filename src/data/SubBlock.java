@@ -53,7 +53,7 @@ public class SubBlock {
                 '\n';
     }
 
-    public static enum BlockType {
+    public enum BlockType {
         TEXT, TABLE, LIST
     }
 }

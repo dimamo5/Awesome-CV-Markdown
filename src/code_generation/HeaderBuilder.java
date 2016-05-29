@@ -13,7 +13,7 @@ public class HeaderBuilder implements TexBuilder {
     private final Info info;
     private FileOutputStream out;
 
-    public HeaderBuilder(Info info) throws IOException {
+    public HeaderBuilder(Info info) {
         this.out = null;
         this.info = info;
 

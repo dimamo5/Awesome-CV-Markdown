@@ -17,9 +17,9 @@ public class MainBuilder implements TexBuilder {
     private Cv cv;
     private File outPath;
 
-    public MainBuilder(Cv cv, String pdfName) {
+    public MainBuilder(Cv cv) {
         this.cv = cv;
-        this.pdfName = pdfName;
+        this.pdfName = Markdown.settings.getPdfName();
         this.outPath = new File(TexBuilder.FILES_LOCATION + pdfName + ".tex");
 
     }
