@@ -34,6 +34,18 @@ public class Table {
         body.get(body.size() - 1).add(i);
     }
 
+    public ArrayList<String> getHeader() {
+        return header;
+    }
+
+    public ArrayList<ArrayList<IconText>> getBody() {
+        return body;
+    }
+
+    public int getNrColumns() {
+        return this.header.size();
+    }
+
     @Override
     public String toString() {
         return "Table{" +
