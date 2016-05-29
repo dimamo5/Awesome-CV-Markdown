@@ -1,12 +1,16 @@
 package parser;
 
-import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.ParserRuleContext;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /* This more or less duplicates the functionality of grun (TestRig) but it
  * has a few specific options for benchmarking like -x2 and -threaded.
@@ -20,25 +24,24 @@ import java.io.*;
 /Users/parrt/antlr/code/grammars-v4/java/./Test.java
 Total lexer+parser time 1867ms.
  */
-class Markdown {
-    private Settings settings;
+public class Markdown {
+    public static Settings settings;
     private String file2Parse;
     private String outputFile;
 
+    public Markdown(String s, String out) {
+        settings = new Settings(Settings.Color.RED, "resume");
+        file2Parse = System.getProperty("user.dir") + "/" + s;
+        outputFile = System.getProperty("user.dir") + "/" + out;
+    }
+
     public static void main(String[] args) {
         String file2Parse = "resources/mdfiles/cv.md";
-        String out="resources\\generated";
-        Markdown md=new Markdown(file2Parse,out);
+        String out = "resources\\generated";
+        Markdown md = new Markdown(file2Parse, out);
         md.parseFile();
-        md.generatePdf();
+        //md.generatePdf();
     }
-
-    public Markdown(String s,String out){
-        settings=new Settings(Settings.Color.RED,"resume");
-        file2Parse= System.getProperty("user.dir")+"/"+s;
-        outputFile=System.getProperty("user.dir")+"/"+out;
-    }
-
 
     public void parseFile() {
         try {
@@ -64,7 +67,7 @@ class Markdown {
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
             //new HeaderBuilder(parser.cv.info).buildTex();
-            new MainBuilder(parser.cv,settings.getPdfName()).buildTex();
+            new MainBuilder(parser.cv, settings.getPdfName()).buildTex();
 
 
         } catch (Exception e) {
@@ -74,7 +77,7 @@ class Markdown {
     }
 
     private void generatePdf() {
-        ProcessBuilder pb = new ProcessBuilder("cmd.exe","/c","cd "+this.outputFile+ "&& xelatex "+ settings.getPdfName()+".tex");
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings.getPdfName() + ".tex");
         pb.redirectOutput();
         Process p = null;
         try {
@@ -83,7 +86,7 @@ class Markdown {
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
 
             String line = "";
-            while ((line = reader.readLine())!= null) {
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
         } catch (IOException e) {

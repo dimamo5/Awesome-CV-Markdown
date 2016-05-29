@@ -8,5 +8,4 @@ public interface TexBuilder {
 
     void buildTex();
 
-    void closeFile();
 }

@@ -10,8 +10,8 @@ import java.io.IOException;
  * Created by inesa on 21/05/2016.
  */
 public class HeaderBuilder implements TexBuilder {
-    private FileOutputStream out;
     private final Info info;
+    private FileOutputStream out;
 
     public HeaderBuilder(Info info) throws IOException {
         this.out = null;
@@ -44,7 +44,7 @@ public class HeaderBuilder implements TexBuilder {
         s += info.getSub().get(info.getSub().size() - 1) + "}";
 
         //ADDRESS
-        s+="\n \\address{"+info.getAddress()+"}";
+        s += "\n \\address{" + info.getAddress() + "}";
 
         //CONTACTS
         for (int i = 0; i < info.getContacts().size(); i++) {

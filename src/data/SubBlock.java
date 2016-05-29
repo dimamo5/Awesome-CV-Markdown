@@ -8,6 +8,7 @@ public class SubBlock {
     private String boldText;
     private BlockType type;
     private Object content;
+
     public SubBlock() {
     }
 
