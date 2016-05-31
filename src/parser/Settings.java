@@ -5,13 +5,17 @@ package parser;
  */
 public class Settings {
     private Color currentColor;
-
-    ;
     private boolean printTree;
     private String pdfName;
 
     public Settings(Color c, String name) {
         this.currentColor = c;
+        printTree = false;
+        pdfName = name;
+    }
+
+    public Settings(String name) {
+        this.currentColor = Color.RED;
         printTree = false;
         pdfName = name;
     }

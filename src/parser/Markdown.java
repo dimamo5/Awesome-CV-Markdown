@@ -60,7 +60,7 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            //new HeaderBuilder(parser.cv.info).buildTex();
+            generateLatexCode(parser.cv);
 
 
         } catch (Exception e) {
@@ -72,7 +72,12 @@ public class Markdown {
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
         new HeaderBuilder(cv.info).buildTex();
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        for(Block b: cv.blocks){
+            new BlockBuilder(b).buildTex();
+        }
+        //Iterative
+        /*ExecutorService executor = Executors.newFixedThreadPool(4);
 
         for (Block b : cv.blocks) {
             Runnable worker = new BlockBuilder(b);
@@ -82,7 +87,7 @@ public class Markdown {
         while (!executor.isTerminated()) {
         }
         System.out.println("Finished all threads");
-
+*/
 
     }
 

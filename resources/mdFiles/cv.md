@@ -51,7 +51,9 @@
 *4th Place
 : Prémio Progarmacao data X
 :{place} Porto
+
  ------
+
 ###Master Degree
 ####Grades
 
