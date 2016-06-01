@@ -13,7 +13,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements MarkdownGrammarVisitor<T> {
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -21,10 +21,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitCv(MarkdownGrammar.CvContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -32,10 +31,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitInfo(MarkdownGrammar.InfoContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -43,10 +41,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitSubHeader(MarkdownGrammar.SubHeaderContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -54,10 +51,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitName(MarkdownGrammar.NameContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -65,10 +61,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitAddress(MarkdownGrammar.AddressContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -76,10 +71,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitContacts(MarkdownGrammar.ContactsContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -87,10 +81,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBlock(MarkdownGrammar.BlockContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -98,10 +91,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitSubBlock(MarkdownGrammar.SubBlockContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -109,10 +101,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitList(MarkdownGrammar.ListContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -120,10 +111,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBlockList(MarkdownGrammar.BlockListContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -131,10 +121,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBlockListCell(MarkdownGrammar.BlockListCellContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -142,10 +131,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTable(MarkdownGrammar.TableContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -153,10 +141,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTableBody(MarkdownGrammar.TableBodyContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -164,10 +151,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitIcon(MarkdownGrammar.IconContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -175,10 +161,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBoldText(MarkdownGrammar.BoldTextContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -186,10 +171,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTableHeader(MarkdownGrammar.TableHeaderContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -197,10 +181,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTableCell(MarkdownGrammar.TableCellContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -208,10 +191,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTableLine(MarkdownGrammar.TableLineContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -219,10 +201,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBlockName(MarkdownGrammar.BlockNameContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -230,10 +211,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitBlockSubName(MarkdownGrammar.BlockSubNameContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -241,10 +221,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitAny(MarkdownGrammar.AnyContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
@@ -252,10 +231,9 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
 	public T visitTablecontent(MarkdownGrammar.TablecontentContext ctx) {
 		return visitChildren(ctx);
 	}
-
 	/**
 	 * {@inheritDoc}
-	 * <p>
+	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */

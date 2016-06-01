@@ -2,8 +2,7 @@ package data;
 
 import java.util.ArrayList;
 
-import static data.List.ListType.OTHER;
-import static data.List.ListType.SIMPLE;
+import static data.List.ListType.*;
 
 /**
  * Created by diogo on 13/05/2016.
@@ -11,7 +10,7 @@ import static data.List.ListType.SIMPLE;
 public class List {
     public ArrayList<String> listHeader = new ArrayList<>();
     public ArrayList<ArrayList<IconText>> listBody = new ArrayList<>();
-    ;
+
     private ListType type;
 
     public List() {
@@ -47,10 +46,49 @@ public class List {
     private void analyzeType() {
         for (ArrayList<IconText> elem : listBody) {
             if (elem.size() != 1) {
-                this.type = OTHER;
+                if (hasPlace(elem) && hasDate(elem) && elem.size() > 4) {
+                    this.type = QUALIFICATIONS;
+                } else
+                    this.type = OTHER;
             }
         }
         this.type = SIMPLE;
+    }
+
+    private boolean hasPlace(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("place")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasDate(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("date")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public IconText getDate(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("place")) {
+                return it;
+            }
+        }
+        return null;
+    }
+
+    public IconText getPlace(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("date")) {
+                return it;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -18,8 +18,8 @@ block: {cv.newBlock(); } blockName subBlock+;
 subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})? (list|table|any);
 
 
-list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);cv.getList().newListLine();} blockList+;
-blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE blockListCell*;
+list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);} blockList+;
+blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE ({cv.getList().newListLine();}blockListCell)*;
 blockListCell: COLON icon? any?{cv.getList().addListCell($any.text, $icon.text);} NEWLINE;
 
 table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;

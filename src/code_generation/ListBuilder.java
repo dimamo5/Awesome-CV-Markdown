@@ -1,5 +1,6 @@
 package code_generation;
 
+import data.IconText;
 import data.List;
 
 import java.util.ArrayList;
@@ -21,9 +22,10 @@ public class ListBuilder implements TexBuilder {
     public void buildTex() {
         switch (list.getType()) {
             case SIMPLE:
-                buildSimpleList();
+                listCode = buildSimpleList();
                 break;
             case HONOR:
+                listCode = buildQualificationList();
                 break;
             case QUALIFICATIONS:
                 break;
@@ -46,8 +48,25 @@ public class ListBuilder implements TexBuilder {
         return s;
     }
 
+    public String buildQualificationList() {
+        String s;
+        s = "\\begin{cventries}\n";
+        for (int i = 0; i < this.list.listBody.size(); i++) {
+            ArrayList<IconText> list = this.list.listBody.get(i);
+            s += "  \\cventry\n";
+            s += "{" + this.list.listHeader.get(i) + "}";
+            s += "{" + list.get(0) + "}";
+            s += "{" + this.list.getPlace(list) + "}";
+            s += "{" + this.list.getDate(list) + "}";
+            // TODO: 01/06/2016 resto da lista
+            s = "{}";
+        }
+        s += "\\end{cventries}\n";
+        return s;
+    }
+
     public String getListCode() {
-        if (listCode == null) {
+        if (listCode == null || listCode.isEmpty()) {
             buildTex();
         }
         return listCode;
