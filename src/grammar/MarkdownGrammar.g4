@@ -19,7 +19,7 @@ subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock(
 
 
 list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);} blockList+;
-blockList: STAR word_space{cv.getList().addHeader(word_space.text);} NEWLINE (blockListCell)+;
+blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE (blockListCell)+;
 blockListCell: COLON icon? any?{cv.getList().addListCell($any.text, $icon.text);} NEWLINE;
 
 table:{cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);} tableHeader NEWLINE tableBody;

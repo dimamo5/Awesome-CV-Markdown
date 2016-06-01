@@ -21,7 +21,7 @@
 ###Education
 ####Ensino Basico primario
 *Ecole Francaise de Porto
-: Ola
+:{star 3.5/5}
 :{date} MM\-YY MM\-YY
 :{place} Porto
 

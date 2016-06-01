@@ -48,6 +48,9 @@ public class BlockBuilder implements TexBuilder, Runnable {
 
     private String getCodeSubBlock(SubBlock subBlock) {
         String generatedCode = "";
+        if (subBlock.getSubBlockName() != null) {
+            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n";
+        }
         switch (subBlock.getType()) {
             case LIST:
                 // TODO: 29/05/2016 Alguem que gere codigo para as listas mas com muio cuidado!!! Eu posso explicar

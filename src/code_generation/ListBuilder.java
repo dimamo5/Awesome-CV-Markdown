@@ -56,8 +56,8 @@ public class ListBuilder implements TexBuilder {
             s += "  \\cventry\n";
             s += "{" + list.get(0).text + "}";
             s += "{" + this.list.getFirstElem(list).text + "}";
-            s += "{" + this.list.getPlace(list) + "}";
-            s += "{" + this.list.getDate(list) + "}";
+            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
+            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}";
             // TODO: 01/06/2016 resto da lista
             s += "{}\n";
         }

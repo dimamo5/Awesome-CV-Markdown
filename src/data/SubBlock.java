@@ -8,8 +8,11 @@ public class SubBlock {
     private String boldText;
     private BlockType type;
     private Object content;
-
     public SubBlock() {
+    }
+
+    public String getSubBlockName() {
+        return subBlockName;
     }
 
     public void addSubBlockName(String s) {
