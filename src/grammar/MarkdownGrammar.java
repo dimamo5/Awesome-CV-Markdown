@@ -85,7 +85,7 @@ public class MarkdownGrammar extends Parser {
 					"~\3\2\2\2\u0081\177\3\2\2\2\u0081\u0080\3\2\2\2\u0082\21\3\2\2\2\u0083" +
 					"\u0085\b\n\1\2\u0084\u0086\5\24\13\2\u0085\u0084\3\2\2\2\u0086\u0087\3" +
 					"\2\2\2\u0087\u0085\3\2\2\2\u0087\u0088\3\2\2\2\u0088\23\3\2\2\2\u0089" +
-					"\u008a\7\6\2\2\u008a\u008b\5*\26\2\u008b\u008c\b\13\1\2\u008c\u008e\7" +
+					"\u008a\7\6\2\2\u008a\u008b\5.\30\2\u008b\u008c\b\13\1\2\u008c\u008e\7" +
 					"\5\2\2\u008d\u008f\5\26\f\2\u008e\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090" +
 					"\u008e\3\2\2\2\u0090\u0091\3\2\2\2\u0091\25\3\2\2\2\u0092\u0094\7\b\2" +
 					"\2\u0093\u0095\5\34\17\2\u0094\u0093\3\2\2\2\u0094\u0095\3\2\2\2\u0095" +
@@ -598,8 +598,8 @@ public class MarkdownGrammar extends Parser {
 				setState(135);
 				match(STAR);
 				setState(136);
-				((BlockListContext) _localctx).any = any();
-				cv.getList().addHeader((((BlockListContext) _localctx).any != null ? _input.getText(((BlockListContext) _localctx).any.start, ((BlockListContext) _localctx).any.stop) : null));
+				word_space();
+				cv.getList().addHeader(word_space.text);
 				setState(138);
 				match(NEWLINE);
 				setState(140);
@@ -822,7 +822,7 @@ public class MarkdownGrammar extends Parser {
 							setState(187);
 							match(NEWLINE);
 				}
-					}
+				}
 				setState(190);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -1138,7 +1138,7 @@ public class MarkdownGrammar extends Parser {
 				_la = _input.LA(1);
 				do {
 					{
-						setState(261);
+				setState(261);
 						switch (_input.LA(1)) {
 							case OPEN_CURLY:
 					{
@@ -1627,7 +1627,6 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	public static class BlockListContext extends ParserRuleContext {
-		public AnyContext any;
 		public BlockListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1636,8 +1635,8 @@ public class MarkdownGrammar extends Parser {
 			return getToken(MarkdownGrammar.STAR, 0);
 		}
 
-		public AnyContext any() {
-			return getRuleContext(AnyContext.class, 0);
+		public Word_spaceContext word_space() {
+			return getRuleContext(Word_spaceContext.class, 0);
 		}
 
 		public TerminalNode NEWLINE() {
