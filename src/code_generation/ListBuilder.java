@@ -22,44 +22,44 @@ public class ListBuilder implements TexBuilder {
     public void buildTex() {
         switch (list.getType()) {
             case SIMPLE:
-                listCode = buildSimpleList();
+                //listCode = buildSimpleList();
                 break;
             case HONOR:
-                listCode = buildQualificationList();
                 break;
             case QUALIFICATIONS:
+                listCode = buildQualificationList();
                 break;
             case OTHER:
                 break;
         }
     }
 
-    public String buildSimpleList() {
+    /*public String buildSimpleList() {
         String s;
         s = "\\begin{multicols}{1}\n" +
                 "\\begin{cvkeyval}\n";
         ArrayList<String> listHeader = list.listHeader;
         for (int i = 0; i < listHeader.size(); i++) {
             String header = listHeader.get(i);
-            s += "\\cvkeyvalitem{" + header + "}{" + list.listBody.get(i).get(0).text + "}\n";
+            s += "\\cvkeyvalitem{" + header + "}{" + list.list.get(i).get(0).text + "}\n";
         }
         s += "\\end{cvkeyval}\n" +
                 "\\end{multicols}";
         return s;
-    }
+    }*/
 
     public String buildQualificationList() {
         String s;
         s = "\\begin{cventries}\n";
-        for (int i = 0; i < this.list.listBody.size(); i++) {
-            ArrayList<IconText> list = this.list.listBody.get(i);
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
             s += "  \\cventry\n";
-            s += "{" + this.list.listHeader.get(i) + "}";
-            s += "{" + list.get(0) + "}";
+            s += "{" + list.get(0).text + "}";
+            s += "{" + this.list.getFirstElem(list).text + "}";
             s += "{" + this.list.getPlace(list) + "}";
             s += "{" + this.list.getDate(list) + "}";
             // TODO: 01/06/2016 resto da lista
-            s = "{}";
+            s += "{}\n";
         }
         s += "\\end{cventries}\n";
         return s;

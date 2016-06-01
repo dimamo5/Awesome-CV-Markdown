@@ -47,8 +47,9 @@
 
 ###Awards
 ####REGIONAL PROGRAMMING CONTESTS
-*4th Place
-: Prémio Progarmacao data X
+*Mestrado integrado em engenharia informatica
+:{star 3/5}(16\/20)
+:{date} MM\-YY MM\-YY
 :{place} Porto
 
 ------

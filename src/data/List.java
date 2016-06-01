@@ -8,8 +8,7 @@ import static data.List.ListType.*;
  * Created by diogo on 13/05/2016.
  */
 public class List {
-    public ArrayList<String> listHeader = new ArrayList<>();
-    public ArrayList<ArrayList<IconText>> listBody = new ArrayList<>();
+    public ArrayList<ArrayList<IconText>> list = new ArrayList<>();
 
     private ListType type;
 
@@ -24,11 +23,15 @@ public class List {
     }
 
     public void addHeader(String s) {
-        this.listHeader.add(Utils.analyzeEscape(s));
+        IconText t = new IconText();
+        t.setText(s);
+        ArrayList<IconText> line = new ArrayList<>();
+        line.add(t);
+        this.list.add(line);
     }
 
     public void newListLine() {
-        this.listBody.add(new ArrayList<IconText>());
+        this.list.add(new ArrayList<IconText>());
     }
 
     public void addListCell(String s, String s1) {
@@ -40,14 +43,15 @@ public class List {
             i.icon.setIconName(s1.substring(1, s1.length() - 1));
             i.icon.divide();
         }
-        this.listBody.get(this.listBody.size() - 1).add(i);
+        this.list.get(this.list.size() - 1).add(i);
     }
 
     private void analyzeType() {
-        for (ArrayList<IconText> elem : listBody) {
+        for (ArrayList<IconText> elem : list) {
             if (elem.size() != 1) {
-                if (hasPlace(elem) && hasDate(elem) && elem.size() > 4) {
+                if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
                     this.type = QUALIFICATIONS;
+                    return;
                 } else
                     this.type = OTHER;
             }
@@ -91,11 +95,21 @@ public class List {
         return null;
     }
 
+    public IconText getFirstElem(ArrayList<IconText> list) {
+        for (int i = 0; i < list.size(); i++) {
+            IconText it = list.get(i);
+            if (!it.icon.name.equals("date") && !it.icon.name.equals("place") && i != 0) {
+                return it;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "List{" +
-                "listHeader=" + listHeader +
-                ", listBody=" + listBody +
+                "list=" + list +
+                ", type=" + type +
                 '}';
     }
 
