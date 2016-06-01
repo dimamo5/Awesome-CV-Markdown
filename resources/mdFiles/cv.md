@@ -22,7 +22,7 @@
 ####Ensino Basico primario
 *Ecole Francaise de Porto
 :{star 3.5/5}
-:{date} MM\-YY MM\-YY
+:{date} 01\/2010\-02\/2015
 :{place} Porto
 
 ####Ensino Basico Secundario
