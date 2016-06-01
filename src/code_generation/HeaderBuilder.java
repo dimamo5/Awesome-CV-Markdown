@@ -2,7 +2,6 @@ package code_generation;
 
 import data.Info;
 import parser.Markdown;
-import parser.Settings;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,7 +19,7 @@ public class HeaderBuilder implements TexBuilder {
         this.info = info;
 
         try {
-            out = new FileOutputStream(FILES_LOCATION + Markdown.settings.getPdfName()+"/header.tex");
+            out = new FileOutputStream(FILES_LOCATION + Markdown.settings.getPdfName() + "/header.tex");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

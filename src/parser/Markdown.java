@@ -15,8 +15,6 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Markdown {
     public static Settings settings;
@@ -73,7 +71,7 @@ public class Markdown {
         new MainBuilder(cv).buildTex();
         new HeaderBuilder(cv.info).buildTex();
 
-        for(Block b: cv.blocks){
+        for (Block b : cv.blocks) {
             new BlockBuilder(b).buildTex();
         }
         //Iterative

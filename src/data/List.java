@@ -10,9 +10,10 @@ import static data.List.ListType.SIMPLE;
  */
 public class List {
     public ArrayList<String> listHeader = new ArrayList<>();
-    public ArrayList<ArrayList<IconText>> list = new ArrayList<>();
+    public ArrayList<ArrayList<IconText>> listBody = new ArrayList<>();
     ;
     private ListType type;
+
     public List() {
     }
 
@@ -28,7 +29,7 @@ public class List {
     }
 
     public void newListLine() {
-        this.list.add(new ArrayList<IconText>());
+        this.listBody.add(new ArrayList<IconText>());
     }
 
     public void addListCell(String s, String s1) {
@@ -40,11 +41,11 @@ public class List {
             i.icon.setIconName(s1.substring(1, s1.length() - 1));
             i.icon.divide();
         }
-        this.list.get(this.list.size() - 1).add(i);
+        this.listBody.get(this.listBody.size() - 1).add(i);
     }
 
     private void analyzeType() {
-        for (ArrayList<IconText> elem : list) {
+        for (ArrayList<IconText> elem : listBody) {
             if (elem.size() != 1) {
                 this.type = OTHER;
             }
@@ -56,7 +57,7 @@ public class List {
     public String toString() {
         return "List{" +
                 "listHeader=" + listHeader +
-                ", list=" + list +
+                ", listBody=" + listBody +
                 '}';
     }
 

@@ -1,6 +1,7 @@
 package code_generation;
 
 import data.Block;
+import data.List;
 import data.SubBlock;
 import data.Table;
 import parser.Markdown;
@@ -50,6 +51,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
         switch (subBlock.getType()) {
             case LIST:
                 // TODO: 29/05/2016 Alguem que gere codigo para as listas mas com muio cuidado!!! Eu posso explicar
+                generatedCode = new ListBuilder((List) subBlock.getContent()).getListCode();
                 break;
             case TABLE:
                 generatedCode = new TableBuilder((Table) subBlock.getContent()).getTableCode();

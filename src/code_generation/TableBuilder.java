@@ -63,6 +63,9 @@ public class TableBuilder implements TexBuilder {
     }
 
     public String getTableCode() {
+        if (tableCode == null) {
+            buildTex();
+        }
         return tableCode;
     }
 
