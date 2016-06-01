@@ -63,7 +63,7 @@ public class TableBuilder implements TexBuilder {
     }
 
     public String getTableCode() {
-        if (tableCode == null) {
+        if (tableCode == null || tableCode.isEmpty()) {
             buildTex();
         }
         return tableCode;
@@ -81,10 +81,10 @@ public class TableBuilder implements TexBuilder {
             ArrayList<ArrayList<IconText>> bodyTable = this.table.getBody();
             for (ArrayList<IconText> line : bodyTable) {
                 if (line.get(columnNr).text.length() > COLUMN_BOUND) {
-                    return false;
+                    return true;
                 }
             }
-        }
-        return true;
+        } else return true;
+        return false;
     }
 }

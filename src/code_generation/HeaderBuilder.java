@@ -53,7 +53,7 @@ public class HeaderBuilder implements TexBuilder {
         }
 
         try {
-            out.write(s.getBytes());
+            out.write(s.getBytes("UTF-8"));
             closeFile();
         } catch (IOException e) {
             e.printStackTrace();

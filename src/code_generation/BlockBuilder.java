@@ -36,7 +36,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
         for (SubBlock subBlock : this.block.subBlocks) {
             if (out != null) {
                 try {
-                    out.writeBytes(getCodeSubBlock(subBlock));
+                    out.write(getCodeSubBlock(subBlock).getBytes("UTF-8"));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

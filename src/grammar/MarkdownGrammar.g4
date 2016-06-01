@@ -30,8 +30,8 @@ icon locals[boolean allow=true]: OPEN_CURLY WORD SPACE* STAR_CLASS?{String s=$ST
 
 boldText: TILT any+ NEWLINE+;
 tableHeader: word_space{cv.getTable().addHeaderCell($word_space.text);} (HAT SPACE* word_space {cv.getTable().addHeaderCell($word_space.text);})+;
-tableCell: {cv.getTable().addBodyLine();} tablecontent SPLIT ;
-tableLine: tableCell+;
+tableCell:  tablecontent SPLIT ;
+tableLine: {cv.getTable().addBodyLine();} tableCell+;
 blockName: SHARP SHARP SHARP word_space{cv.getBlock().addBlockName($word_space.text);} NEWLINE+;
 blockSubName: SHARP SHARP SHARP SHARP word_space{cv.getSubBlock().addSubBlockName($word_space.text);} NEWLINE+;
 
