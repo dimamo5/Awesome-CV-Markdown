@@ -2,14 +2,25 @@ package data;
 
 import java.util.ArrayList;
 
+import static data.List.ListType.OTHER;
+import static data.List.ListType.SIMPLE;
+
 /**
  * Created by diogo on 13/05/2016.
  */
 public class List {
     public ArrayList<String> listHeader = new ArrayList<>();
     public ArrayList<ArrayList<IconText>> list = new ArrayList<>();
-
+    ;
+    private ListType type;
     public List() {
+    }
+
+    public ListType getType() {
+        if (type == null) {
+            analyzeType();
+        }
+        return type;
     }
 
     public void addHeader(String s) {
@@ -32,11 +43,25 @@ public class List {
         this.list.get(this.list.size() - 1).add(i);
     }
 
+    private void analyzeType() {
+        for (ArrayList<IconText> elem : list) {
+            if (elem.size() != 1) {
+                this.type = OTHER;
+            }
+        }
+        this.type = SIMPLE;
+    }
+
     @Override
     public String toString() {
         return "List{" +
                 "listHeader=" + listHeader +
                 ", list=" + list +
                 '}';
+    }
+
+    // TODO: 01/06/2016 ver bem deste other
+    public enum ListType {
+        SIMPLE, QUALIFICATIONS, HONOR, OTHER
     }
 }
