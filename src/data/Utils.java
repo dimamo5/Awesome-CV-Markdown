@@ -1,5 +1,7 @@
 package data;
 
+import java.io.File;
+
 /**
  * Created by diogo on 13/05/2016.
  */
@@ -15,5 +17,15 @@ public class Utils {
             }
             return sb.toString().trim();
         } else return null;
+    }
+
+    public static boolean dirExists(String s) {
+        File f = new File(s);
+        return f.exists() && f.isDirectory();
+    }
+
+    public static void createDir(String s) {
+        File f = new File(s);
+        f.mkdir();
     }
 }

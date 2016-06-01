@@ -1,9 +1,7 @@
 package parser;
 
 import code_generation.BlockBuilder;
-import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
-import data.Block;
 import data.Cv;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
@@ -22,9 +20,14 @@ public class Markdown {
     private String outputFile;
 
     public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.RED, "resume");
+        settings = new Settings(Settings.Color.RED, "resumeTest");
         file2Parse = System.getProperty("user.dir") + "/" + s;
         outputFile = System.getProperty("user.dir") + "/" + out;
+        String outputFolder = outputFile + "/" + settings.getPdfName();
+
+        if (!data.Utils.dirExists(outputFolder)) {
+            data.Utils.createDir(outputFolder);
+        }
     }
 
     public static void main(String[] args) {
@@ -69,11 +72,11 @@ public class Markdown {
 
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
-        new HeaderBuilder(cv.info).buildTex();
+        new BlockBuilder(cv.blocks.get(4)).buildTex();
 
-        for (Block b : cv.blocks) {
+        /*for (Block b : cv.blocks) {
             new BlockBuilder(b).buildTex();
-        }
+        }*/
         //Iterative
         /*ExecutorService executor = Executors.newFixedThreadPool(4);
 
