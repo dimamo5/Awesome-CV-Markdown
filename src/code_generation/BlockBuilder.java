@@ -15,6 +15,7 @@ import java.io.IOException;
 public class BlockBuilder implements TexBuilder {
     private Block block;
     private String fileName;
+    private String blockCode;
 
     public BlockBuilder(Block block) {
         this.block = block;
@@ -52,13 +53,29 @@ public class BlockBuilder implements TexBuilder {
 
     @Override
     public void buildHtml() {
+        blockCode = "<section>\n" + "<h2>" + block.getBlockName() + "</h2>\n";
 
+        for (SubBlock subBlock : this.block.subBlocks) {
+            blockCode += getCodeSubBlock(subBlock, Settings.LanguageOutput.HTML) + "\n";
+        }
+
+
+        blockCode += "</section>\n";
+    }
+
+    public String getBlockCode() {
+        if (blockCode == null || blockCode.isEmpty())
+            buildHtml();
+        return blockCode;
     }
 
     private String getCodeSubBlock(SubBlock subBlock, Settings.LanguageOutput lang) {
         String generatedCode = "";
         if (subBlock.getSubBlockName() != null) {
-            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n\n";
+            if (lang == Settings.LanguageOutput.TEX)
+                generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n\n";
+            else if (lang == Settings.LanguageOutput.HTML)
+                generatedCode += "<h3>" + subBlock.getSubBlockName() + "</h3>\n";
         }
         switch (subBlock.getType()) {
             case LIST:
@@ -68,7 +85,10 @@ public class BlockBuilder implements TexBuilder {
                 generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode(lang);
                 break;
             case TEXT:
-                generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";
+                if (lang == Settings.LanguageOutput.HTML)
+                    generatedCode += "<p>" + (String) subBlock.getContent() + "</p>";
+                else if (lang == Settings.LanguageOutput.TEX)
+                    generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";
                 break;
         }
         return generatedCode;

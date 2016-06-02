@@ -1,6 +1,8 @@
 package code_generation;
 
-import data.*;
+import data.Block;
+import data.Cv;
+import data.Utils;
 import parser.Markdown;
 import parser.Settings;
 
@@ -76,9 +78,10 @@ public class MainBuilder implements TexBuilder {
                 "    <title>" + cv.info.getName() + "</title>\n" +
                 "\n" +
                 "    <!-- Bootstrap Core CSS -->\n" +
+                "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>" +
                 "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\" integrity=\"sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7\" crossorigin=\"anonymous\">\n" +
                 "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\" integrity=\"sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS\" crossorigin=\"anonymous\"></script>\n" +
-                "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>" +
+
                 "    <!-- Custom Fonts -->\n" +
                 "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css\">\n" +
                 "\n" +
@@ -91,11 +94,16 @@ public class MainBuilder implements TexBuilder {
 
         String headerHtml = new HeaderBuilder(cv.info).getHeaderCode();
 
-        String simpleListHtml = new ListBuilder((List) cv.blocks.get(0).getSubBlock().getContent()).getListCode(Settings.LanguageOutput.HTML);
+        String blocks = "";
+        for (Block b : cv.blocks) {
+            blocks += new BlockBuilder(b).getBlockCode() + "\n\n";
+        }
+
+        /*String simpleListHtml = new ListBuilder((List) cv.blocks.get(0).getSubBlock().getContent()).getListCode(Settings.LanguageOutput.HTML);
 
 
         String tableHtml = new TableBuilder((Table) cv.blocks.get(4).getSubBlock().getContent()).getTableCode(Settings.LanguageOutput.HTML);
-
+*/
         String footer = "</div></body></html>";
 
         try {
@@ -105,9 +113,7 @@ public class MainBuilder implements TexBuilder {
             writer.write(body);
             writer.write(headerHtml);
             writer.newLine();
-            writer.write(simpleListHtml);
-            writer.newLine();
-            writer.write(tableHtml);
+            writer.write(blocks);
             writer.write(footer);
             writer.close();
         } catch (IOException e) {

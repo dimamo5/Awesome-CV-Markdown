@@ -54,7 +54,7 @@ public class IconBuilder implements TexBuilder {
         } else if (icon.name.equals("email")) {
             s = "<i class=\"fa fa-lg fa-fw fa-envelope\"></i> ";
         } else {
-            s = "<i class=\"fa fa-lg fa-fw fa-" + icon.name + "\"></i>";
+            s = "<i class=\"fa fa-lg fa-fw fa-" + icon.name + "\"></i> ";
         }
 
         iconCode = s;
