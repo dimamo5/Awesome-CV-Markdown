@@ -2,6 +2,7 @@ package parser;
 
 import code_generation.BlockBuilder;
 import code_generation.MainBuilder;
+import data.Block;
 import data.Cv;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
@@ -63,6 +64,7 @@ public class Markdown {
 
             generateLatexCode(parser.cv);
 
+            generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
@@ -72,11 +74,11 @@ public class Markdown {
 
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
-        new BlockBuilder(cv.blocks.get(1)).buildTex();
+        //new BlockBuilder(cv.blocks.get(1)).buildTex();
 
-        /*for (Block b : cv.blocks) {
+        for (Block b : cv.blocks) {
             new BlockBuilder(b).buildTex();
-        }*/
+        }
         //Iterative
         /*ExecutorService executor = Executors.newFixedThreadPool(4);
 
