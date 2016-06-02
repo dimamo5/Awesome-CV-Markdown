@@ -99,11 +99,6 @@ public class MainBuilder implements TexBuilder {
             blocks += new BlockBuilder(b).getBlockCode() + "\n\n";
         }
 
-        /*String simpleListHtml = new ListBuilder((List) cv.blocks.get(0).getSubBlock().getContent()).getListCode(Settings.LanguageOutput.HTML);
-
-
-        String tableHtml = new TableBuilder((Table) cv.blocks.get(4).getSubBlock().getContent()).getTableCode(Settings.LanguageOutput.HTML);
-*/
         String footer = "</div></body></html>";
 
         try {

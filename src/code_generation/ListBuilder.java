@@ -55,7 +55,33 @@ public class ListBuilder implements TexBuilder {
     }
 
     private String buildQualificationListHtml() {
-        return null;
+        String s = "";
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
+            s += "<div class=\"row\">";
+            s += "<div class=\"col-md-9\">";
+            s += "<strong>" + list.get(0).text + "</strong><br>";
+            s += new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Markdown.settings.getOutput());
+            if (list.size() > 4) {
+                s += "<ul>\n";
+            }
+            for (int m = 4; m < list.size(); m++) {
+                s += "<li>" + new IconTextBuilder(list.get(m)).getIconTextCode(Markdown.settings.getOutput()) + "</li>\n";
+            }
+            if (list.size() > 4) {
+                s += "</ul>\n";
+            }
+            s += "</div>\n";
+
+            s += "<div class=\"col-md-3\">";
+            s += new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.HTML) + "<br>";
+            s += new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.HTML);
+            s += "</div>";
+
+
+            s += "</div><br>";
+        }
+        return s;
     }
 
     private String buildHonorListHtml() {

@@ -59,7 +59,6 @@ public class BlockBuilder implements TexBuilder {
             blockCode += getCodeSubBlock(subBlock, Settings.LanguageOutput.HTML) + "\n";
         }
 
-
         blockCode += "</section>\n";
     }
 

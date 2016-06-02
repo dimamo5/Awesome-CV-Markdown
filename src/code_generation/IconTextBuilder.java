@@ -55,15 +55,15 @@ public class IconTextBuilder implements TexBuilder {
             iconTextCode = "";
             if (this.iconText.text.matches("\\d{4}-\\d{4}") || this.iconText.text.matches("\\d{2}\\/\\d{4}-\\d{2}\\/\\d{4}")) {
                 String dates[] = this.iconText.text.split("-");
-                iconTextCode += dates[0] + "<i class=\"fa fa-arrow-right\"></i>" + dates[1];
+                iconTextCode += dates[0] + " <i class=\"fa fa-fw fa-arrow-right\"></i> " + dates[1];
             } else {
                 iconTextCode += iconText.text;
             }
         } else if (!this.iconText.icon.name.isEmpty()) {
             iconTextCode += new IconBuilder(this.iconText.icon).getIconCode(Settings.LanguageOutput.HTML);
-        }
-
-        iconTextCode += iconText.text;
+            iconTextCode += iconText.text;
+        } else
+            iconTextCode += iconText.text;
 
     }
 }
