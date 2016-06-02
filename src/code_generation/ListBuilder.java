@@ -2,6 +2,7 @@ package code_generation;
 
 import data.IconText;
 import data.List;
+import data.Utils;
 
 import java.util.ArrayList;
 
@@ -31,19 +32,53 @@ public class ListBuilder implements TexBuilder {
                 listCode = buildQualificationList();
                 break;
             case OTHER:
+                listCode = buildOtherList();
                 break;
         }
     }
 
+    private String buildOtherList() {
+        String s = "";
+        s += "\\begin{cventries}\n";
+        s += "\\cventry\n";
+
+        for (int i = 0; i < list.list.size(); i++) {
+
+            String header = list.list.get(i).get(0).text;
+            ArrayList<IconText> l = this.list.list.get(i);
+
+            s += "{"+ Utils.analyzeEscape(header) + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getPlace(l)).getIconTextCode() + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getDate(l)).getIconTextCode() + "}\n";
+
+            if(list.list.get(i).size() < 5 ){
+                for(int k = 0; k < 5-list.list.get(i).size(); k++ ){
+                    s += "{}\n";
+                }
+            }
+
+            s += "{\n";
+            s += "\\begin{cvitems}\n";
+
+            s += " \\item{" + Utils.analyzeEscape(list.list.get(i).get(1).text) + "}\n";
+        }
+
+        s += "\\end{cvitems}\n" + "}";
+        s += "\n\\end{cventries}\n";
+        return s;
+    }
+
     public String buildSimpleList() {
-        String s;
+
+        String s = "";
         s = "\\begin{cvitemskv}\n";
         for (int i = 0; i < list.list.size(); i++) {
             String header = list.list.get(i).get(0).text;
-            s += "\\cvitem[" + header + "]{" + list.list.get(i).get(1).text + "}\n";
+            s += "\\cvitem[" + Utils.analyzeEscape(header) + "]{" + list.list.get(i).get(1).text + "}\n";
         }
         s += "\\end{cvitemskv}\n";
         return s;
+
     }
 
     public String buildQualificationList() {

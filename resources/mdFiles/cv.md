@@ -35,14 +35,16 @@
 :{stars 3/5}(16\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
-:Ola
+
 ------
 
 ###Experience
 ####VOCATIONAL
 ~Project\/Implementation Manager
 *LABORATÓRIO DE GESTÃO DE PROJECTOS (FEUP\/BANCO BPI)
-:ola
+:{place} Porto
+:{date} Aug. 2014
+
 ------
 
 ###Awards

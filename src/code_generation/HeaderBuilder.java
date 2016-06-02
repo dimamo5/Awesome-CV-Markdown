@@ -60,9 +60,9 @@ public class HeaderBuilder implements TexBuilder {
         }
     }
 
-    @Override
+    /*@Override
     public void buildHtml() {
-    }
+    }*/
 
     public void closeFile() {
         if (out != null) {
