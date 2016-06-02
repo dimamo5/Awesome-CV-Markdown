@@ -34,6 +34,10 @@ public class MainBuilder implements TexBuilder {
                 "\\colorlet{awesome}{" + Markdown.settings.getColorCode() + "}\n" +
                 //"\\setbool{acvSectionColorHighlight}{true}\n" +
                 //"\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
+                "\\usepackage{nth}\n" +
+                "\\usepackage{tabu}\n" +
+                "\\usepackage{longtable}\n" +
+                "\\usepackage{multicol}\n" +
                 "\\usepackage[table]{xcolor}\n" +
                 "\\usepackage{tabularx}" +
                 "\\input{" + pdfName + "/header.tex}\n";        //Header of the pdf

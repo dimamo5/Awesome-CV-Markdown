@@ -22,7 +22,7 @@ public class ListBuilder implements TexBuilder {
     public void buildTex() {
         switch (list.getType()) {
             case SIMPLE:
-                //listCode = buildSimpleList();
+                listCode = buildSimpleList();
                 break;
             case HONOR:
                 break;
@@ -34,19 +34,16 @@ public class ListBuilder implements TexBuilder {
         }
     }
 
-    /*public String buildSimpleList() {
+    public String buildSimpleList() {
         String s;
-        s = "\\begin{multicols}{1}\n" +
-                "\\begin{cvkeyval}\n";
-        ArrayList<String> listHeader = list.listHeader;
-        for (int i = 0; i < listHeader.size(); i++) {
-            String header = listHeader.get(i);
-            s += "\\cvkeyvalitem{" + header + "}{" + list.list.get(i).get(0).text + "}\n";
+        s = "\\begin{cvitems}\n";
+        for (int i = 0; i < list.list.size(); i++) {
+            String header = list.list.get(i).get(0).text;
+            s += "\\cvitem[" + header + "]{" + list.list.get(i).get(1).text + "}\n";
         }
-        s += "\\end{cvkeyval}\n" +
-                "\\end{multicols}";
+        s += "\\end{cvitems}\n";
         return s;
-    }*/
+    }
 
     public String buildQualificationList() {
         String s;
