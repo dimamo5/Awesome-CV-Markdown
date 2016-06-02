@@ -63,11 +63,11 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            //generateLatexCode(parser.cv);
+            generateLatexCode(parser.cv);
 
-            generateHtmlCode(parser.cv);
+            //generateHtmlCode(parser.cv);
 
-            //generatePdf();
+            generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);

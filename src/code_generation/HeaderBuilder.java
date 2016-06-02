@@ -32,7 +32,7 @@ public class HeaderBuilder implements TexBuilder {
     @Override
     public void buildTex() {
         //NAME
-        String[] splited = info.getName().split(" ");
+        String[] splited = info.getName().split("\\s");
         String s = "\n" + "\\" + "name";
 
         for (int i = 0; i < splited.length; i++) {
