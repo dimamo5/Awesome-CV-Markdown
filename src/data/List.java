@@ -49,6 +49,10 @@ public class List {
     private void analyzeType() {
         for (ArrayList<IconText> elem : list) {
             if (elem.size() != 1) {
+                if (hasPlace(elem) && hasDate(elem) && hasQualification(elem) && elem.size() >= 4) {
+                    this.type = HONOR;
+                    return;
+                }
                 if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
                     this.type = QUALIFICATIONS;
                     return;
@@ -57,6 +61,18 @@ public class List {
             }
         }
         this.type = SIMPLE;
+    }
+
+    private boolean hasQualification(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            String[] qual = it.icon.name.split("[place,Place]");
+            String[] numb = it.icon.name.split("[\\d]");
+
+            if ((qual.length > 0 && numb.length > 0) || it.icon.name.equalsIgnoreCase("Finalist") || it.icon.name.equalsIgnoreCase("First")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean hasPlace(ArrayList<IconText> list) {
@@ -79,7 +95,7 @@ public class List {
 
     public IconText getDate(ArrayList<IconText> list) {
         for (IconText it : list) {
-            if (it.icon.name.equals("place")) {
+            if (it.icon.name.equals("date")) {
                 return it;
             }
         }
@@ -88,7 +104,7 @@ public class List {
 
     public IconText getPlace(ArrayList<IconText> list) {
         for (IconText it : list) {
-            if (it.icon.name.equals("date")) {
+            if (it.icon.name.equals("place")) {
                 return it;
             }
         }
@@ -105,6 +121,16 @@ public class List {
         return null;
     }
 
+    public IconText getSecondElem(ArrayList<IconText> list) {
+        for (int i = 0; i < list.size(); i++) {
+            IconText it = list.get(i);
+            if (!it.icon.name.equals("date") && !it.icon.name.equals("place") && !it.text.equalsIgnoreCase("Finalist") && !it.text.equalsIgnoreCase("First") && i != 0) {
+                return it;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "List{" +
@@ -112,6 +138,8 @@ public class List {
                 ", type=" + type +
                 '}';
     }
+
+
 
     // TODO: 01/06/2016 ver bem deste other
     public enum ListType {

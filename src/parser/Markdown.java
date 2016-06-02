@@ -64,7 +64,7 @@ public class Markdown {
 
             generateLatexCode(parser.cv);
 
-            generatePdf();
+           // generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
@@ -73,8 +73,8 @@ public class Markdown {
     }
 
     private void generateLatexCode(Cv cv) {
-        new MainBuilder(cv).buildTex();
-        //new BlockBuilder(cv.blocks.get(1)).buildTex();
+       // new MainBuilder(cv).buildTex();
+        new BlockBuilder(cv.blocks.get(3)).buildTex();
 
         for (Block b : cv.blocks) {
             new BlockBuilder(b).buildTex();

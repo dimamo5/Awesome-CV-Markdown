@@ -25,6 +25,7 @@ public class ListBuilder implements TexBuilder {
                 //listCode = buildSimpleList();
                 break;
             case HONOR:
+                listCode = buildHonorList();
                 break;
             case QUALIFICATIONS:
                 listCode = buildQualificationList();
@@ -70,6 +71,22 @@ public class ListBuilder implements TexBuilder {
             }
         }
         s += "\\end{cventries}\n";
+        return s;
+    }
+
+    public String buildHonorList() {
+        String s = "";
+        s += "\\begin{cvhonors}\n";
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
+            s += " \\cvhonor\n";
+            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode() + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+        }
+
+        s += "\\end{cvhonors}\n";
         return s;
     }
 

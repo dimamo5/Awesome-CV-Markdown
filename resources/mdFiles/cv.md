@@ -48,10 +48,17 @@
 ###Awards
 ####REGIONAL PROGRAMMING CONTESTS
 *Mestrado integrado em engenharia informatica
-:{star 3/5}(16\/20)
-:{date} MM\-YY MM\-YY
+:Finalist
+:premio de programação
+:{date} 2015
 :{place} Porto
-:Sou bueda bom
+
+*Mestrado integrado em engenharia informatica
+:1st Place
+:premio de programação
+:{date} 2015
+:{place} Porto
+
 ------
 
 ###Master Degree
