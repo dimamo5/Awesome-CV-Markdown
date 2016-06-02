@@ -1,9 +1,6 @@
 package code_generation;
 
-import data.Block;
-import data.Cv;
-import data.Table;
-import data.Utils;
+import data.*;
 import parser.Markdown;
 import parser.Settings;
 
@@ -94,6 +91,9 @@ public class MainBuilder implements TexBuilder {
 
         String headerHtml = new HeaderBuilder(cv.info).getHeaderCode();
 
+        String simpleListHtml = new ListBuilder((List) cv.blocks.get(0).getSubBlock().getContent()).getListCode(Settings.LanguageOutput.HTML);
+
+
         String tableHtml = new TableBuilder((Table) cv.blocks.get(4).getSubBlock().getContent()).getTableCode(Settings.LanguageOutput.HTML);
 
         String footer = "</div></body></html>";
@@ -104,6 +104,8 @@ public class MainBuilder implements TexBuilder {
             writer.newLine();
             writer.write(body);
             writer.write(headerHtml);
+            writer.newLine();
+            writer.write(simpleListHtml);
             writer.newLine();
             writer.write(tableHtml);
             writer.write(footer);

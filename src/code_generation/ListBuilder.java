@@ -3,6 +3,7 @@ package code_generation;
 import data.IconText;
 import data.List;
 import parser.Markdown;
+import parser.Settings;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,40 @@ public class ListBuilder implements TexBuilder {
 
     @Override
     public void buildHtml() {
+        switch (list.getType()) {
+            case SIMPLE:
+                listCode = buildSimpleListHtml();
+                break;
+            case HONOR:
+                listCode = buildHonorListHtml();
+                break;
+            case QUALIFICATIONS:
+                listCode = buildQualificationListHtml();
+                break;
+            case OTHER:
+                break;
+        }
+    }
 
+    private String buildQualificationListHtml() {
+        return null;
+    }
+
+    private String buildHonorListHtml() {
+        return null;
+    }
+
+    private String buildSimpleListHtml() {
+        String s = "";
+        s = "<table class=\"table borderless\">\n";
+        for (int i = 0; i < list.list.size(); i++) {
+            s += "<tr>";
+            String header = list.list.get(i).get(0).text;
+            s += "<td><strong>" + header + "</strong></td>\n<td>" + list.list.get(i).get(1).text + "</td>";
+            s += "</tr>\n";
+        }
+        s += "</table>";
+        return s;
     }
 
     public String buildSimpleList() {
@@ -97,9 +131,12 @@ public class ListBuilder implements TexBuilder {
         return s;
     }
 
-    public String getListCode() {
+    public String getListCode(Settings.LanguageOutput lang) {
         if (listCode == null || listCode.isEmpty()) {
-            buildTex();
+            if (lang == Settings.LanguageOutput.TEX)
+                buildTex();
+            else if (lang == Settings.LanguageOutput.HTML)
+                buildHtml();
         }
         return listCode;
     }

@@ -43,16 +43,18 @@ public class IconBuilder implements TexBuilder {
         if (icon.name.equals("stars")) {
             for (int i = 1; i <= this.icon.attr2; i++) {
                 if (i <= this.icon.attr1)
-                    s += "<i class=\"fa fa-star\"></i>";
+                    s += "<i class=\"fa fa-lg fa-star\"></i> ";
                 else if ((i - this.icon.attr1) == 0.5)
-                    s += "<i class=\"fa fa-star-half-o\"></i>";
+                    s += "<i class=\"fa fa-lg fa-star-half-o\"></i> ";
                 else
-                    s += "<i class=\"fa fa-star-o\"></i>";
+                    s += "<i class=\"fa fa-lg fa-star-o\"></i> ";
             }
         } else if (icon.name.equals("date") || icon.name.equals("place")) {
             s = "";
+        } else if (icon.name.equals("email")) {
+            s = "<i class=\"fa fa-lg fa-fw fa-envelope\"></i> ";
         } else {
-            s = "\\fa" + Character.toUpperCase(icon.name.charAt(0)) + icon.name.substring(1, icon.name.length());
+            s = "<i class=\"fa fa-lg fa-fw fa-" + icon.name + "\"></i>";
         }
 
         iconCode = s;
