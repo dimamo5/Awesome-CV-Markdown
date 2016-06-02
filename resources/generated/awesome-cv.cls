@@ -46,6 +46,12 @@
 %-------------------------------------------------------------------------------
 %                3rd party packages
 %-------------------------------------------------------------------------------
+\RequirePackage{tabularx}
+% Needed to make math operations
+\RequirePackage{fp}
+\RequirePackage{calc}
+% Needed to make for loops
+\RequirePackage{pgffor}
 % Needed to make fixed length table
 \RequirePackage{array}
 % Needed to handle list environment
@@ -111,6 +117,8 @@
 \fancyhf{}
 % Enable if you want to make header or footer using fancyhdr
 \pagestyle{fancy}
+%define new column width
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
 
 
 %-------------------------------------------------------------------------------
@@ -224,6 +232,8 @@
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+
+
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
@@ -493,7 +503,7 @@
   \fancyfoot{}
   \fancyfoot[L]{\footerstyle{#1}}
   \fancyfoot[C]{\footerstyle{#2}}
-  \fancyfoot[R]{\footerstyle{#3}} 
+  \fancyfoot[R]{\footerstyle{#3}}
 }
 
 % Define a section for CV
@@ -512,6 +522,14 @@
   \vspace{-3mm}
   \subsectionstyle{#1}
   \phantomsection
+}
+\newcommand*{\keyvalstylevalue}[1]{{\fontsize{10pt}{1em}\bodyfont\color{text} #1}}
+\newcommand*{\keyvalstylekey}[1]{{\textbf{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}}
+
+\newcommand*{\cvitem}[2][]{
+  \ifempty{#1}
+  {\item \keyvalstylevalue{#2}}
+  {\item[\keyvalstylekey{#1}] \keyvalstylevalue{#2}}
 }
 
 % Define a paragraph for CV
@@ -560,7 +578,7 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \setlength\leftskip{0.2cm}
     \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{} 
+      {\subentrydatestyle{#3}}{}
     \ifthenelse{\equal{#1}{}}
       {}
       {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
@@ -619,6 +637,17 @@
   \vspace{-4.0mm}
 }
 
+% Define an environment for cvitems(for cventry)
+\newenvironment{cvitemskv}[1][2.5cm]{
+  \begin{justify}
+    \begin{itemize}[leftmargin=#1, nosep, noitemsep]
+      \setlength{\parskip}{0pt}
+      \renewcommand{\labelitemi}{\bullet}
+    }{
+    \end{itemize}
+  \end{justify}
+}
+
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
@@ -654,7 +683,7 @@
   \ifthenelse{\isundefined{\@lettertitle}}
     {}
     {\lettertitlestyle{\@lettertitle} \\}
-  \lettertextstyle{\@letteropening} 
+  \lettertextstyle{\@letteropening}
 }
 
 % Define a closing of the cover letter
@@ -669,4 +698,70 @@
       \\\\\\
       \letterenclosurestyle{\@letterenclname: \@letterenclosure} \\
     }
+}
+
+\newcommand{\myyear}[1]{#1}
+\newcommand{\myyearmonth}[2]{#1--#2}
+\newcommand{\myyearmonthday}[3]{#1--#2--#3}
+\newcommand{\timeinterval}[2]{#1 $\Rightarrow$ #2}
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+\newcommand{\specialcell}[2][l]{%
+  \begin{tabular}[t]{@{}#1@{}}#2\end{tabular}}
+
+
+\newcommand{\starcolor}[2] {
+  \pgfmathtruncatemacro\starcolorperc{(#1)/(#2)*100}%
+  %
+  \ifthenelse{\starcolorperc > 50}{%
+    \pgfmathtruncatemacro\starcolorperc{(\starcolorperc-50)*2}%
+    \colorlet{star color}[rgb]{green!\starcolorperc!yellow}%
+  }{%
+    \pgfmathtruncatemacro\starcolorperc{\starcolorperc*2}%
+    \colorlet{star color}[rgb]{yellow!\starcolorperc!red}%
+  }%
+  %
+  \color{star color!90!black}%
+}
+
+% Stars
+\newcommand{\stars}[2][5]{
+  {%
+    \pgfmathtruncatemacro\nfullstars{#2}%
+    \pgfmathtruncatemacro\nhalfstars{(#2 - \nfullstars) * 2}%
+    \pgfmathtruncatemacro\nemptystars{#1 - (\nfullstars + \nhalfstars)}%
+    %
+    {%
+      \starcolor{#2}{#1}%
+      \ifthenelse{\nfullstars > 0}{%
+        \foreach \n in {1,...,\nfullstars} {%
+          \faStar%
+        }%
+      }{}%
+      %
+      \ifthenelse{\nhalfstars > 0}{%
+        \foreach \n in {1,...,\nhalfstars} {%
+          \faStarHalfFull%
+        }%
+      }{}%
+    }%
+    %
+    \ifthenelse{\nemptystars > 0}{%
+      \foreach \n in {1,...,\nemptystars} {%
+        {\faStarO}%
+      }%
+    }{}%
+  }%
+}%
+
+\newcommand\grade[3][5]{%
+  \FPdiv\result{#2}{#3}%
+  \FPmul\result{\result}{#1}%
+  \FPmul\result{\result}{2}%
+  \FPadd\result{\result}{0.5}%
+  \FPtrunc\result\result0%
+  \FPdiv\result{\result}{2}%
+  \FPclip\result\result%
+  %
+  \stars[#1]{\result} (#2/#3)%
 }

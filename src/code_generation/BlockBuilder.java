@@ -1,9 +1,6 @@
 package code_generation;
 
-import data.Block;
-import data.List;
-import data.SubBlock;
-import data.Table;
+import data.*;
 import parser.Markdown;
 
 import java.io.DataOutputStream;
@@ -20,7 +17,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
 
     public BlockBuilder(Block block) {
         this.block = block;
-        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + block.getBlockName() + ".tex";
+        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + Utils.formatAuxFile(block.getBlockName()) + ".tex";
 
     }
 
@@ -30,7 +27,13 @@ public class BlockBuilder implements TexBuilder, Runnable {
         try {
             out = new DataOutputStream(new FileOutputStream(fileName));
         } catch (FileNotFoundException e) {
-            System.err.println("File" + fileName + "not found!!!");
+            System.err.println("File " + fileName + " not found!!!");
+            e.printStackTrace();
+        }
+        try {
+            String blockName = "\\cvsection{" + block.getBlockName() + "}\n\n";
+            out.write(blockName.getBytes("UTF-8"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         for (SubBlock subBlock : this.block.subBlocks) {
@@ -49,7 +52,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
     private String getCodeSubBlock(SubBlock subBlock) {
         String generatedCode = "";
         if (subBlock.getSubBlockName() != null) {
-            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n";
+            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n\n";
         }
         switch (subBlock.getType()) {
             case LIST:
@@ -59,7 +62,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
                 generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode();
                 break;
             case TEXT:
-                generatedCode += (String) subBlock.getContent();
+                generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";
                 break;
         }
         return generatedCode;

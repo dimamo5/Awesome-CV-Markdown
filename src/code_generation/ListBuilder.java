@@ -22,7 +22,7 @@ public class ListBuilder implements TexBuilder {
     public void buildTex() {
         switch (list.getType()) {
             case SIMPLE:
-                //listCode = buildSimpleList();
+                listCode = buildSimpleList();
                 break;
             case HONOR:
                 listCode = buildHonorList();
@@ -35,19 +35,16 @@ public class ListBuilder implements TexBuilder {
         }
     }
 
-    /*public String buildSimpleList() {
+    public String buildSimpleList() {
         String s;
-        s = "\\begin{multicols}{1}\n" +
-                "\\begin{cvkeyval}\n";
-        ArrayList<String> listHeader = list.listHeader;
-        for (int i = 0; i < listHeader.size(); i++) {
-            String header = listHeader.get(i);
-            s += "\\cvkeyvalitem{" + header + "}{" + list.list.get(i).get(0).text + "}\n";
+        s = "\\begin{cvitemskv}\n";
+        for (int i = 0; i < list.list.size(); i++) {
+            String header = list.list.get(i).get(0).text;
+            s += "\\cvitem[" + header + "]{" + list.list.get(i).get(1).text + "}\n";
         }
-        s += "\\end{cvkeyval}\n" +
-                "\\end{multicols}";
+        s += "\\end{cvitemskv}\n";
         return s;
-    }*/
+    }
 
     public String buildQualificationList() {
         String s;
@@ -58,17 +55,21 @@ public class ListBuilder implements TexBuilder {
             s += "{" + list.get(0).text + "}";
             s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}";
             s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}";
+            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+
             if (list.size() > 4) {
                 s += "{\\begin{cvitems}\n";
-            }
+            } else
+                s += "{";
+
             for (int m = 4; m < list.size(); m++) {
                 s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode() + "}\n";
             }
 
             if (list.size() > 4) {
                 s += "\\end{cvitems}}\n";
-            }
+            } else
+                s += "}";
         }
         s += "\\end{cventries}\n";
         return s;
