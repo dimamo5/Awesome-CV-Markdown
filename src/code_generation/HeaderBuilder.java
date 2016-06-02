@@ -2,6 +2,7 @@ package code_generation;
 
 import data.Info;
 import parser.Markdown;
+import parser.Settings;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class HeaderBuilder implements TexBuilder {
     private final Info info;
     private FileOutputStream out;
+    private String headerCode;
 
     public HeaderBuilder(Info info) {
         this.out = null;
@@ -60,9 +62,49 @@ public class HeaderBuilder implements TexBuilder {
         }
     }
 
-    /*@Override
+    public String getHeaderCode() {
+        if (headerCode == null || headerCode.isEmpty()) {
+            buildHtml();
+        }
+        return headerCode;
+    }
+
+    @Override
     public void buildHtml() {
-    }*/
+        headerCode = "<header>\n" +
+                "<h1 id=\"name\" class=\"text-center\">";
+        //NAME
+        String[] names = info.getName().split(" ");
+        for (int i = 0; i < names.length; i++) {
+            if (i == names.length - 1) {
+                headerCode += "<strong>" + names[i] + "</strong></h1>\n";
+            } else
+                headerCode += names[i] + " ";
+        }
+
+        //POSITION
+        headerCode += "<h4 id=\"position\" class=\"text-center\">";
+        for (int i = 0; i < info.getSub().size(); i++) {
+            if (i == info.getSub().size() - 1)
+                headerCode += info.getSub().get(i) + " ";
+            else
+                headerCode += info.getSub().get(i) + " &middot; ";
+        }
+        headerCode += "</h4>\n";
+
+        //ADDRESS
+        headerCode += "<h4 id=\"address\" class=\"text-center\" id=\"address\">" + info.getAddress() + "</h4>\n";
+
+        //CONTACTS
+        headerCode += "<p class=\"text-center\">";
+        for (int i = 0; i < info.getContacts().size(); i++) {
+            headerCode += new IconTextBuilder(info.getContacts().get(i)).getIconTextCode(Settings.LanguageOutput
+                    .HTML) + " | ";
+        }
+        headerCode += "</p>";
+
+        headerCode += "\n</header>\n\n";
+    }
 
     public void closeFile() {
         if (out != null) {

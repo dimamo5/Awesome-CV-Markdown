@@ -22,7 +22,7 @@ public class Markdown {
     private String outputFile;
 
     public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.RED, "resumeTest");
+        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.HTML);
         file2Parse = System.getProperty("user.dir") + "/" + s;
         outputFile = System.getProperty("user.dir") + "/" + out;
         String outputFolder = outputFile + "/" + settings.getPdfName();
@@ -63,9 +63,11 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            generateLatexCode(parser.cv);
+            //generateLatexCode(parser.cv);
 
-            generatePdf();
+            generateHtmlCode(parser.cv);
+
+            //generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
@@ -96,7 +98,8 @@ public class Markdown {
     }
 
     private void generatePdf() {
-        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings.getPdfName() + ".tex");
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings
+                .getPdfName() + ".tex");
         pb.redirectOutput();
         Process p = null;
         try {
@@ -112,5 +115,10 @@ public class Markdown {
             e.printStackTrace();
         }
 
+    }
+
+    private void generateHtmlCode(Cv cv) {
+        System.out.println("HTML FILE GENERATED");
+        new MainBuilder(cv).buildHtml();
     }
 }
