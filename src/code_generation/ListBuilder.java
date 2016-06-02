@@ -85,19 +85,30 @@ public class ListBuilder implements TexBuilder {
     }
 
     private String buildHonorListHtml() {
-        return null;
+        String s = "";
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
+            s += "<div class=\"row\">\n";
+            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.HTML) + "</div>\n";
+            s += "<div class=\"col-md-8\"><strong>" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Settings.LanguageOutput.HTML) + "</strong>";
+            s += new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.HTML) + "</div>\n";
+            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.HTML) + "</div>";
+            s += "</div>";
+        }
+        return s;
     }
 
     private String buildSimpleListHtml() {
         String s = "";
-        s = "<table class=\"table borderless\">\n";
+        s += "<div class=\"row\"><div class=\"col-md-5\">\n";
+        s += "<table class=\"table borderless\">\n";
         for (int i = 0; i < list.list.size(); i++) {
             s += "<tr>";
             String header = list.list.get(i).get(0).text;
             s += "<td><strong>" + header + "</strong></td>\n<td>" + list.list.get(i).get(1).text + "</td>";
             s += "</tr>\n";
         }
-        s += "</table>";
+        s += "</table></div></div>";
         return s;
     }
 
@@ -147,10 +158,10 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += " \\cvhonor\n";
-            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Markdown.settings.getOutput()) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Markdown.settings.getOutput()) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Markdown.settings.getOutput()) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Markdown.settings.getOutput()) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
         }
 
         s += "\\end{cvhonors}\n";

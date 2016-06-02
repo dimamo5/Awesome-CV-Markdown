@@ -88,7 +88,7 @@ public class HeaderBuilder implements TexBuilder {
             if (i == info.getSub().size() - 1)
                 headerCode += info.getSub().get(i) + " ";
             else
-                headerCode += info.getSub().get(i) + "&middot; ";
+                headerCode += info.getSub().get(i) + " &middot; ";
         }
         headerCode += "</h3>\n";
 
