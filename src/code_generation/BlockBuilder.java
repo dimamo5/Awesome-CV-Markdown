@@ -31,7 +31,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
             e.printStackTrace();
         }
         try {
-            String blockName = "\\cvsection{" + block.getBlockName() + "}";
+            String blockName = "\\cvsection{" + block.getBlockName() + "}\n\n";
             out.write(blockName.getBytes("UTF-8"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
     private String getCodeSubBlock(SubBlock subBlock) {
         String generatedCode = "";
         if (subBlock.getSubBlockName() != null) {
-            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n";
+            generatedCode += "\\cvsubsection{" + subBlock.getSubBlockName() + "}\n\n";
         }
         switch (subBlock.getType()) {
             case LIST:
@@ -62,7 +62,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
                 generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode();
                 break;
             case TEXT:
-                generatedCode += (String) subBlock.getContent();
+                generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";
                 break;
         }
         return generatedCode;
