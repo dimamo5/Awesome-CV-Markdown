@@ -46,6 +46,7 @@
 %-------------------------------------------------------------------------------
 %                3rd party packages
 %-------------------------------------------------------------------------------
+\RequirePackage{tabularx}
 % Needed to make fixed length table
 \RequirePackage{array}
 % Needed to handle list environment
@@ -111,6 +112,8 @@
 \fancyhf{}
 % Enable if you want to make header or footer using fancyhdr
 \pagestyle{fancy}
+%define new clumn width
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
 
 
 %-------------------------------------------------------------------------------
@@ -224,6 +227,8 @@
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+
+
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
@@ -493,7 +498,7 @@
   \fancyfoot{}
   \fancyfoot[L]{\footerstyle{#1}}
   \fancyfoot[C]{\footerstyle{#2}}
-  \fancyfoot[R]{\footerstyle{#3}} 
+  \fancyfoot[R]{\footerstyle{#3}}
 }
 
 % Define a section for CV
@@ -512,6 +517,14 @@
   \vspace{-3mm}
   \subsectionstyle{#1}
   \phantomsection
+}
+\newcommand*{\keyvalstylevalue}[1]{{\fontsize{10pt}{1em}\bodyfont\color{text} #1}}
+\newcommand*{\keyvalstylekey}[1]{{\textbf{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}}
+
+\newcommand*{\cvitem}[2][]{
+  \ifempty{#1}
+  {\item \keyvalstylevalue{#2}}
+  {\item[\keyvalstylekey{#1}] \keyvalstylevalue{#2}}
 }
 
 % Define a paragraph for CV
@@ -560,7 +573,7 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \setlength\leftskip{0.2cm}
     \subentrytitlestyle{#2} & \ifthenelse{\equal{#1}{}}
-      {\subentrydatestyle{#3}}{} 
+      {\subentrydatestyle{#3}}{}
     \ifthenelse{\equal{#1}{}}
       {}
       {\subentrypositionstyle{#1} & \subentrydatestyle{#3} \\}
@@ -617,6 +630,17 @@
   \end{itemize}
   \end{justify}
   \vspace{-4.0mm}
+}
+
+% Define an environment for cvitems(for cventry)
+\newenvironment{cvitemskv}[1][2.5cm]{
+  \begin{justify}
+    \begin{itemize}[leftmargin=#1, nosep, noitemsep]
+      \setlength{\parskip}{0pt}
+      \renewcommand{\labelitemi}{\bullet}
+    }{
+    \end{itemize}
+  \end{justify}
 }
 
 
