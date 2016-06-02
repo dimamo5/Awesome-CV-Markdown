@@ -69,10 +69,10 @@ public class List {
             String[] qual = it.text.split("(P|p)lace");
             String[] numb = it.text.split("[\\d]");
 
-            if(qual.length > 0)
-            System.out.println("Qual: " + qual[0]);
-            if(numb.length > 0)
-            System.out.println("Numb: " + numb[0]);
+            if (qual.length > 0)
+                System.out.println("Qual: " + qual[0]);
+            if (numb.length > 0)
+                System.out.println("Numb: " + numb[0]);
 
             boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text.equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
             System.out.println("isQual: " + isqualification);
@@ -151,7 +151,6 @@ public class List {
                 ", type=" + type +
                 '}';
     }
-
 
 
     // TODO: 01/06/2016 ver bem deste other

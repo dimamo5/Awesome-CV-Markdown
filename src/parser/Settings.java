@@ -17,6 +17,7 @@ public class Settings {
     }
 
     ;
+
     public Settings(String name) {
         this.currentColor = Color.RED;
         printTree = false;

@@ -5,6 +5,7 @@ package code_generation;
  */
 public interface TexBuilder {
     String FILES_LOCATION = System.getProperty("user.dir") + "/resources/generated/";
+
     void buildTex();
 
     void buildHtml();

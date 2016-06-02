@@ -83,7 +83,7 @@ public class HeaderBuilder implements TexBuilder {
         }
 
         //POSITION
-        headerCode = "<h3>";
+        headerCode += "<h3>";
         for (int i = 0; i < info.getSub().size(); i++) {
             if (i == info.getSub().size() - 1)
                 headerCode += info.getSub().get(i) + " ";
@@ -100,7 +100,7 @@ public class HeaderBuilder implements TexBuilder {
             headerCode += new IconTextBuilder(info.getContacts().get(i)).getIconTextCode(Settings.LanguageOutput.HTML) + " | ";
         }
 
-        headerCode = "\n</header>\n\n";
+        headerCode += "\n</header>\n\n";
     }
 
     public void closeFile() {
