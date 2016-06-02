@@ -9,7 +9,6 @@ import static data.List.ListType.*;
  */
 public class List {
     public ArrayList<ArrayList<IconText>> list = new ArrayList<>();
-
     private ListType type;
 
     public List() {
@@ -52,12 +51,12 @@ public class List {
                 if (hasPlace(elem) && hasQualification(elem) && elem.size() >= 4) {
                     this.type = HONOR;
                     return;
-                } else if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
+                } else if (elem.get(0).text.length() < 15) {
+                    this.type = SIMPLE;
+                } else {
                     this.type = QUALIFICATIONS;
                     return;
 
-                } else if (elem.get(0).text.length() < 15) {
-                    this.type = SIMPLE;
                 }
             }
         }
@@ -77,7 +76,7 @@ public class List {
         return false;
     }
 
-    private boolean hasPlace(ArrayList<IconText> list) {
+    public boolean hasPlace(ArrayList<IconText> list) {
         for (IconText it : list) {
             if (it.icon.name.equals("place")) {
                 return true;
@@ -86,7 +85,7 @@ public class List {
         return false;
     }
 
-    private boolean hasDate(ArrayList<IconText> list) {
+    public boolean hasDate(ArrayList<IconText> list) {
         for (IconText it : list) {
             if (it.icon.name.equals("date")) {
                 return true;

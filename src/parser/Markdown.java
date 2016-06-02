@@ -22,7 +22,7 @@ public class Markdown {
     private String outputFile;
 
     public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.HTML);
+        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.TEX);
         file2Parse = System.getProperty("user.dir") + "/" + s;
         outputFile = System.getProperty("user.dir") + "/" + out;
         String outputFolder = outputFile + "/" + settings.getPdfName();

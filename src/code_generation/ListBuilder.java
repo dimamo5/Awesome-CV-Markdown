@@ -3,7 +3,6 @@ package code_generation;
 import data.IconText;
 import data.List;
 import data.Utils;
-import parser.Markdown;
 import parser.Settings;
 
 import java.util.ArrayList;
@@ -33,9 +32,6 @@ public class ListBuilder implements TexBuilder {
             case QUALIFICATIONS:
                 listCode = buildQualificationList();
                 break;
-            case OTHER:
-                listCode = buildOtherList();
-                break;
         }
     }
 
@@ -51,40 +47,7 @@ public class ListBuilder implements TexBuilder {
             case QUALIFICATIONS:
                 listCode = buildQualificationListHtml();
                 break;
-            case OTHER:
-                break;
         }
-    }
-
-    private String buildOtherList() {
-        String s = "";
-        s += "\\begin{cventries}\n";
-        s += "\\cventry\n";
-
-        for (int i = 0; i < list.list.size(); i++) {
-
-            String header = list.list.get(i).get(0).text;
-            ArrayList<IconText> l = this.list.list.get(i);
-
-            s += "{" + Utils.analyzeEscape(header) + "}\n";
-            s += "{" + new IconTextBuilder(this.list.getPlace(l)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
-            s += "{" + new IconTextBuilder(this.list.getDate(l)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
-
-            if (list.list.get(i).size() < 5) {
-                for (int k = 0; k < 5 - list.list.get(i).size(); k++) {
-                    s += "{}\n";
-                }
-            }
-
-            s += "{\n";
-            s += "\\begin{cvitems}\n";
-
-            s += " \\item{" + Utils.analyzeEscape(list.list.get(i).get(1).text) + "}\n";
-        }
-
-        s += "\\end{cvitems}\n" + "}";
-        s += "\n\\end{cventries}\n";
-        return s;
     }
 
 
@@ -169,25 +132,45 @@ public class ListBuilder implements TexBuilder {
         s = "\\begin{cventries}\n";
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
+            boolean hasplace = this.list.hasPlace(list);
+            boolean hasdate = this.list.hasDate(list);
+            int size = (hasdate) ? 0 : 1;
+            size += (hasplace) ? 0 : 1;
+
             s += "  \\cventry\n";
-            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}";
+            IconText it = this.list.getFirstElem(list);
+
+            if (it != null)
+                s += "{" + new IconTextBuilder(it).getIconTextCode(Settings.LanguageOutput.TEX) + "}";
+            else
+                s += "{}";
             s += "{" + list.get(0).text + "}";
+
+            //PLACE
+            if (hasplace)
             s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
                     "}";
+            else
+                s += "{}";
+
+            //DATE
+            if (hasdate)
             s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
                     "}\n";
+            else
+                s += "{}";
 
-            if (list.size() > 4) {
+            if (list.size() > 4 - size) {
                 s += "{\\begin{cvitems}\n";
             } else
                 s += "{";
 
-            for (int m = 4; m < list.size(); m++) {
+            for (int m = 4 - size; m < list.size(); m++) {
                 s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode(Settings.LanguageOutput.TEX) +
                         "}\n";
             }
 
-            if (list.size() > 4) {
+            if (list.size() > 4 - size) {
                 s += "\\end{cvitems}}\n";
             } else
                 s += "}";
