@@ -32,4 +32,9 @@ public class IconBuilder implements TexBuilder {
 
         iconCode = s;
     }
+
+    @Override
+    public void buildHtml() {
+
+    }
 }

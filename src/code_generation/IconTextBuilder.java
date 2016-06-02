@@ -1,6 +1,7 @@
 package code_generation;
 
 import data.IconText;
+import parser.Settings;
 
 /**
  * Created by diogo on 01/06/2016.
@@ -13,9 +14,12 @@ public class IconTextBuilder implements TexBuilder {
         iconText=it;
     }
 
-    public String getIconTextCode(){
+    public String getIconTextCode(Settings.LanguageOutput type) {
         if(iconTextCode==null || iconTextCode.isEmpty()){
-            buildTex();
+            if (type == Settings.LanguageOutput.TEX)
+                buildTex();
+            else
+                buildHtml();
         }
         return iconTextCode;
     }
@@ -41,5 +45,10 @@ public class IconTextBuilder implements TexBuilder {
         }else if(!this.iconText.icon.name.isEmpty()){
             iconTextCode+=new IconBuilder(this.iconText.icon).getIconCode();
         }
+    }
+
+    @Override
+    public void buildHtml() {
+
     }
 }

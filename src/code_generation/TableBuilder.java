@@ -62,6 +62,11 @@ public class TableBuilder implements TexBuilder {
                 headerCode + bodyCode + "\\end{tabularx}";
     }
 
+    @Override
+    public void buildHtml() {
+
+    }
+
     public String getTableCode() {
         if (tableCode == null || tableCode.isEmpty()) {
             buildTex();

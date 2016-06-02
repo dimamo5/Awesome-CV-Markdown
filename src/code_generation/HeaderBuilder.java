@@ -2,6 +2,7 @@ package code_generation;
 
 import data.Info;
 import parser.Markdown;
+import parser.Settings;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class HeaderBuilder implements TexBuilder {
     private final Info info;
     private FileOutputStream out;
+    private String headerCode;
 
     public HeaderBuilder(Info info) {
         this.out = null;
@@ -60,8 +62,45 @@ public class HeaderBuilder implements TexBuilder {
         }
     }
 
+    public String getHeaderCode() {
+        if (headerCode == null || headerCode.isEmpty()) {
+            buildHtml();
+        }
+        return headerCode;
+    }
+
     @Override
     public void buildHtml() {
+        headerCode = "<header>\n" +
+                "<h1>";
+        //NAME
+        String[] names = info.getName().split(" ");
+        for (int i = 0; i < names.length; i++) {
+            if (i == names.length - 1) {
+                headerCode += "<strong>" + names[i] + "</strong></h1>\n";
+            } else
+                headerCode += names[i] + " ";
+        }
+
+        //POSITION
+        headerCode = "<h3>";
+        for (int i = 0; i < info.getSub().size(); i++) {
+            if (i == info.getSub().size() - 1)
+                headerCode += info.getSub().get(i) + " ";
+            else
+                headerCode += info.getSub().get(i) + "&middot; ";
+        }
+        headerCode += "</h3>\n";
+
+        //ADDRESS
+        headerCode += "<h3 id=\"address\">" + info.getAddress() + "</h3>\n";
+
+        //CONTACTS
+        for (int i = 0; i < info.getContacts().size(); i++) {
+            headerCode += new IconTextBuilder(info.getContacts().get(i)).getIconTextCode(Settings.LanguageOutput.HTML) + " | ";
+        }
+
+        headerCode = "\n</header>\n\n";
     }
 
     public void closeFile() {

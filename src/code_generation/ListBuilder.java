@@ -2,6 +2,7 @@ package code_generation;
 
 import data.IconText;
 import data.List;
+import parser.Settings;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,11 @@ public class ListBuilder implements TexBuilder {
         }
     }
 
+    @Override
+    public void buildHtml() {
+
+    }
+
     public String buildSimpleList() {
         String s;
         s = "\\begin{cvitemskv}\n";
@@ -52,10 +58,10 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += "  \\cventry\n";
-            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}";
+            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}";
             s += "{" + list.get(0).text + "}";
-            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}";
+            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
 
             if (list.size() > 4) {
                 s += "{\\begin{cvitems}\n";
@@ -63,7 +69,7 @@ public class ListBuilder implements TexBuilder {
                 s += "{";
 
             for (int m = 4; m < list.size(); m++) {
-                s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode() + "}\n";
+                s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
             }
 
             if (list.size() > 4) {
@@ -81,10 +87,10 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += " \\cvhonor\n";
-            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
         }
 
         s += "\\end{cvhonors}\n";

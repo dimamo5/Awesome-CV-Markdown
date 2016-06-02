@@ -49,6 +49,11 @@ public class BlockBuilder implements TexBuilder, Runnable {
 
     }
 
+    @Override
+    public void buildHtml() {
+
+    }
+
     private String getCodeSubBlock(SubBlock subBlock) {
         String generatedCode = "";
         if (subBlock.getSubBlockName() != null) {

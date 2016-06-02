@@ -7,17 +7,25 @@ public class Settings {
     private Color currentColor;
     private boolean printTree;
     private String pdfName;
+    private LanguageOutput output;
 
-    public Settings(Color c, String name) {
+    public Settings(Color c, String name, LanguageOutput out) {
         this.currentColor = c;
         printTree = false;
         pdfName = name;
+        output = out;
     }
 
+    ;
     public Settings(String name) {
         this.currentColor = Color.RED;
         printTree = false;
         pdfName = name;
+        output = LanguageOutput.TEX;
+    }
+
+    public LanguageOutput getOutput() {
+        return output;
     }
 
     public Color getColor() {
@@ -59,6 +67,8 @@ public class Settings {
         }
         return colorCode;
     }
+
+    public enum LanguageOutput {HTML, TEX}
 
 
     public enum Color {RED, GREEN, BLUE, PINK, ORANGE, GREY, DARK}
