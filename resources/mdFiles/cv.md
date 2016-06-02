@@ -21,18 +21,18 @@
 ###Education
 ####Ensino Basico primario
 *Ecole Francaise de Porto
-:{star 3.5/5}
+:{stars 3.5/5}
 :{date} 01\/2010\-02\/2015
 :{place} Porto
 
 ####Ensino Basico Secundario
 *CURSO TECNOLOGICO DE INFORMATICA
-:{star 4.5/5} (17.5\/20)
+:{stars 4.5/5} (17.5\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
 
 *Mestrado integrado em engenharia informatica
-:{star 3/5}(16\/20)
+:{stars 3/5}(16\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
 :Ola
