@@ -65,10 +65,18 @@ public class List {
 
     private boolean hasQualification(ArrayList<IconText> list) {
         for (IconText it : list) {
-            String[] qual = it.icon.name.split("[place,Place]");
-            String[] numb = it.icon.name.split("[\\d]");
+            String[] qual = it.text.split("(P|p)lace");
+            String[] numb = it.text.split("[\\d]");
 
-            if ((qual.length > 0 && numb.length > 0) || it.icon.name.equalsIgnoreCase("Finalist") || it.icon.name.equalsIgnoreCase("First")) {
+            if(qual.length > 0)
+            System.out.println("Qual: " + qual[0]);
+            if(numb.length > 0)
+            System.out.println("Numb: " + numb[0]);
+
+            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text.equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
+            System.out.println("isQual: " + isqualification);
+
+            if ((qual.length > 0 && numb.length > 0 && isqualification)) {
                 return true;
             }
         }
@@ -124,7 +132,11 @@ public class List {
     public IconText getSecondElem(ArrayList<IconText> list) {
         for (int i = 0; i < list.size(); i++) {
             IconText it = list.get(i);
-            if (!it.icon.name.equals("date") && !it.icon.name.equals("place") && !it.text.equalsIgnoreCase("Finalist") && !it.text.equalsIgnoreCase("First") && i != 0) {
+            String[] qual = it.text.split("(P|p)lace");
+            String[] numb = it.text.split("[\\d]");
+            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text.equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
+
+            if (!it.icon.name.equals("date") && !(qual.length > 0 && numb.length > 0 && isqualification) && i != 0) {
                 return it;
             }
         }

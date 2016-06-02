@@ -1,10 +1,9 @@
 /out
 /.idea
+/generated/resumeTest
 *.aux
 *.log
 *.tex
 *.iml
-*.aux
-*.log
 *.out
 *.pdf
