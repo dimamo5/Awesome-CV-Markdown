@@ -3,6 +3,7 @@ package code_generation;
 import data.IconText;
 import data.Table;
 import parser.Markdown;
+import parser.Settings;
 
 import java.util.ArrayList;
 
@@ -64,12 +65,37 @@ public class TableBuilder implements TexBuilder {
 
     @Override
     public void buildHtml() {
+        tableCode = "<table class=\"table table-striped\">\n";
+        //TABLE HEAD
+        tableCode += "<thead><tr>";
+        ArrayList<String> header = table.getHeader();
+        for (int i = 0; i < header.size(); i++) {
+            tableCode += "<th>" + header.get(i) + "</th>";
+        }
+        tableCode += "</tr></thead>";
 
+        //TABLEBODY
+        tableCode += "<tbody>\n";
+
+        for (int i = 0; i < table.getBody().size(); i++) {
+            ArrayList<IconText> line = table.getBody().get(i);
+            tableCode += "<tr>";
+            for (int m = 0; m < line.size(); m++) {
+                tableCode += "<td>" + line.get(m).text + "</td>";
+            }
+            tableCode += "</tr>";
+        }
+
+
+        tableCode += "</tbody></table>";
     }
 
-    public String getTableCode() {
+    public String getTableCode(Settings.LanguageOutput lang) {
         if (tableCode == null || tableCode.isEmpty()) {
-            buildTex();
+            if (lang == Settings.LanguageOutput.TEX)
+                buildTex();
+            else
+                buildHtml();
         }
         return tableCode;
     }

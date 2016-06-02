@@ -64,7 +64,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
                 generatedCode += new ListBuilder((List) subBlock.getContent()).getListCode();
                 break;
             case TABLE:
-                generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode();
+                generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode(Markdown.settings.getOutput());
                 break;
             case TEXT:
                 generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";

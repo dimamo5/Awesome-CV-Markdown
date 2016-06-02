@@ -2,6 +2,7 @@ package code_generation;
 
 import data.Block;
 import data.Cv;
+import data.Table;
 import data.Utils;
 import parser.Markdown;
 import parser.Settings;
@@ -89,11 +90,13 @@ public class MainBuilder implements TexBuilder {
                 "\n" +
                 "</head>";
 
-        String body = "<body>";
+        String body = "<body><div class=\"container\">";
 
         String headerHtml = new HeaderBuilder(cv.info).getHeaderCode();
 
-        String footer = "</body></html>";
+        String tableHtml = new TableBuilder((Table) cv.blocks.get(4).getSubBlock().getContent()).getTableCode(Settings.LanguageOutput.HTML);
+
+        String footer = "</div></body></html>";
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outPath));
@@ -102,6 +105,7 @@ public class MainBuilder implements TexBuilder {
             writer.write(body);
             writer.write(headerHtml);
             writer.newLine();
+            writer.write(tableHtml);
             writer.write(footer);
             writer.close();
         } catch (IOException e) {
