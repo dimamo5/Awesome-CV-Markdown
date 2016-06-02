@@ -32,14 +32,8 @@ public class MainBuilder implements TexBuilder {
                 "\\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}\n" +
                 "\\fontdir[fonts/]\n" +
                 "\\colorlet{awesome}{" + Markdown.settings.getColorCode() + "}\n" +
-                //"\\setbool{acvSectionColorHighlight}{true}\n" +
-                //"\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
-                "\\usepackage{nth}\n" +
-                "\\usepackage{tabu}\n" +
-                "\\usepackage{longtable}\n" +
-                "\\usepackage{multicol}\n" +
-                "\\usepackage[table]{xcolor}\n" +
-                "\\usepackage{tabularx}" +
+                "\\setbool{acvSectionColorHighlight}{true}\n" +
+                "\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
                 "\\input{" + pdfName + "/header.tex}\n";        //Header of the pdf
 
         String footer = "\t{\\today}\n" + "\t{" + cv.info.getName() + "~~~·~~~Résumé}\n" + "\t{\\thepage}\n";

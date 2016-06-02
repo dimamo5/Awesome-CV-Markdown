@@ -37,12 +37,12 @@ public class ListBuilder implements TexBuilder {
 
     public String buildSimpleList() {
         String s;
-        s = "\\begin{cvitems}\n";
+        s = "\\begin{cvitemskv}\n";
         for (int i = 0; i < list.list.size(); i++) {
             String header = list.list.get(i).get(0).text;
             s += "\\cvitem[" + header + "]{" + list.list.get(i).get(1).text + "}\n";
         }
-        s += "\\end{cvitems}\n";
+        s += "\\end{cvitemskv}\n";
         return s;
     }
 
