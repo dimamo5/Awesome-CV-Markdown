@@ -19,7 +19,8 @@ public class BlockBuilder implements TexBuilder {
 
     public BlockBuilder(Block block) {
         this.block = block;
-        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + Utils.formatAuxFile(block.getBlockName()) + ".tex";
+        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + Utils.formatAuxFile(block
+                .getBlockName()) + ".tex";
 
     }
 
@@ -53,7 +54,9 @@ public class BlockBuilder implements TexBuilder {
 
     @Override
     public void buildHtml() {
-        blockCode = "<section>\n" + "<h2>" + block.getBlockName() + "</h2>\n";
+        blockCode = "<section>\n" + "<h2 class=\"section\">" + "<span style=\"color:#dc3522\">" + block.getBlockName
+                ().substring(0, 3) +
+                "</span>" + block.getBlockName().substring(3) + "</h2><hr>\n";
 
         for (SubBlock subBlock : this.block.subBlocks) {
             blockCode += getCodeSubBlock(subBlock, Settings.LanguageOutput.HTML) + "\n";

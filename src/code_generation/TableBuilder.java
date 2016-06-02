@@ -81,7 +81,8 @@ public class TableBuilder implements TexBuilder {
             ArrayList<IconText> line = table.getBody().get(i);
             tableCode += "<tr>";
             for (int m = 0; m < line.size(); m++) {
-                tableCode += "<td>" + new IconTextBuilder(line.get(m)).getIconTextCode(Settings.LanguageOutput.HTML) + "</td>";
+                tableCode += "<td>" + new IconTextBuilder(line.get(m)).getIconTextCode(Settings.LanguageOutput.HTML)
+                        + "</td>";
             }
             tableCode += "</tr>";
         }

@@ -99,7 +99,8 @@ public class Markdown {
     }
 
     private void generatePdf() {
-        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings.getPdfName() + ".tex");
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings
+                .getPdfName() + ".tex");
         pb.redirectOutput();
         Process p = null;
         try {

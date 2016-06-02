@@ -1,4 +1,5 @@
-// Generated from C:/Users/Utilizador/Desktop/MIEIC/3� ano/2� semestre/COMP/markdown-dsl/src/grammar\MarkdownLexer.g4 by ANTLR 4.5.1
+// Generated from C:/Users/Utilizador/Desktop/MIEIC/3� ano/2� semestre/COMP/markdown-dsl/src/grammar\MarkdownLexer.g4
+// by ANTLR 4.5.1
 package grammar;
 
 import org.antlr.v4.runtime.*;

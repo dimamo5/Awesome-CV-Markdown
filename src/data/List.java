@@ -74,7 +74,8 @@ public class List {
             if (numb.length > 0)
                 System.out.println("Numb: " + numb[0]);
 
-            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text.equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
+            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text
+                    .equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
             System.out.println("isQual: " + isqualification);
 
             if ((qual.length > 0 && numb.length > 0 && isqualification)) {
@@ -135,7 +136,8 @@ public class List {
             IconText it = list.get(i);
             String[] qual = it.text.split("(P|p)lace");
             String[] numb = it.text.split("[\\d]");
-            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text.equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
+            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text
+                    .equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
 
             if (!it.icon.name.equals("date") && !(qual.length > 0 && numb.length > 0 && isqualification) && i != 0) {
                 return it;

@@ -72,7 +72,7 @@ public class HeaderBuilder implements TexBuilder {
     @Override
     public void buildHtml() {
         headerCode = "<header>\n" +
-                "<h1>";
+                "<h1 id=\"name\" class=\"text-center\">";
         //NAME
         String[] names = info.getName().split(" ");
         for (int i = 0; i < names.length; i++) {
@@ -83,22 +83,25 @@ public class HeaderBuilder implements TexBuilder {
         }
 
         //POSITION
-        headerCode += "<h3>";
+        headerCode += "<h4 id=\"position\" class=\"text-center\">";
         for (int i = 0; i < info.getSub().size(); i++) {
             if (i == info.getSub().size() - 1)
                 headerCode += info.getSub().get(i) + " ";
             else
                 headerCode += info.getSub().get(i) + " &middot; ";
         }
-        headerCode += "</h3>\n";
+        headerCode += "</h4>\n";
 
         //ADDRESS
-        headerCode += "<h3 id=\"address\">" + info.getAddress() + "</h3>\n";
+        headerCode += "<h4 id=\"address\" class=\"text-center\" id=\"address\">" + info.getAddress() + "</h4>\n";
 
         //CONTACTS
+        headerCode += "<p class=\"text-center\">";
         for (int i = 0; i < info.getContacts().size(); i++) {
-            headerCode += new IconTextBuilder(info.getContacts().get(i)).getIconTextCode(Settings.LanguageOutput.HTML) + " | ";
+            headerCode += new IconTextBuilder(info.getContacts().get(i)).getIconTextCode(Settings.LanguageOutput
+                    .HTML) + " | ";
         }
+        headerCode += "</p>";
 
         headerCode += "\n</header>\n\n";
     }

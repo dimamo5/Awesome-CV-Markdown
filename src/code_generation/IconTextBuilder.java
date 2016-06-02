@@ -38,7 +38,8 @@ public class IconTextBuilder implements TexBuilder {
                 String dates[] = this.iconText.text.split("-");
                 String months1[] = dates[0].split("/");
                 String months2[] = dates[1].split("/");
-                iconTextCode += "\\timeinterval{\\myyearmonth{" + months1[0] + "}{" + months1[1] + "}}{\\myyearmonth{" + months2[0] + "}{" + months2[1] + "}}";
+                iconTextCode += "\\timeinterval{\\myyearmonth{" + months1[0] + "}{" + months1[1] +
+                        "}}{\\myyearmonth{" + months2[0] + "}{" + months2[1] + "}}";
             } else {
                 iconTextCode += iconText.text;
             }
@@ -53,7 +54,8 @@ public class IconTextBuilder implements TexBuilder {
 
         if (this.iconText.icon.name != null && this.iconText.icon.name.equals("date")) {
             iconTextCode = "";
-            if (this.iconText.text.matches("\\d{4}-\\d{4}") || this.iconText.text.matches("\\d{2}\\/\\d{4}-\\d{2}\\/\\d{4}")) {
+            if (this.iconText.text.matches("\\d{4}-\\d{4}") || this.iconText.text.matches
+                    ("\\d{2}\\/\\d{4}-\\d{2}\\/\\d{4}")) {
                 String dates[] = this.iconText.text.split("-");
                 iconTextCode += dates[0] + " <i class=\"fa fa-fw fa-arrow-right\"></i> " + dates[1];
             } else {
