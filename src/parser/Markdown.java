@@ -65,7 +65,7 @@ public class Markdown {
 
             generateLatexCode(parser.cv);
 
-            generatePdf();
+           // generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
