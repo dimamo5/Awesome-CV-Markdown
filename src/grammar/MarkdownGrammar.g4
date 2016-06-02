@@ -15,8 +15,10 @@ address: STAR any{cv.info.addAddress($any.text);} NEWLINE;
 contacts: CLOSE_ANGLE_BRACKET icon any{cv.info.addContacts($any.text, $icon.text);} NEWLINE+;
 
 block: {cv.newBlock(); } blockName subBlock+;
-subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})? (list|table|any);
+subBlock: {cv.getBlock().newSubBlock();} (blockSubName boldText?{cv.getSubBlock().addBoldText($boldText.text);})?
+(list|table|textBlock{cv.getSubBlock().addText($textBlock.text);});
 
+textBlock:{cv.getSubBlock().setType(data.SubBlock.BlockType.TEXT);}(any NEWLINE?)+;
 
 list: {cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);} blockList+;
 blockList: STAR any{cv.getList().addHeader($any.text);} NEWLINE (blockListCell)+;

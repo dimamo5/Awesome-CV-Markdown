@@ -88,6 +88,19 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 */
 	void exitSubBlock(MarkdownGrammar.SubBlockContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#textBlock}.
+	 * @param ctx the parse tree
+	 */
+	void enterTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#textBlock}.
+	 *
+	 * @param ctx the parse tree
+	 */
+	void exitTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#list}.
 	 * @param ctx the parse tree
 	 */

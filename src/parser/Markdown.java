@@ -74,9 +74,8 @@ public class Markdown {
     }
 
     private void generateLatexCode(Cv cv) {
-      //  new MainBuilder(cv).buildTex();
-     //   new HeaderBuilder(cv.info).buildTex();
-        new BlockBuilder(cv.blocks.get(2)).buildTex();
+        new MainBuilder(cv).buildTex();
+        new HeaderBuilder(cv.info).buildTex();
 
         for (Block b : cv.blocks) {
             new BlockBuilder(b).buildTex();

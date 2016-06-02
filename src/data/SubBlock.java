@@ -42,6 +42,15 @@ public class SubBlock {
             case LIST:
                 this.content = new List();
                 break;
+            case TEXT:
+                this.content = "";
+                break;
+        }
+    }
+
+    public void addText(String s) {
+        if (this.type == BlockType.TEXT) {
+            this.content = Utils.analyzeEscape(s);
         }
     }
 

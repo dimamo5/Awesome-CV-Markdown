@@ -59,6 +59,13 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSubBlock(MarkdownGrammar.SubBlockContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MarkdownGrammar#textBlock}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link MarkdownGrammar#list}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

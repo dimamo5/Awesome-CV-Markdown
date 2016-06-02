@@ -145,6 +145,22 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
+	public void enterTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
+	public void exitTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+	}
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override
 	public void enterList(MarkdownGrammar.ListContext ctx) {
 	}
 	/**
@@ -363,17 +379,19 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	@Override
 	public void exitTablecontent(MarkdownGrammar.TablecontentContext ctx) {
 	}
+
 	/**
 	 * {@inheritDoc}
-	 *
+	 * <p>
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
 	public void enterWord_space(MarkdownGrammar.Word_spaceContext ctx) {
 	}
+
 	/**
 	 * {@inheritDoc}
-	 *
+	 * <p>
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override
