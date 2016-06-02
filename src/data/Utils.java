@@ -28,4 +28,12 @@ public class Utils {
         File f = new File(s);
         f.mkdir();
     }
+
+    public static String formatAuxFile(String s) {
+        return s.replaceAll(" ", "_").toLowerCase();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Utils.formatAuxFile("pers Inf"));
+    }
 }

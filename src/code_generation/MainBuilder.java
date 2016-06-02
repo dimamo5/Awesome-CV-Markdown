@@ -2,6 +2,7 @@ package code_generation;
 
 import data.Block;
 import data.Cv;
+import data.Utils;
 import parser.Markdown;
 
 import java.io.BufferedWriter;
@@ -38,7 +39,7 @@ public class MainBuilder implements TexBuilder {
 
         String blocks = "";
         for (Block b : cv.blocks) {
-            blocks += "\\input{" + pdfName + "/" + b.getBlockName() + ".tex}\n";
+            blocks += "\\input{" + pdfName + "/" + Utils.formatAuxFile(b.getBlockName()) + ".tex}\n";
         }
 
         String body = "\\begin{document}\n" +

@@ -1,9 +1,6 @@
 package code_generation;
 
-import data.Block;
-import data.List;
-import data.SubBlock;
-import data.Table;
+import data.*;
 import parser.Markdown;
 
 import java.io.DataOutputStream;
@@ -20,7 +17,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
 
     public BlockBuilder(Block block) {
         this.block = block;
-        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + block.getBlockName() + ".tex";
+        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + Utils.formatAuxFile(block.getBlockName()) + ".tex";
 
     }
 
@@ -30,7 +27,7 @@ public class BlockBuilder implements TexBuilder, Runnable {
         try {
             out = new DataOutputStream(new FileOutputStream(fileName));
         } catch (FileNotFoundException e) {
-            System.err.println("File" + fileName + "not found!!!");
+            System.err.println("File " + fileName + " not found!!!");
             e.printStackTrace();
         }
         for (SubBlock subBlock : this.block.subBlocks) {

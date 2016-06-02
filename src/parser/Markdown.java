@@ -1,6 +1,7 @@
 package parser;
 
 import code_generation.BlockBuilder;
+import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
 import data.Block;
 import data.Cv;
@@ -74,6 +75,7 @@ public class Markdown {
 
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
+        new HeaderBuilder(cv.info).buildTex();
         //new BlockBuilder(cv.blocks.get(1)).buildTex();
 
         for (Block b : cv.blocks) {
