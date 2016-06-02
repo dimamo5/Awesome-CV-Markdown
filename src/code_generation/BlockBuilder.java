@@ -30,6 +30,12 @@ public class BlockBuilder implements TexBuilder, Runnable {
             System.err.println("File " + fileName + " not found!!!");
             e.printStackTrace();
         }
+        try {
+            String blockName = "\\cvsection{" + block.getBlockName() + "}";
+            out.write(blockName.getBytes("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for (SubBlock subBlock : this.block.subBlocks) {
             if (out != null) {
                 try {

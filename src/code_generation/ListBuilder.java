@@ -57,17 +57,21 @@ public class ListBuilder implements TexBuilder {
             s += "{" + list.get(0).text + "}";
             s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}";
             s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}";
+            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+
             if (list.size() > 4) {
                 s += "{\\begin{cvitems}\n";
-            }
+            } else
+                s += "{";
+
             for (int m = 4; m < list.size(); m++) {
                 s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode() + "}\n";
             }
 
             if (list.size() > 4) {
                 s += "\\end{cvitems}}\n";
-            }
+            } else
+                s += "}";
         }
         s += "\\end{cventries}\n";
         return s;

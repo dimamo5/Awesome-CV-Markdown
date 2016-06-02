@@ -27,12 +27,15 @@ public class MainBuilder implements TexBuilder {
 
     @Override
     public void buildTex() {
+        // TODO: 02/06/2016 verificar isto
         String fileBeginning = "\\documentclass[11pt, a4paper]{awesome-cv}\n" +
                 "\\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}\n" +
                 "\\fontdir[fonts/]\n" +
                 "\\colorlet{awesome}{" + Markdown.settings.getColorCode() + "}\n" +
-                "\\setbool{acvSectionColorHighlight}{true}\n" +
-                "\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
+                //"\\setbool{acvSectionColorHighlight}{true}\n" +
+                //"\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
+                "\\usepackage[table]{xcolor}\n" +
+                "\\usepackage{tabularx}" +
                 "\\input{" + pdfName + "/header.tex}\n";        //Header of the pdf
 
         String footer = "\t{\\today}\n" + "\t{" + cv.info.getName() + "~~~·~~~Résumé}\n" + "\t{\\thepage}\n";

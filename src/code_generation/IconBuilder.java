@@ -23,7 +23,7 @@ public class IconBuilder implements TexBuilder {
     public void buildTex() {
         String s = "";
         if (icon.name.equals("star")) {
-            s = "\\stars[" + icon.attr2 + "]{" + icon.attr1 + "}";
+            s = "\\star[" + icon.attr2 + "]{" + icon.attr1 + "}";
         } else if (icon.name.equals("date") || icon.name.equals("place")) {
             s = "";
         } else {
