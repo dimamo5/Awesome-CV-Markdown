@@ -3,6 +3,8 @@ package code_generation;
 import data.IconText;
 import data.List;
 import data.Utils;
+import parser.Markdown;
+import parser.Settings;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,23 @@ public class ListBuilder implements TexBuilder {
         }
     }
 
+    @Override
+    public void buildHtml() {
+        switch (list.getType()) {
+            case SIMPLE:
+                listCode = buildSimpleListHtml();
+                break;
+            case HONOR:
+                listCode = buildHonorListHtml();
+                break;
+            case QUALIFICATIONS:
+                listCode = buildQualificationListHtml();
+                break;
+            case OTHER:
+                break;
+        }
+    }
+
     private String buildOtherList() {
         String s = "";
         s += "\\begin{cventries}\n";
@@ -47,12 +66,12 @@ public class ListBuilder implements TexBuilder {
             String header = list.list.get(i).get(0).text;
             ArrayList<IconText> l = this.list.list.get(i);
 
-            s += "{"+ Utils.analyzeEscape(header) + "}\n";
-            s += "{" + new IconTextBuilder(this.list.getPlace(l)).getIconTextCode() + "}\n";
-            s += "{" + new IconTextBuilder(this.list.getDate(l)).getIconTextCode() + "}\n";
+            s += "{" + Utils.analyzeEscape(header) + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getPlace(l)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getDate(l)).getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
 
-            if(list.list.get(i).size() < 5 ){
-                for(int k = 0; k < 5-list.list.get(i).size(); k++ ){
+            if (list.list.get(i).size() < 5) {
+                for (int k = 0; k < 5 - list.list.get(i).size(); k++) {
                     s += "{}\n";
                 }
             }
@@ -68,6 +87,71 @@ public class ListBuilder implements TexBuilder {
         return s;
     }
 
+
+    private String buildQualificationListHtml() {
+        String s = "";
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
+            s += "<div class=\"row\">";
+            s += "<div class=\"col-md-9\">";
+            s += "<strong>" + list.get(0).text + "</strong><br>";
+            s += new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.HTML);
+            if (list.size() > 4) {
+                s += "<ul>\n";
+            }
+            for (int m = 4; m < list.size(); m++) {
+                s += "<li>" + new IconTextBuilder(list.get(m)).getIconTextCode(Settings.LanguageOutput.HTML) +
+                        "</li>\n";
+            }
+            if (list.size() > 4) {
+                s += "</ul>\n";
+            }
+            s += "</div>\n";
+
+            s += "<div class=\"col-md-3 text-right\">";
+            s += "<span style=\"color:#dc3522\">" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode
+                    (Settings.LanguageOutput.HTML) + "</span><br>";
+            s += new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.HTML);
+            s += "</div>";
+
+
+            s += "</div><br>";
+        }
+        return s;
+    }
+
+    private String buildHonorListHtml() {
+        String s = "";
+        for (int i = 0; i < this.list.list.size(); i++) {
+            ArrayList<IconText> list = this.list.list.get(i);
+            s += "<div class=\"row\">\n";
+            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode
+                    (Settings.LanguageOutput.HTML) + "</div>\n";
+            s += "<div class=\"col-md-8\"><strong>" + new IconTextBuilder(this.list.getSecondElem(list))
+                    .getIconTextCode(Settings.LanguageOutput.HTML) + "</strong>";
+            s += new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.HTML) +
+                    "</div>\n";
+            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings
+                    .LanguageOutput.HTML) + "</div>";
+            s += "</div>";
+        }
+        return s;
+    }
+
+    private String buildSimpleListHtml() {
+        String s = "";
+        s += "<div class=\"row\"><div class=\"col-md-5\">\n";
+        s += "<table class=\"table borderless\">\n";
+        for (int i = 0; i < list.list.size(); i++) {
+            s += "<tr>";
+            String header = list.list.get(i).get(0).text;
+            s += "<td><strong>" + header + "</strong></td>\n<td>" + list.list.get(i).get(1).text + "</td>";
+            s += "</tr>\n";
+        }
+        s += "</table></div></div>";
+        return s;
+    }
+
     public String buildSimpleList() {
 
         String s = "";
@@ -78,7 +162,6 @@ public class ListBuilder implements TexBuilder {
         }
         s += "\\end{cvitemskv}\n";
         return s;
-
     }
 
     public String buildQualificationList() {
@@ -87,10 +170,13 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += "  \\cventry\n";
-            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}";
+            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Markdown.settings.getOutput
+                    ()) + "}";
             s += "{" + list.get(0).text + "}";
-            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Markdown.settings.getOutput()) +
+                    "}";
+            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Markdown.settings.getOutput()) +
+                    "}\n";
 
             if (list.size() > 4) {
                 s += "{\\begin{cvitems}\n";
@@ -98,7 +184,8 @@ public class ListBuilder implements TexBuilder {
                 s += "{";
 
             for (int m = 4; m < list.size(); m++) {
-                s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode() + "}\n";
+                s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode(Markdown.settings.getOutput()) +
+                        "}\n";
             }
 
             if (list.size() > 4) {
@@ -116,19 +203,26 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += " \\cvhonor\n";
-            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput
+                    .TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Settings.LanguageOutput
+                    .TEX) + "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                    "}\n";
+            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                    "}\n";
         }
 
         s += "\\end{cvhonors}\n";
         return s;
     }
 
-    public String getListCode() {
+    public String getListCode(Settings.LanguageOutput lang) {
         if (listCode == null || listCode.isEmpty()) {
-            buildTex();
+            if (lang == Settings.LanguageOutput.TEX)
+                buildTex();
+            else if (lang == Settings.LanguageOutput.HTML)
+                buildHtml();
         }
         return listCode;
     }
