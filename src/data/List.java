@@ -52,10 +52,11 @@ public class List {
                 if (hasPlace(elem) && hasDate(elem) && hasQualification(elem) && elem.size() >= 4) {
                     this.type = HONOR;
                     return;
-                }
-                if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
+                } else if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
                     this.type = QUALIFICATIONS;
                     return;
+                } else if (elem.get(0).text.length() < 15) {
+                    this.type = SIMPLE;
                 } else
                     this.type = OTHER;
             }

@@ -8,4 +8,5 @@ public interface TexBuilder {
 
     void buildTex();
 
+    void buildHtml();
 }
