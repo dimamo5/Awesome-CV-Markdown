@@ -1,6 +1,7 @@
 package code_generation;
 
 import data.Icon;
+import parser.Settings;
 
 /**
  * Created by diogo on 01/06/2016.
@@ -13,9 +14,12 @@ public class IconBuilder implements TexBuilder {
         this.icon = icon;
     }
 
-    public String getIconCode() {
+    public String getIconCode(Settings.LanguageOutput lang) {
         if (iconCode == null || iconCode.isEmpty())
-            buildTex();
+            if (lang == Settings.LanguageOutput.TEX)
+                buildTex();
+            else if (lang == Settings.LanguageOutput.HTML)
+                buildHtml();
         return iconCode;
     }
 
@@ -35,6 +39,22 @@ public class IconBuilder implements TexBuilder {
 
     @Override
     public void buildHtml() {
+        String s = "";
+        if (icon.name.equals("stars")) {
+            for (int i = 1; i <= this.icon.attr2; i++) {
+                if (i <= this.icon.attr1)
+                    s += "<i class=\"fa fa-star\"></i>";
+                else if ((i - this.icon.attr1) == 0.5)
+                    s += "<i class=\"fa fa-star-half-o\"></i>";
+                else
+                    s += "<i class=\"fa fa-star-o\"></i>";
+            }
+        } else if (icon.name.equals("date") || icon.name.equals("place")) {
+            s = "";
+        } else {
+            s = "\\fa" + Character.toUpperCase(icon.name.charAt(0)) + icon.name.substring(1, icon.name.length());
+        }
 
+        iconCode = s;
     }
 }

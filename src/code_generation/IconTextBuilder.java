@@ -43,12 +43,25 @@ public class IconTextBuilder implements TexBuilder {
                 iconTextCode += iconText.text;
             }
         } else if (!this.iconText.icon.name.isEmpty()) {
-            iconTextCode += new IconBuilder(this.iconText.icon).getIconCode();
+            iconTextCode += new IconBuilder(this.iconText.icon).getIconCode(Settings.LanguageOutput.TEX);
         }
     }
 
     @Override
     public void buildHtml() {
+        iconTextCode = "";
+        iconTextCode += iconText.text;
 
+        if (this.iconText.icon.name != null && this.iconText.icon.name.equals("date")) {
+            iconTextCode = "";
+            if (this.iconText.text.matches("\\d{4}-\\d{4}") || this.iconText.text.matches("\\d{2}\\/\\d{4}-\\d{2}\\/\\d{4}")) {
+                String dates[] = this.iconText.text.split("-");
+                iconTextCode += dates[0] + "<i class=\"fa fa-arrow-right\"></i>" + dates[1];
+            } else {
+                iconTextCode += iconText.text;
+            }
+        } else if (!this.iconText.icon.name.isEmpty()) {
+            iconTextCode += new IconBuilder(this.iconText.icon).getIconCode(Settings.LanguageOutput.HTML);
+        }
     }
 }
