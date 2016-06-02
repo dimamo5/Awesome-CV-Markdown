@@ -35,7 +35,7 @@
 :{star 3/5}(16\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
-
+:Ola
 ------
 
 ###Experience
@@ -51,7 +51,7 @@
 :{star 3/5}(16\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
-
+:Sou bueda bom
 ------
 
 ###Master Degree

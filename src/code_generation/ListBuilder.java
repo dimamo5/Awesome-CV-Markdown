@@ -55,11 +55,19 @@ public class ListBuilder implements TexBuilder {
             ArrayList<IconText> list = this.list.list.get(i);
             s += "  \\cventry\n";
             s += "{" + list.get(0).text + "}";
-            s += "{" + this.list.getFirstElem(list).text + "}";
+            s += "{" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode() + "}";
             s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode() + "}";
             s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode() + "}";
-            // TODO: 01/06/2016 resto da lista
-            s += "{}\n";
+            if (list.size() > 4) {
+                s += "{\\begin{cvitems}\n";
+            }
+            for (int m = 4; m < list.size(); m++) {
+                s += "\\item {" + new IconTextBuilder(list.get(m)).getIconTextCode() + "}\n";
+            }
+
+            if (list.size() > 4) {
+                s += "\\end{cvitems}}\n";
+            }
         }
         s += "\\end{cventries}\n";
         return s;
