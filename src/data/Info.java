@@ -37,7 +37,6 @@ public class Info {
 
     public void addAddress(String address) {
         this.address = Utils.analyzeEscape(address);
-        ;
     }
 
     public void addContacts(String contacts, String s1) {

@@ -49,7 +49,7 @@ public class List {
     private void analyzeType() {
         for (ArrayList<IconText> elem : list) {
             if (elem.size() != 1) {
-                if (hasPlace(elem) && hasDate(elem) && hasQualification(elem) && elem.size() >= 4) {
+                if (hasPlace(elem) && hasQualification(elem) && elem.size() >= 4) {
                     this.type = HONOR;
                     return;
                 } else if (hasPlace(elem) && hasDate(elem) && elem.size() >= 4) {
@@ -58,8 +58,7 @@ public class List {
 
                 } else if (elem.get(0).text.length() < 15) {
                     this.type = SIMPLE;
-                } else
-                    this.type = OTHER;
+                }
             }
         }
     }
@@ -150,6 +149,6 @@ public class List {
 
     // TODO: 01/06/2016 ver bem deste other
     public enum ListType {
-        SIMPLE, QUALIFICATIONS, HONOR, OTHER
+        SIMPLE, QUALIFICATIONS, HONOR
     }
 }

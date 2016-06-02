@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class TableBuilder implements TexBuilder {
     private final Table table;
-    private final int COLUMN_BOUND = 10;
     private String tableCode;
 
     public TableBuilder(Table t) {
@@ -109,6 +108,7 @@ public class TableBuilder implements TexBuilder {
      * @return True: Automatically(X) / False: Small(s)
      */
     public boolean getColumnClass(int columnNr) {
+        int COLUMN_BOUND = 10;
         if (this.table.getHeader().get(columnNr).length() < COLUMN_BOUND) {
             ArrayList<ArrayList<IconText>> bodyTable = this.table.getBody();
             for (ArrayList<IconText> line : bodyTable) {

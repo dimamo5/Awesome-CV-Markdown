@@ -16,8 +16,6 @@ public class Settings {
         output = out;
     }
 
-    ;
-
     public Settings(String name) {
         this.currentColor = Color.RED;
         printTree = false;
