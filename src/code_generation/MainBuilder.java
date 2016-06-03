@@ -21,7 +21,7 @@ public class MainBuilder implements TexBuilder {
 
     public MainBuilder(Cv cv) {
         this.cv = cv;
-        this.pdfName = Markdown.settings.getPdfName();
+        this.pdfName = Markdown.settings.getFileName();
         String outPath = TexBuilder.FILES_LOCATION + pdfName;
         if (Markdown.settings.getOutput() == Settings.LanguageOutput.HTML)
             outPath += ".html";
@@ -33,7 +33,6 @@ public class MainBuilder implements TexBuilder {
 
     @Override
     public void buildTex() {
-        // TODO: 02/06/2016 verificar isto
         String fileBeginning = "\\documentclass[11pt, a4paper]{awesome-cv}\n" +
                 "\\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}\n" +
                 "\\fontdir[fonts/]\n" +

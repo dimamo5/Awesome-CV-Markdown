@@ -21,7 +21,7 @@ public class HeaderBuilder implements TexBuilder {
         this.info = info;
 
         try {
-            out = new FileOutputStream(FILES_LOCATION + Markdown.settings.getPdfName() + "/header.tex");
+            out = new FileOutputStream(FILES_LOCATION + Markdown.settings.getFileName() + "/header.tex");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

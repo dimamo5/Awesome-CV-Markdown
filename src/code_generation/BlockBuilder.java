@@ -19,7 +19,7 @@ public class BlockBuilder implements TexBuilder {
 
     public BlockBuilder(Block block) {
         this.block = block;
-        this.fileName = FILES_LOCATION + Markdown.settings.getPdfName() + "/" + Utils.formatAuxFile(block
+        this.fileName = FILES_LOCATION + Markdown.settings.getFileName() + "/" + Utils.formatAuxFile(block
                 .getBlockName()) + ".tex";
 
     }

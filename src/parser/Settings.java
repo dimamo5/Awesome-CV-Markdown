@@ -1,30 +1,43 @@
 package parser;
 
+import java.io.File;
+
 /**
  * Created by diogo on 28/05/2016.
  */
 public class Settings {
     private Color currentColor;
     private boolean printTree;
-    private String pdfName;
+    private String fileName;
+    private File filePath;
     private LanguageOutput output;
 
-    public Settings(Color c, String name, LanguageOutput out) {
+    public Settings(Color c, String filePath, LanguageOutput out) {
         this.currentColor = c;
         printTree = false;
-        pdfName = name;
+        this.filePath = new File(filePath);
+        this.fileName = this.filePath.getName().substring(0, this.filePath.getName().lastIndexOf('.'));
         output = out;
     }
 
     public Settings(String name) {
         this.currentColor = Color.RED;
         printTree = false;
-        pdfName = name;
+        this.filePath = new File(name);
+        this.fileName = this.filePath.getName();
         output = LanguageOutput.TEX;
+    }
+
+    public File getFilePath() {
+        return filePath;
     }
 
     public LanguageOutput getOutput() {
         return output;
+    }
+
+    public void setOutput(LanguageOutput output) {
+        this.output = output;
     }
 
     public Color getColor() {
@@ -35,8 +48,8 @@ public class Settings {
         return printTree;
     }
 
-    public String getPdfName() {
-        return pdfName;
+    public String getFileName() {
+        return fileName;
     }
 
     public String getColorCode(LanguageOutput lang) {

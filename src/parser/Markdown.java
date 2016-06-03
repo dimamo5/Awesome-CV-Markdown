@@ -12,63 +12,62 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.ParserRuleContext;
 
+import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import static code_generation.TexBuilder.FILES_LOCATION;
 
 public class Markdown {
     public static Settings settings;
     private String file2Parse;
     private String outputFile;
+    private Cv cv;
 
-    public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.BLUE, "resumeTest", Settings.LanguageOutput.TEX);
-        file2Parse = System.getProperty("user.dir") + "/" + s;
-        outputFile = System.getProperty("user.dir") + "/" + out;
-        String outputFolder = outputFile + "/" + settings.getPdfName();
+    public Markdown(Settings set) {
+        settings = set;
 
-        if (!data.Utils.dirExists(outputFolder)) {
-            data.Utils.createDir(outputFolder);
+        if (!data.Utils.dirExists(FILES_LOCATION + settings.getFileName())) {
+            data.Utils.createDir(FILES_LOCATION + settings.getFileName());
         }
+
+        //Parses file and creates CV structure
+        parseFile();
     }
 
     public static void main(String[] args) {
-        String file2Parse = "resources/mdfiles/cv.md";
-        String out = "resources\\generated";
-        Markdown md = new Markdown(file2Parse, out);
-        md.parseFile();
-        //md.generatePdf();
+        Settings set = CLI.consoleGetSettings();
+        Markdown md = new Markdown(set);
+        md.generateCv();
+
     }
 
-    public void parseFile() {
+    public void generateCv() {
+        new CLI(this.cv).consoleGetBlocks();
+        generateLatexCode(cv);
+        generatePdf();
+        generateHtml(this.cv);
+    }
+
+    private void parseFile() {
         try {
-            System.out.println("Parsing file: " + file2Parse);
+            System.out.println("Parsing file: " + settings.getFileName());
 
             // Create a scanner that reads from the input stream passed to us
-            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(this.file2Parse));
+            Lexer lexer = new MarkdownLexer(new ANTLRFileStream(settings.getFilePath().getAbsolutePath()));
 
             CommonTokenStream tokens = new CommonTokenStream(lexer);
-//			long start = System.currentTimeMillis();
-//			tokens.fill(); // load all and check time
-//			long stop = System.currentTimeMillis();
-//			lexerTime += stop-start;
 
             // Create a parser that reads from the scanner
             MarkdownGrammar parser = new MarkdownGrammar(tokens);
-            //if (diag) parser.addErrorListener(new DiagnosticErrorListener());
-            //if (bail) parser.setErrorHandler(new BailErrorStrategy());
-            //if (SLL) parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
 
             // start parsing at the compilationUnit rule
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            //new CLI(parser.cv).consoleGetBlocks();
-            generateLatexCode(parser.cv);
-
-            //generateHtmlCode(parser.cv);
-
-            generatePdf();
+            this.cv = parser.cv;
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
@@ -77,33 +76,22 @@ public class Markdown {
     }
 
     private void generateLatexCode(Cv cv) {
+        settings.setOutput(Settings.LanguageOutput.TEX);
+
         new MainBuilder(cv).buildTex();
         new HeaderBuilder(cv.info).buildTex();
-        // new BlockBuilder(cv.blocks.get(3)).buildTex();
 
         for (Block b : cv.blocks) {
             if (b.isSelected())
                 new BlockBuilder(b).buildTex();
         }
-        // TODO: 03/06/2016 Fazer as threads! Someone
-        //Iterative
-        /*ExecutorService executor = Executors.newFixedThreadPool(4);
-
-        for (Block b : cv.blocks) {
-            Runnable worker = new BlockBuilder(b);
-            executor.execute(worker);
-        }
-
-        while (!executor.isTerminated()) {
-        }
-        System.out.println("Finished all threads");
-*/
 
     }
 
     private void generatePdf() {
-        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + this.outputFile + "&& xelatex " + settings
-                .getPdfName() + ".tex");
+
+        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", "cd " + FILES_LOCATION + "&& xelatex " + settings
+                .getFileName() + ".tex");
         pb.redirectOutput();
         Process p = null;
         try {
@@ -119,10 +107,26 @@ public class Markdown {
             e.printStackTrace();
         }
 
+        File f = new File(FILES_LOCATION + settings.getFileName() + ".pdf");
+        try {
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    private void generateHtmlCode(Cv cv) {
+    private void generateHtml(Cv cv) {
+        settings.setOutput(Settings.LanguageOutput.HTML);
+
         System.out.println("HTML FILE GENERATED");
         new MainBuilder(cv).buildHtml();
+
+        File f = new File(FILES_LOCATION + settings.getFileName() + ".html");
+        try {
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

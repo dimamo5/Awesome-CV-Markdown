@@ -186,7 +186,6 @@ public class List {
     }
 
 
-    // TODO: 01/06/2016 ver bem deste other
     public enum ListType {
         SIMPLE, QUALIFICATIONS, HONOR
     }

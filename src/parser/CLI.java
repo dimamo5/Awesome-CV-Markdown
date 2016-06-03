@@ -23,22 +23,17 @@ public class CLI {
         scan = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public Settings consoleGetSettings() {
-        System.out.println("File to Parse: ");
+    public static Settings consoleGetSettings() {
+        System.out.print("File to Parse: ");
+        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
+
         try {
             Settings set;
             String fileName = scan.readLine();
-            System.out.println("Output Language (HTML|TEX) : ");
-            String outputLanguage = scan.readLine();
-            Settings.LanguageOutput lang = null;
-            if (outputLanguage.equalsIgnoreCase("html"))
-                lang = Settings.LanguageOutput.HTML;
-            else if (outputLanguage.equalsIgnoreCase("tex")) {
-                lang = Settings.LanguageOutput.TEX;
-            } else {
-                System.err.println("Not a valid output language");
+            if (fileName.equals("")) {
+                fileName = "resources/mdFiles/cv.md";
             }
-
+            Settings.LanguageOutput lang = Settings.LanguageOutput.HTML;
             System.out.println("Color (RED|GREEN|BLUE|PINK|ORANGE|GREY|DARK) : ");
             String outputColor = scan.readLine();
             Settings.Color color;
@@ -90,7 +85,8 @@ public class CLI {
             try {
                 s = scan.readLine();
                 String[] numbers = s.split("\\s+");
-                removeBlocks(numbers);
+                if (numbers.length > 0 && !numbers[0].equals(""))
+                    removeBlocks(numbers);
                 displayConfirm();
                 System.out.println("Is that all you want to remove? (y|n)");
                 s = scan.readLine();
