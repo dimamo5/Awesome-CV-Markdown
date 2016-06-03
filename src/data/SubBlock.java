@@ -13,6 +13,10 @@ public class SubBlock {
     public SubBlock() {
     }
 
+    public void toggle() {
+        selected = !selected;
+    }
+
     public String getSubBlockName() {
         return subBlockName;
     }

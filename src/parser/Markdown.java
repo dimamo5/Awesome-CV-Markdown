@@ -9,7 +9,6 @@ import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
-import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.dfa.DFA;
 
 import java.awt.*;
@@ -38,9 +37,7 @@ public class Markdown {
     }
 
     public static void main(String[] args) {
-        Settings set = null;
-        set = CLI.consoleGetSettings();
-
+        Settings set = CLI.consoleGetSettings();
         Markdown md = new Markdown(set);
         md.generateCv();
     }

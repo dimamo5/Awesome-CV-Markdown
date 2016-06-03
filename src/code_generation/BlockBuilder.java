@@ -40,7 +40,7 @@ public class BlockBuilder implements TexBuilder {
             e.printStackTrace();
         }
         for (SubBlock subBlock : this.block.subBlocks) {
-            if (out != null || subBlock.isSelected()) {
+            if (out != null && subBlock.isSelected()) {
                 try {
                     out.write(getCodeSubBlock(subBlock, Settings.LanguageOutput.TEX).getBytes("UTF-8"));
                 } catch (IOException e) {

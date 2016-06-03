@@ -133,11 +133,11 @@ public class CLI {
             try {
                 if (nums.length > 1) {
                     subBlockNum = Integer.valueOf(nums[1]);
-                    this.blocks.get(blockNum - 1).subBlocks.get(subBlockNum - 1).setSelected(false);
+                    this.blocks.get(blockNum - 1).subBlocks.get(subBlockNum - 1).toggle();
                     if (this.blocks.get(blockNum - 1).allNotSelected())
                         this.blocks.get(blockNum - 1).setSelected(false);
                 } else
-                    this.blocks.get(blockNum - 1).setSelected(false);
+                    this.blocks.get(blockNum - 1).toggle();
             } catch (IndexOutOfBoundsException e) {
                 System.err.println("Section " + numString + " does not exists!");
             }

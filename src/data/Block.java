@@ -10,6 +10,11 @@ public class Block {
     private String blockName;
     private boolean selected = true;
 
+    public void toggle() {
+        setSelected(!selected);
+
+    }
+
     public void addBlockName(String s) {
         this.blockName = s;
     }
