@@ -103,6 +103,17 @@ public class List {
         return false;
     }
 
+
+    public boolean hasDescription(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("description")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public IconText getDate(ArrayList<IconText> list) {
         for (IconText it : list) {
             if (it.icon.name.equals("date")) {
@@ -171,7 +182,6 @@ public class List {
                 ", type=" + type +
                 '}';
     }
-
 
 
     // TODO: 01/06/2016 ver bem deste other

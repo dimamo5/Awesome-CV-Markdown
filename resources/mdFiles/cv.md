@@ -60,8 +60,6 @@
 *Mestrado integrado em engenharia informatica
 :{pos}1st Place
 :{description}premio de programação
-:{date} 2015
-:{place} Porto
 
 ####Teste
 eardtfyguhiojdfubsdn asf a fi aaigsybf r qyryqr  qugryegygre

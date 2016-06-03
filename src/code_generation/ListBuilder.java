@@ -148,15 +148,15 @@ public class ListBuilder implements TexBuilder {
 
             //PLACE
             if (hasplace)
-            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}";
+                s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}";
             else
                 s += "{}";
 
             //DATE
             if (hasdate)
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}\n";
+                s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}\n";
             else
                 s += "{}";
 
@@ -185,19 +185,33 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += " \\cvhonor\n";
-            s += "  {" + new IconTextBuilder(this.list.getDescription(list)).getIconTextCode(Settings.LanguageOutput
-                    .TEX) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getPos(list)).getIconTextCode(Settings.LanguageOutput
-                    .TEX) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}\n";
+            if (this.list.hasPos(list))
+                s += "  {" + new IconTextBuilder(this.list.getPos(list)).getIconTextCode(Settings.LanguageOutput
+                        .TEX) + "}\n";
+            else
+                s += "{}\n";
+
+            if (this.list.hasDescription(list))
+                s += "  {" + new IconTextBuilder(this.list.getDescription(list)).getIconTextCode(Settings.LanguageOutput
+                        .TEX) + "}\n";
+            else
+                s += "{}\n";
+
+            if (this.list.hasPlace(list))
+                s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}\n";
+            else
+                s += "{}\n";
+
+            if (this.list.hasDate(list))
+                s += "  {" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}\n";
+            else
+                s += "{}\n";
         }
 
         s += "\\end{cvhonors}\n";
 
-        System.out.println("S: " + s);
         return s;
     }
 
