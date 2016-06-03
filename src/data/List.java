@@ -57,7 +57,6 @@ public class List {
                     this.type = QUALIFICATIONS;
                     return;
                 }
-                System.out.println( "type" + this.type);
             }
         }
     }
