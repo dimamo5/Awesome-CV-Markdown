@@ -240,8 +240,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(53);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == NEWLINE);
 				setState(62);
 				_errHandler.sync(this);
@@ -252,26 +252,26 @@ public class MarkdownGrammar extends Parser {
 							setState(55);
 							block();
 							setState(56);
-				match(BLOCKSPLITTER);
+							match(BLOCKSPLITTER);
 							setState(58);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				do {
-					{
-						{
-							setState(57);
-							match(NEWLINE);
-					}
-					}
-					setState(60);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				} while (_la == NEWLINE);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
+							do {
+								{
+									{
+										setState(57);
+										match(NEWLINE);
+									}
+								}
+								setState(60);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
+							} while (_la == NEWLINE);
 						}
 					}
 					setState(64);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == SHARP);
 			}
 		} catch (RecognitionException re) {
@@ -303,9 +303,9 @@ public class MarkdownGrammar extends Parser {
 							subHeader();
 						}
 					}
-				setState(70);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					setState(70);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == SHARP);
 				setState(72);
 				address();
@@ -320,8 +320,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(76);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == CLOSE_ANGLE_BRACKET);
 			}
 		} catch (RecognitionException re) {
@@ -357,9 +357,9 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(86);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
 				setState(87);
 				((SubHeaderContext) _localctx).word_space = word_space();
 				cv.info.addSub((((SubHeaderContext) _localctx).word_space != null ? _input.getText(((SubHeaderContext)
@@ -440,7 +440,10 @@ public class MarkdownGrammar extends Parser {
 				((ContactsContext) _localctx).icon = icon();
 				setState(103);
 				((ContactsContext) _localctx).any = any();
-				cv.info.addContacts((((ContactsContext) _localctx).any != null ? _input.getText(((ContactsContext) _localctx).any.start, ((ContactsContext) _localctx).any.stop) : null), (((ContactsContext) _localctx).icon != null ? _input.getText(((ContactsContext) _localctx).icon.start, ((ContactsContext) _localctx).icon.stop) : null));
+				cv.info.addContacts((((ContactsContext) _localctx).any != null ? _input.getText(((ContactsContext)
+						_localctx).any.start, ((ContactsContext) _localctx).any.stop) : null), (((ContactsContext)
+						_localctx).icon != null ? _input.getText(((ContactsContext) _localctx).icon.start, (
+						(ContactsContext) _localctx).icon.stop) : null));
 				setState(106);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -452,8 +455,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(108);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == NEWLINE);
 			}
 		} catch (RecognitionException re) {
@@ -487,8 +490,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(115);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				}
 				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << STAR) | (1L << SHARP) | (1L
 						<< ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
@@ -518,19 +521,19 @@ public class MarkdownGrammar extends Parser {
 						setState(118);
 						blockSubName();
 						setState(120);
-				_la = _input.LA(1);
+						_la = _input.LA(1);
 						if (_la == TILT) {
-					{
-						setState(119);
-						((SubBlockContext) _localctx).boldText = boldText();
-					}
-				}
+							{
+								setState(119);
+								((SubBlockContext) _localctx).boldText = boldText();
+							}
+						}
 
 						cv.getSubBlock().addBoldText((((SubBlockContext) _localctx).boldText != null ? _input.getText(
 								((SubBlockContext) _localctx).boldText.start, ((SubBlockContext) _localctx).boldText
 										.stop) : null));
+					}
 				}
-			}
 
 				setState(131);
 				switch (getInterpreter().adaptivePredict(_input, 10, _ctx)) {
@@ -540,9 +543,9 @@ public class MarkdownGrammar extends Parser {
 					}
 					break;
 					case 2: {
-				setState(127);
+						setState(127);
 						table();
-				}
+					}
 					break;
 					case 3: {
 						setState(128);
@@ -589,11 +592,11 @@ public class MarkdownGrammar extends Parser {
 										setState(135);
 										match(NEWLINE);
 									}
-					}
+								}
 
-					}
+							}
 						}
-					break;
+						break;
 						default:
 							throw new NoViableAltException(this);
 					}
@@ -629,8 +632,8 @@ public class MarkdownGrammar extends Parser {
 							{
 								setState(143);
 								blockList();
-					}
-					}
+							}
+						}
 						break;
 						default:
 							throw new NoViableAltException(this);
@@ -676,8 +679,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(155);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == COLON);
 			}
 		} catch (RecognitionException re) {
@@ -705,7 +708,7 @@ public class MarkdownGrammar extends Parser {
 					{
 						setState(158);
 						((BlockListCellContext) _localctx).icon = icon();
-				}
+					}
 				}
 
 				setState(162);
@@ -715,10 +718,14 @@ public class MarkdownGrammar extends Parser {
 					{
 						setState(161);
 						((BlockListCellContext) _localctx).any = any();
-				}
+					}
 				}
 
-				cv.getList().addListCell((((BlockListCellContext) _localctx).any != null ? _input.getText(((BlockListCellContext) _localctx).any.start, ((BlockListCellContext) _localctx).any.stop) : null), (((BlockListCellContext) _localctx).icon != null ? _input.getText(((BlockListCellContext) _localctx).icon.start, ((BlockListCellContext) _localctx).icon.stop) : null));
+				cv.getList().addListCell((((BlockListCellContext) _localctx).any != null ? _input.getText((
+						(BlockListCellContext) _localctx).any.start, ((BlockListCellContext) _localctx).any.stop) :
+						null), (((BlockListCellContext) _localctx).icon != null ? _input.getText((
+						(BlockListCellContext) _localctx).icon.start, ((BlockListCellContext) _localctx).icon.stop) :
+						null));
 				setState(165);
 				match(NEWLINE);
 			}
@@ -774,8 +781,8 @@ public class MarkdownGrammar extends Parser {
 								tableLine();
 								setState(173);
 								match(NEWLINE);
-					}
-					}
+							}
+						}
 						break;
 						default:
 							throw new NoViableAltException(this);
@@ -815,26 +822,28 @@ public class MarkdownGrammar extends Parser {
 							{
 								setState(181);
 								match(SPACE);
-					}
+							}
 						}
-				}
+					}
 					setState(186);
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input, 18, _ctx);
-			}
+				}
 				setState(188);
 				switch (getInterpreter().adaptivePredict(_input, 19, _ctx)) {
 					case 1: {
 						setState(187);
 						((IconContext) _localctx).STAR_CLASS = match(STAR_CLASS);
-				}
+					}
 					break;
-			}
+				}
 				String s = (((IconContext) _localctx).STAR_CLASS != null ? ((IconContext) _localctx).STAR_CLASS
 						.getText() : null);
 				if (s != null) {
-					String[] ints = s.split("/"); float esquerda = Float.valueOf(ints[0].trim());
-					float direita = Float.valueOf(ints[1].trim()); if (esquerda > direita) {
+					String[] ints = s.split("/");
+					float esquerda = Float.valueOf(ints[0].trim());
+					float direita = Float.valueOf(ints[1].trim());
+					if (esquerda > direita) {
 						System.err.println("Nr of stars cannot be bigger than total stars");
 						((IconContext) _localctx).allow = false;
 					} else ((IconContext) _localctx).allow = true;
@@ -871,11 +880,11 @@ public class MarkdownGrammar extends Parser {
 						{
 							setState(195);
 							any();
-				}
-				}
+						}
+					}
 					setState(198);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				}
 				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << ESCAPE) | (1L << SYMBOL) | (1L
 						<< WORD) | (1L << INT))) != 0));
@@ -887,11 +896,11 @@ public class MarkdownGrammar extends Parser {
 						{
 							setState(200);
 							match(NEWLINE);
-				}
-				}
+						}
+					}
 					setState(203);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == NEWLINE);
 			}
 		} catch (RecognitionException re) {
@@ -913,7 +922,9 @@ public class MarkdownGrammar extends Parser {
 			{
 				setState(205);
 				((TableHeaderContext) _localctx).word_space = word_space();
-				cv.getTable().addHeaderCell((((TableHeaderContext) _localctx).word_space != null ? _input.getText(((TableHeaderContext) _localctx).word_space.start, ((TableHeaderContext) _localctx).word_space.stop) : null));
+				cv.getTable().addHeaderCell((((TableHeaderContext) _localctx).word_space != null ? _input.getText((
+						(TableHeaderContext) _localctx).word_space.start, ((TableHeaderContext) _localctx).word_space
+						.stop) : null));
 				setState(217);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -923,18 +934,18 @@ public class MarkdownGrammar extends Parser {
 							setState(207);
 							match(HAT);
 							setState(211);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
 							while (_la == SPACE) {
-					{
-					{
-						setState(208);
-						match(SPACE);
-					}
-					}
+								{
+									{
+										setState(208);
+										match(SPACE);
+									}
+								}
 								setState(213);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
 							}
 							setState(214);
 							((TableHeaderContext) _localctx).word_space = word_space();
@@ -998,10 +1009,11 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(228);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				}
-				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) |
+						(1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
 			}
 		} catch (RecognitionException re) {
 			_localctx.exception = re;
@@ -1042,8 +1054,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(238);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == NEWLINE);
 			}
 		} catch (RecognitionException re) {
@@ -1087,8 +1099,8 @@ public class MarkdownGrammar extends Parser {
 						}
 					}
 					setState(249);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
 				} while (_la == NEWLINE);
 			}
 		} catch (RecognitionException re) {
@@ -1146,22 +1158,22 @@ public class MarkdownGrammar extends Parser {
 												{
 													setState(255);
 													match(SPACE);
-								}
-								}
-								break;
+												}
+											}
+											break;
 											default:
 												throw new NoViableAltException(this);
-							}
+										}
 										setState(258);
 										_errHandler.sync(this);
 										_alt = getInterpreter().adaptivePredict(_input, 27, _ctx);
 									} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
-						}
-						break;
+								}
+								break;
 								default:
 									throw new NoViableAltException(this);
-					}
-					}
+							}
+						}
 						break;
 						default:
 							throw new NoViableAltException(this);
@@ -1198,11 +1210,11 @@ public class MarkdownGrammar extends Parser {
 							{
 								setState(264);
 								match(SPACE);
-					}
+							}
 						}
-				}
+					}
 					setState(269);
-				_errHandler.sync(this);
+					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input, 30, _ctx);
 				}
 				setState(274);
@@ -1212,32 +1224,35 @@ public class MarkdownGrammar extends Parser {
 					{
 						setState(274);
 						switch (_input.LA(1)) {
-							case OPEN_CURLY:
-					{
-						setState(270);
-						((TablecontentContext) _localctx).icon = icon();
-					}
+							case OPEN_CURLY: {
+								setState(270);
+								((TablecontentContext) _localctx).icon = icon();
+							}
 							break;
 							case SPACE:
 							case ESCAPE:
 							case SYMBOL:
 							case WORD:
-							case INT:
-					{
-						setState(271);
-						((TablecontentContext) _localctx).any = any();
-						cv.getTable().addBodyCell((((TablecontentContext) _localctx).any != null ? _input.getText(((TablecontentContext) _localctx).any.start, ((TablecontentContext) _localctx).any.stop) : null), (((TablecontentContext) _localctx).icon != null ? _input.getText(((TablecontentContext) _localctx).icon.start, ((TablecontentContext) _localctx).icon.stop) : null));
-					}
+							case INT: {
+								setState(271);
+								((TablecontentContext) _localctx).any = any();
+								cv.getTable().addBodyCell((((TablecontentContext) _localctx).any != null ? _input
+										.getText(((TablecontentContext) _localctx).any.start, ((TablecontentContext)
+												_localctx).any.stop) : null), (((TablecontentContext) _localctx).icon
+										!= null ? _input.getText(((TablecontentContext) _localctx).icon.start, (
+										(TablecontentContext) _localctx).icon.stop) : null));
+							}
 							break;
 							default:
 								throw new NoViableAltException(this);
-				}
-				}
+						}
+					}
 					setState(276);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) |
+						(1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
 			}
 		} catch (RecognitionException re) {
 			_localctx.exception = re;
@@ -1265,18 +1280,18 @@ public class MarkdownGrammar extends Parser {
 							setState(278);
 							match(WORD);
 							setState(282);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
 							while (_la == SPACE) {
-					{
-					{
-						setState(279);
-						match(SPACE);
-					}
-					}
+								{
+									{
+										setState(279);
+										match(SPACE);
+									}
+								}
 								setState(284);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
 							}
 						}
 					}
@@ -1348,14 +1363,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_cv;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterCv(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitCv(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1397,14 +1415,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_info;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterInfo(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitInfo(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1415,6 +1436,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class SubHeaderContext extends ParserRuleContext {
 		public Word_spaceContext word_space;
+
 		public SubHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1447,14 +1469,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_subHeader;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterSubHeader(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitSubHeader(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1465,6 +1490,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class NameContext extends ParserRuleContext {
 		public Word_spaceContext word_space;
+
 		public NameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1485,14 +1511,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_name;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterName(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitName(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1503,6 +1532,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class AddressContext extends ParserRuleContext {
 		public AnyContext any;
+
 		public AddressContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1523,14 +1553,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_address;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterAddress(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitAddress(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1542,6 +1575,7 @@ public class MarkdownGrammar extends Parser {
 	public static class ContactsContext extends ParserRuleContext {
 		public IconContext icon;
 		public AnyContext any;
+
 		public ContactsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1570,14 +1604,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_contacts;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterContacts(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitContacts(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1607,14 +1644,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_block;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterBlock(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitBlock(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1626,6 +1666,7 @@ public class MarkdownGrammar extends Parser {
 	public static class SubBlockContext extends ParserRuleContext {
 		public BoldTextContext boldText;
 		public TextBlockContext textBlock;
+
 		public SubBlockContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1654,10 +1695,12 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_subBlock;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterSubBlock(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitSubBlock(this);
@@ -1701,10 +1744,12 @@ public class MarkdownGrammar extends Parser {
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterTextBlock(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTextBlock(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1730,14 +1775,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_list;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterList(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitList(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1748,6 +1796,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class BlockListContext extends ParserRuleContext {
 		public AnyContext any;
+
 		public BlockListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1776,14 +1825,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_blockList;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterBlockList(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitBlockList(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1795,6 +1847,7 @@ public class MarkdownGrammar extends Parser {
 	public static class BlockListCellContext extends ParserRuleContext {
 		public IconContext icon;
 		public AnyContext any;
+
 		public BlockListCellContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1819,16 +1872,19 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_blockListCell;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).enterBlockListCell(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).exitBlockListCell(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1858,14 +1914,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_table;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterTable(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTable(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1899,14 +1958,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_tableBody;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterTableBody(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTableBody(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1918,6 +1980,7 @@ public class MarkdownGrammar extends Parser {
 	public static class IconContext extends ParserRuleContext {
 		public boolean allow = true;
 		public Token STAR_CLASS;
+
 		public IconContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1950,14 +2013,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_icon;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterIcon(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitIcon(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -1995,14 +2061,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_boldText;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterBoldText(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitBoldText(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2013,6 +2082,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class TableHeaderContext extends ParserRuleContext {
 		public Word_spaceContext word_space;
+
 		public TableHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2045,16 +2115,19 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_tableHeader;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).enterTableHeader(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTableHeader
 					(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2080,14 +2153,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_tableCell;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterTableCell(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTableCell(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2113,14 +2189,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_tableLine;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterTableLine(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitTableLine(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2131,6 +2210,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class BlockNameContext extends ParserRuleContext {
 		public Word_spaceContext word_space;
+
 		public BlockNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2159,14 +2239,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_blockName;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterBlockName(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitBlockName(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2177,6 +2260,7 @@ public class MarkdownGrammar extends Parser {
 
 	public static class BlockSubNameContext extends ParserRuleContext {
 		public Word_spaceContext word_space;
+
 		public BlockSubNameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2205,16 +2289,19 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_blockSubName;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).enterBlockSubName(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).exitBlockSubName(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2272,14 +2359,17 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_any;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterAny(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitAny(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2291,6 +2381,7 @@ public class MarkdownGrammar extends Parser {
 	public static class TablecontentContext extends ParserRuleContext {
 		public IconContext icon;
 		public AnyContext any;
+
 		public TablecontentContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2323,16 +2414,19 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_tablecontent;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).enterTablecontent(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener)
 				((MarkdownGrammarListener) listener).exitTablecontent(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)
@@ -2366,14 +2460,18 @@ public class MarkdownGrammar extends Parser {
 		public int getRuleIndex() {
 			return RULE_word_space;
 		}
+
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterWord_space(this);
+			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterWord_space
+					(this);
 		}
+
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).exitWord_space(this);
 		}
+
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if (visitor instanceof MarkdownGrammarVisitor)

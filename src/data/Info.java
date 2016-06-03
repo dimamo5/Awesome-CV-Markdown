@@ -19,7 +19,7 @@ public class Info {
         } else {
             this.name = name;
         }
-        this.name=this.name.trim();
+        this.name = this.name.trim();
     }
 
     public void addSub(String sub) {

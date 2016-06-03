@@ -55,26 +55,36 @@ public class ListBuilder implements TexBuilder {
         String s = "";
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
+            boolean hasplace = this.list.hasPlace(list);
+            boolean hasdate = this.list.hasDate(list);
+            int size = (hasdate) ? 0 : 1;
+            size += (hasplace) ? 0 : 1;
+
             s += "<div class=\"row\">";
             s += "<div class=\"col-md-9\">";
             s += "<strong>" + list.get(0).text + "</strong><br>";
-            s += new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput.HTML);
-            if (list.size() > 4) {
+            IconText it = this.list.getFirstElem(list);
+            if (it != null)
+                s += new IconTextBuilder(it).getIconTextCode(Settings.LanguageOutput.HTML);
+
+            if (list.size() > 4 - size) {
                 s += "<ul>\n";
             }
-            for (int m = 4; m < list.size(); m++) {
+            for (int m = 4 - size; m < list.size(); m++) {
                 s += "<li>" + new IconTextBuilder(list.get(m)).getIconTextCode(Settings.LanguageOutput.HTML) +
                         "</li>\n";
             }
-            if (list.size() > 4) {
+            if (list.size() > 4 - size) {
                 s += "</ul>\n";
             }
             s += "</div>\n";
 
             s += "<div class=\"col-md-3 text-right\">";
-            s += "<span style=\"color:#dc3522\">" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode
-                    (Settings.LanguageOutput.HTML) + "</span><br>";
-            s += new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.HTML);
+            if (this.list.hasPlace(list))
+                s += "<span style=\"color:#dc3522\">" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode
+                        (Settings.LanguageOutput.HTML) + "</span><br>";
+            if (this.list.hasDate(list))
+                s += new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.HTML);
             s += "</div>";
 
 
@@ -148,15 +158,15 @@ public class ListBuilder implements TexBuilder {
 
             //PLACE
             if (hasplace)
-            s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}";
+                s += "{" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}";
             else
                 s += "{}";
 
             //DATE
             if (hasdate)
-            s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
-                    "}\n";
+                s += "{" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                        "}\n";
             else
                 s += "{}";
 
