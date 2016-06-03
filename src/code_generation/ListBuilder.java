@@ -98,15 +98,29 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += "<div class=\"row\">\n";
-            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode
-                    (Settings.LanguageOutput.HTML) + "</div>\n";
-            s += "<div class=\"col-md-8\"><strong>" + new IconTextBuilder(this.list.getSecondElem(list))
-                    .getIconTextCode(Settings.LanguageOutput.HTML) + "</strong>";
-            s += new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.HTML) +
-                    "</div>\n";
-            s += "<div class=\"col-md-2\">" + new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings
-                    .LanguageOutput.HTML) + "</div>";
+            //DATE
+            s += "<div class=\"col-md-2\">";
+            if (this.list.hasDate(list))
+                s += new IconTextBuilder(this.list.getDate(list)).getIconTextCode(Settings
+                        .LanguageOutput.HTML);
             s += "</div>";
+            //POSITION
+            s += "<div class=\"col-md-8\"><strong>";
+            if (this.list.hasPos(list))
+                s += new IconTextBuilder(this.list.getPos(list)).getIconTextCode(Settings.LanguageOutput
+                        .HTML) + "</strong>,";
+            //DESCRIPTION
+            if (this.list.hasDescription(list))
+                s += new IconTextBuilder(this.list.getDescription(list)).getIconTextCode(Settings.LanguageOutput
+                        .HTML);
+            s += "</div>";
+
+            //DATE
+            s += "<div class=\"col-md-2 text-right\">";
+            if (this.list.hasPlace(list))
+                s += "<span style=\"color:#dc3522\">" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode
+                        (Settings.LanguageOutput.HTML) + "</span>";
+            s += "</div></div>";
         }
         return s;
     }

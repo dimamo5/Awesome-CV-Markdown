@@ -1,7 +1,6 @@
 package parser;
 
 import code_generation.BlockBuilder;
-import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
 import data.Block;
 import data.Cv;
@@ -67,7 +66,7 @@ public class Markdown {
 
             generateHtmlCode(parser.cv);
 
-            generatePdf();
+            //generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
