@@ -31,7 +31,7 @@ public class CLI {
             Settings set;
             String fileName = scan.readLine();
             if (fileName.equals("")) {
-                fileName = "resources/mdFiles/cvNew.md";
+                fileName = "resources/mdFiles/cvAll.md";
             }
             Settings.LanguageOutput lang = Settings.LanguageOutput.HTML;
             System.out.println("Color (RED|GREEN|BLUE|PINK|ORANGE|GREY|DARK) : ");

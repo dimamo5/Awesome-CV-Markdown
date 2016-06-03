@@ -39,4 +39,4 @@ blockSubName: SHARP SHARP word_space{cv.getSubBlock().addSubBlockName($word_spac
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
 tablecontent: SPACE* (icon| any{cv.getTable().addBodyCell($any.text, $icon.text);})+;
 
-word_space:(WORD SPACE*)+;
+word_space:((WORD|SYMBOL) SPACE*)+;
