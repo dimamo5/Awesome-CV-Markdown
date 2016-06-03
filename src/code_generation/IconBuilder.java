@@ -28,7 +28,8 @@ public class IconBuilder implements TexBuilder {
         String s = "";
         if (icon.name.equals("stars")) {
             s = "\\stars[" + icon.attr2 + "]{" + icon.attr1 + "}";
-        } else if (icon.name.equals("date") || icon.name.equals("place") || icon.name.equals("pos") || icon.name.equals("description")) {
+        } else if (icon.name.equals("date") || icon.name.equals("place") || icon.name.equals("pos") || icon.name
+                .equals("description")) {
             s = "";
         } else {
             s = "\\fa" + Character.toUpperCase(icon.name.charAt(0)) + icon.name.substring(1, icon.name.length());

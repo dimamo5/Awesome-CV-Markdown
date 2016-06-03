@@ -222,7 +222,8 @@ public class ListBuilder implements TexBuilder {
                 s += "{}\n";
 
             if (this.list.hasPlace(list))
-                s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput
+                        .TEX) +
                         "}\n";
             else
                 s += "{}\n";

@@ -62,6 +62,7 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
+            new CLI(parser.cv).consoleGetBlocks();
             //generateLatexCode(parser.cv);
 
             generateHtmlCode(parser.cv);
@@ -76,11 +77,13 @@ public class Markdown {
 
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
-       // new BlockBuilder(cv.blocks.get(3)).buildTex();
+        // new BlockBuilder(cv.blocks.get(3)).buildTex();
 
         for (Block b : cv.blocks) {
-            new BlockBuilder(b).buildTex();
+            if (b.isSelected())
+                new BlockBuilder(b).buildTex();
         }
+        // TODO: 03/06/2016 Fazer as threads! Someone
         //Iterative
         /*ExecutorService executor = Executors.newFixedThreadPool(4);
 

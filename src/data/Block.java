@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Block {
     public ArrayList<SubBlock> subBlocks = new ArrayList<>();
     private String blockName;
+    private boolean selected = true;
 
     public void addBlockName(String s) {
         this.blockName = s;
@@ -31,5 +32,24 @@ public class Block {
                 "blockName='" + blockName + '\'' +
                 ", subBlocks=" + subBlocks +
                 '}';
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+        for (SubBlock subBlock : this.subBlocks) {
+            subBlock.setSelected(selected);
+        }
+    }
+
+    public boolean allNotSelected() {
+        for (SubBlock subBlock : subBlocks) {
+            if (subBlock.isSelected())
+                return false;
+        }
+        return true;
     }
 }

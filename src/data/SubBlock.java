@@ -8,6 +8,7 @@ public class SubBlock {
     private String boldText;
     private BlockType type;
     private Object content;
+    private boolean selected = true;
 
     public SubBlock() {
     }
@@ -64,6 +65,14 @@ public class SubBlock {
                 ", content=" + content +
                 '}' +
                 '\n';
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public enum BlockType {

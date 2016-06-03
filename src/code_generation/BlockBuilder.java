@@ -40,7 +40,7 @@ public class BlockBuilder implements TexBuilder {
             e.printStackTrace();
         }
         for (SubBlock subBlock : this.block.subBlocks) {
-            if (out != null) {
+            if (out != null || subBlock.isSelected()) {
                 try {
                     out.write(getCodeSubBlock(subBlock, Settings.LanguageOutput.TEX).getBytes("UTF-8"));
                 } catch (IOException e) {
@@ -59,7 +59,8 @@ public class BlockBuilder implements TexBuilder {
                 "</span>" + block.getBlockName().substring(3) + "</h2><hr>\n";
 
         for (SubBlock subBlock : this.block.subBlocks) {
-            blockCode += getCodeSubBlock(subBlock, Settings.LanguageOutput.HTML) + "\n";
+            if (subBlock.isSelected())
+                blockCode += getCodeSubBlock(subBlock, Settings.LanguageOutput.HTML) + "\n";
         }
 
         blockCode += "</section>\n";

@@ -46,7 +46,8 @@ public class MainBuilder implements TexBuilder {
 
         String blocks = "";
         for (Block b : cv.blocks) {
-            blocks += "\\input{" + pdfName + "/" + Utils.formatAuxFile(b.getBlockName()) + ".tex}\n";
+            if (b.isSelected())
+                blocks += "\\input{" + pdfName + "/" + Utils.formatAuxFile(b.getBlockName()) + ".tex}\n";
         }
 
         String body = "\\begin{document}\n" +
@@ -103,6 +104,7 @@ public class MainBuilder implements TexBuilder {
 
         String blocks = "";
         for (Block b : cv.blocks) {
+            if (b.isSelected())
             blocks += new BlockBuilder(b).getBlockCode() + "\n\n";
         }
 
