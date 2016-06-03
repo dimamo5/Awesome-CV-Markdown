@@ -5,7 +5,6 @@ package data;
  */
 public class SubBlock {
     private String subBlockName;
-    private String boldText;
     private BlockType type;
     private Object content;
     private boolean selected = true;
@@ -24,10 +23,6 @@ public class SubBlock {
     public void addSubBlockName(String s) {
         //System.out.println(s);
         this.subBlockName = s;
-    }
-
-    public void addBoldText(String s) {
-        this.boldText = s;
     }
 
     public Object getContent() {
@@ -64,7 +59,6 @@ public class SubBlock {
     public String toString() {
         return "SubBlock{" +
                 ", subBlockName='" + subBlockName + '\'' +
-                ", boldText='" + boldText + '\'' +
                 ", type=" + type +
                 ", content=" + content +
                 '}' +
