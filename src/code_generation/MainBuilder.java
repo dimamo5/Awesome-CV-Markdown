@@ -104,7 +104,7 @@ public class MainBuilder implements TexBuilder {
         String blocks = "";
         for (Block b : cv.blocks) {
             if (b.isSelected())
-            blocks += new BlockBuilder(b).getBlockCode() + "\n\n";
+                blocks += new BlockBuilder(b).getBlockCode() + "\n\n";
         }
 
         String footer = "</div></body></html>";

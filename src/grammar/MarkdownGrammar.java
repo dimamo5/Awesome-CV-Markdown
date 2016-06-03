@@ -18,19 +18,19 @@ public class MarkdownGrammar extends Parser {
 	public static final int
 			SPACE = 1, TAB = 2, NEWLINE = 3, CLOSE_ANGLE_BRACKET = 4, STAR = 5, SHARP = 6, SLASH = 7,
 			OPEN_CURLY = 8, CLOSE_CURLY = 9, BLOCKSPLITTER = 10, HAT = 11, SPLIT = 12, EQUAL = 13,
-		ESCAPE=14, SYMBOL=15, WORD=16, INT=17, STAR_CLASS=18;
+			ESCAPE = 14, SYMBOL = 15, WORD = 16, INT = 17, STAR_CLASS = 18;
 	public static final int
 			RULE_cv = 0, RULE_info = 1, RULE_subHeader = 2, RULE_name = 3, RULE_address = 4,
 			RULE_contacts = 5, RULE_block = 6, RULE_subBlock = 7, RULE_textBlock = 8,
 			RULE_list = 9, RULE_blockList = 10, RULE_blockListCell = 11, RULE_table = 12,
 			RULE_tableBody = 13, RULE_icon = 14, RULE_tableHeader = 15, RULE_tableCell = 16,
 			RULE_tableLine = 17, RULE_blockName = 18, RULE_blockSubName = 19, RULE_any = 20,
-		RULE_tablecontent = 21, RULE_word_space = 22;
+			RULE_tablecontent = 21, RULE_word_space = 22;
 	public static final String[] ruleNames = {
 			"cv", "info", "subHeader", "name", "address", "contacts", "block", "subBlock",
 			"textBlock", "list", "blockList", "blockListCell", "table", "tableBody",
 			"icon", "tableHeader", "tableCell", "tableLine", "blockName", "blockSubName",
-		"any", "tablecontent", "word_space"
+			"any", "tablecontent", "word_space"
 	};
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
@@ -142,12 +142,12 @@ public class MarkdownGrammar extends Parser {
 			new PredictionContextCache();
 	private static final String[] _LITERAL_NAMES = {
 			null, "' '", "'\t'", null, "'>'", "'*'", "'#'", "'/'", "'{'", "'}'", "'==='",
-		"'^'", "'|'", "'='"
+			"'^'", "'|'", "'='"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 			null, "SPACE", "TAB", "NEWLINE", "CLOSE_ANGLE_BRACKET", "STAR", "SHARP",
 			"SLASH", "OPEN_CURLY", "CLOSE_CURLY", "BLOCKSPLITTER", "HAT", "SPLIT",
-		"EQUAL", "ESCAPE", "SYMBOL", "WORD", "INT", "STAR_CLASS"
+			"EQUAL", "ESCAPE", "SYMBOL", "WORD", "INT", "STAR_CLASS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -194,16 +194,24 @@ public class MarkdownGrammar extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "MarkdownGrammar.g4"; }
+	public String getGrammarFileName() {
+		return "MarkdownGrammar.g4";
+	}
 
 	@Override
-	public String[] getRuleNames() { return ruleNames; }
+	public String[] getRuleNames() {
+		return ruleNames;
+	}
 
 	@Override
-	public String getSerializedATN() { return _serializedATN; }
+	public String getSerializedATN() {
+		return _serializedATN;
+	}
 
 	@Override
-	public ATN getATN() { return _ATN; }
+	public ATN getATN() {
+		return _ATN;
+	}
 
 	public final CvContext cv() throws RecognitionException {
 		CvContext _localctx = new CvContext(_ctx, getState());
@@ -212,62 +220,60 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(46);
-			info();
-			setState(47);
-			match(BLOCKSPLITTER);
-				setState(49);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(48);
-				match(NEWLINE);
-				}
-				}
-				setState(51);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==NEWLINE);
-				setState(60);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(53);
-				block();
-				setState(54);
+				setState(46);
+				info();
+				setState(47);
 				match(BLOCKSPLITTER);
-					setState(56);
+				setState(49);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
-					{
-					setState(55);
-					match(NEWLINE);
+						{
+							setState(48);
+							match(NEWLINE);
+						}
 					}
-					}
-					setState(58);
+					setState(51);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( _la==NEWLINE );
-				}
-				}
-				setState(62);
+				} while (_la == NEWLINE);
+				setState(60);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==SHARP );
+				do {
+					{
+						{
+							setState(53);
+							block();
+							setState(54);
+							match(BLOCKSPLITTER);
+							setState(56);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
+							do {
+								{
+									{
+										setState(55);
+										match(NEWLINE);
+									}
+								}
+								setState(58);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
+							} while (_la == NEWLINE);
+						}
+					}
+					setState(62);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == SHARP);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -280,46 +286,44 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
-			name();
+				setState(64);
+				name();
 				setState(66);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(65);
-				subHeader();
-				}
-				}
-				setState(68);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==SHARP );
-			setState(70);
-			address();
+				do {
+					{
+						{
+							setState(65);
+							subHeader();
+						}
+					}
+					setState(68);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == SHARP);
+				setState(70);
+				address();
 				setState(72);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(71);
-				contacts();
-				}
-				}
-				setState(74);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==CLOSE_ANGLE_BRACKET );
+				do {
+					{
+						{
+							setState(71);
+							contacts();
+						}
+					}
+					setState(74);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == CLOSE_ANGLE_BRACKET);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -332,38 +336,38 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.info.newSub();
-			setState(77);
-			match(SHARP);
-			setState(78);
-			match(SHARP);
-			setState(82);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==SPACE) {
-				{
-				{
-				setState(79);
-				match(SPACE);
-				}
-				}
-				setState(84);
+				cv.info.newSub();
+				setState(77);
+				match(SHARP);
+				setState(78);
+				match(SHARP);
+				setState(82);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
+				while (_la == SPACE) {
+					{
+						{
+							setState(79);
+							match(SPACE);
+						}
+					}
+					setState(84);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(85);
+				((SubHeaderContext) _localctx).word_space = word_space();
+				cv.info.addSub((((SubHeaderContext) _localctx).word_space != null ? _input.getText((
+						(SubHeaderContext) _localctx).word_space.start, ((SubHeaderContext) _localctx).word_space
+						.stop) : null));
+				setState(87);
+				match(NEWLINE);
 			}
-			setState(85);
-			((SubHeaderContext)_localctx).word_space = word_space();
-			cv.info.addSub((((SubHeaderContext)_localctx).word_space!=null?_input.getText(((SubHeaderContext)_localctx).word_space.start,((SubHeaderContext)_localctx).word_space.stop):null));
-			setState(87);
-			match(NEWLINE);
-			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -375,21 +379,20 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(89);
-			match(SHARP);
-			setState(90);
-			((NameContext)_localctx).word_space = word_space();
-			cv.info.addName((((NameContext)_localctx).word_space!=null?_input.getText(((NameContext)_localctx).word_space.start,((NameContext)_localctx).word_space.stop):null));
-			setState(92);
-			match(NEWLINE);
+				setState(89);
+				match(SHARP);
+				setState(90);
+				((NameContext) _localctx).word_space = word_space();
+				cv.info.addName((((NameContext) _localctx).word_space != null ? _input.getText(((NameContext)
+						_localctx).word_space.start, ((NameContext) _localctx).word_space.stop) : null));
+				setState(92);
+				match(NEWLINE);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -401,21 +404,20 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(94);
-			match(STAR);
-			setState(95);
-			((AddressContext)_localctx).any = any();
-			cv.info.addAddress((((AddressContext)_localctx).any!=null?_input.getText(((AddressContext)_localctx).any.start,((AddressContext)_localctx).any.stop):null));
-			setState(97);
-			match(NEWLINE);
+				setState(94);
+				match(STAR);
+				setState(95);
+				((AddressContext) _localctx).any = any();
+				cv.info.addAddress((((AddressContext) _localctx).any != null ? _input.getText(((AddressContext)
+						_localctx).any.start, ((AddressContext) _localctx).any.stop) : null));
+				setState(97);
+				match(NEWLINE);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -428,35 +430,36 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(99);
-			match(CLOSE_ANGLE_BRACKET);
-			setState(100);
-			((ContactsContext)_localctx).icon = icon();
-			setState(101);
-			((ContactsContext)_localctx).any = any();
-			cv.info.addContacts((((ContactsContext)_localctx).any!=null?_input.getText(((ContactsContext)_localctx).any.start,((ContactsContext)_localctx).any.stop):null), (((ContactsContext)_localctx).icon!=null?_input.getText(((ContactsContext)_localctx).icon.start,((ContactsContext)_localctx).icon.stop):null));
+				setState(99);
+				match(CLOSE_ANGLE_BRACKET);
+				setState(100);
+				((ContactsContext) _localctx).icon = icon();
+				setState(101);
+				((ContactsContext) _localctx).any = any();
+				cv.info.addContacts((((ContactsContext) _localctx).any != null ? _input.getText(((ContactsContext)
+						_localctx).any.start, ((ContactsContext) _localctx).any.stop) : null), (((ContactsContext)
+						_localctx).icon != null ? _input.getText(((ContactsContext) _localctx).icon.start, (
+						(ContactsContext) _localctx).icon.stop) : null));
 				setState(104);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(103);
-				match(NEWLINE);
-				}
-				}
-				setState(106);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==NEWLINE );
+				do {
+					{
+						{
+							setState(103);
+							match(NEWLINE);
+						}
+					}
+					setState(106);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == NEWLINE);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -470,30 +473,30 @@ public class MarkdownGrammar extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 				cv.newBlock();
-			setState(109);
-			blockName();
+				setState(109);
+				blockName();
 				setState(111);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(110);
-				subBlock();
-				}
-				}
-				setState(113);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << STAR) | (1L << SHARP) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
+				do {
+					{
+						{
+							setState(110);
+							subBlock();
+						}
+					}
+					setState(113);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << STAR) | (1L << SHARP) | (1L <<
+						ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -506,46 +509,43 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getBlock().newSubBlock();
-			setState(117);
-			_la = _input.LA(1);
-			if (_la==SHARP) {
-				{
-				setState(116);
-				blockSubName();
+				cv.getBlock().newSubBlock();
+				setState(117);
+				_la = _input.LA(1);
+				if (_la == SHARP) {
+					{
+						setState(116);
+						blockSubName();
+					}
 				}
-			}
 
-			setState(124);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
-			case 1:
-				{
-				setState(119);
-				list();
+				setState(124);
+				switch (getInterpreter().adaptivePredict(_input, 9, _ctx)) {
+					case 1: {
+						setState(119);
+						list();
+					}
+					break;
+					case 2: {
+						setState(120);
+						table();
+					}
+					break;
+					case 3: {
+						setState(121);
+						((SubBlockContext) _localctx).textBlock = textBlock();
+						cv.getSubBlock().addText((((SubBlockContext) _localctx).textBlock != null ? _input.getText((
+								(SubBlockContext) _localctx).textBlock.start, ((SubBlockContext) _localctx).textBlock
+								.stop) : null));
+					}
+					break;
 				}
-				break;
-			case 2:
-				{
-				setState(120);
-				table();
-				}
-				break;
-			case 3:
-				{
-				setState(121);
-				((SubBlockContext)_localctx).textBlock = textBlock();
-				cv.getSubBlock().addText((((SubBlockContext)_localctx).textBlock!=null?_input.getText(((SubBlockContext)_localctx).textBlock.start,((SubBlockContext)_localctx).textBlock.stop):null));
-				}
-				break;
 			}
-			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -559,44 +559,41 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data.SubBlock.BlockType.TEXT);
+				cv.getSubBlock().setType(data.SubBlock.BlockType.TEXT);
 				setState(131);
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(127);
-					any();
-					setState(129);
-					_la = _input.LA(1);
-					if (_la==NEWLINE) {
-						{
-						setState(128);
-						match(NEWLINE);
-						}
-					}
-
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(133);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				_alt = 1;
+				do {
+					switch (_alt) {
+						case 1: {
+							{
+								setState(127);
+								any();
+								setState(129);
+								_la = _input.LA(1);
+								if (_la == NEWLINE) {
+									{
+										setState(128);
+										match(NEWLINE);
+									}
+								}
+
+							}
+						}
+						break;
+						default:
+							throw new NoViableAltException(this);
+					}
+					setState(133);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 11, _ctx);
+				} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -609,35 +606,32 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);
+				cv.getSubBlock().setType(data.SubBlock.BlockType.LIST);
 				setState(137);
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(136);
-					blockList();
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(139);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				_alt = 1;
+				do {
+					switch (_alt) {
+						case 1: {
+							{
+								setState(136);
+								blockList();
+							}
+						}
+						break;
+						default:
+							throw new NoViableAltException(this);
+					}
+					setState(139);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 12, _ctx);
+				} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -650,61 +644,59 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(141);
-			match(STAR);
-			setState(142);
-			((BlockListContext)_localctx).any = any();
-			cv.getList().addHeader((((BlockListContext)_localctx).any!=null?_input.getText(((BlockListContext)_localctx).any.start,((BlockListContext)_localctx).any.stop):null));
-			setState(150);
-			switch (_input.LA(1)) {
-			case NEWLINE:
-				{
-				setState(144);
-				match(NEWLINE);
+				setState(141);
+				match(STAR);
+				setState(142);
+				((BlockListContext) _localctx).any = any();
+				cv.getList().addHeader((((BlockListContext) _localctx).any != null ? _input.getText((
+						(BlockListContext) _localctx).any.start, ((BlockListContext) _localctx).any.stop) : null));
+				setState(150);
+				switch (_input.LA(1)) {
+					case NEWLINE: {
+						setState(144);
+						match(NEWLINE);
+					}
+					break;
+					case SPACE: {
+						setState(146);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+						do {
+							{
+								{
+									setState(145);
+									match(SPACE);
+								}
+							}
+							setState(148);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
+						} while (_la == SPACE);
+					}
+					break;
+					default:
+						throw new NoViableAltException(this);
 				}
-				break;
-			case SPACE: {
-				setState(146);
+				setState(153);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				do {
 					{
-					{
-					setState(145);
-					match(SPACE);
+						{
+							setState(152);
+							blockListCell();
+						}
 					}
-					}
-					setState(148);
+					setState(155);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				} while ( _la==SPACE );
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+				} while (_la == CLOSE_ANGLE_BRACKET);
 			}
-				setState(153);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(152);
-				blockListCell();
-				}
-				}
-				setState(155);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==CLOSE_ANGLE_BRACKET );
-			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -718,69 +710,68 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(157);
-			match(CLOSE_ANGLE_BRACKET);
-			setState(159);
-			_la = _input.LA(1);
-			if (_la==OPEN_CURLY) {
-				{
-				setState(158);
-				((BlockListCellContext)_localctx).icon = icon();
+				setState(157);
+				match(CLOSE_ANGLE_BRACKET);
+				setState(159);
+				_la = _input.LA(1);
+				if (_la == OPEN_CURLY) {
+					{
+						setState(158);
+						((BlockListCellContext) _localctx).icon = icon();
+					}
 				}
-			}
 
-			setState(162);
-			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
-			case 1:
-				{
-				setState(161);
-				((BlockListCellContext)_localctx).any = any();
+				setState(162);
+				switch (getInterpreter().adaptivePredict(_input, 17, _ctx)) {
+					case 1: {
+						setState(161);
+						((BlockListCellContext) _localctx).any = any();
+					}
+					break;
 				}
-				break;
-			}
-			cv.getList().addListCell((((BlockListCellContext)_localctx).any!=null?_input.getText(((BlockListCellContext)_localctx).any.start,((BlockListCellContext)_localctx).any.stop):null), (((BlockListCellContext)_localctx).icon!=null?_input.getText(((BlockListCellContext)_localctx).icon.start,((BlockListCellContext)_localctx).icon.stop):null));
-			setState(171);
-			switch (_input.LA(1)) {
-			case NEWLINE:
-				{
-				setState(165);
-				match(NEWLINE);
-				}
-				break;
-			case SPACE: {
-				setState(167);
-				_errHandler.sync(this);
-				_alt = 1;
-				do {
-					switch (_alt) {
-					case 1:
-						{
-						{
-						setState(166);
-						match(SPACE);
-						}
-						}
-						break;
+				cv.getList().addListCell((((BlockListCellContext) _localctx).any != null ? _input.getText((
+						(BlockListCellContext) _localctx).any.start, ((BlockListCellContext) _localctx).any.stop) :
+						null), (((BlockListCellContext) _localctx).icon != null ? _input.getText((
+						(BlockListCellContext) _localctx).icon.start, ((BlockListCellContext) _localctx).icon.stop) :
+						null));
+				setState(171);
+				switch (_input.LA(1)) {
+					case NEWLINE: {
+						setState(165);
+						match(NEWLINE);
+					}
+					break;
+					case SPACE: {
+						setState(167);
+						_errHandler.sync(this);
+						_alt = 1;
+						do {
+							switch (_alt) {
+								case 1: {
+									{
+										setState(166);
+										match(SPACE);
+									}
+								}
+								break;
+								default:
+									throw new NoViableAltException(this);
+							}
+							setState(169);
+							_errHandler.sync(this);
+							_alt = getInterpreter().adaptivePredict(_input, 18, _ctx);
+						} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
+					}
+					break;
 					default:
 						throw new NoViableAltException(this);
-					}
-					setState(169);
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,18,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
-			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -792,21 +783,19 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);
-			setState(174);
-			tableHeader();
-			setState(175);
-			match(NEWLINE);
-			setState(176);
-			tableBody();
+				cv.getSubBlock().setType(data.SubBlock.BlockType.TABLE);
+				setState(174);
+				tableHeader();
+				setState(175);
+				match(NEWLINE);
+				setState(176);
+				tableBody();
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -820,35 +809,32 @@ public class MarkdownGrammar extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 				setState(181);
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(178);
-					tableLine();
-					setState(179);
-					match(NEWLINE);
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(183);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,20,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				_alt = 1;
+				do {
+					switch (_alt) {
+						case 1: {
+							{
+								setState(178);
+								tableLine();
+								setState(179);
+								match(NEWLINE);
+							}
+						}
+						break;
+						default:
+							throw new NoViableAltException(this);
+					}
+					setState(183);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 20, _ctx);
+				} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -861,48 +847,55 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(185);
-			match(OPEN_CURLY);
-			setState(186);
-			match(WORD);
-			setState(190);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(187);
-					match(SPACE);
-					}
-					}
-				}
-				setState(192);
+				setState(185);
+				match(OPEN_CURLY);
+				setState(186);
+				match(WORD);
+				setState(190);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
-			}
-			setState(194);
-			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
-			case 1:
-				{
-				setState(193);
-				((IconContext)_localctx).STAR_CLASS = match(STAR_CLASS);
+				_alt = getInterpreter().adaptivePredict(_input, 21, _ctx);
+				while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+					if (_alt == 1) {
+						{
+							{
+								setState(187);
+								match(SPACE);
+							}
+						}
+					}
+					setState(192);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 21, _ctx);
 				}
-				break;
+				setState(194);
+				switch (getInterpreter().adaptivePredict(_input, 22, _ctx)) {
+					case 1: {
+						setState(193);
+						((IconContext) _localctx).STAR_CLASS = match(STAR_CLASS);
+					}
+					break;
+				}
+				String s = (((IconContext) _localctx).STAR_CLASS != null ? ((IconContext) _localctx).STAR_CLASS
+						.getText() : null);
+				if (s != null) {
+					String[] ints = s.split("/");
+					float esquerda = Float.valueOf(ints[0].trim());
+					float direita = Float.valueOf(ints[1].trim());
+					if (esquerda > direita) {
+						System.err.println("Nr of stars cannot be bigger than total stars");
+						((IconContext) _localctx).allow = false;
+					} else ((IconContext) _localctx).allow = true;
+				}
+				setState(197);
+				if (!(_localctx.allow)) throw new FailedPredicateException(this, "$allow");
+				setState(198);
+				match(CLOSE_CURLY);
 			}
-			String s=(((IconContext)_localctx).STAR_CLASS!=null?((IconContext)_localctx).STAR_CLASS.getText():null); if(s!=null){String[] ints= s.split("/");float esquerda=Float.valueOf(ints[0].trim()); float direita=Float.valueOf(ints[1].trim()); if(esquerda>direita){System.err.println("Nr of stars cannot be bigger than total stars");((IconContext)_localctx).allow = false;}else ((IconContext)_localctx).allow = true;}
-			setState(197);
-			if (!(_localctx.allow)) throw new FailedPredicateException(this, "$allow");
-			setState(198);
-			match(CLOSE_CURLY);
-			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -915,48 +908,50 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(200);
-			((TableHeaderContext)_localctx).word_space = word_space();
-			cv.getTable().addHeaderCell((((TableHeaderContext)_localctx).word_space!=null?_input.getText(((TableHeaderContext)_localctx).word_space.start,((TableHeaderContext)_localctx).word_space.stop):null));
+				setState(200);
+				((TableHeaderContext) _localctx).word_space = word_space();
+				cv.getTable().addHeaderCell((((TableHeaderContext) _localctx).word_space != null ? _input.getText((
+						(TableHeaderContext) _localctx).word_space.start, ((TableHeaderContext) _localctx).word_space
+						.stop) : null));
 				setState(212);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(202);
-				match(HAT);
-				setState(206);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==SPACE) {
+				do {
 					{
-					{
-					setState(203);
-					match(SPACE);
+						{
+							setState(202);
+							match(HAT);
+							setState(206);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
+							while (_la == SPACE) {
+								{
+									{
+										setState(203);
+										match(SPACE);
+									}
+								}
+								setState(208);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
+							}
+							setState(209);
+							((TableHeaderContext) _localctx).word_space = word_space();
+							cv.getTable().addHeaderCell((((TableHeaderContext) _localctx).word_space != null ? _input
+									.getText(((TableHeaderContext) _localctx).word_space.start, ((TableHeaderContext)
+											_localctx).word_space.stop) : null));
+						}
 					}
-					}
-					setState(208);
+					setState(214);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				}
-				setState(209);
-				((TableHeaderContext)_localctx).word_space = word_space();
-				cv.getTable().addHeaderCell((((TableHeaderContext)_localctx).word_space!=null?_input.getText(((TableHeaderContext)_localctx).word_space.start,((TableHeaderContext)_localctx).word_space.stop):null));
-				}
-				}
-				setState(214);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==HAT );
+				} while (_la == HAT);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -968,18 +963,16 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(216);
-			tablecontent();
-			setState(217);
-			match(SPLIT);
+				setState(216);
+				tablecontent();
+				setState(217);
+				match(SPLIT);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -992,29 +985,29 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			cv.getTable().addBodyLine();
+				cv.getTable().addBodyLine();
 				setState(221);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(220);
-				tableCell();
-				}
-				}
-				setState(223);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
+				do {
+					{
+						{
+							setState(220);
+							tableCell();
+						}
+					}
+					setState(223);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) |
+						(1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1027,33 +1020,33 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(225);
-			match(SHARP);
-			setState(226);
-			((BlockNameContext)_localctx).word_space = word_space();
-			cv.getBlock().addBlockName((((BlockNameContext)_localctx).word_space!=null?_input.getText(((BlockNameContext)_localctx).word_space.start,((BlockNameContext)_localctx).word_space.stop):null));
+				setState(225);
+				match(SHARP);
+				setState(226);
+				((BlockNameContext) _localctx).word_space = word_space();
+				cv.getBlock().addBlockName((((BlockNameContext) _localctx).word_space != null ? _input.getText((
+						(BlockNameContext) _localctx).word_space.start, ((BlockNameContext) _localctx).word_space
+						.stop) : null));
 				setState(229);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(228);
-				match(NEWLINE);
-				}
-				}
-				setState(231);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==NEWLINE );
+				do {
+					{
+						{
+							setState(228);
+							match(NEWLINE);
+						}
+					}
+					setState(231);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == NEWLINE);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1066,35 +1059,35 @@ public class MarkdownGrammar extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(233);
-			match(SHARP);
-			setState(234);
-			match(SHARP);
-			setState(235);
-			((BlockSubNameContext)_localctx).word_space = word_space();
-			cv.getSubBlock().addSubBlockName((((BlockSubNameContext)_localctx).word_space!=null?_input.getText(((BlockSubNameContext)_localctx).word_space.start,((BlockSubNameContext)_localctx).word_space.stop):null));
+				setState(233);
+				match(SHARP);
+				setState(234);
+				match(SHARP);
+				setState(235);
+				((BlockSubNameContext) _localctx).word_space = word_space();
+				cv.getSubBlock().addSubBlockName((((BlockSubNameContext) _localctx).word_space != null ? _input
+						.getText(((BlockSubNameContext) _localctx).word_space.start, ((BlockSubNameContext) _localctx)
+								.word_space.stop) : null));
 				setState(238);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(237);
-				match(NEWLINE);
-				}
-				}
-				setState(240);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==NEWLINE );
+				do {
+					{
+						{
+							setState(237);
+							match(NEWLINE);
+						}
+					}
+					setState(240);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				} while (_la == NEWLINE);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1108,81 +1101,73 @@ public class MarkdownGrammar extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 				setState(251);
-			_errHandler.sync(this);
-			_alt = 1;
-			do {
-				switch (_alt) {
-				case 1:
-					{
-					setState(251);
-					switch (_input.LA(1)) {
-					case WORD:
-						{
-						setState(242);
-						match(WORD);
-						}
-						break;
-					case INT:
-						{
-						setState(243);
-						match(INT);
-						}
-						break;
-					case SYMBOL:
-						{
-						setState(244);
-						match(SYMBOL);
-						}
-						break;
-					case ESCAPE:
-						{
-						setState(245);
-						match(ESCAPE);
-						}
-						break;
-					case SPACE: {
-						setState(247);
-						_errHandler.sync(this);
-						_alt = 1;
-						do {
-							switch (_alt) {
-							case 1:
-								{
-								{
-								setState(246);
-								match(SPACE);
-								}
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+						case 1: {
+							setState(251);
+							switch (_input.LA(1)) {
+								case WORD: {
+									setState(242);
+									match(WORD);
 								}
 								break;
-							default:
-								throw new NoViableAltException(this);
+								case INT: {
+									setState(243);
+									match(INT);
+								}
+								break;
+								case SYMBOL: {
+									setState(244);
+									match(SYMBOL);
+								}
+								break;
+								case ESCAPE: {
+									setState(245);
+									match(ESCAPE);
+								}
+								break;
+								case SPACE: {
+									setState(247);
+									_errHandler.sync(this);
+									_alt = 1;
+									do {
+										switch (_alt) {
+											case 1: {
+												{
+													setState(246);
+													match(SPACE);
+												}
+											}
+											break;
+											default:
+												throw new NoViableAltException(this);
+										}
+										setState(249);
+										_errHandler.sync(this);
+										_alt = getInterpreter().adaptivePredict(_input, 28, _ctx);
+									} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
+								}
+								break;
+								default:
+									throw new NoViableAltException(this);
 							}
-							setState(249);
-							_errHandler.sync(this);
-							_alt = getInterpreter().adaptivePredict(_input,28,_ctx);
-						} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 						}
 						break;
-					default:
-						throw new NoViableAltException(this);
+						default:
+							throw new NoViableAltException(this);
 					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
-				}
-				setState(253);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,30,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+					setState(253);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 30, _ctx);
+				} while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1196,62 +1181,64 @@ public class MarkdownGrammar extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(258);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,31,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(255);
-					match(SPACE);
-					}
-					}
-				}
-				setState(260);
+				setState(258);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,31,_ctx);
-			}
-				setState(265);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				setState(265);
-				switch (_input.LA(1)) {
-				case OPEN_CURLY:
-					{
-					setState(261);
-					((TablecontentContext)_localctx).icon = icon();
+				_alt = getInterpreter().adaptivePredict(_input, 31, _ctx);
+				while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+					if (_alt == 1) {
+						{
+							{
+								setState(255);
+								match(SPACE);
+							}
+						}
 					}
-					break;
-				case SPACE:
-				case ESCAPE:
-				case SYMBOL:
-				case WORD:
-				case INT:
-					{
-					setState(262);
-					((TablecontentContext)_localctx).any = any();
-					cv.getTable().addBodyCell((((TablecontentContext)_localctx).any!=null?_input.getText(((TablecontentContext)_localctx).any.start,((TablecontentContext)_localctx).any.stop):null), (((TablecontentContext)_localctx).icon!=null?_input.getText(((TablecontentContext)_localctx).icon.start,((TablecontentContext)_localctx).icon.stop):null));
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+					setState(260);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input, 31, _ctx);
 				}
-				}
-				setState(267);
+				setState(265);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) | (1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0) );
+				do {
+					{
+						setState(265);
+						switch (_input.LA(1)) {
+							case OPEN_CURLY: {
+								setState(261);
+								((TablecontentContext) _localctx).icon = icon();
+							}
+							break;
+							case SPACE:
+							case ESCAPE:
+							case SYMBOL:
+							case WORD:
+							case INT: {
+								setState(262);
+								((TablecontentContext) _localctx).any = any();
+								cv.getTable().addBodyCell((((TablecontentContext) _localctx).any != null ? _input
+										.getText(((TablecontentContext) _localctx).any.start, ((TablecontentContext)
+												_localctx).any.stop) : null), (((TablecontentContext) _localctx).icon
+										!= null ? _input.getText(((TablecontentContext) _localctx).icon.start, (
+										(TablecontentContext) _localctx).icon.stop) : null));
+							}
+							break;
+							default:
+								throw new NoViableAltException(this);
+						}
+					}
+					setState(267);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SPACE) | (1L << OPEN_CURLY) | (1L << ESCAPE) |
+						(1L << SYMBOL) | (1L << WORD) | (1L << INT))) != 0));
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1265,46 +1252,44 @@ public class MarkdownGrammar extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 				setState(276);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(269);
-				_la = _input.LA(1);
-				if ( !(_la==SYMBOL || _la==WORD) ) {
-				_errHandler.recoverInline(this);
-				} else {
-					consume();
-				}
-				setState(273);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				while (_la==SPACE) {
+				do {
 					{
-					{
-					setState(270);
-					match(SPACE);
+						{
+							setState(269);
+							_la = _input.LA(1);
+							if (!(_la == SYMBOL || _la == WORD)) {
+								_errHandler.recoverInline(this);
+							} else {
+								consume();
+							}
+							setState(273);
+							_errHandler.sync(this);
+							_la = _input.LA(1);
+							while (_la == SPACE) {
+								{
+									{
+										setState(270);
+										match(SPACE);
+									}
+								}
+								setState(275);
+								_errHandler.sync(this);
+								_la = _input.LA(1);
+							}
+						}
 					}
-					}
-					setState(275);
+					setState(278);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
-				}
-				}
-				}
-				setState(278);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( _la==SYMBOL || _la==WORD );
+				} while (_la == SYMBOL || _la == WORD);
 			}
-		}
-		catch (RecognitionException re) {
+		} catch (RecognitionException re) {
 			_localctx.exception = re;
 			_errHandler.reportError(this, re);
 			_errHandler.recover(this, re);
-		}
-		finally {
+		} finally {
 			exitRule();
 		}
 		return _localctx;
@@ -1312,16 +1297,16 @@ public class MarkdownGrammar extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 14:
-			return icon_sempred((IconContext)_localctx, predIndex);
+			case 14:
+				return icon_sempred((IconContext) _localctx, predIndex);
 		}
 		return true;
 	}
 
 	private boolean icon_sempred(IconContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0:
-			return _localctx.allow;
+			case 0:
+				return _localctx.allow;
 		}
 		return true;
 	}
@@ -2430,7 +2415,8 @@ public class MarkdownGrammar extends Parser {
 
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterWord_space(this);
+			if (listener instanceof MarkdownGrammarListener) ((MarkdownGrammarListener) listener).enterWord_space
+					(this);
 		}
 
 		@Override

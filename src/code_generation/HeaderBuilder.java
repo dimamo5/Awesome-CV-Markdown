@@ -37,11 +37,11 @@ public class HeaderBuilder implements TexBuilder {
 
         s += "{";
 
-        for (int i = 0; i < splited.length -1; i++) {
-            s +=  splited[i] + " ";
+        for (int i = 0; i < splited.length - 1; i++) {
+            s += splited[i] + " ";
         }
 
-        s  +=  "}\n{" + splited[ splited.length -1] + "}";
+        s += "}\n{" + splited[splited.length - 1] + "}";
 
         //POSITION
 

@@ -57,7 +57,7 @@ public class BlockBuilder implements TexBuilder {
         blockCode = "<section>\n" + "<h2 class=\"section\">" + "<span style=\"color:" + Markdown.settings.getColorCode
                 (Settings.LanguageOutput.HTML) + "\">" + block
                 .getBlockName
-                ().substring(0, 3) +
+                        ().substring(0, 3) +
                 "</span>" + block.getBlockName().substring(3) + "</h2><hr>\n";
 
         for (SubBlock subBlock : this.block.subBlocks) {
