@@ -23,7 +23,7 @@ public class TableBuilder implements TexBuilder {
     @Override
     public void buildTex() {
         //generates code of this 0> { X X s X X }
-        tableCode = "\\rowcolors{1}{white}{" + Markdown.settings.getColorCode() + "}\n";
+        tableCode = "\\rowcolors{1}{white}{" + Markdown.settings.getColorCode(Settings.LanguageOutput.TEX) + "}\n";
         String columnSizeCode = "{";
         for (int i = 0; i < table.getNrColumns(); i++) {
             if (getColumnClass(i)) {

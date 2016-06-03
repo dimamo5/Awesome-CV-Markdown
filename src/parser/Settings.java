@@ -39,29 +39,29 @@ public class Settings {
         return pdfName;
     }
 
-    public String getColorCode() {
+    public String getColorCode(LanguageOutput lang) {
         String colorCode = "";
         switch (this.currentColor) {
             case RED:
-                colorCode = "awesome-red";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-red" : "#DC3522";
                 break;
             case GREEN:
-                colorCode = "awesome-emerald";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-emerald" : "#00A388";
                 break;
             case BLUE:
-                colorCode = "awesome-skyblue";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-skyblue" : "#0395DE";
                 break;
             case PINK:
-                colorCode = "awesome-pink";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-pink" : "#EF4089";
                 break;
             case ORANGE:
-                colorCode = "awesome-orage";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-orange" : "#FF6138";
                 break;
             case GREY:
-                colorCode = "awesome-concrete";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-concrete" : "#95A5A6";
                 break;
             case DARK:
-                colorCode = "awesome-darknight";
+                colorCode = (lang == LanguageOutput.TEX) ? "awesome-darknight" : "#131A28";
                 break;
         }
         return colorCode;

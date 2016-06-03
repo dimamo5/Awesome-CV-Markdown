@@ -83,7 +83,8 @@ public class HeaderBuilder implements TexBuilder {
         }
 
         //POSITION
-        headerCode += "<h4 id=\"position\" class=\"text-center\">";
+        headerCode += "<h4 class=\"text-center\" style=\"color:" + Markdown.settings.getColorCode(Settings
+                .LanguageOutput.HTML) + ";\">";
         for (int i = 0; i < info.getSub().size(); i++) {
             if (i == info.getSub().size() - 1)
                 headerCode += info.getSub().get(i) + " ";

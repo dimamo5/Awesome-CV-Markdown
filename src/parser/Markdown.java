@@ -1,6 +1,7 @@
 package parser;
 
 import code_generation.BlockBuilder;
+import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
 import data.Block;
 import data.Cv;
@@ -21,7 +22,7 @@ public class Markdown {
     private String outputFile;
 
     public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.HTML);
+        settings = new Settings(Settings.Color.BLUE, "resumeTest", Settings.LanguageOutput.TEX);
         file2Parse = System.getProperty("user.dir") + "/" + s;
         outputFile = System.getProperty("user.dir") + "/" + out;
         String outputFolder = outputFile + "/" + settings.getPdfName();
@@ -62,12 +63,12 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            new CLI(parser.cv).consoleGetBlocks();
-            //generateLatexCode(parser.cv);
+            //new CLI(parser.cv).consoleGetBlocks();
+            generateLatexCode(parser.cv);
 
-            generateHtmlCode(parser.cv);
+            //generateHtmlCode(parser.cv);
 
-            //generatePdf();
+            generatePdf();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
@@ -77,6 +78,7 @@ public class Markdown {
 
     private void generateLatexCode(Cv cv) {
         new MainBuilder(cv).buildTex();
+        new HeaderBuilder(cv.info).buildTex();
         // new BlockBuilder(cv.blocks.get(3)).buildTex();
 
         for (Block b : cv.blocks) {

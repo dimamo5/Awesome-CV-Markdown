@@ -37,7 +37,7 @@ public class MainBuilder implements TexBuilder {
         String fileBeginning = "\\documentclass[11pt, a4paper]{awesome-cv}\n" +
                 "\\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}\n" +
                 "\\fontdir[fonts/]\n" +
-                "\\colorlet{awesome}{" + Markdown.settings.getColorCode() + "}\n" +
+                "\\colorlet{awesome}{" + Markdown.settings.getColorCode(Settings.LanguageOutput.TEX) + "}\n" +
                 "\\setbool{acvSectionColorHighlight}{true}\n" +
                 "\\renewcommand{\\acvHeaderSocialSep}{\\quad\\textbar\\quad}\n" +
                 "\\input{" + pdfName + "/header.tex}\n";        //Header of the pdf
