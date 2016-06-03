@@ -94,6 +94,15 @@ public class List {
         return false;
     }
 
+    public boolean hasPos(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("pos")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public IconText getDate(ArrayList<IconText> list) {
         for (IconText it : list) {
             if (it.icon.name.equals("date")) {
@@ -111,6 +120,25 @@ public class List {
         }
         return null;
     }
+
+    public IconText getPos(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("pos")) {
+                return it;
+            }
+        }
+        return null;
+    }
+
+    public IconText getDescription(ArrayList<IconText> list) {
+        for (IconText it : list) {
+            if (it.icon.name.equals("description")) {
+                return it;
+            }
+        }
+        return null;
+    }
+
 
     public IconText getFirstElem(ArrayList<IconText> list) {
         for (int i = 0; i < list.size(); i++) {

@@ -45,19 +45,21 @@
 :{place} Porto
 :{date} Aug. 2014
 
+
+
 ------
 
 ###Awards
 ####REGIONAL PROGRAMMING CONTESTS
 *Mestrado integrado em engenharia informatica
-:Finalist
-:premio de programação
+:{pos}Finalist
+:{description}premio de programação
 :{date} 2015
 :{place} Porto
 
 *Mestrado integrado em engenharia informatica
-:1st Place
-:premio de programação
+:{pos}1st Place
+:{description}premio de programação
 :{date} 2015
 :{place} Porto
 
