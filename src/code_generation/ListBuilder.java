@@ -195,9 +195,9 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < this.list.list.size(); i++) {
             ArrayList<IconText> list = this.list.list.get(i);
             s += " \\cvhonor\n";
-            s += "  {" + new IconTextBuilder(this.list.getFirstElem(list)).getIconTextCode(Settings.LanguageOutput
+            s += "  {" + new IconTextBuilder(this.list.getDescription(list)).getIconTextCode(Settings.LanguageOutput
                     .TEX) + "}\n";
-            s += "  {" + new IconTextBuilder(this.list.getSecondElem(list)).getIconTextCode(Settings.LanguageOutput
+            s += "  {" + new IconTextBuilder(this.list.getPos(list)).getIconTextCode(Settings.LanguageOutput
                     .TEX) + "}\n";
             s += "  {" + new IconTextBuilder(this.list.getPlace(list)).getIconTextCode(Settings.LanguageOutput.TEX) +
                     "}\n";
@@ -206,6 +206,8 @@ public class ListBuilder implements TexBuilder {
         }
 
         s += "\\end{cvhonors}\n";
+
+        System.out.println("S: " + s);
         return s;
     }
 
