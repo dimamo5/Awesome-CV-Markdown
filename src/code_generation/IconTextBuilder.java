@@ -27,7 +27,6 @@ public class IconTextBuilder implements TexBuilder {
     @Override
     public void buildTex() {
         iconTextCode = "";
-        iconTextCode += iconText.text;
 
         if (this.iconText.icon.name != null && this.iconText.icon.name.equals("date")) {
             iconTextCode = "";
@@ -45,6 +44,9 @@ public class IconTextBuilder implements TexBuilder {
             }
         } else if (!this.iconText.icon.name.isEmpty()) {
             iconTextCode += new IconBuilder(this.iconText.icon).getIconCode(Settings.LanguageOutput.TEX);
+            iconTextCode += iconText.text;
+        } else {
+            iconTextCode += iconText.text;
         }
     }
 

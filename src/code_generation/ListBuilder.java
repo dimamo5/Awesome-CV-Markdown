@@ -132,7 +132,9 @@ public class ListBuilder implements TexBuilder {
         for (int i = 0; i < list.list.size(); i++) {
             s += "<tr>";
             String header = list.list.get(i).get(0).text;
-            s += "<td><strong>" + header + "</strong></td>\n<td>" + list.list.get(i).get(1).text + "</td>";
+            s += "<td><strong>" + header + "</strong></td>\n<td>" + new IconTextBuilder(list.list.get(i).get(1))
+                    .getIconTextCode(Settings.LanguageOutput.HTML) +
+                    "</td>";
             s += "</tr>\n";
         }
         s += "</table></div></div>";
@@ -145,7 +147,8 @@ public class ListBuilder implements TexBuilder {
         s = "\\begin{cvitemskv}\n";
         for (int i = 0; i < list.list.size(); i++) {
             String header = list.list.get(i).get(0).text;
-            s += "\\cvitem[" + Utils.analyzeEscape(header) + "]{" + list.list.get(i).get(1).text + "}\n";
+            s += "\\cvitem[" + Utils.analyzeEscape(header) + "]{" + new IconTextBuilder(list.list.get(i).get(1))
+                    .getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
         }
         s += "\\end{cvitemskv}\n";
         return s;
