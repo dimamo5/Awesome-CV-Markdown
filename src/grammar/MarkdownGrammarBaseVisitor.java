@@ -107,6 +107,17 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
      * {@link #visitChildren} on {@code ctx}.</p>
      */
     @Override
+    public T visitTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+        return visitChildren(ctx);
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override
     public T visitList(MarkdownGrammar.ListContext ctx) {
         return visitChildren(ctx);
     }
@@ -163,17 +174,6 @@ public class MarkdownGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> i
      */
     @Override
     public T visitIcon(MarkdownGrammar.IconContext ctx) {
-        return visitChildren(ctx);
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.</p>
-     */
-    @Override
-    public T visitBoldText(MarkdownGrammar.BoldTextContext ctx) {
         return visitChildren(ctx);
     }
 

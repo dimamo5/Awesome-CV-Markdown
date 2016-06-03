@@ -121,6 +121,20 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
     void exitSubBlock(MarkdownGrammar.SubBlockContext ctx);
 
     /**
+     * Enter a parse tree produced by {@link MarkdownGrammar#textBlock}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link MarkdownGrammar#textBlock}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+    /**
      * Enter a parse tree produced by {@link MarkdownGrammar#list}.
      *
      * @param ctx the parse tree
@@ -203,20 +217,6 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitIcon(MarkdownGrammar.IconContext ctx);
-
-    /**
-     * Enter a parse tree produced by {@link MarkdownGrammar#boldText}.
-     *
-     * @param ctx the parse tree
-     */
-    void enterBoldText(MarkdownGrammar.BoldTextContext ctx);
-
-    /**
-     * Exit a parse tree produced by {@link MarkdownGrammar#boldText}.
-     *
-     * @param ctx the parse tree
-     */
-    void exitBoldText(MarkdownGrammar.BoldTextContext ctx);
 
     /**
      * Enter a parse tree produced by {@link MarkdownGrammar#tableHeader}.

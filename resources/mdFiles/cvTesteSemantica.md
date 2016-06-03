@@ -5,7 +5,7 @@
 >{mobile} 967639744
 >{linkedin} diogomoura13
 >{email}diogomoura13@gmail.com
->{github 3.5/5} dimamo5
+>{github 5.5/5} dimamo5
 
 ------
 

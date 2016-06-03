@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by diogo on 11/05/2016.
  */
 public class Info {
-    private String name = null;
+    private String name;
     private ArrayList<String> sub = new ArrayList<>();
     private String address = null;
     private ArrayList<IconText> contacts = new ArrayList<>();
@@ -19,6 +19,7 @@ public class Info {
         } else {
             this.name = name;
         }
+        this.name = this.name.trim();
     }
 
     public void addSub(String sub) {
@@ -35,7 +36,7 @@ public class Info {
     }
 
     public void addAddress(String address) {
-        this.address = Utils.analyzeEscape(address);;
+        this.address = Utils.analyzeEscape(address);
     }
 
     public void addContacts(String contacts, String s1) {

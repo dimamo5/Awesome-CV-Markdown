@@ -76,6 +76,14 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
     T visitSubBlock(MarkdownGrammar.SubBlockContext ctx);
 
     /**
+     * Visit a parse tree produced by {@link MarkdownGrammar#textBlock}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitTextBlock(MarkdownGrammar.TextBlockContext ctx);
+
+    /**
      * Visit a parse tree produced by {@link MarkdownGrammar#list}.
      *
      * @param ctx the parse tree
@@ -122,14 +130,6 @@ public interface MarkdownGrammarVisitor<T> extends ParseTreeVisitor<T> {
      * @return the visitor result
      */
     T visitIcon(MarkdownGrammar.IconContext ctx);
-
-    /**
-     * Visit a parse tree produced by {@link MarkdownGrammar#boldText}.
-     *
-     * @param ctx the parse tree
-     * @return the visitor result
-     */
-    T visitBoldText(MarkdownGrammar.BoldTextContext ctx);
 
     /**
      * Visit a parse tree produced by {@link MarkdownGrammar#tableHeader}.

@@ -161,6 +161,24 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterList(MarkdownGrammar.ListContext ctx) {
     }
 
@@ -261,24 +279,6 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void exitIcon(MarkdownGrammar.IconContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void enterBoldText(MarkdownGrammar.BoldTextContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void exitBoldText(MarkdownGrammar.BoldTextContext ctx) {
     }
 
     /**

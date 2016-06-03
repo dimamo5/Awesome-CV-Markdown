@@ -27,7 +27,7 @@
 
 ####Ensino Basico Secundario
 *CURSO TECNOLOGICO DE INFORMATICA
-:{stars 4.5/5} (17.5\/20)
+:{stars 4.3/5} (17.5\/20)
 :{date} MM\-YY MM\-YY
 :{place} Porto
 

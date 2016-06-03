@@ -21,7 +21,6 @@
         if (window["gliloader"]) {
             gliloader.pathRoot = pathElement.innerText;
         } else {
-            // TODO: more?
             window.gliCssUrl = pathElement.innerText + "gli.all.css";
         }
     }, false);
@@ -51,7 +50,6 @@
             // If we are injected, inspect this context
             if (window.gli) {
                 if (gli.host.inspectContext) {
-                    // TODO: pull options from extension
                     result = gli.host.inspectContext(this, result);
                     // NOTE: execute in a timeout so that if the dom is not yet
                     // loaded this won't error out.

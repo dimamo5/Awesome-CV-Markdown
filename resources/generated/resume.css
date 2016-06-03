@@ -1,0 +1,23 @@
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+
+.fa-star, .fa-star-half-o, .fa-star-o {
+    color: #fff065;
+}
+
+#address {
+    color: lightgray;
+    font-style: italic;
+    font-size: small;
+}
+
+#name {
+    font-size: 60px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.section {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
