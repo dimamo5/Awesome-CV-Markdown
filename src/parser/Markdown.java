@@ -7,23 +7,23 @@ import data.Block;
 import data.Cv;
 import grammar.MarkdownGrammar;
 import grammar.MarkdownLexer;
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.ATNConfigSet;
+import org.antlr.v4.runtime.atn.PredictionMode;
+import org.antlr.v4.runtime.dfa.DFA;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.BitSet;
 
 import static code_generation.TexBuilder.FILES_LOCATION;
 
 public class Markdown {
     public static Settings settings;
-    private String file2Parse;
-    private String outputFile;
+    public static boolean abort = false;
     private Cv cv;
 
     public Markdown(Settings set) {
@@ -38,17 +38,20 @@ public class Markdown {
     }
 
     public static void main(String[] args) {
-        Settings set = CLI.consoleGetSettings();
+        Settings set = null;
+        set = CLI.consoleGetSettings();
+
         Markdown md = new Markdown(set);
         md.generateCv();
-
     }
 
     public void generateCv() {
-        new CLI(this.cv).consoleGetBlocks();
-        generateLatexCode(cv);
-        generatePdf();
-        generateHtml(this.cv);
+        if (!abort) {
+            new CLI(this.cv).consoleGetBlocks();
+            generateLatexCode(cv);
+            generatePdf();
+            generateHtml(this.cv);
+        }
     }
 
     private void parseFile() {
@@ -62,6 +65,29 @@ public class Markdown {
 
             // Create a parser that reads from the scanner
             MarkdownGrammar parser = new MarkdownGrammar(tokens);
+            parser.addErrorListener(new ANTLRErrorListener() {
+
+                @Override
+                public void syntaxError(Recognizer<?, ?> recognizer, Object o, int i, int i1, String s, RecognitionException e) {
+                    abort = true;
+                }
+
+                @Override
+                public void reportAmbiguity(Parser parser, DFA dfa, int i, int i1, boolean b, BitSet bitSet, ATNConfigSet atnConfigSet) {
+
+                }
+
+                @Override
+                public void reportAttemptingFullContext(Parser parser, DFA dfa, int i, int i1, BitSet bitSet, ATNConfigSet atnConfigSet) {
+
+                }
+
+                @Override
+                public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atnConfigSet) {
+
+                }
+            });
+
 
             // start parsing at the compilationUnit rule
             ParserRuleContext t = parser.cv();
