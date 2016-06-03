@@ -22,7 +22,7 @@ public class Markdown {
     private String outputFile;
 
     public Markdown(String s, String out) {
-        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.TEX);
+        settings = new Settings(Settings.Color.RED, "resumeTest", Settings.LanguageOutput.HTML);
         file2Parse = System.getProperty("user.dir") + "/" + s;
         outputFile = System.getProperty("user.dir") + "/" + out;
         String outputFolder = outputFile + "/" + settings.getPdfName();
@@ -63,9 +63,9 @@ public class Markdown {
             ParserRuleContext t = parser.cv();
             if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
 
-            generateLatexCode(parser.cv);
+            //generateLatexCode(parser.cv);
 
-            //generateHtmlCode(parser.cv);
+            generateHtmlCode(parser.cv);
 
             generatePdf();
 
