@@ -35,9 +35,14 @@ public class HeaderBuilder implements TexBuilder {
         String[] splited = info.getName().split("\\s");
         String s = "\n" + "\\" + "name";
 
-        for (int i = 0; i < splited.length; i++) {
-            s += "{" + splited[i] + "}";
+        s += "{";
+
+        for (int i = 0; i < splited.length -1; i++) {
+            s +=  splited[i] + " ";
         }
+
+        s  +=  "}\n{" + splited[ splited.length -1] + "}";
+
         //POSITION
 
         s += "\n" + "\\" + "position" + "{";

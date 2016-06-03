@@ -48,33 +48,18 @@ public class List {
     private void analyzeType() {
         for (ArrayList<IconText> elem : list) {
             if (elem.size() != 1) {
-                if (hasPlace(elem) && hasQualification(elem) && elem.size() >= 4) {
+                if (hasPlace(elem) && hasPos(elem) && hasDescription(elem)) {
                     this.type = HONOR;
                     return;
-                } else if (elem.get(0).text.length() < 15) {
+                } else if (elem.get(0).text.length() < 20) {
                     this.type = SIMPLE;
                 } else {
                     this.type = QUALIFICATIONS;
                     return;
-
                 }
+                System.out.println( "type" + this.type);
             }
         }
-    }
-
-    private boolean hasQualification(ArrayList<IconText> list) {
-        for (IconText it : list) {
-            String[] qual = it.text.split("(P|p)lace");
-            String[] numb = it.text.split("[\\d]");
-
-            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text
-                    .equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
-
-            if ((qual.length > 0 && numb.length > 0 && isqualification)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public boolean hasPlace(ArrayList<IconText> list) {
@@ -156,21 +141,6 @@ public class List {
         for (int i = 0; i < list.size(); i++) {
             IconText it = list.get(i);
             if (!it.icon.name.equals("date") && !it.icon.name.equals("place") && i != 0) {
-                return it;
-            }
-        }
-        return null;
-    }
-
-    public IconText getSecondElem(ArrayList<IconText> list) {
-        for (int i = 0; i < list.size(); i++) {
-            IconText it = list.get(i);
-            String[] qual = it.text.split("(P|p)lace");
-            String[] numb = it.text.split("[\\d]");
-            boolean isqualification = ((!qual[0].equals(it.text) && !numb[0].equals(it.text)) || it.text
-                    .equalsIgnoreCase("Finalist") || it.text.equalsIgnoreCase("First"));
-
-            if (!it.icon.name.equals("date") && !(qual.length > 0 && numb.length > 0 && isqualification) && i != 0) {
                 return it;
             }
         }
