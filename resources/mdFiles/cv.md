@@ -2,7 +2,7 @@
 ##SOFTWARE ENGINEER
 ##SECURITY EXPERT
 *Quinta da Ramalhosa, bl. 53, 3ºesq
->{mobile} 967639744
+>{mobile} 964497368
 >{linkedin} zezinho69
 >{email}zezinho95@gmail.com
 >{github 3.5/5} jmODeus
