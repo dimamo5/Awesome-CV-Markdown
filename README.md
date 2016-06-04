@@ -7,9 +7,9 @@ To use it all you have to do is import this project to an IDE (for example, Inte
 
 # Table of Contents
 1. [How to Use](#How to Use)
-2. [Markdown Used](#Markdown Used)
-3. [Characters not suported](#Characters not suported)
-4. [Preview](#Preview)
+2. [Preview](#Preview)
+3. [Markdown Used](#Markdown Used)
+4. [Characters not suported](#Characters not suported)
 
 ##<a name="How to Use"></a>How to Use
 
@@ -19,6 +19,9 @@ It is easy to use just follow this steps:
 2. Select what you want to appear in your CV
 3. Press run
 4. Confirm the Latex and HTML file, present in ./resources/generated/yourCVName/ 
+
+##<a name="Preview">Preview
+Here is an example of the [PDF](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.pdf), [LaTex](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.tex) and [HTML](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.html) generated for this [md File](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/mdFiles/cv.md)
 
 ##<a name="Markdown Used"></a>Markdown Used
 Here’s an overview of our Markdown syntax.
@@ -75,6 +78,4 @@ Block spliter:
 ##<a name="Characters not suported">Characters not suported
 Like in every other language some characters are not supported. All you have to do is add an escape. For example, **/** is not suported but **\/** is.
 
-##<a name="Preview">Preview
-Here is an example of the [PDF](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.pdf), [LaTex](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.tex) and [HTML](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.html) generated for this [md File](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/mdFiles/cv.md)
 
