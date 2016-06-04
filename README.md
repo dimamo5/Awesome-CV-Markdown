@@ -1,4 +1,4 @@
-#Awesome-CV-Markdown[![Example](https://img.shields.io/badge/example-pdf-green.svg)](https://github.com/dimamo5/Awesome-CV-Markdown)
+#Awesome-CV-Markdown[![Example](https://img.shields.io/badge/example-pdf-green.svg)](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.pdf)
 
 [Awesome CV Markdown](https://github.com/dimamo5/Awesome-CV-Markdown) is a program developed for the Compilers curricular unit. It receives a Markdown file with your Curriculum Vitae in it 
 and returns you CV written in Latex and HTML. It is easy to customize your own CV, especially since it is really written by a clean markdown.
@@ -76,5 +76,5 @@ Block spliter:
 Like in every other language some characters are not supported. All you have to do is add an escape. For example, **/** is not suported but **\/** is.
 
 ##Preview
-Here is an example of the [PDF](resources/generated/cv.pdf) and [HTML](resources/generated/cv.html) generated for this [md File](resources/mdFiles/cv.md)
+Here is an example of the [PDF](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.pdf) [LaTex](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.tex) and [HTML](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.html) generated for this [md File](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/mdFiles/cv.md)
 
