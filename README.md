@@ -1,6 +1,6 @@
-#Awesome-CV-Markdown[![Example](https://img.shields.io/badge/example-pdf-green.svg)]()
+#Awesome-CV-Markdown[![Example](https://img.shields.io/badge/example-pdf-green.svg)](https://github.com/dimamo5/Awesome-CV-Markdown)
 
-[Awesome CV Markdown](https://github.com/posquit0/Awesome-CV) is a program developed for the Compilers curricular unit. It receives a Markdown file with your Curriculum Vitae in it 
+[Awesome CV Markdown](https://github.com/dimamo5/Awesome-CV-Markdown) is a program developed for the Compilers curricular unit. It receives a Markdown file with your Curriculum Vitae in it 
 and returns you CV written in Latex and HTML. It is easy to customize your own CV, especially since it is really written by a clean markdown.
 To use it all you have to do is import this project to an IDE (for example, IntelliJ) run it and follow the steps given.
 
