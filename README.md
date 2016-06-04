@@ -11,7 +11,7 @@ To use it all you have to do is import this project to an IDE (for example, Inte
 3. [Characters not suported](#Characters not suported)
 4. [Preview](#Preview)
 
-##How to Use
+##<a name="How to Use"></a>How to Use
 
 It is easy to use just follow this steps:
  
@@ -20,7 +20,7 @@ It is easy to use just follow this steps:
 3. Press run
 4. Confirm the Latex and HTML file, present in ./resources/generated/yourCVName/ 
 
-##Markdown Used
+##<a name="Markdown Used"></a>Markdown Used
 Here’s an overview of our Markdown syntax.
 
 The CV is divided in header and blocks of information. To define any part of your CV you can use:
@@ -72,9 +72,9 @@ Every block is divided by a spliter.
 Block spliter:
 ===
 ```
-##Characters not suported
+##<a name="Characters not suported">Characters not suported
 Like in every other language some characters are not supported. All you have to do is add an escape. For example, **/** is not suported but **\/** is.
 
-##Preview
+##<a name="Preview">Preview
 Here is an example of the [PDF](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.pdf), [LaTex](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.tex) and [HTML](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/generated/cv.html) generated for this [md File](https://github.com/dimamo5/Awesome-CV-Markdown/blob/master/resources/mdFiles/cv.md)
 
