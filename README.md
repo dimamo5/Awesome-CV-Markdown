@@ -34,7 +34,7 @@ Headers:
 # For something very important 
 ## For something Important 
 ```
-Blocks can contain TEXT, LISTS or TABLES
+Blocks can contain TEXT, LISTS or TABLES.
 
 ```Markdown 
 Lists:
