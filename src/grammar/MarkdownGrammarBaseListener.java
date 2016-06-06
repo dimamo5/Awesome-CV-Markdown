@@ -1,6 +1,8 @@
 // Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
 package grammar;
 
+import data.Cv;
+import data.SubBlock;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -11,6 +13,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
+    public Cv cv;
+
     /**
      * {@inheritDoc}
      * <p>
@@ -18,6 +22,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterCv(MarkdownGrammar.CvContext ctx) {
+        cv = new Cv();
     }
 
     /**
@@ -54,6 +59,8 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterSubHeader(MarkdownGrammar.SubHeaderContext ctx) {
+        cv.info.newSub();
+        cv.info.addSub(ctx.word_space().getText());
     }
 
     /**
@@ -72,6 +79,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterName(MarkdownGrammar.NameContext ctx) {
+        cv.info.addName(ctx.word_space().getText());
     }
 
     /**
@@ -90,6 +98,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterAddress(MarkdownGrammar.AddressContext ctx) {
+        cv.info.addAddress(ctx.any().getText());
     }
 
     /**
@@ -108,6 +117,12 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterContacts(MarkdownGrammar.ContactsContext ctx) {
+        String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
+        String text = (ctx.icon() == null) ? null : ctx.icon().getText();
+
+        if (ctx.icon() != null && ctx.icon().exception == null) {
+            cv.info.addContacts(text, icon);
+        }
     }
 
     /**
@@ -126,6 +141,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterBlock(MarkdownGrammar.BlockContext ctx) {
+        cv.newBlock();
     }
 
     /**
@@ -144,6 +160,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterSubBlock(MarkdownGrammar.SubBlockContext ctx) {
+        cv.getBlock().newSubBlock();
     }
 
     /**
@@ -162,6 +179,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterTextBlock(MarkdownGrammar.TextBlockContext ctx) {
+        cv.getSubBlock().setType(SubBlock.BlockType.TEXT);
     }
 
     /**
@@ -180,11 +198,12 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterList(MarkdownGrammar.ListContext ctx) {
+        cv.getSubBlock().setType(SubBlock.BlockType.LIST);
     }
 
     /**
      * {@inheritDoc}
-     * <p>
+     *
      * <p>The default implementation does nothing.</p>
      */
     @Override
@@ -198,6 +217,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterBlockList(MarkdownGrammar.BlockListContext ctx) {
+        cv.getList().addHeader(ctx.any().getText());
     }
 
     /**
@@ -216,11 +236,19 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterBlockListCell(MarkdownGrammar.BlockListCellContext ctx) {
+        String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
+        String text = (ctx.any() == null) ? null : ctx.any().getText();
+
+        if (ctx.icon() != null && ctx.icon().exception == null)
+            cv.getList().addListCell(text, icon);
+        else if (icon == null) {
+            cv.getList().addListCell(text, icon);
+        }
     }
 
     /**
      * {@inheritDoc}
-     * <p>
+     *
      * <p>The default implementation does nothing.</p>
      */
     @Override
@@ -234,6 +262,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterTable(MarkdownGrammar.TableContext ctx) {
+        cv.getSubBlock().setType(SubBlock.BlockType.TABLE);
     }
 
     /**
@@ -288,6 +317,9 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterTableHeader(MarkdownGrammar.TableHeaderContext ctx) {
+        for (MarkdownGrammar.Word_spaceContext wsCtx : ctx.word_space()) {
+            cv.getTable().addHeaderCell(wsCtx.getText());
+        }
     }
 
     /**
@@ -301,7 +333,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 
     /**
      * {@inheritDoc}
-     * <p>
+     *
      * <p>The default implementation does nothing.</p>
      */
     @Override
@@ -324,6 +356,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterTableLine(MarkdownGrammar.TableLineContext ctx) {
+        cv.getTable().addBodyLine();
     }
 
     /**
@@ -342,6 +375,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterBlockName(MarkdownGrammar.BlockNameContext ctx) {
+        cv.getBlock().addBlockName(ctx.word_space().getText());
     }
 
     /**
@@ -360,6 +394,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterBlockSubName(MarkdownGrammar.BlockSubNameContext ctx) {
+        cv.getSubBlock().addSubBlockName(ctx.word_space().getText());
     }
 
     /**
@@ -396,34 +431,34 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void enterTablecontent(MarkdownGrammar.TablecontentContext ctx) {
+        String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
+        String text = (ctx.any() == null) ? null : ctx.any().getText();
+        if (ctx.icon() != null && ctx.icon().exception == null) {
+            cv.getTable().addBodyCell(text, icon);
+        }
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void exitTablecontent(MarkdownGrammar.TablecontentContext ctx) {
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTablecontent(MarkdownGrammar.TablecontentContext ctx) {
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWord_space(MarkdownGrammar.Word_spaceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
      */
     @Override
-    public void enterWord_space(MarkdownGrammar.Word_spaceContext ctx) {
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
-    public void exitWord_space(MarkdownGrammar.Word_spaceContext ctx) {
-    }
+    public void exitWord_space(MarkdownGrammar.Word_spaceContext ctx) { }
 
 	/**
      * {@inheritDoc}
@@ -448,7 +483,9 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) {
+    @Override public void visitErrorNode(ErrorNode node) { }
 
+    public Cv getCv(){
+        return cv;
     }
 }

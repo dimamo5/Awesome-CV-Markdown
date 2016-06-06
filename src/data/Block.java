@@ -27,6 +27,12 @@ public class Block {
         return this.subBlocks.get(this.subBlocks.size() - 1);
     }
 
+    public void removeSubBlock() {
+        if (this.subBlocks.size() > 1) {
+            this.subBlocks.remove(this.subBlocks.size() - 1);
+        }
+    }
+
     public String getBlockName() {
         return blockName;
     }

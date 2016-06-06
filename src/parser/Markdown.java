@@ -97,6 +97,7 @@ public class Markdown {
 
             // start parsing at the compilationUnit rule
             ParserRuleContext tree = parser.cv();
+
             if (settings.isPrintTree()) System.out.println(tree.toStringTree(parser));
 
             // Walk it and attach our listener
@@ -104,7 +105,7 @@ public class Markdown {
             MarkdownGrammarBaseListener listener = new MarkdownGrammarBaseListener();
             walker.walk(listener, tree);
 
-            this.cv = listener.cv;
+            this.cv = listener.getCv();
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);

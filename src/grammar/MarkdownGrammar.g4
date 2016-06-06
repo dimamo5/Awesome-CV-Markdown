@@ -1,9 +1,7 @@
 parser grammar MarkdownGrammar;
 
 options {tokenVocab=MarkdownLexer;}
-@members{
-    public data.Cv cv = new data.Cv();
-}
+
 cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 
 info:name subHeader+ address contacts+;
@@ -37,6 +35,6 @@ blockName: SHARP word_space NEWLINE+;
 blockSubName: SHARP SHARP word_space NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
-tablecontent: SPACE* (icon| any)+;
+tablecontent: SPACE* icon? any ;
 
 word_space:((WORD|SYMBOL) SPACE*)+;
