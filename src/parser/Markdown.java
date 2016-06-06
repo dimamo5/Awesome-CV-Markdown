@@ -6,10 +6,12 @@ import code_generation.MainBuilder;
 import data.Block;
 import data.Cv;
 import grammar.MarkdownGrammar;
+import grammar.MarkdownGrammarBaseListener;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -39,7 +41,7 @@ public class Markdown {
     public static void main(String[] args) {
         Settings set = CLI.consoleGetSettings();
         Markdown md = new Markdown(set);
-        md.generateCv();
+        //md.generateCv();
     }
 
     public void generateCv() {
@@ -68,7 +70,10 @@ public class Markdown {
                 public void syntaxError(Recognizer<?, ?> recognizer, Object o, int i, int i1, String s,
                                         RecognitionException e) {
                     abort = true;
+                    System.out.println(e);
+
                 }
+
 
                 @Override
                 public void reportAmbiguity(Parser parser, DFA dfa, int i, int i1, boolean b, BitSet bitSet,
@@ -91,10 +96,15 @@ public class Markdown {
 
 
             // start parsing at the compilationUnit rule
-            ParserRuleContext t = parser.cv();
-            if (settings.isPrintTree()) System.out.println(t.toStringTree(parser));
+            ParserRuleContext tree = parser.cv();
+            if (settings.isPrintTree()) System.out.println(tree.toStringTree(parser));
 
-            this.cv = parser.cv;
+            // Walk it and attach our listener
+            ParseTreeWalker walker = new ParseTreeWalker();
+            MarkdownGrammarBaseListener listener = new MarkdownGrammarBaseListener();
+            walker.walk(listener, tree);
+
+            this.cv = listener.cv;
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);
