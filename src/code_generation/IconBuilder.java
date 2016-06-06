@@ -32,7 +32,7 @@ public class IconBuilder implements TexBuilder {
                 .equals("description")) {
             s = "";
         } else {
-            s = "\\fa" + Character.toUpperCase(icon.name.charAt(0)) + icon.name.substring(1, icon.name.length());
+            s = "\\fa" + Character.toUpperCase(icon.name.charAt(0)) + icon.name.substring(1, icon.name.length()) + "  ";
         }
 
         iconCode = s;

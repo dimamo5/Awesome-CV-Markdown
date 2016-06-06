@@ -549,7 +549,7 @@ public class MarkdownGrammar extends Parser {
 					}
 
 					}
-						}
+					}
 						break;
 						default:
 							throw new NoViableAltException(this);
@@ -1147,7 +1147,7 @@ public class MarkdownGrammar extends Parser {
 					{
 						setState(241);
 						icon();
-					}
+				}
 				}
 
 				setState(244);

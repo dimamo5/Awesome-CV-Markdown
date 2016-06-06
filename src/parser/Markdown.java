@@ -5,8 +5,8 @@ import code_generation.HeaderBuilder;
 import code_generation.MainBuilder;
 import data.Block;
 import data.Cv;
+import grammar.GrammarListener;
 import grammar.MarkdownGrammar;
-import grammar.MarkdownGrammarBaseListener;
 import grammar.MarkdownLexer;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.ATNConfigSet;
@@ -101,7 +101,7 @@ public class Markdown {
 
             // Walk it and attach our listener
             ParseTreeWalker walker = new ParseTreeWalker();
-            MarkdownGrammarBaseListener listener = new MarkdownGrammarBaseListener();
+            GrammarListener listener = new GrammarListener();
             walker.walk(listener, tree);
 
             this.cv = listener.getCv();
@@ -137,9 +137,11 @@ public class Markdown {
                     new BufferedReader(new InputStreamReader(p.getInputStream()));
 
             String line = "";
+            System.out.println("GENERATING LATEX FILE AND PDF ");
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                System.out.print(".");
             }
+            System.out.println();
         } catch (IOException e) {
             e.printStackTrace();
         }
