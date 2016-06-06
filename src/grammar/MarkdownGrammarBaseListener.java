@@ -118,9 +118,11 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
     @Override
     public void enterContacts(MarkdownGrammar.ContactsContext ctx) {
         String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
-        String text = (ctx.icon() == null) ? null : ctx.icon().getText();
+        String text = (ctx.any() == null) ? null : ctx.any().getText();
 
         if (ctx.icon() != null && ctx.icon().exception == null) {
+            cv.info.addContacts(text, icon);
+        } else if (ctx.icon() == null) {
             cv.info.addContacts(text, icon);
         }
     }
@@ -434,6 +436,8 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
         String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
         String text = (ctx.any() == null) ? null : ctx.any().getText();
         if (ctx.icon() != null && ctx.icon().exception == null) {
+            cv.getTable().addBodyCell(text, icon);
+        } else if (icon == null) {
             cv.getTable().addBodyCell(text, icon);
         }
     }
