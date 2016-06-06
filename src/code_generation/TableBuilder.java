@@ -52,9 +52,10 @@ public class TableBuilder implements TexBuilder {
             ArrayList<IconText> line = table.getBody().get(i);
             for (int m = 0; m < line.size(); m++) {
                 if (m != line.size() - 1)
-                    bodyCode += line.get(m).text + " & ";
+                    bodyCode += new IconTextBuilder(line.get(m)).getIconTextCode(Settings.LanguageOutput.TEX) + " & ";
                 else
-                    bodyCode += line.get(m).text + "\\\\\n";
+                    bodyCode += new IconTextBuilder(line.get(m)).getIconTextCode(Settings.LanguageOutput.TEX) +
+                            "\\\\\n";
             }
         }
 

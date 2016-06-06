@@ -439,6 +439,7 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
     public void enterTablecontent(MarkdownGrammar.TablecontentContext ctx) {
         String icon = (ctx.icon() == null) ? null : ctx.icon().getText();
         String text = (ctx.any() == null) ? null : ctx.any().getText();
+
         if (ctx.icon() != null && ctx.icon().exception == null) {
             cv.getTable().addBodyCell(text, icon);
         } else if (icon == null) {
