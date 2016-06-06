@@ -172,6 +172,10 @@ public class MarkdownGrammarBaseListener implements MarkdownGrammarListener {
      */
     @Override
     public void exitSubBlock(MarkdownGrammar.SubBlockContext ctx) {
+        if (ctx.textBlock() != null) {
+            System.out.println(ctx.textBlock().getText());
+            cv.getSubBlock().addText(ctx.textBlock().getText());
+        }
     }
 
     /**

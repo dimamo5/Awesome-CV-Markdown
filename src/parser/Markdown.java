@@ -41,8 +41,7 @@ public class Markdown {
     public static void main(String[] args) {
         Settings set = CLI.consoleGetSettings();
         Markdown md = new Markdown(set);
-        md.generateHtml(md.cv);
-        //md.generateCv();
+        md.generateCv();
     }
 
     public void generateCv() {
