@@ -41,6 +41,7 @@ public class Markdown {
     public static void main(String[] args) {
         Settings set = CLI.consoleGetSettings();
         Markdown md = new Markdown(set);
+        md.generateHtml(md.cv);
         //md.generateCv();
     }
 
@@ -70,7 +71,6 @@ public class Markdown {
                 public void syntaxError(Recognizer<?, ?> recognizer, Object o, int i, int i1, String s,
                                         RecognitionException e) {
                     abort = true;
-                    System.out.println(e);
 
                 }
 
