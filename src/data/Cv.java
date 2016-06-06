@@ -33,6 +33,15 @@ public class Cv {
         return this.getBlock().getSubBlock();
     }
 
+    public void removeSubBlock() {
+        this.getBlock().removeSubBlock();
+    }
+
+    public void removeBlock() {
+        if (this.blocks.size() > 1)
+            this.blocks.remove(this.blocks.size() - 1);
+    }
+
     @Override
     public String toString() {
         return "Cv{" +
