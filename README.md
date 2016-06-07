@@ -26,15 +26,15 @@ Here is an example of the [PDF](https://github.com/dimamo5/Awesome-CV-Markdown/b
 ##<a name="MarkdownUsed"></a>Markdown Used
 Here’s an overview of our Markdown syntax.
 
-The CV is divided in header and blocks of information. To define any part of your CV you can use:
+The CV is divided in header and blocks that contain sub-blocks of information. To define any part of your CV you can use:
 
 
 ```Markdown 
 Headers:
-# For something very important 
-## For something Important 
+# For something very important -> Start of a Block
+## For something Important -> Start of a subBlock
 ```
-Blocks can contain TEXT, LISTS or TABLES.
+Blocks can contain one or more sub-blocks with TEXT, LISTS or TABLES.
 
 ```Markdown 
 Lists:
@@ -78,4 +78,5 @@ Block spliter:
 ##<a name="Charactersnotsuported">Characters not suported
 Like in every other language some characters are not supported. All you have to do is add an escape. For example, **/** is not suported but **\/** is.
 
-
+##<a name="Notes">Notes
+All blocks must end with ==='\n'.
