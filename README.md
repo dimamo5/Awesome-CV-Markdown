@@ -10,6 +10,7 @@ To use it all you have to do is import this project to an IDE (for example, Inte
 2. [Preview](#Preview)
 3. [Markdown Used](#MarkdownUsed)
 4. [Characters not suported](#Charactersnotsuported)
+5. [Notes](#Notes)
 
 ##<a name="HowtoUse"></a>How to Use
 
