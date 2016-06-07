@@ -45,12 +45,12 @@ public class Markdown {
     }
 
     public void generateCv() {
-        if (!abort) {
+        //if (!abort) {
             new CLI(this.cv).consoleGetBlocks();
             generateLatexCode(cv);
             generatePdf();
             generateHtml(this.cv);
-        }
+        //}
     }
 
     private void parseFile() {
