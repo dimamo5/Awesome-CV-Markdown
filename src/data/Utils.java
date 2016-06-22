@@ -1,6 +1,7 @@
 package data;
 
 import java.io.File;
+import java.util.HashMap;
 
 /**
  * Created by diogo on 13/05/2016.
@@ -27,6 +28,15 @@ public class Utils {
     public static void createDir(String s) {
         File f = new File(s);
         f.mkdir();
+    }
+
+    public static boolean isDefined(HashMap<String, String> variables, String variable) {
+        return variables.get(variable) != null;
+    }
+
+    public static void defVar(HashMap<String, String> variables, String var, String val) {
+        var = var.substring(1);
+        variables.put(var, analyzeEscape(val));
     }
 
     public static String formatAuxFile(String s) {

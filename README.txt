@@ -1,4 +1,4 @@
-PROJECT TITLE: MCV: Markdown-like language for CVs
+﻿PROJECT TITLE: MCV: Markdown-like language for CVs
 
 GROUP:
 	NAME: Diogo Moura, 

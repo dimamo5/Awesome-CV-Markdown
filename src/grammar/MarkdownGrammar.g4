@@ -1,8 +1,13 @@
 parser grammar MarkdownGrammar;
+@members{
+    public HashMap<String,String> variables= new HashMap<>();
+}
 
 options {tokenVocab=MarkdownLexer;}
 
-cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
+cv: defVar* info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
+
+defVar:variable SPACE* EQUAL SPACE* any NEWLINE{Utils.defVar(variables,$variable.text,$any.text);};
 
 info:name subHeader+ address contacts+;
 subHeader: SHARP SHARP SPACE* word_space NEWLINE;
@@ -36,5 +41,6 @@ blockSubName: SHARP SHARP word_space NEWLINE+;
 
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
 tablecontent: SPACE* icon? any ;
+variable: SLASH WORD{Utils.isDefined(variables,$WORD.text);} ;
 
 word_space:((WORD|SYMBOL) SPACE*)+;

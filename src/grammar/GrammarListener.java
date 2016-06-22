@@ -29,6 +29,15 @@ public class GrammarListener extends MarkdownGrammarBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
+    public void enterDefVar(MarkdownGrammar.DefVarContext ctx) {
+
+    }
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
     public void enterSubHeader(MarkdownGrammar.SubHeaderContext ctx) {
         cv.info.newSub();
         cv.info.addSub(ctx.word_space().getText());
