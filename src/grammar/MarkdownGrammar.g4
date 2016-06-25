@@ -21,7 +21,9 @@ block: blockName subBlock+;
 subBlock: blockSubName?
 (list|table|textBlock);
 
-textBlock:(any NEWLINE?)+;
+textBlock:(any|boldText|italicText)+  NEWLINE?;
+boldText: STAR STAR WORD STAR STAR;
+italicText: STAR WORD STAR;
 
 list: blockList+;
 blockList: STAR any (NEWLINE|SPACE+) (blockListCell)+;
@@ -39,8 +41,8 @@ tableLine: tableCell+;
 blockName: SHARP word_space NEWLINE+;
 blockSubName: SHARP SHARP word_space NEWLINE+;
 
-any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
+any: (WORD | INT| SYMBOL|ESCAPE|SPACE+|variable )+;
 tablecontent: SPACE* icon? any ;
-variable: SLASH WORD{Utils.isDefined(variables,$WORD.text);} ;
+variable: SLASH WORD{Utils.isDefined(variables,$WORD.text);}? ;
 
 word_space:((WORD|SYMBOL) SPACE*)+;
