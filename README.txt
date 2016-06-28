@@ -3,22 +3,22 @@
 GROUP:
 	NAME: Diogo Moura, 
 	NR: up201304068,  	
-	GRADE: 15.90, 
+	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
 	NAME: Inês Carneiro, 
 	NR: up201303501,  	
-	GRADE: 18.85, 
+	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
 	NAME: João Silva, 
 	NR: up201305892,  	
-	GRADE: 17.10, 
+	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
 	NAME: Sérgio Domingues, 
 	NR: up201304367,  	
-	GRADE: 14.50, 
+	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
 
@@ -38,9 +38,12 @@ SEMANTIC ANALYSIS: No caso do nosso trabalho, não há grande oportunidade de expl
 		   uma vez que só há probabilidade de ocorrerem aquando da inserção de ícones de estrelas.
 		   Um ícone de estrela é formado por: {stars <numero de estrelas>/<total do numero de estrelas>} 
 		   em que por lapso o utilizador pode inserir um numero de estrelas superior ao numero total.
+		   Para analise semântica para verificação de erros, o grupo depois de analisar o projecto optou por, 
+		   em vez de usar tabela de simbolos fazer uso de estruturas para representar os dados. 
+		   Uma vez que não temos variaveis e por conseguinte não faria sentido a tabela de simbolos.  
 
 
-INTERMEDIATE REPRESENTATIONS (IRs): Como representação intermédia, definiu-se que uma CV se encontra dividida em cabeçalho e blocos de informação. 
+INTERMEDIATE REPRESENTATIONS (IRs): Como representação intermédia, definiu-se que um CV se encontra dividida em cabeçalho e blocos de informação. 
 				    Sendo que o cabeçalho vai conter a informação do utilizador, por exemplo os seus contactos de trabalho,
 				    as suas qualificações e ainda a sua morada. Os blocos de informação conterão por exemplo os estabelecimentos de ensino 
 				    que frequentou quais as suas notas, que linguagem conhece e por ai em diante. Todos os blocos poderão conter um ou mais sub-blocos
@@ -49,9 +52,9 @@ INTERMEDIATE REPRESENTATIONS (IRs): Como representação intermédia, definiu-se qu
 				    com header, listas, tabelas ou texto.
 
 
-CODE GENERATION: Após o processamento do ficheiro de Markdown, são criadas todas as estruturas que ficaram a ele associadas.
+CODE GENERATION: Após o processamento do ficheiro de Markdown, são criadas todas as estruturas que ficarão a ele associadas.
 		 Para geração de LaTex, optou-se por se criar todos os ficheiros associados a cada bloco individualmente 
-		 e juntar o ficheiro apenas no final da criação dos blocos. 
+		 e juntar os ficheiros apenas no final da criação dos blocos. 
 		 Todos estes blocos de código encontram-se dentro de uma pasta, com o nome do ficheiro .md fornecido, dentro da pasta resources/generated.
 		 Para a geração do código HTML optou-se por se ir criando o ficheiro de forma continua sem se dividir nada.
 
@@ -63,11 +66,8 @@ OVERVIEW: A nossa aplicação começa por processar o ficheiro fornecido pelo utili
 
 
 TESTSUITE AND TEST INFRASTRUCTURE: Nós temos 5 testes diferentes. Um para mostrar as mensagens de erro relativas a erros de semantica e outro para erros de sintaxe.
-				   
 
-(Describe the content of your testsuite regarding the number of examples,
-					the approach to automate the test, etc.)
-
+				
 
 TASK DISTRIBUTION: Todas as tarefas foram dividas igualmente por todos os elementos do grupo. 
 		   Algumas foram feitas em conjunto e outras, que por algum impedimento não o poderiam ser feitas, 
@@ -121,7 +121,10 @@ Examples of special icons suported:
 {email}
 {github}
 
-Todos os blocos encontram-se divididos por se
+Todos os blocos encontram-se divididos por se: 
 
 Block spliter:
 ===
+
+
+NOTA: Todos os ficheiros têm de terminar com ===

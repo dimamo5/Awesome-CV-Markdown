@@ -1,4 +1,4 @@
-// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.1
+// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.3
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -17,6 +17,16 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCv(MarkdownGrammar.CvContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#defVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefVar(MarkdownGrammar.DefVarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#defVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefVar(MarkdownGrammar.DefVarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#info}.
 	 * @param ctx the parse tree
@@ -97,6 +107,26 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTextBlock(MarkdownGrammar.TextBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#boldText}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoldText(MarkdownGrammar.BoldTextContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#boldText}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoldText(MarkdownGrammar.BoldTextContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#italicText}.
+	 * @param ctx the parse tree
+	 */
+	void enterItalicText(MarkdownGrammar.ItalicTextContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#italicText}.
+	 * @param ctx the parse tree
+	 */
+	void exitItalicText(MarkdownGrammar.ItalicTextContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#list}.
 	 * @param ctx the parse tree
@@ -227,6 +257,16 @@ public interface MarkdownGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTablecontent(MarkdownGrammar.TablecontentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MarkdownGrammar#variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariable(MarkdownGrammar.VariableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MarkdownGrammar#variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariable(MarkdownGrammar.VariableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MarkdownGrammar#word_space}.
 	 * @param ctx the parse tree
