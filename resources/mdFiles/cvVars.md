@@ -1,6 +1,6 @@
 /lastName = Miguel
 
-#José /lastName
+#José /lastName 
 ##SOFTWARE ENGINEER
 ##SECURITY EXPERT
 *Quinta da Ramalhosa, bl. 53, 3ºesq
@@ -20,7 +20,7 @@
 #Personal Information
 
 *Name
->José Cabeça de Batata lastName
+>José Cabeça de Batata /lastName
 *Date of Birth
 >27-05-1998
 *Place of Birth

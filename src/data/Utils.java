@@ -34,7 +34,7 @@ public class Utils {
     }
 
     public static boolean isDefined(HashMap<String, String> variables, String variable) {
-        return variables.get(variable) != null;
+        return variables.size()!= 0? variables.get(variable) != null : true;
     }
 
     public static void defVar(HashMap<String, String> variables, String var, String val) {
