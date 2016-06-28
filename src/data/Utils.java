@@ -7,13 +7,16 @@ import java.util.HashMap;
  * Created by diogo on 13/05/2016.
  */
 public class Utils {
-    public static String analyzeEscape(String s) {
+    public static String analyseAny(String s, HashMap<String, String> variables) {
         if (s != null) {
             StringBuilder sb = new StringBuilder(s);
             for (int i = 0; i < sb.length(); i++) {
                 if (sb.charAt(i) == '\\') {
                     sb.deleteCharAt(i);
                     i++;
+                } else if (sb.charAt(i) == '/') {
+                    String variableName = sb.substring(i, sb.indexOf(" ", i));
+                    sb.replace(i, sb.indexOf(" ", i), variables.get(variableName));
                 }
             }
             return sb.toString().trim();
@@ -36,7 +39,7 @@ public class Utils {
 
     public static void defVar(HashMap<String, String> variables, String var, String val) {
         var = var.substring(1);
-        variables.put(var, analyzeEscape(val));
+        variables.put(var, analyseAny(val, variables));
     }
 
     public static String formatAuxFile(String s) {

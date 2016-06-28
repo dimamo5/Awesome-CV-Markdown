@@ -105,6 +105,7 @@ public class Markdown {
             walker.walk(listener, tree);
 
             this.cv = listener.getCv();
+            this.cv.setVariables(parser.variables);
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);

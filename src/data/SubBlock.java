@@ -51,7 +51,7 @@ public class SubBlock {
 
     public void addText(String s) {
         if (this.type == BlockType.TEXT) {
-            this.content = Utils.analyzeEscape(s);
+            this.content = Utils.analyseAny(s, Cv.getVariables());
         }
     }
 
