@@ -1,6 +1,6 @@
 out
 .idea
-resources/generated/
+*.tex
 *.iml
 src/grammar/MarkdownGrammarListener.java
 src/grammar/MarkdownGrammarBaseListener.java
@@ -9,3 +9,6 @@ src/grammar/MarkdownGrammar.java
 README.txt
 *.jar
 *.pdf
+*.out
+*.html
+*.aux
