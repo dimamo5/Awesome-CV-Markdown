@@ -99,13 +99,14 @@ public class Markdown {
 
             if (settings.isPrintTree()) System.out.println(tree.toStringTree(parser));
 
+            Cv.setVariables(parser.variables);
+
             // Walk it and attach our listener
             ParseTreeWalker walker = new ParseTreeWalker();
             GrammarListener listener = new GrammarListener();
             walker.walk(listener, tree);
 
             this.cv = listener.getCv();
-            this.cv.setVariables(parser.variables);
 
         } catch (Exception e) {
             System.err.println("parser exception: " + e);

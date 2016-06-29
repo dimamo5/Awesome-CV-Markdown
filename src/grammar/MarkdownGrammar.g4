@@ -7,7 +7,7 @@ options {tokenVocab=MarkdownLexer;}
 
 cv: defVar* info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
 
-defVar:variable SPACE* EQUAL SPACE* any NEWLINE{data.Utils.defVar(variables,$variable.text,$any.text);};
+defVar:SLASH WORD SPACE* EQUAL SPACE* any NEWLINE{data.Utils.defVar(variables,$WORD.text,$any.text);};
 
 info:name subHeader+ address contacts+;
 subHeader: SHARP SHARP SPACE* word_space NEWLINE;
@@ -44,6 +44,6 @@ blockSubName: SHARP SHARP word_space NEWLINE+;
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+|variable )+;
 tablecontent: SPACE* icon? any ;
 variable locals[boolean defined=false]: SLASH WORD{$defined=data.Utils.isDefined(variables,$WORD.text);
-if($defined)System.out.println("Variable "+$WORD.text+"is not defined!");}{$defined}? ;
+if(!$defined)System.out.println("Variable "+$WORD.text+"is not defined!");}{$defined}? ;
 
 word_space:((WORD|SYMBOL) SPACE*)+;

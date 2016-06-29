@@ -1,4 +1,4 @@
-// Generated from C:/Users/inesa/Documents/GitHub/markdown-dsl/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.3
+// Generated from C:/Users/diogo/IdeaProjects/markdown-cv/src/grammar\MarkdownGrammar.g4 by ANTLR 4.5.3
 package grammar;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 

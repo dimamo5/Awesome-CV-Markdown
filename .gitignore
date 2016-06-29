@@ -1,10 +1,10 @@
 out
 .idea
-generated
+resources/generated/
 *.iml
-grammar/MarkdownGrammarListener.java
-grammar/MarkdownGrammarBaseListener.java
-grammar/MarkdownGrammar.java
+src/grammar/MarkdownGrammarListener.java
+src/grammar/MarkdownGrammarBaseListener.java
+src/grammar/MarkdownGrammar.java
 *.tokens
 README.txt
 *.jar

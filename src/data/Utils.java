@@ -16,8 +16,12 @@ public class Utils {
                     sb.deleteCharAt(i);
                     i++;
                 } else if (sb.charAt(i) == '/') {
-                    String variableName = sb.substring(i, sb.indexOf(" ", i));
-                    sb.replace(i, sb.indexOf(" ", i), variables.get(variableName));
+                    int spacePosition = sb.indexOf(" ", i);
+                    if (spacePosition == -1)
+                        spacePosition = sb.length();
+
+                    String variableName = sb.substring(i + 1, spacePosition);
+                    sb.replace(i, spacePosition, variables.get(variableName));
                 }
             }
             return sb.toString().trim();
@@ -35,11 +39,10 @@ public class Utils {
     }
 
     public static boolean isDefined(HashMap<String, String> variables, String variable) {
-        return variables.size() != 0 ? variables.get(variable) != null : true;
+        return variables.get(variable) != null;
     }
 
     public static void defVar(HashMap<String, String> variables, String var, String val) {
-        var = var.substring(1);
         variables.put(var, analyseAny(val, variables));
     }
 
