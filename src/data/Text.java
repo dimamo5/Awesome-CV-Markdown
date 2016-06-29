@@ -6,38 +6,38 @@ import java.util.ArrayList;
  * Created by diogo on 29/06/2016.
  */
 public class Text {
-    public ArrayList<TextBlock> textBlocks;
+    private ArrayList<String> textBlocks;
+    private ArrayList<MODIFIER_TYPE> modifiers;
 
     public Text() {
         textBlocks = new ArrayList<>();
+        modifiers = new ArrayList<>();
     }
 
     public void addBoldText(String s) {
-        textBlocks.add(new TextBlock(MODIFIER_TYPE.BOLD, s));
+        textBlocks.add(s);
+        modifiers.add(MODIFIER_TYPE.BOLD);
     }
 
     public void addItalicText(String s) {
-        textBlocks.add(new TextBlock(MODIFIER_TYPE.ITALIC, s));
+
+        textBlocks.add(s);
+        modifiers.add(MODIFIER_TYPE.ITALIC);
     }
 
     public void addText(String s) {
-        textBlocks.add(new TextBlock(MODIFIER_TYPE.NORMAL, s));
+
+        textBlocks.add(s);
+        modifiers.add(MODIFIER_TYPE.NORMAL);
     }
 
-    private enum MODIFIER_TYPE {NORMAL, ITALIC, BOLD}
-
-    class TextBlock {
-        public String text;
-        public MODIFIER_TYPE modifierType;
-
-        public TextBlock(String s) {
-            this.text = s;
-            this.modifierType = MODIFIER_TYPE.NORMAL;
-        }
-
-        public TextBlock(MODIFIER_TYPE mod, String s) {
-            this.text = s;
-            this.modifierType = mod;
-        }
+    public ArrayList<String> getTextBlocks() {
+        return textBlocks;
     }
+
+    public ArrayList<MODIFIER_TYPE> getModifiers() {
+        return modifiers;
+    }
+
+    public enum MODIFIER_TYPE {NORMAL, ITALIC, BOLD}
 }
