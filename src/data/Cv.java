@@ -31,6 +31,12 @@ public class Cv {
         else return null;
     }
 
+    public Text getText() {
+        if (getSubBlock().getType() == SubBlock.BlockType.TEXT)
+            return (Text) getSubBlock().getContent();
+        else return null;
+    }
+
     public Block getBlock() {
         return blocks.get(blocks.size() - 1);
     }

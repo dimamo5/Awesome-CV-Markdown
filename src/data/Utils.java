@@ -7,6 +7,7 @@ import java.util.HashMap;
  * Created by diogo on 13/05/2016.
  */
 public class Utils {
+    // TODO: 28/06/2016 Testar e melhorar isto usando a AST
     public static String analyseAny(String s, HashMap<String, String> variables) {
         if (s != null) {
             StringBuilder sb = new StringBuilder(s);
@@ -34,7 +35,7 @@ public class Utils {
     }
 
     public static boolean isDefined(HashMap<String, String> variables, String variable) {
-        return variables.size()!= 0? variables.get(variable) != null : true;
+        return variables.size() != 0 ? variables.get(variable) != null : true;
     }
 
     public static void defVar(HashMap<String, String> variables, String var, String val) {

@@ -2,6 +2,7 @@ package grammar;
 
 import data.Cv;
 import data.SubBlock;
+import data.Utils;
 
 /**
  * Created by diogo on 06/06/2016.
@@ -98,20 +99,27 @@ public class GrammarListener extends MarkdownGrammarBaseListener {
      * <p>The default implementation does nothing.</p>
      */
     @Override
-    public void exitSubBlock(MarkdownGrammar.SubBlockContext ctx) {
-        if (ctx.textBlock() != null) {
-            cv.getSubBlock().addText(ctx.textBlock().getText());
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * <p>
-     * <p>The default implementation does nothing.</p>
-     */
-    @Override
     public void enterTextBlock(MarkdownGrammar.TextBlockContext ctx) {
         cv.getSubBlock().setType(SubBlock.BlockType.TEXT);
+    }
+
+
+    @Override
+    public void enterBoldText(MarkdownGrammar.BoldTextContext ctx) {
+        cv.getText().addBoldText(ctx.WORD().getText());
+    }
+
+
+    @Override
+    public void enterItalicText(MarkdownGrammar.ItalicTextContext ctx) {
+        cv.getText().addItalicText(ctx.WORD().getText());
+    }
+
+    @Override
+    public void enterAny(MarkdownGrammar.AnyContext ctx) {
+        if (ctx.getParent() instanceof MarkdownGrammar.TextBlockContext) {
+            cv.getText().addText(Utils.analyseAny(ctx.getText(), Cv.getVariables()));
+        }
     }
 
     /**

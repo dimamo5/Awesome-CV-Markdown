@@ -44,14 +44,8 @@ public class SubBlock {
                 this.content = new List();
                 break;
             case TEXT:
-                this.content = "";
+                this.content = new Text();
                 break;
-        }
-    }
-
-    public void addText(String s) {
-        if (this.type == BlockType.TEXT) {
-            this.content = Utils.analyseAny(s, Cv.getVariables());
         }
     }
 
