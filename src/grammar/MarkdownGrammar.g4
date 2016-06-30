@@ -44,6 +44,6 @@ blockSubName: SHARP SHARP word_space NEWLINE+;
 any: (WORD | INT| SYMBOL|ESCAPE|SPACE+|variable )+;
 tablecontent: SPACE* icon? any ;
 variable locals[boolean defined=false]: SLASH WORD{$defined=data.Utils.isDefined(variables,$WORD.text);
-if(!$defined)System.out.println("Variable "+$WORD.text+"is not defined!");}{$defined}? ;
+if(!$defined)System.out.println("Variable "+$WORD.text+" is not defined!");}{$defined}?;
 
 word_space:((WORD|SYMBOL) SPACE*)+;

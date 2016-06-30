@@ -21,7 +21,10 @@ public class Utils {
                         spacePosition = sb.length();
 
                     String variableName = sb.substring(i + 1, spacePosition);
-                    sb.replace(i, spacePosition, variables.get(variableName));
+                    if(isDefined(variables, variableName))
+                        sb.replace(i, spacePosition, variables.get(variableName));
+                    else
+                        sb.replace(i, spacePosition, "");
                 }
             }
             return sb.toString().trim();

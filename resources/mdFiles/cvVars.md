@@ -20,7 +20,7 @@
 #Personal Information
 
 *Name
->José Cabeça de Batata      /lastName
+>José /firstName Cabeça de Batata /lastName
 *Date of Birth
 >27-05-1998
 *Place of Birth
