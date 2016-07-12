@@ -35,12 +35,29 @@ Headers:
 # For something very important -> Start of a Block
 ## For something Important -> Start of a subBlock
 ```
-Blocks can contain one or more sub-blocks with TEXT, LISTS or TABLES.
+
+Blocks can contain TEXT, LISTS or TABLES. If you don't want to type same information you can use variables defined previously before header and use them anywhere in you blocks.
+
 
 ```Markdown 
 Lists:
 * List header
 > List item
+```
+
+```Markdown 
+Define a variable:
+/variablesName = definition 
+```
+
+```Markdown 
+Bold text:
+**Word**
+```
+
+```Markdown 
+Italic text:
+*Word*
 ```
 
 ```Markdown 
