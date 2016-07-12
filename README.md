@@ -34,12 +34,16 @@ Headers:
 # For something very important 
 ## For something Important 
 ```
-Blocks can contain TEXT, LISTS or TABLES.
+Blocks can contain TEXT, LISTS or TABLES. If you don't want to type same information you can use variables and use them anywhere in you blocks.
 
 ```Markdown 
 Lists:
 * List header
 > List item
+```
+```Markdown 
+Define a variable:
+/variablesName = definition 
 ```
 
 ```Markdown 
