@@ -1,88 +1,96 @@
 ï»¿PROJECT TITLE: MCV: Markdown-like language for CVs
-
+
+
 GROUP:
 	NAME: Diogo Moura, 
 	NR: up201304068,  	
 	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
-	NAME: Inês Carneiro, 
+	NAME: Inï¿½s Carneiro, 
 	NR: up201303501,  	
 	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
-	NAME: João Silva, 
+	NAME: Joï¿½o Silva, 
 	NR: up201305892,  	
 	GRADE: 20, 
 	CONTRIBUTION: 25 %,
 
-	NAME: Sérgio Domingues, 
+	NAME: Sï¿½rgio Domingues, 
 	NR: up201304367,  	
-	GRADE: 20, 
+	GRADE: 20
+, 
 	CONTRIBUTION: 25 %,
 
 
-SUMMARY: O nosso projeto consiste numa aplicação que auxilia na criação de CVs mais apelativas e originais. 
-	 A partir de um interpretador de um markdown definido e criado por nós a aplicação, recebendo um ficheiro .md que contem
-	 uma CV detalhada, devolve ao utilizador um ficheiro LaTex que é utilizado para gerar um ficheiro PDF e ainda uma pagina HTML. 
-	 É permitido ainda ao utilizador personalizar a sua CV, por exemplo gerar uma versão curta ou longa, escolher uma cor ao seu gosto 
-	 e ainda escolher que ícones de fontawsome utilizar.
+SUMMARY: O nosso projeto consiste numa aplicaï¿½ï¿½o que auxilia na criaï¿½ï¿½o de CVs mais apelativas e originais. 
+	 A partir de um interpretador de um markdown definido e criado por nï¿½s a aplicaï¿½ï¿½o, recebendo um ficheiro .md que contem
+	 uma CV detalhada, devolve ao utilizador um ficheiro LaTex que ï¿½ utilizado para gerar um ficheiro PDF e ainda uma pagina HTML. 
+	 ï¿½ permitido ainda ao utilizador personalizar a sua CV, por exemplo gerar uma versï¿½o curta ou longa, escolher uma cor ao seu gosto 
+	 e ainda escolher que ï¿½cones de fontawsome utilizar.
 
 
-DEALING WITH SYNTACTIC ERRORS: Aquando do aparecimento de um erro de sintaxe o programa continua a ler o ficheiro até ao final.
-			       Indicando no final todos os erros encontrados, com uma mensagem com a seguinte formatação:
+DEALING WITH SYNTACTIC ERRORS: Aquando do aparecimento de um erro de sintaxe o programa continua a ler o ficheiro atï¿½ ao final.
+			       Indicando no final todos os erros encontrados, com uma mensagem com a seguinte formataï¿½ï¿½o:
 				
 				<linha com erro> <caracter> <o input esperado>
 
-SEMANTIC ANALYSIS: No caso do nosso trabalho, não há grande oportunidade de explorar erros semânticos, 
-		   uma vez que só há probabilidade de ocorrerem aquando da inserção de ícones de estrelas.
-		   Um ícone de estrela é formado por: {stars <numero de estrelas>/<total do numero de estrelas>} 
+SEMANTIC ANALYSIS: No caso do nosso trabalho, nï¿½o hï¿½ grande oportunidade de explorar erros semï¿½nticos, 
+		   uma vez que sï¿½ hï¿½ probabilidade de ocorrerem aquando da inserï¿½ï¿½o de ï¿½cones de estrelas, de variÃ¡veis e ainda alteraÃ§Ãµes de texto a bold e itÃ¡lico.
+		   Um ï¿½cone de estrela ï¿½ formado por: {stars <numero de estrelas>/<total do numero de estrelas>} 
 		   em que por lapso o utilizador pode inserir um numero de estrelas superior ao numero total.
-		   Para analise semântica para verificação de erros, o grupo depois de analisar o projecto optou por, 
+		   Uma variÃ¡vel pode ser definido por: /variablesName = definition
+		   em que por lapso o utilizador pode inserir uma definiÃ§Ã£o nÃ£o valida como por exemplo o nome de outra variavel nÃ£o definida.
+		   No que toca a erros associados ao texto a bold ou itÃ¡lico o programa apenas crasha quando o utilizador se esquece de terminar a utilizaÃ§Ã£o a itÃ¡lico, esta Ã© definida com *word*.
+		   Por sua vez no que toca Ã¡ utilizaÃ§Ã£o de bold o programa nÃ£o tem problemas umas vez que caso por lapso o utilizador se esqueÃ§a de terminar a sua utilizaÃ§Ã£o o programa define a palavra na mesma como Bold, esta Ã© definida com **word**.
+		   PoderÃ¡ tambem acontecer o utilizador utilizar uma variavel nÃ£o definida.
+		   Para analise semï¿½ntica para verificaï¿½ï¿½o de erros, o grupo depois de analisar o projecto optou por, 
 		   em vez de usar tabela de simbolos fazer uso de estruturas para representar os dados. 
-		   Uma vez que não temos variaveis e por conseguinte não faria sentido a tabela de simbolos.  
+		   Uma vez que nï¿½o temos variaveis e por conseguinte nï¿½o faria sentido a tabela de simbolos.  
 
 
-INTERMEDIATE REPRESENTATIONS (IRs): Como representação intermédia, definiu-se que um CV se encontra dividida em cabeçalho e blocos de informação. 
-				    Sendo que o cabeçalho vai conter a informação do utilizador, por exemplo os seus contactos de trabalho,
-				    as suas qualificações e ainda a sua morada. Os blocos de informação conterão por exemplo os estabelecimentos de ensino 
-				    que frequentou quais as suas notas, que linguagem conhece e por ai em diante. Todos os blocos poderão conter um ou mais sub-blocos
-				    que por sua vez podem conter Listas, Tabelas ou simplesmente Texto corrido.
-				    Tanto a representação intermédia de alto como baixo nível são iguais, temos a CV que está dividida em blocos com sub-blocos 
+INTERMEDIATE REPRESENTATIONS (IRs): Como representaï¿½ï¿½o intermï¿½dia, definiu-se que um CV se encontra dividida em cabeï¿½alho e blocos de informaï¿½ï¿½o. 
+				    Sendo que o cabeï¿½alho vai conter a informaï¿½ï¿½o do utilizador, por exemplo os seus contactos de trabalho,
+				    as suas qualificaï¿½ï¿½es e ainda a sua morada. Os blocos de informaï¿½ï¿½o conterï¿½o por exemplo os estabelecimentos de ensino 
+				    que frequentou quais as suas notas, que linguagem conhece e por ai em diante. Todos os blocos poderï¿½o conter um ou mais sub-blocos
+				    que por sua vez podem conter Listas, Tabelas ou simplesmente Texto corrido. Em todos os blocos Ã© permitido usar variaveis definidas antes do header e ainda alterar o texto para italico e bold.
+				    Permitimos ainda alteraÃ§Ã£o de texto optando entre bold e itÃ¡lico.
+				    Tanto a representaï¿½ï¿½o intermï¿½dia de alto como baixo nï¿½vel sï¿½o iguais, temos a CV que estï¿½ dividida em blocos com sub-blocos 
 				    com header, listas, tabelas ou texto.
 
 
-CODE GENERATION: Após o processamento do ficheiro de Markdown, são criadas todas as estruturas que ficarão a ele associadas.
-		 Para geração de LaTex, optou-se por se criar todos os ficheiros associados a cada bloco individualmente 
-		 e juntar os ficheiros apenas no final da criação dos blocos. 
-		 Todos estes blocos de código encontram-se dentro de uma pasta, com o nome do ficheiro .md fornecido, dentro da pasta resources/generated.
-		 Para a geração do código HTML optou-se por se ir criando o ficheiro de forma continua sem se dividir nada.
+CODE GENERATION: Apï¿½s o processamento do ficheiro de Markdown, sï¿½o criadas todas as estruturas que ficarï¿½o a ele associadas.
+		 Para geraï¿½ï¿½o de LaTex, optou-se por se criar todos os ficheiros associados a cada bloco individualmente 
+		 e juntar os ficheiros apenas no final da criaï¿½ï¿½o dos blocos. 
+		 Todos estes blocos de cï¿½digo encontram-se dentro de uma pasta, com o nome do ficheiro .md fornecido, dentro da pasta resources/generated.
+		 Para a geraï¿½ï¿½o do cï¿½digo HTML optou-se por se ir criando o ficheiro de forma continua sem se dividir nada.
 
 
-OVERVIEW: A nossa aplicação começa por processar o ficheiro fornecido pelo utilizador. Caso apareçam erros o programa não para de correr, 
-	  no entanto o código em LaTex e HTML não será gerado e será mostrada uma mensagem de erro. 
-	  Caso contrario será gerado o código pretendido sem erros e serão mostrados os ficheiros.
+OVERVIEW: A nossa aplicaï¿½ï¿½o comeï¿½a por processar o ficheiro fornecido pelo utilizador. Caso apareï¿½am erros o programa nï¿½o para de correr, 
+	  no entanto o cï¿½digo em LaTex e HTML nï¿½o serï¿½ gerado e serï¿½ mostrada uma mensagem de erro. 
+	  Caso contrario serï¿½ gerado o cï¿½digo pretendido sem erros e serï¿½o mostrados os ficheiros.
 	  Como bibliotecas externas o grupo optou por fazer recurso de ANTLR4.
 
 
-TESTSUITE AND TEST INFRASTRUCTURE: Nós temos 5 testes diferentes. Um para mostrar as mensagens de erro relativas a erros de semantica e outro para erros de sintaxe.
+TESTSUITE AND TEST INFRASTRUCTURE: Nï¿½s temos 5 testes diferentes. Um para mostrar as mensagens de erro relativas a erros de semantica e outro para erros de sintaxe.
 
 				
 
 TASK DISTRIBUTION: Todas as tarefas foram dividas igualmente por todos os elementos do grupo. 
-		   Algumas foram feitas em conjunto e outras, que por algum impedimento não o poderiam ser feitas, 
+		   Algumas foram feitas em conjunto e outras, que por algum impedimento nï¿½o o poderiam ser feitas, 
 		   cada elemento do grupo trabalhava em tarefas em especifico. Sendo que no final seriam todas unidas, 
-	           optamos por usar o GitHub para o desenvolvimento do projeto, optando por um modelo de desenvolvimento baseado em Feature Flow.
+	       optamos por usar o GitHub para o desenvolvimento do projeto, optando por um modelo de desenvolvimento baseado em Feature Flow.
 
 
-PROS: Uma das grandes vantagens do nosso projeto é a facilidade com que o utilizador com um único ficheiro pode criar multiplas CVs diferentes,
+PROS: Uma das grandes vantagens do nosso projeto ï¿½ a facilidade com que o utilizador com um ï¿½nico ficheiro pode criar multiplas CVs diferentes,
       personalizadas de acordo com o que utilizador procura.
 
 
 
-CONS: Um dos aspetos negativos é o facto de ter de utilizar e especificar toda a sua CV previamente num ficheiro Markdown, linguagem que foi pensada e criada pelo grupo.
-      Apesar de intuitiva e muito próxima ao markdown utilizado pelo GitHub, ferramenta que muitos já se encontram familiarizados, 
-      poderia estar mais desenvolvida e permitir ao utilizador ainda criar mais estruturas que, por conseguinte, permitiria mais personalização da CV final.
+CONS: Um dos aspetos negativos ï¿½ o facto de ter de utilizar e especificar toda a sua CV previamente num ficheiro Markdown, linguagem que foi pensada e criada pelo grupo.
+      Apesar de intuitiva e muito prï¿½xima ao markdown utilizado pelo GitHub, ferramenta que muitos jï¿½ se encontram familiarizados, 
+      poderia estar mais desenvolvida e permitir ao utilizador ainda criar mais estruturas que, por conseguinte, permitiria mais personalizaï¿½ï¿½o da CV final.
 
 
 ANEXO: A titulo de curiosidade a linguagem de Markdown que definimos consiste em:
@@ -91,12 +99,21 @@ Headers:
 # For something very important 
 ## For something Important 
 
-Os blocos podem conter Listas, Tabelas ou Texto corrido.
+Os blocos podem conter Listas, Tabelas ou Texto corrido. PoderÃ¡ usar a qualquer momento as variavÃ©is definidas antes do header ao longo dos blocos.
 
 Lists:
 * List header
 > List item
 
+Define a variable:
+/variablesName = definition
+
+
+Bold text:
+**Word**
+
+Italic text:
+*Word*
 
 Tables:
 Table header:
@@ -107,7 +124,7 @@ Table item:
 
 FisrtItem | SecondItem | ThirdItem
 
-Todas as listas e tabelas podem conter itens, como data, local ou classificação em estrelas. O programa suporta todos os icons fornecidos pelo Fontawsome.
+Todas as listas e tabelas podem conter itens, como data, local ou classificaï¿½ï¿½o em estrelas. O programa suporta todos os icons fornecidos pelo Fontawsome.
 
 Icon:
 {iconName}
@@ -127,4 +144,4 @@ Block spliter:
 ===
 
 
-NOTA: Todos os ficheiros têm de terminar com ===
+NOTA: Todos os ficheiros tï¿½m de terminar com ===

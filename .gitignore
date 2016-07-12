@@ -1,6 +1,7 @@
 out
 .idea
 *.tex
+*.log
 *.iml
 src/grammar/MarkdownGrammarListener.java
 src/grammar/MarkdownGrammarBaseListener.java
