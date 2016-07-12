@@ -1,5 +1,4 @@
-/lastName = Miguel
-/firstName = /firstName
+/lastName = Miguelcc
 
 #José Miguel
 ##SOFTWARE ENGINEER
@@ -19,7 +18,6 @@
 ===
 
 #Personal Information
-
 *Name
 >José /firstName Cabeça de Batata /lastName
 *Date of Birth
