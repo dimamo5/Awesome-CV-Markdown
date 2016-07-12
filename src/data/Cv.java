@@ -1,13 +1,23 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by diogo on 13/05/2016.
  */
 public class Cv {
+    private static HashMap<String, String> variables = new HashMap<>();
     public Info info = new Info();
     public ArrayList<Block> blocks = new ArrayList<Block>();
+
+    public static HashMap<String, String> getVariables() {
+        return variables;
+    }
+
+    public static void setVariables(HashMap<String, String> var) {
+        variables = var;
+    }
 
     public Table getTable() {
         if (getSubBlock().getType() == SubBlock.BlockType.TABLE)
@@ -18,6 +28,12 @@ public class Cv {
     public List getList() {
         if (getSubBlock().getType() == SubBlock.BlockType.LIST)
             return (List) getSubBlock().getContent();
+        else return null;
+    }
+
+    public Text getText() {
+        if (getSubBlock().getType() == SubBlock.BlockType.TEXT)
+            return (Text) getSubBlock().getContent();
         else return null;
     }
 
@@ -49,5 +65,4 @@ public class Cv {
                 ", subBlocks=" + blocks +
                 '}';
     }
-
 }

@@ -36,14 +36,14 @@ public class Info {
     }
 
     public void addAddress(String address) {
-        this.address = Utils.analyzeEscape(address);
+        this.address = Utils.analyseAny(address, Cv.getVariables());
     }
 
     public void addContacts(String contacts, String s1) {
         IconText i = new IconText();
 
         if (contacts != null)
-            i.setText(Utils.analyzeEscape(contacts));
+            i.setText(Utils.analyseAny(contacts, Cv.getVariables()));
         if (s1 != null) {
             i.icon.setIconName(s1.substring(1, s1.length() - 1));
             i.icon.divide();

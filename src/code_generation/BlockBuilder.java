@@ -90,14 +90,7 @@ public class BlockBuilder implements TexBuilder {
                 generatedCode += new TableBuilder((Table) subBlock.getContent()).getTableCode(lang);
                 break;
             case TEXT:
-                String text = (String) subBlock.getContent();
-                String paragraphs[] = text.split("\\r?\\n");
-                if (lang == Settings.LanguageOutput.HTML)
-                    for (String paragraph : paragraphs) {
-                        generatedCode += "<p style=\"text-align: justify;\">" + paragraph + "</p>\n";
-                    }
-                else if (lang == Settings.LanguageOutput.TEX)
-                    generatedCode += "\\begin{cvparagraph}" + (String) subBlock.getContent() + "\\end{cvparagraph}\n";
+                generatedCode += new TextBuilder((Text) subBlock.getContent()).getTextCode(lang);
                 break;
         }
         return generatedCode;

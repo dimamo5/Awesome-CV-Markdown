@@ -1,8 +1,13 @@
 parser grammar MarkdownGrammar;
+@members{
+    public java.util.HashMap<String,String> variables= new java.util.HashMap<>();
+}
 
 options {tokenVocab=MarkdownLexer;}
 
-cv:info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
+cv: defVar* info BLOCKSPLITTER NEWLINE+ (block BLOCKSPLITTER  NEWLINE+)+;
+
+defVar:SLASH WORD SPACE* EQUAL SPACE* any NEWLINE{data.Utils.defVar(variables,$WORD.text,$any.text);};
 
 info:name subHeader+ address contacts+;
 subHeader: SHARP SHARP SPACE* word_space NEWLINE;
@@ -16,7 +21,9 @@ block: blockName subBlock+;
 subBlock: blockSubName?
 (list|table|textBlock);
 
-textBlock:(any NEWLINE?)+;
+textBlock:(any|boldText|italicText)+  NEWLINE?;
+boldText: STAR STAR WORD STAR STAR;
+italicText: STAR WORD STAR;
 
 list: blockList+;
 blockList: STAR any (NEWLINE|SPACE+) (blockListCell)+;
@@ -34,7 +41,9 @@ tableLine: tableCell+;
 blockName: SHARP word_space NEWLINE+;
 blockSubName: SHARP SHARP word_space NEWLINE+;
 
-any: (WORD | INT| SYMBOL|ESCAPE|SPACE+ )+;
+any: (WORD | INT| SYMBOL|ESCAPE|SPACE+|variable )+;
 tablecontent: SPACE* icon? any ;
+variable locals[boolean defined=false]: SLASH WORD{$defined=data.Utils.isDefined(variables,$WORD.text);
+if(!$defined)System.out.println("Variable "+$WORD.text+" is not defined!");}{$defined}?;
 
 word_space:((WORD|SYMBOL) SPACE*)+;

@@ -1,9 +1,11 @@
+/lastName = Miguelcc
+
 #José Miguel
 ##SOFTWARE ENGINEER
 ##SECURITY EXPERT
 *Quinta da Ramalhosa, bl. 53, 3ºesq
 >{mobile} 964497368
->{linkedin} zezinho69
+>{linkedin} /lastName
 >{email}zezinho95@gmail.com
 >{github 3.5/5} jmODeus
 
@@ -16,9 +18,8 @@
 ===
 
 #Personal Information
-
 *Name
->José Cabeça de Batata Miguel
+>José /firstName Cabeça de Batata /lastName
 *Date of Birth
 >27-05-1998
 *Place of Birth

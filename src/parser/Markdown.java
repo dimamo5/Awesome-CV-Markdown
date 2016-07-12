@@ -99,6 +99,8 @@ public class Markdown {
 
             if (settings.isPrintTree()) System.out.println(tree.toStringTree(parser));
 
+            Cv.setVariables(parser.variables);
+
             // Walk it and attach our listener
             ParseTreeWalker walker = new ParseTreeWalker();
             GrammarListener listener = new GrammarListener();

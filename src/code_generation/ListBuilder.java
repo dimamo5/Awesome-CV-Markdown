@@ -1,5 +1,6 @@
 package code_generation;
 
+import data.Cv;
 import data.IconText;
 import data.List;
 import data.Utils;
@@ -147,7 +148,8 @@ public class ListBuilder implements TexBuilder {
         s = "\\begin{cvitemskv}\n";
         for (int i = 0; i < list.list.size(); i++) {
             String header = list.list.get(i).get(0).text;
-            s += "\\cvitem[" + Utils.analyzeEscape(header) + "]{" + new IconTextBuilder(list.list.get(i).get(1))
+            s += "\\cvitem[" + Utils.analyseAny(header, Cv.getVariables()) + "]{" + new IconTextBuilder(list.list.get
+                    (i).get(1))
                     .getIconTextCode(Settings.LanguageOutput.TEX) + "}\n";
         }
         s += "\\end{cvitemskv}\n";
