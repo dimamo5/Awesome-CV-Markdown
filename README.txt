@@ -41,7 +41,7 @@ SEMANTIC ANALYSIS: No caso do nosso trabalho, n�o h� grande oportunidade de 
 		   Um �cone de estrela � formado por: {stars <numero de estrelas>/<total do numero de estrelas>} 
 		   em que por lapso o utilizador pode inserir um numero de estrelas superior ao numero total.
 		   Uma variável pode ser definido por: /variablesName = definition
-		   em que por lapso o utilizador pode inserir uma definição não valida como por exemplo o nome de outra variavel não definida.
+		   em que por lapso o utilizador pode inserir uma definição não valida como por exemplo o nome de outra variavel não definida. A definição de uma variavel pode ser com numeros, texto ou outra previamente definida.
 		   No que toca a erros associados ao texto a bold ou itálico o programa apenas crasha quando o utilizador se esquece de terminar a utilização a itálico, esta é definida com *word*.
 		   Por sua vez no que toca á utilização de bold o programa não tem problemas umas vez que caso por lapso o utilizador se esqueça de terminar a sua utilização o programa define a palavra na mesma como Bold, esta é definida com **word**.
 		   Poderá tambem acontecer o utilizador utilizar uma variavel não definida.
@@ -54,7 +54,7 @@ INTERMEDIATE REPRESENTATIONS (IRs): Como representa��o interm�dia, definiu
 				    Sendo que o cabe�alho vai conter a informa��o do utilizador, por exemplo os seus contactos de trabalho,
 				    as suas qualifica��es e ainda a sua morada. Os blocos de informa��o conter�o por exemplo os estabelecimentos de ensino 
 				    que frequentou quais as suas notas, que linguagem conhece e por ai em diante. Todos os blocos poder�o conter um ou mais sub-blocos
-				    que por sua vez podem conter Listas, Tabelas ou simplesmente Texto corrido. Em todos os blocos é permitido usar variaveis definidas antes do header e ainda alterar o texto para italico e bold.
+				    que por sua vez podem conter Listas, Tabelas ou simplesmente Texto corrido. Em todos os blocos é permitido usar variaveis definidas antes do header e ainda alterar o texto para italico e bold. A definição de uma variavel pode ser com numeros, texto ou outra previamente definida.
 				    Permitimos ainda alteração de texto optando entre bold e itálico.
 				    Tanto a representa��o interm�dia de alto como baixo n�vel s�o iguais, temos a CV que est� dividida em blocos com sub-blocos 
 				    com header, listas, tabelas ou texto.
